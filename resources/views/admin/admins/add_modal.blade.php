@@ -6,7 +6,12 @@
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="{{ route('admin.admins.store') }}" method="post" id="addForm" enctype="multipart/form-data" data-parsley-validate="">
+            <form action="{{ route('admin.admins.store') }}"
+                  method="post"
+                  class="ajax-form"
+                  data-modal-id="#addModal"
+                  enctype="multipart/form-data"
+                  data-parsley-validate="">
                 @csrf
                 <div class="modal-body">
 

@@ -84,10 +84,11 @@
                                         <td class="align-content-center">
                                             @if(! $admin->hasRole('Super Admin'))
                                                 @can('edit_admins')
-                                                    <a class="modal-effect btn btn-sm btn-info"
-                                                       data-effect="effect-scale"
+                                                    <a class="btn btn-info btn-sm edit-btn"
+                                                       href="#"
                                                        data-toggle="modal"
-                                                       href="#editModal"
+                                                       data-target="#editModal"
+                                                       data-url="{{ route('admin.admins.update', $admin->id) }}"
                                                        data-id="{{ $admin->id }}"
                                                        data-name="{{ $admin->name }}"
                                                        data-email="{{ $admin->email }}"
@@ -135,6 +136,7 @@
     <script src="{{URL::asset('assets/admin/plugins/fileuploads/js/file-upload.js')}}"></script>
     <script src="{{URL::asset('assets/admin/plugins/parsleyjs/parsley.min.js')}}"></script>
     <script src="{{URL::asset('assets/admin/plugins/parsleyjs/i18n/' . LaravelLocalization::getCurrentLocale() . '.js')}}"></script>
+    <script src="{{URL::asset('assets/admin/js/crud.js')}}"></script>
 
     @include('admin.layouts.scripts.datatable_config')
     @include('admin.layouts.scripts.delete_script')
@@ -146,106 +148,6 @@
             $('.select2').select2({
                 placeholder: '{{__("admin.global.select")}}',
                 width: '100%'
-            });
-
-            function submitFormViaAjax(form, modalId, btnSelector, btnTextSelector) {
-                var parsleyInstance = form.parsley();
-                parsleyInstance.validate();
-
-                if (!parsleyInstance.isValid()) return;
-
-                var actionUrl = form.attr('action');
-                var formData = new FormData(form[0]);
-
-                var btn = $(btnSelector);
-                var spinner = btn.find('.spinner-border');
-                var btnText = $(btnTextSelector);
-                var originalText = btnText.text();
-
-                btn.attr('disabled', true);
-                if(spinner.length) spinner.removeClass('d-none');
-                btnText.text('{{__("admin.global.loading")}}...');
-
-                $('.error-text').text('');
-                $('input, select').removeClass('is-invalid');
-
-                $.ajax({
-                    url: actionUrl,
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    success: function(response) {
-                        if(response.status === 'success') {
-                            if(modalId) $(modalId).modal('hide');
-
-                            swal({
-                                title: "{{__('admin.global.success')}}",
-                                text: response.message,
-                                type: "success",
-                                timer: 2000,
-                                showConfirmButton: false
-                            });
-
-                            setTimeout(function(){
-                                location.reload();
-                            }, 2000);
-                        }
-                    },
-                    error: function(xhr) {
-                        btn.attr('disabled', false);
-                        if(spinner.length) spinner.addClass('d-none');
-                        btnText.text(originalText);
-
-                        if (xhr.status === 422) {
-                            var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, val) {
-                                var input = form.find('[name="'+key+'"]');
-                                if(input.length === 0) input = form.find('[name="'+key+'[]"]');
-
-                                input.addClass('is-invalid');
-                                form.find('.'+key+'_error').text(val[0]);
-                            });
-                        } else {
-                            swal("{{__('admin.global.error_title')}}", "{{__('admin.admins.messages.failed.update')}}", "error");
-                            console.error(xhr.responseText);
-                        }
-                    }
-                });
-            }
-
-            $('#addForm').on('submit', function(e) {
-                e.preventDefault();
-                submitFormViaAjax($(this), '#addModal', '#submit-btn', '#btn-text');
-            });
-
-            $('#editForm').on('submit', function(e) {
-                e.preventDefault();
-                submitFormViaAjax($(this), '#editModal', '#update-btn', '#update-btn-text');
-            });
-
-            $('#editModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var modal = $(this);
-
-                var id = button.data('id');
-                var roles = button.data('roles');
-
-                modal.find('.modal-body #id').val(id);
-                modal.find('.modal-body #name').val(button.data('name'));
-                modal.find('.modal-body #email').val(button.data('email'));
-                modal.find('.modal-body #status').val(button.data('status'));
-                modal.find('.modal-body #roles').val(roles).trigger('change');
-
-                var url = "{{ route('admin.admins.update', ':id') }}";
-                url = url.replace(':id', id);
-                $('#editForm').attr('action', url);
-
-                $('.error-text').text('');
-                $('input').removeClass('is-invalid');
-                modal.find('#edit_password').val('');
-                modal.find('input[name="password_confirmation"]').val('');
             });
         });
     </script>

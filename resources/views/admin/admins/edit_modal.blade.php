@@ -6,8 +6,12 @@
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            {{-- 1. الفورم يشير لراوت التحديث مع Placeholder للـ ID سيتم تغييره بالـ JS --}}
-            <form action="{{ route('admin.admins.update', 'test') }}" method="post" id="editForm" enctype="multipart/form-data" data-parsley-validate="">
+            <form action=""
+                  method="post"
+                  class="ajax-form"
+                  data-modal-id="#editModal"
+                  enctype="multipart/form-data"
+                  data-parsley-validate="">
                 @csrf
                 @method('PUT')
 
