@@ -13,7 +13,7 @@ class SectionService
      */
     public function getAll()
     {
-        $sections = Section::with(['grade','classroom'])->get();
+        $sections = Section::with(['grade','classroom'])->get()->sortBy('sort_order');
         return $sections;
     }
 

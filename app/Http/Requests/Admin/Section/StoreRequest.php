@@ -39,6 +39,7 @@ class StoreRequest extends FormRequest
             'grade_id' => 'required|exists:grades,id',
             'classroom_id' => 'required|exists:class_rooms,id',
             'status' => 'required|boolean',
+            'sort_order' => 'nullable|integer|min:0|max:1000',
             'notes' => 'nullable|string|max:100',
         ];
     }

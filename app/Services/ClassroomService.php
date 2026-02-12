@@ -13,7 +13,7 @@ class ClassroomService
      */
     public function getAll()
     {
-        $classrooms = Classroom::with('grade')->orderBy('grade_id')->get();
+        $classrooms = Classroom::with('grade')->orderBy('grade_id')->get()->sortBy('sort_order');
         return $classrooms;
     }
 
