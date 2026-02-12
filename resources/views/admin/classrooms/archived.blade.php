@@ -62,7 +62,7 @@
                                         @can('restore_classrooms')
                                         <a class="btn btn-info btn-sm restore-item"
                                         href="#"
-                                           data-url="{{ route('admin..classrooms.restore', $classroom->id) }}"
+                                           data-url="{{ route('admin.classrooms.restore', $classroom->id) }}"
                                            data-id="{{ $classroom->id }}"
                                            data-name="{{ $classroom->name }}"
                                         >
@@ -73,7 +73,7 @@
                                             <a class="modal-effect btn btn-sm btn-danger delete-item"
                                                href="#"
                                                data-id="{{ $classroom->id }}"
-                                               data-url="{{ route('admin..classrooms.forceDelete', $classroom->id) }}"
+                                               data-url="{{ route('admin.classrooms.forceDelete', $classroom->id) }}"
                                                data-name="{{ $classroom->name }}">
                                                 <i class="las la-trash"></i> {{__('admin.global.delete')}}
                                             </a>
