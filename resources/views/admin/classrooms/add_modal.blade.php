@@ -33,8 +33,8 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>{{ __('admin.classrooms.fields.grade') }} <span class="text-danger">*</span></label>
-                        <option value="" disabled selected>-- {{ __('admin.global.select') }} --</option>
-                        <select name="grade_id" class="form-control" required>
+                        <select name="grade_id" class="form-control select2" required>
+                            <option value="" disabled selected>-- {{ __('admin.global.select') }} --</option>
                             @foreach($grades as $grade)
                                 <option value="{{$grade->id}}">{{$grade->name}}</option>
                             @endforeach
