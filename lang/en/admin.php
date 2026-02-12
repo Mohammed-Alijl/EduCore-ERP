@@ -71,6 +71,12 @@ return [
         'grades_report' => 'Grades Report',
         'library' => 'Library',
     ],
+    'footer' => [
+        'copyright' => 'Copyright ©',
+        'owner' => 'Mohammed',
+        'designed_by' => 'Designed by',
+        'rights' => 'All rights reserved.',
+    ],
   'login' => [
       'welcome' => 'Welcome back!',
       'subtitle' => 'Please sign in to continue.',

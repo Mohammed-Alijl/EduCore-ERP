@@ -1,7 +1,7 @@
 <!-- Footer opened -->
 	<div class="main-footer ht-40">
 		<div class="container-fluid pd-t-0-f ht-100p">
-			<span>Copyright © 2026 <a href="#">Mohammed</a>. Designed by <a href="#">Mohammed</a> All rights reserved.</span>
+			<span>{{__('admin.footer.copyright') . " ". now()->year}} <a href="#">{{__('admin.footer.owner')}}</a>. {{__('admin.footer.designed_by')}} <a href="#">{{__('admin.footer.owner')}}</a> {{__('admin.footer.rights')}}</span>
 		</div>
 	</div>
 <!-- Footer closed -->
