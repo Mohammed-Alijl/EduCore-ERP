@@ -1,5 +1,8 @@
 <!-- Title -->
-<title> Valex -  Premium dashboard ui bootstrap rwd admin html5 template </title>
+<title>@yield('title')</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="title" content="Learn To Earn">
+<meta name="description" content="School Management System (LMS)  His Name Is Learn To Earn To Control The School, Students, Teachers and Subjects ">
 <!-- Favicon -->
 <link rel="icon" href="{{URL::asset('assets/admin/img/brand/favicon.png')}}" type="image/x-icon"/>
 <!-- Icons css -->

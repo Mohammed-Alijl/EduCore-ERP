@@ -71,6 +71,18 @@ return [
         'grades_report' => 'تقرير الدرجات',
         'logs' => 'سجلات النظام',
     ],
+    'header' => [
+        'mark_read' => 'نم قراءة الكل',
+        'read' => 'مقروءة',
+        'unread' => 'غير مقروءة',
+        'view_all' => 'عرض الكل',
+        'notifications' => 'الاشعارات',
+        'messages' => 'الرسائل',
+        'search' => 'ابخث عن اي شئ...',
+        'profile' => 'الملف الشخصي',
+        'edit_profile' => 'تعديل الملف الشخصي',
+        'sign_out' => 'تسجيل الخروج',
+    ],
     'footer' => [
         'copyright' => 'حقوق النشر ©',
         'owner' => 'محمد',

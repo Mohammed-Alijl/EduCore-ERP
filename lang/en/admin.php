@@ -35,7 +35,7 @@ return [
         'protected' => 'Protected',
         'actions' => 'Actions',
         'archive' => 'Archive',
-        'restore' => "Restore Class",
+        'restore' => "Restore",
     ],
     'sidebar' => [
         'dashboard' => 'Dashboard',
@@ -70,6 +70,18 @@ return [
         'financial_report' => 'Financial Report',
         'grades_report' => 'Grades Report',
         'library' => 'Library',
+    ],
+    'header' => [
+        'mark_read' => 'Mark All Read',
+        'read' => 'Read',
+        'unread' => 'unread',
+        'view_all' => 'View All',
+        'notifications' => 'Notifications',
+        'messages' => 'Messages',
+        'search' => 'Search for anything...',
+        'profile' => 'Profile',
+        'edit_profile' => 'Edit Profile',
+        'sign_out' => 'Sign Out',
     ],
     'footer' => [
         'copyright' => 'Copyright ©',
