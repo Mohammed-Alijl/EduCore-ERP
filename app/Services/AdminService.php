@@ -7,6 +7,7 @@ use App\Traits\UploadImageTrait;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Illuminate\Auth\Events\Registered;
 
 class AdminService
 {
@@ -30,6 +31,8 @@ class AdminService
         $admin = Admin::create($data);
 
         $admin->assignRole($data['roles_name']);
+
+        event(new Registered($admin));
 
         return $admin;
     }
