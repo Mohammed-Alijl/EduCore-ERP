@@ -52,7 +52,7 @@ return [
         'admins'    => 'المشرفين',
         'teachers' => 'المعلمين',
         'students' => 'الطلاب',
-        'parents' => 'أولياء الأمور',
+        'guardians' => 'أولياء الأمور',
         'roles'     => 'الصلاحيات والرتب',
         'promotions' => 'ترقية الطلاب',
         'graduations' => 'تخريج الطلاب',

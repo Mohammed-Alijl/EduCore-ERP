@@ -50,7 +50,7 @@ return [
         'admins'    => 'Admins',
         'students' => 'Students',
         'teachers' => 'Teachers',
-        'parents' => 'Parents',
+        'guardians' => 'Guardians',
         'logs' => 'Activity Logs',
         'promotions' => 'Promotions',
         'graduations' => 'Graduations',
