@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\Guardian\StoreRequest;
+use App\Http\Requests\Admin\Guardian\UpdateRequest;
 use App\Models\Guardian;
 use App\Services\GuardianService;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -59,7 +60,7 @@ class GuardianController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         try {
             $this->guardianService->store($request->validated());
@@ -95,7 +96,7 @@ class GuardianController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Guardian $guardian)
+    public function update(UpdateRequest $request, Guardian $guardian)
     {
         try {
             $this->guardianService->update($guardian, $request->validated());
