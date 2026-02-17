@@ -24,18 +24,17 @@ return new class extends Migration
             $table->foreignId('blood_type_father_id')->constrained('type_bloods');
             $table->foreignId('religion_father_id')->constrained('religions');
             $table->string('address_father');
-
             $table->json('name_mother');
             $table->string('national_id_mother')->nullable();
             $table->string('passport_id_mother')->nullable();
             $table->string('phone_mother')->nullable();
             $table->json('job_mother')->nullable();
-
             $table->foreignId('nationality_mother_id')->constrained('nationalities');
             $table->foreignId('blood_type_mother_id')->constrained('type_bloods');
             $table->foreignId('religion_mother_id')->constrained('religions');
             $table->string('address_mother')->nullable();
-
+            $table->string('image')->nullable();
+            $table->json('attachments')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
