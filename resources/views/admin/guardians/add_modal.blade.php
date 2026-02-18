@@ -37,6 +37,7 @@
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.national_id_father') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control numeric-only" name="national_id_father" id="national_id_father" maxlength="10" required data-parsley-length="[9, 10]" data-parsley-group="step-1">
+                                        <span class="text-danger error-text national_id_father_error"></span>
                                     </div>
                                 </div>
 
@@ -44,13 +45,14 @@
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.passport_id_father') }}</label>
                                         <input type="text" class="form-control numeric-only" name="passport_id_father" id="passport_id_father" minlength="8" maxlength="10" data-parsley-group="step-1">
+                                        <span class="text-danger error-text passport_id_father_error"></span>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.phone_father') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control numeric-only" id="phone_father_input" required maxlength="10" data-parsley-group="step-1">
+                                        <input type="text" class="form-control" id="phone_father_input" required minlength="10" maxlength="20" data-parsley-group="step-1">
                                         <input type="hidden" name="phone_father" id="phone_father_hidden">
                                         <span class="text-danger error-text phone_father_error"></span>
                                     </div>
@@ -121,14 +123,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.name_mother_ar') }}</label>
-                                        <input type="text" class="form-control" name="name_mother[ar]" minlength="3" maxlength="30" data-parsley-group="step-2">
+                                        <input type="text" class="form-control" name="name_mother[ar]" required minlength="3" maxlength="30" data-parsley-group="step-2">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.name_mother_en') }}</label>
-                                        <input type="text" class="form-control" name="name_mother[en]" minlength="3" maxlength="30" pattern="[a-zA-Z\s]+" data-parsley-group="step-2">
+                                        <input type="text" class="form-control" name="name_mother[en]" required minlength="3" maxlength="30" pattern="[a-zA-Z\s]+" data-parsley-group="step-2">
                                     </div>
                                 </div>
 
@@ -136,6 +138,7 @@
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.national_id_mother') }}</label>
                                         <input type="text" class="form-control numeric-only" name="national_id_mother" maxlength="10" data-parsley-group="step-2">
+                                        <span class="text-danger error-text national_id_mother_error"></span>
                                     </div>
                                 </div>
 
@@ -143,14 +146,16 @@
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.passport_id_mother') }}</label>
                                         <input type="text" class="form-control numeric-only" name="passport_id_mother" minlength="8" maxlength="10" data-parsley-group="step-2">
+                                        <span class="text-danger error-text passport_id_mother_error"></span>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.phone_mother') }}</label>
-                                        <input type="text" class="form-control numeric-only" id="phone_mother_input" maxlength="10" data-parsley-group="step-2">
+                                        <input type="text" class="form-control" id="phone_mother_input" minlength="10" maxlength="20" data-parsley-group="step-2">
                                         <input type="hidden" name="phone_mother" id="phone_mother_hidden">
+                                        <span class="text-danger error-text phone_mother_error"></span>
                                     </div>
                                 </div>
 
@@ -171,7 +176,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.nationality_mother_id') }}</label>
-                                        <select class="form-control" name="nationality_mother_id" data-parsley-group="step-2">
+                                        <select class="form-control" name="nationality_mother_id" data-parsley-group="step-2" required>
                                             <option value="">{{ trans('admin.global.select') }}</option>
                                             @foreach($nationalities as $nationality)
                                                 <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
@@ -183,7 +188,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.blood_type_mother_id') }}</label>
-                                        <select class="form-control" name="blood_type_mother_id" data-parsley-group="step-2">
+                                        <select class="form-control" name="blood_type_mother_id" data-parsley-group="step-2" required>
                                             <option value="">{{ trans('admin.global.select') }}</option>
                                             @foreach($blood_types as $blood_type)
                                                 <option value="{{ $blood_type->id }}">{{ $blood_type->name }}</option>
@@ -195,7 +200,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.religion_mother_id') }}</label>
-                                        <select class="form-control" name="religion_mother_id" data-parsley-group="step-2">
+                                        <select class="form-control" name="religion_mother_id" data-parsley-group="step-2" required>
                                             <option value="">{{ trans('admin.global.select') }}</option>
                                             @foreach($religions as $religion)
                                                 <option value="{{ $religion->id }}">{{ $religion->name }}</option>
@@ -256,8 +261,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{ trans('admin.guardians.fields.attachments') }}</label>
-                                        <input type="file" name="attachments[]" id="attachments" accept=".jpg, .png, .pdf" multiple data-parsley-group="step-3">
-                                        <small class="text-muted">{{ trans('admin.guardians.attachments_help') }}</small>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="attachments[]" id="attachments" accept=".jpg, .png, .pdf" multiple data-parsley-group="step-3">
+                                            <label class="custom-file-label" for="attachments">{{__('admin.global.dropify.drag_drop')}}</label>
+                                        </div>
+                                        <small class="text-muted mt-2 d-block">{{ trans('admin.guardians.attachments_help') }}</small>
+                                        <span class="text-danger error-text attachments_error"></span>
                                     </div>
                                 </div>
                             </div>
@@ -269,6 +278,7 @@
         </div>
     </div>
 </div>
+
 @push('scripts')
     <script>
         $(document).ready(function() {
@@ -277,22 +287,7 @@
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
 
-            $(function() {
-                let inputFather = document.querySelector("#phone_father_input");
-                itiFather = window.intlTelInput(inputFather, {
-                    onlyCountries: ["ps", "sa", "eg", "jo", "qa", "us"],
-                    initialCountry: "ps",
-                    utilsScript: "assets/admin/plugins/telephoneinput/utils.js",
-                });
-
-                let inputMother = document.querySelector("#phone_mother_input");
-                itiMother = window.intlTelInput(inputMother, {
-                    onlyCountries: ["ps", "sa", "eg", "jo", "qa", "us"],
-                    initialCountry: "ps",
-                    utilsScript: "assets/admin/plugins/telephoneinput/utils.js",
-                });
-            });
-
+            var itiFather, itiMother;
             var form = $('#addGuardianForm');
 
             $("#addGuardianWizard").steps({
@@ -307,11 +302,10 @@
                     previous: "{{ trans('admin.global.previous') }}"
                 },
                 onStepChanging: function (event, currentIndex, newIndex) {
+                    forceSyncPhones();
                     if (currentIndex > newIndex) { return true; }
-
                     var currentGroup = 'step-' + (currentIndex + 1);
                     form.parsley().validate({ group: currentGroup });
-
                     return form.parsley().isValid({ group: currentGroup });
                 },
                 onFinishing: function (event, currentIndex) {
@@ -319,39 +313,80 @@
                     return form.parsley().isValid({ group: 'step-3' });
                 },
                 onFinished: function (event, currentIndex) {
-                    $('#phone_father_hidden').val(itiFather.getNumber());
-
-                    if($('#phone_mother_input').val()) {
-                        $('#phone_mother_hidden').val(itiMother.getNumber());
-                    }
-
+                    forceSyncPhones();
                     form.submit();
                 }
             });
+
+            var inputFather = document.querySelector("#phone_father_input");
+            itiFather = window.intlTelInput(inputFather, {
+                onlyCountries: ["ps", "sa", "eg", "jo", "qa", "us"],
+                initialCountry: "ps",
+                utilsScript: "assets/admin/plugins/telephoneinput/utils.js",
+            });
+
+            var inputMother = document.querySelector("#phone_mother_input");
+            itiMother = window.intlTelInput(inputMother, {
+                onlyCountries: ["ps", "sa", "eg", "jo", "qa", "us"],
+                initialCountry: "ps",
+                utilsScript: "assets/admin/plugins/telephoneinput/utils.js",
+            });
+
+            function forceSyncPhones() {
+                var rawFather = $('#phone_father_input').val().replace(/[^0-9]/g, '');
+                var finalFatherVal = '';
+
+                if (rawFather !== '') {
+                    finalFatherVal = itiFather.getNumber();
+                    if (!finalFatherVal) {
+                        var countryData = itiFather.getSelectedCountryData();
+                        var dialCode = countryData ? '+' + countryData.dialCode : '';
+                        finalFatherVal = dialCode + rawFather;
+                    }
+                }
+                document.getElementById('phone_father_hidden').value = finalFatherVal;
+
+                var rawMother = $('#phone_mother_input').val().replace(/[^0-9]/g, '');
+                var finalMotherVal = '';
+
+                if (rawMother !== '') {
+                    finalMotherVal = itiMother.getNumber();
+                    if (!finalMotherVal) {
+                        var mCountryData = itiMother.getSelectedCountryData();
+                        var mDialCode = mCountryData ? '+' + mCountryData.dialCode : '';
+                        finalMotherVal = mDialCode + rawMother;
+                    }
+                }
+                document.getElementById('phone_mother_hidden').value = finalMotherVal;
+            }
+
+            $('#phone_father_input, #phone_mother_input').on('input change blur keyup', forceSyncPhones);
+            inputFather.addEventListener('countrychange', forceSyncPhones);
+            inputMother.addEventListener('countrychange', forceSyncPhones);
+
 
             $('#addModal').on('hidden.bs.modal', function () {
                 $("#addGuardianWizard").steps("reset");
                 form.parsley().reset();
                 form[0].reset();
+                document.getElementById('phone_father_hidden').value = '';
+                document.getElementById('phone_mother_hidden').value = '';
             });
-
-            (function($) {
-                if($('#attachments').length) {
-                    $('#attachments').FancyFileUpload({
-                        params : { action : 'fileuploader' },
-                        maxfilesize : 2000000
-                    });
-                }
-            })(jQuery);
 
             $('.dropify').dropify({
                 messages: {
-                    'default': '{{__('admin.global.dropify.drag_drop')}}',
-                    'replace': '{{__('admin.global.dropify.replace')}}',
-                    'remove': '{{__('admin.global.delete')}}',
-                    'error': '{{__('admin.global.dropify.error')}}'
+                    'default': '{{__("admin.global.dropify.drag_drop")}}',
+                    'replace': '{{__("admin.global.dropify.replace")}}',
+                    'remove': '{{__("admin.global.delete")}}',
+                    'error': '{{__("admin.global.dropify.error")}}'
                 }
             });
+
+            $('.custom-file-input').on('change', function() {
+                var files = Array.from(this.files).map(f => f.name).join(' | ');
+                $(this).next('.custom-file-label').html(files || "{{__('admin.global.dropify.drag_drop')}}");
+            });
+
         });
     </script>
 @endpush

@@ -12,8 +12,6 @@
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     {{--  File uploader css --}}
     <link href="{{URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
-    {{--  Fancy uploader css --}}
-    <link href="{{URL::asset('assets/admin/plugins/fancyuploder/fancy_fileupload.css')}}" rel="stylesheet" />
     {{-- Internal  TelephoneInput css --}}
     <link rel="stylesheet" href="{{URL::asset('assets/admin/plugins/telephoneinput/telephoneinput-rtl.css')}}">
 {{-- Internal  TelephoneInput css --}}
@@ -157,11 +155,6 @@
     <script src="{{ URL::asset('assets/admin/js/crud.js') }}"></script>
     {{--  Dropify JS  --}}
     <script src="{{URL::asset('assets/admin/plugins/fileuploads/js/fileupload.js')}}"></script>
-    <!--Internal Fancy uploader js-->
-    <script src="{{URL::asset('assets/admin/plugins/fancyuploder/jquery.ui.widget.js')}}"></script>
-    <script src="{{URL::asset('assets/admin/plugins/fancyuploder/jquery.fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/admin/plugins/fancyuploder/jquery.iframe-transport.js')}}"></script>
-    <script src="{{URL::asset('assets/admin/plugins/fancyuploder/jquery.fancy-fileupload.js')}}"></script>
     <!--Telephone Input js-->
     <script src="{{URL::asset('assets/admin/plugins/telephoneinput/telephoneinput.js')}}"></script>
     @include('admin.layouts.scripts.datatable_config')
