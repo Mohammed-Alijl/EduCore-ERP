@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\GuardianController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -69,6 +70,12 @@ Route::group(
                     Route::get('archive',[GuardianController::class,'archive'])->name('archived');
                     Route::post('restore/{id}',[GuardianController::class, 'restore'])->name('restore');
                     Route::delete('force-delete/{id}',[GuardianController::class, 'forceDelete'])->name('forceDelete');
+                });
+                Route::resource('students',StudentController::class)->except(['show','create','edit']);
+                Route::prefix('students/')->name('students.')->group(function () {
+                    Route::get('archive',[StudentController::class,'archive'])->name('archived');
+                    Route::post('restore/{id}',[StudentController::class, 'restore'])->name('restore');
+                    Route::delete('force-delete/{id}',[StudentController::class, 'forceDelete'])->name('forceDelete');
                 });
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
