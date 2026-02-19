@@ -76,9 +76,8 @@
                                                data-toggle="modal"
                                                data-target="#editModal"
                                                data-url="{{ route('admin.guardians.update', $guardian->id) }}"
-
+                                               data-id="{{ $guardian->id }}"
                                                data-email="{{ $guardian->email }}"
-
                                                data-name_father_ar="{{ $guardian->getTranslation('name_father', 'ar') }}"
                                                data-name_father_en="{{ $guardian->getTranslation('name_father', 'en') }}"
                                                data-national_id_father="{{ $guardian->national_id_father }}"
@@ -90,20 +89,20 @@
                                                data-blood_type_father_id="{{ $guardian->blood_type_father_id }}"
                                                data-religion_father_id="{{ $guardian->religion_father_id }}"
                                                data-address_father="{{ $guardian->address_father }}"
-
-                                               data-name_mother_ar="{{ $guardian->getTranslation('name_mother', 'ar') }}"
-                                               data-name_mother_en="{{ $guardian->getTranslation('name_mother', 'en') }}"
+                                               data-name_mother_ar="{{ $guardian->name_mother ? $guardian->getTranslation('name_mother', 'ar') : '' }}"
+                                               data-name_mother_en="{{ $guardian->name_mother ? $guardian->getTranslation('name_mother', 'en') : '' }}"
                                                data-national_id_mother="{{ $guardian->national_id_mother }}"
                                                data-passport_id_mother="{{ $guardian->passport_id_mother }}"
                                                data-phone_mother="{{ $guardian->phone_mother }}"
-                                               data-job_mother_ar="{{ $guardian->getTranslation('job_mother', 'ar') }}"
-                                               data-job_mother_en="{{ $guardian->getTranslation('job_mother', 'en') }}"
+                                               data-job_mother_ar="{{ $guardian->job_mother ? $guardian->getTranslation('job_mother', 'ar') : '' }}"
+                                               data-job_mother_en="{{ $guardian->job_mother ? $guardian->getTranslation('job_mother', 'en') : '' }}"
                                                data-nationality_mother_id="{{ $guardian->nationality_mother_id }}"
                                                data-blood_type_mother_id="{{ $guardian->blood_type_mother_id }}"
                                                data-religion_mother_id="{{ $guardian->religion_mother_id }}"
                                                data-address_mother="{{ $guardian->address_mother }}"
+                                               data-image="{{ $guardian->image_url }}"
                                             >
-                                                <i class="las la-pen"></i>
+                                                <i class="las la-pen"></i> {{__('admin.global.edit')}}
                                             </a>
                                         @endcan
 
@@ -112,7 +111,7 @@
                                                href="#"
                                                data-id="{{ $guardian->id }}"
                                                data-url="{{ route('admin.guardians.destroy', $guardian->id) }}">
-                                                <i class="las la-trash"></i>
+                                                <i class="las la-trash"></i> {{__('admin.global.delete')}}
                                             </a>
                                         @endcan
                                     </td>
@@ -129,7 +128,7 @@
     </div>
 
     @include('admin.guardians.add_modal')
-{{--    @include('admin.guardians.edit_modal')--}}
+    @include('admin.guardians.edit_modal')
 
 @endsection
 

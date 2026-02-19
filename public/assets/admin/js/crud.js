@@ -19,7 +19,6 @@ $(document).ready(function() {
         // Loading State
         btn.attr('disabled', true);
         if(spinner.length) spinner.removeClass('d-none');
-        // btn.text('Loading...');
 
         $('.error-text').text('');
         $('input, select, textarea').removeClass('is-invalid');
@@ -31,6 +30,9 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(response) {
+                btn.attr('disabled', false);
+                if(spinner.length) spinner.addClass('d-none');
+
                 if(response.status === 'success') {
                     if(modalId) $(modalId).modal('hide');
 
@@ -67,8 +69,24 @@ $(document).ready(function() {
                         }
 
                         input.addClass('is-invalid');
-                        form.find('.'+key+'_error').text(val[0]);
+
+                        var errorClass = key.replace(/\./g, '_') + '_error';
+                        form.find('.' + errorClass).text(val[0]);
                     });
+
+                    var firstInvalid = form.find('.is-invalid').first();
+                    if (firstInvalid.length > 0) {
+                        var errorSection = firstInvalid.closest('section');
+                        var wizardContainer = form.find('.wizard').parent();
+
+                        if (errorSection.length > 0 && wizardContainer.length && $.fn.steps) {
+                            var stepIndex = errorSection.index('section');
+                            wizardContainer.steps("setStep", stepIndex);
+                        }
+                    }
+
+                } else if(xhr.status === 413) {
+                    swal("خطأ!", "The Size Of The Attachments Is Too Big.", "error");
                 } else {
                     swal("Error!", "Server Error: " + xhr.status, "error");
                 }
@@ -88,6 +106,12 @@ $(document).ready(function() {
 
             var input = modal.find('[name="'+key+'"], #'+key);
 
+            if(input.length === 0 && (key.endsWith('_ar') || key.endsWith('_en'))) {
+                var fieldName = key.slice(0, -3);
+                var locale = key.slice(-2);
+                input = modal.find('[name="' + fieldName + '[' + locale + ']"]');
+            }
+
             if(input.length) {
                 if(input.is('select')) {
                     input.val(value).trigger('change');
@@ -98,6 +122,6 @@ $(document).ready(function() {
         });
 
         $('.error-text').text('');
-        $('input').removeClass('is-invalid');
+        $('input, select, textarea').removeClass('is-invalid');
     });
 });
