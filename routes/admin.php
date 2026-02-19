@@ -65,6 +65,11 @@ Route::group(
                     Route::delete('force-delete/{id}',[SectionController::class, 'forceDelete'])->name('forceDelete');
                 });
                 Route::resource('guardians',GuardianController::class)->except(['show','create','edit']);
+                Route::prefix('guardians/')->name('guardians.')->group(function () {
+                    Route::get('archive',[GuardianController::class,'archive'])->name('archived');
+                    Route::post('restore/{id}',[GuardianController::class, 'restore'])->name('restore');
+                    Route::delete('force-delete/{id}',[GuardianController::class, 'forceDelete'])->name('forceDelete');
+                });
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });

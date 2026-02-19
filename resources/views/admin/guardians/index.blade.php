@@ -27,6 +27,14 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
+            @can('view-archived_guardians')
+                <div class="pr-1 mb-3 mb-xl-0">
+                    <a class="modal-effect btn btn-warning-gradient btn-with-icon btn-block"
+                       href="{{route('admin.guardians.archived')}}">
+                        <i class="fas fa-book ml-2"></i>  {{__('admin.guardians.archived') }}
+                    </a>
+                </div>
+            @endcan
             @can('create_guardians')
                 <div class="pr-1 mb-3 mb-xl-0">
                     <a class="modal-effect btn btn-primary-gradient btn-with-icon btn-block"
