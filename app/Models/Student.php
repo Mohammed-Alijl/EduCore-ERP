@@ -16,6 +16,7 @@ class Student extends Authenticatable
 
     protected $fillable = [
         'name',
+        'student_code',
         'email',
         'password',
         'national_id',
@@ -49,6 +50,25 @@ class Student extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($student) {
+            $currentYear = date('Y');
+            $lastStudent = self::where('student_code', 'like', $currentYear . '%')
+                ->orderBy('student_code', 'desc')
+                ->first();
+
+            if ($lastStudent) {
+                $lastSequence = (int) substr($lastStudent->student_code, 4);
+                $newSequence = str_pad($lastSequence + 1, 4, '0', STR_PAD_LEFT);
+            } else {
+                $newSequence = '0001';
+            }
+            $student->student_code = $currentYear . $newSequence;
+        });
     }
 
     //======================== RELATIONSHIPS ========================
