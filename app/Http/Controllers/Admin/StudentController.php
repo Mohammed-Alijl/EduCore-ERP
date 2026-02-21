@@ -134,18 +134,6 @@ class StudentController extends Controller implements HasMiddleware
         }
     }
 
-    public function getClassrooms($grade_id)
-    {
-        $classrooms = Classroom::where('grade_id', $grade_id)->pluck('name', 'id');
-        return response()->json($classrooms);
-    }
-
-    public function getSections($classroom_id)
-    {
-        $sections = Section::where('classroom_id', $classroom_id)->pluck('name', 'id');
-        return response()->json($sections);
-    }
-
     public function getNextStudentCode() {
         try {
             $student_code = $this->studentService->getNextStudentCode();
