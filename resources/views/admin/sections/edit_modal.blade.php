@@ -89,3 +89,39 @@
 </div>
 </div>
 </div>
+@push('scripts')
+    <script>
+        $(document).on('click', '.edit-btn', function() {
+            var gradeId = $(this).data('grade_id');
+            var classroomId = $(this).data('classroom_id');
+
+            var modal = $('#editModal');
+            var classroomSelect = modal.find('select[name="classroom_id"]');
+            classroomSelect.empty();
+
+            if(gradeId) {
+                $.ajax({
+                    url: "{{ route('admin.classrooms.by-grade') }}",
+                    type: "GET",
+                    data: { grade_id: gradeId },
+
+                    success: function (response) {
+
+                        if (response.success) {
+
+                            $.each(response.data, function (key, classroom) {
+
+                                $('select[name="classroom_id"]').append(
+                                    `<option value="${key}">${classroom}</option>`
+                                );
+
+                            });
+
+                        }
+
+                    }
+                });
+            }
+        });
+    </script>
+@endpush

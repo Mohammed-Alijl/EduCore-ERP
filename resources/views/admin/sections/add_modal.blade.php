@@ -88,3 +88,54 @@
 </div>
 </div>
 </div>
+@push('scripts')
+    <script>
+        /* ===============================
+            CASCADING DROPDOWNS
+            =============================== */
+        $('select[name="grade_id"]').on('change', function () {
+
+            let gradeId = $(this).val();
+
+            resetDropdown('select[name="classroom_id"]');
+
+            if (!gradeId) return;
+
+            $.ajax({
+                url: "{{ route('admin.classrooms.by-grade') }}",
+                type: "GET",
+                data: { grade_id: gradeId },
+
+                success: function (response) {
+
+                    if (response.success) {
+
+                        $.each(response.data, function (key, classroom) {
+
+                            $('select[name="classroom_id"]').append(
+                                `<option value="${key}">${classroom}</option>`
+                            );
+
+                        });
+
+                    }
+
+                }
+            });
+
+        });
+
+        /* ===============================
+        HELPERS
+        =============================== */
+        function resetDropdown(selector) {
+
+            $(selector).html(`
+            <option value="" disabled selected>
+                -- {{ trans('admin.global.select') }} --
+            </option>
+        `);
+
+        }
+    </script>
+@endpush
