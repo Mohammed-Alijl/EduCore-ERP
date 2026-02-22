@@ -91,6 +91,35 @@
                                     @canany('edit_students','delete_students')
                                             <td>
                                                 @can('edit_students')
+                                                    @php
+                                                        $attachmentUrls = [];
+                                                        $attachmentConfigs = [];
+
+                                                        if(!empty($student->attachments) && is_array($student->attachments)) {
+                                                            foreach($student->attachments as $index => $filePath) {
+                                                                $fullUrl = asset('storage/' . $filePath);
+                                                                $attachmentUrls[] = $fullUrl;
+
+                                                                $fileName = basename($filePath);
+                                                                $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+
+                                                                $type = 'other';
+                                                                if(in_array($extension, ['jpg', 'jpeg', 'png', 'svg'])) {
+                                                                    $type = 'image';
+                                                                } elseif ($extension == 'pdf') {
+                                                                    $type = 'pdf';
+                                                                } elseif (in_array($extension, ['doc', 'docx'])) {
+                                                                    $type = 'office';
+                                                                }
+
+                                                                $attachmentConfigs[] = [
+                                                                    'caption' => $fileName,
+                                                                    'type' => $type,
+                                                                    'key' => $index + 1
+                                                                ];
+                                                            }
+                                                        }
+                                                    @endphp
                                                     <a class="btn btn-info btn-sm edit-btn"
                                                        href="#"
                                                        data-toggle="modal"
@@ -101,7 +130,7 @@
                                                        data-name_en="{{ $student->getTranslation('name', 'en') }}"
                                                        data-email="{{ $student->email }}"
                                                        data-national_id="{{ $student->national_id }}"
-                                                       data-date_of_birth="{{ $student->national_id }}"
+                                                       data-date_of_birth="{{ $student->date_of_birth->format('d-m-Y') }}"
                                                        data-grade_id="{{ $student->grade_id }}"
                                                        data-classroom_id="{{ $student->classroom_id }}"
                                                        data-section_id="{{ $student->section_id }}"
@@ -112,7 +141,10 @@
                                                        data-nationality_id="{{ $student->nationality_id }}"
                                                        data-religion_id="{{ $student->religion_id }}"
                                                        data-gender_id="{{ $student->gender_id }}"
-                                                       data-admin_id="{{ $student->admin_id }}">
+                                                       data-admin_id="{{ $student->admin_id }}"
+                                                       data-image="{{ $student->image_path ? asset('storage/' . $student->image_path) : '' }}"
+                                                       data-attachments='@json($attachmentUrls)'
+                                                       data-configs='@json($attachmentConfigs)'>
                                                         <i class="las la-pen"></i> {{trans('admin.global.edit')}}
                                                     </a>
                                                 @endcan
@@ -140,7 +172,7 @@
     </div>
 
     @include('admin.students.add_modal')
-{{--    @include('admin.students.edit_modal')--}}
+    @include('admin.students.edit_modal')
 
 @endsection
 
