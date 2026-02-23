@@ -142,7 +142,7 @@
                                                        data-religion_id="{{ $student->religion_id }}"
                                                        data-gender_id="{{ $student->gender_id }}"
                                                        data-admin_id="{{ $student->admin_id }}"
-                                                       data-image="{{ $student->image_path ? asset('storage/' . $student->image_path) : '' }}"
+                                                       data-image="{{ $student->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($student->image) : '' }}"
                                                        data-attachments='@json($attachmentUrls)'
                                                        data-configs='@json($attachmentConfigs)'>
                                                         <i class="las la-pen"></i> {{trans('admin.global.edit')}}

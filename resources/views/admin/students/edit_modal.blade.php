@@ -281,9 +281,26 @@
             /* ===============================
             FILE INPUT INITIALIZATION
             =============================== */
+            function safeJson(value, fallback = []) {
+                if (Array.isArray(value)) return value;
+                if (typeof value !== 'string' || value.trim() === '') return fallback;
+
+                try {
+                    const parsed = JSON.parse(value);
+                    return Array.isArray(parsed) ? parsed : fallback;
+                } catch (e) {
+                    return fallback;
+                }
+            }
+
             function initFileInputs(imagePreviewUrl = [], attachmentsPreviewUrls = [], attachmentsConfig = []) {
-                $('#student_image_edit').fileinput('destroy');
-                $('#student_attachments_edit').fileinput('destroy');
+                if ($('#student_image_edit').data('fileinput')) {
+                    $('#student_image_edit').fileinput('destroy');
+                }
+
+                if ($('#student_attachments_edit').data('fileinput')) {
+                    $('#student_attachments_edit').fileinput('destroy');
+                }
 
                 $('#student_image_edit').fileinput({
                     theme: 'fa5',
@@ -293,7 +310,11 @@
                     overwriteInitial: true,
                     initialPreviewAsData: true,
                     initialPreview: imagePreviewUrl,
-                    allowedFileExtensions: ['jpg','jpeg','png','svg'],
+                    initialPreviewConfig: imagePreviewUrl.length ? [{
+                        type: 'image',
+                        caption: imagePreviewUrl[0].split('/').pop()
+                    }] : [],
+                    allowedFileExtensions: ['jpg','jpeg','png','svg','webp'],
                     maxFileSize: 2048,
                     browseOnZoneClick: true,
                 });
@@ -317,15 +338,17 @@
             /* ===============================
             WHEN MODAL OPENS
             =============================== */
-            $('#editModal').on('show.bs.modal', function (event) {
+            $('#editModal').on('shown.bs.modal', function (event) {
                 isInitialLoad = true;
 
                 let button = $(event.relatedTarget);
 
                 let imageUrl = button.data('image');
                 let imageArray = imageUrl ? [imageUrl] : [];
-                let attachments = button.data('attachments') || [];
-                let configs = button.data('configs') || [];
+                let attachments = safeJson(button.attr('data-attachments'), button.data('attachments') || []);
+                let configs = safeJson(button.attr('data-configs'), button.data('configs') || []);
+
+                $('#student_code_preview').text(button.data('student_code') || '');
 
                 initFileInputs(imageArray, attachments, configs);
 
