@@ -423,6 +423,7 @@ return [
         'promote' => 'ترقية الطلاب',
         'no_students' => 'لا يوجد طلاب حسب المعايير المحددة.',
         'repeat_hint' => 'الطلاب غير المحددين سيتم اعتبارهم معيدين للسنة الأكاديمية الجديدة.',
+        'confirm_title' => 'هل انت متأكد؟',
         'fields' => [
             'from_grade' => 'من المرحلة الدراسية',
             'from_classroom' => 'من الصف',
@@ -435,7 +436,6 @@ return [
             'promote' => 'ترقية',
             'graduate' => 'تخريج',
             'students' => 'الطلاب',
-            'confirm_title' => 'هل انت متأكد؟',
         ],
         'messages' => [
             'success' => [

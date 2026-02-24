@@ -295,11 +295,12 @@
                     summaryLines.push('<strong>{{ trans("admin.promotions.fields.graduate") }}:</strong> ' + graduatedCount + ' {{ trans("admin.promotions.students") }}');
                 }
 
+                @if($students)
                 var repeatCount = {{ $students->count() }} - promotedCount - graduatedCount;
                 if (repeatCount > 0) {
                     summaryLines.push('<strong>{{ trans("admin.promotions.repeat_hint") }}:</strong> ' + repeatCount + ' {{ trans("admin.promotions.students") }}');
                 }
-
+                @endif
                 Swal.fire({
                     title: '{{ trans("admin.promotions.confirm_title") }}',
                     html: summaryLines.length

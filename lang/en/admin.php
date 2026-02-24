@@ -432,6 +432,7 @@ return [
         'promote' => 'Promote Students',
         'no_students' => 'No students found for the selected criteria.',
         'repeat_hint' => 'Students not selected will be marked as repeating for the new academic year.',
+        'confirm_title' => 'Are you sure?',
         'fields' => [
             'from_grade' => 'From Grade',
             'from_classroom' => 'From Classroom',
@@ -444,7 +445,6 @@ return [
             'promote' => 'Promote',
             'graduate' => 'Graduate',
             'students' => 'Students',
-            'confirm_title' => 'Are you sure?',
         ],
         'messages' => [
             'success' => [
