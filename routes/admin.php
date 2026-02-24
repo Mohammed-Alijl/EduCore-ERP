@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
+use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\GuardianController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -82,6 +83,14 @@ Route::group(
                 Route::get('/classrooms/by-grade', [ClassroomController::class, 'getByGrade'])->name('classrooms.by-grade');
                 Route::get('/sections/by-classroom', [SectionController::class, 'getByClassroom'])->name('sections.by-classroom');
                 Route::get('/students/next-code', [StudentController::class, 'getNextStudentCode'])->name('students.next-code');
+
+                // ─── Teachers ───────────────────────────────────────────────────────────────
+                Route::resource('teachers',TeacherController::class)->except(['show','create','edit']);
+                Route::prefix('teachers/')->name('teachers.')->group(function () {
+                    Route::get('archive',[TeacherController::class,'archive'])->name('archived');
+                    Route::post('restore/{id}',[TeacherController::class, 'restore'])->name('restore');
+                    Route::delete('force-delete/{id}',[TeacherController::class, 'forceDelete'])->name('forceDelete');
+                });
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });

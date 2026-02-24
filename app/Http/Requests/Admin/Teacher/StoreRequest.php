@@ -23,18 +23,21 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password'      => ['required', 'string', 'min:8', 'confirmed'],
-            'name.ar'       => ['required', 'string', 'max:100', 'min:3', 'unique:teachers,name'],
-            'name.en'       => ['required', 'string', 'max:100', 'min:3', 'unique:teachers,name'],
-            'email'         => ['required', 'email', 'max:100', 'unique:teachers,email'],
-            'phone'         => ['nullable', 'string', 'max:20'],
-            'address'       => ['nullable', 'string', 'max:500'],
-            'joining_date'  => ['required', 'date'],
-            'gender_id'     => ['required', 'exists:genders,id'],
-            'status'        => ['required', 'boolean'],
-            'image'         => ['nullable','image','mimes:jpeg,png,jpg','max:2048'],
-            'attachments'   => ['nullable','array'],
-            'attachments.*' => ['file','mimes:pdf,jpeg,png,jpg','max:2048'],
+            'password'          => ['required', 'string', 'min:8', 'confirmed'],
+            'name.ar'           => ['required', 'string', 'max:100', 'min:3'],
+            'name.en'           => ['required', 'string', 'max:100', 'min:3'],
+            'email'             => ['required', 'email', 'max:100', 'unique:teachers,email'],
+            'phone'             => ['nullable', 'string', 'max:20'],
+            'address'           => ['nullable', 'string', 'max:500'],
+            'joining_date'      => ['required', 'date'],
+            'blood_type_id'     => ['required','exists:type_bloods,id'],
+            'nationality_id'    => ['required','exists:nationalities,id'],
+            'religion_id'       => ['required','exists:religions,id'],
+            'gender_id'         => ['required', 'exists:genders,id'],
+            'status'            => ['required', 'boolean'],
+            'image'             => ['nullable','image','mimes:jpeg,png,jpg','max:2048'],
+            'attachments'       => ['nullable','array'],
+            'attachments.*'     => ['file','mimes:pdf,jpeg,png,jpg','max:2048'],
         ];
     }
 }
