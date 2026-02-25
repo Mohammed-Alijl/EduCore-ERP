@@ -170,6 +170,53 @@ return [
             ]
         ]
     ],
+    'teachers' => [
+        'title' => 'Teachers',
+        'add' => "Add Teacher",
+        'edit' => "Edit Teacher",
+        'delete' => "Delete Teacher",
+        'archived' => "Archived Teachers",
+        'actions' => "Actions",
+        'search' => "Search...",
+        'teacher_information' => "Teacher Information",
+        'fields' => [
+            'name' => "Name",
+            'name_ar' => "Name (Arabic)",
+            'name_en' => "Name (English)",
+            'email' => "Email",
+            'password' => "Password",
+            'password_confirmation' => "Password Confirmation",
+            'specialization' => "Specialization",
+            'gender' => "Gender",
+            'joining_date' => "Joining Date",
+            'address' => "Address",
+            'phone' => "Phone Number",
+            'image' => "Personal Photo",
+            'status' => "Status",
+            'attachments' => "Attachments",
+            'created_at' => "Created At",
+            'updated_at' => "Updated At",
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Teacher added successfully.',
+                'update' => 'Teacher updated successfully.',
+                'delete' => 'Teacher deleted successfully.',
+                'restore' => 'Teacher restored successfully.',
+                'archive' => 'Teacher archived successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add teacher.',
+                'update' => 'Failed to update teacher.',
+                'delete' => 'Failed to delete teacher.',
+                'restore' => 'Failed to restore teacher.',
+                'archive' => 'Failed to archive teacher.',
+            ],
+            'error' => [
+                'email_unique' => 'Email is already registered.',
+            ]
+        ]
+    ],
     'roles' => [
         'title' => "Roles",
         'add' => "Add Role",
