@@ -91,37 +91,37 @@
 </div>
 @push('scripts')
     <script>
-        $(document).on('click', '.edit-btn', function() {
-            var gradeId = $(this).data('grade_id');
-            var classroomId = $(this).data('classroom_id');
-
-            var modal = $('#editModal');
-            var classroomSelect = modal.find('select[name="classroom_id"]');
-            classroomSelect.empty();
+        function getClassrooms(gradeId, selectedId = null) {
+            var classroomSelect = $('#editModal').find('select[name="classroom_id"]');
 
             if(gradeId) {
                 $.ajax({
                     url: "{{ route('admin.classrooms.by-grade') }}",
                     type: "GET",
                     data: { grade_id: gradeId },
-
                     success: function (response) {
-
                         if (response.success) {
+                            classroomSelect.empty();
+                            classroomSelect.append('<option value="">{{__("admin.global.choose")}}</option>');
 
                             $.each(response.data, function (key, classroom) {
-
-                                $('select[name="classroom_id"]').append(
+                                classroomSelect.append(
                                     `<option value="${key}">${classroom}</option>`
                                 );
-
                             });
 
+                            if(selectedId) {
+                                classroomSelect.val(selectedId).trigger('change');
+                            }
                         }
-
                     }
                 });
             }
+        }
+
+        $(document).on('change', '#editModal select[name="grade_id"]', function() {
+            var gradeId = $(this).val();
+            getClassrooms(gradeId);
         });
     </script>
 @endpush
