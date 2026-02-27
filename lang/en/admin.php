@@ -519,4 +519,37 @@ return [
             ],
         ],
     ],
+    'specializations' => [
+        'title'    => 'Specializations',
+        'add'      => 'Add Specialization',
+        'edit'     => 'Edit Specialization',
+        'delete'   => 'Delete Specialization',
+        'archived' => 'Archived Specializations',
+        'fields'   => [
+            'name'    => 'Specialization Name',
+            'name_ar' => 'Specialization Name (Arabic)',
+            'name_en' => 'Specialization Name (English)',
+        ],
+        'messages' => [
+            'success' => [
+                'add'     => 'Specialization added successfully.',
+                'update'  => 'Specialization updated successfully.',
+                'delete'  => 'Specialization deleted successfully.',
+                'restore' => 'Specialization restored successfully.',
+                'archive' => 'Specialization archived successfully.',
+            ],
+            'failed' => [
+                'add'     => 'Failed to add specialization.',
+                'update'  => 'Failed to update specialization.',
+                'delete'  => 'Failed to delete specialization.',
+                'restore' => 'Failed to restore specialization.',
+                'archive' => 'Failed to archive specialization.',
+                'has_teachers' => 'Cannot delete this specialization because it has assigned teachers.',
+            ],
+            'error' => [
+                'name_ar_unique' => 'The specialization name in Arabic already exists.',
+                'name_en_unique' => 'The specialization name in English already exists.',
+            ],
+        ],
+    ],
 ];
