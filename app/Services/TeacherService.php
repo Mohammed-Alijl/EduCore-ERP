@@ -127,8 +127,12 @@ class TeacherService
     {
         $teacher = Teacher::withTrashed()->find($id);
 
-        if (!$teacher) {
+        if (!$teacher)
             throw new \Exception(__('admin.teacher.messages.failed.delete'));
+
+        if ($teacher->attachments()->count() > 0 ){
+            foreach ($teacher->attachments as $attachment)
+                $attachment->delete();
         }
 
         $folderPath = "teachers/{$teacher->teacher_code}";
@@ -136,8 +140,10 @@ class TeacherService
             Storage::disk('public')->deleteDirectory($folderPath);
         }
 
-        $teacher->forceDelete();
-        return true;
+        if($teacher->forceDelete())
+            return true;
+
+        throw new \Exception(__('admin.teacher.messages.failed.delete'));
     }
 
     public function getNextTeacherCode()
@@ -160,11 +166,11 @@ class TeacherService
     public function deleteAttachment($id)
     {
         $attachment = TeacherAttachment::findOrFail($id);
-        
+
         if (Storage::disk('public')->exists($attachment->attachment_path)) {
             Storage::disk('public')->delete($attachment->attachment_path);
         }
-        
+
         return $attachment->delete();
     }
 }
