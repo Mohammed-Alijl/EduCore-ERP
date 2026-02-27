@@ -121,6 +121,10 @@ Route::group(
                     Route::post('restore/{id}',[TeacherController::class, 'restore'])->name('restore');
                     Route::delete('force-delete/{id}',[TeacherController::class, 'forceDelete'])->name('forceDelete');
                 });
+
+                // ─── Specializations ───────────────────────────────────────────────────────────────
+                Route::resource('teachers',TeacherController::class)->except(['show','create','edit']);
+
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });
