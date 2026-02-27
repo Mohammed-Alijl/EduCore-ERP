@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('blood_type_id')->constrained('type_bloods')->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('religion_id')->constrained('religions')->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('gender_id')->constrained('genders')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('specialization_id')->constrained('Specializations')->cascadeOnUpdate()->restrictOnDelete();
             $table->tinyInteger('status')->default(1);
             $table->string('image')->nullable();
             $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();

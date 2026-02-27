@@ -24,6 +24,7 @@ class Teacher extends Authenticatable
         'address',
         'joining_date',
         'gender_id',
+        'specialization_id',
         'blood_type_id',
         'nationality_id',
         'religion_id',
@@ -101,6 +102,11 @@ class Teacher extends Authenticatable
     public function addedBy()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class, 'specialization_id');
     }
 
     // ─── Scopes ───────────────────────────────────────────────────────────────
