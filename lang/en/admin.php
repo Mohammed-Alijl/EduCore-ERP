@@ -585,4 +585,38 @@ return [
             'update_avatar' => 'Avatar updated successfully.',
         ]
     ],
+
+    // ─── Subjects ─────────────────────────────────────────────────────────────
+    'subjects' => [
+        'title'       => 'Subjects',
+        'add'         => 'Add Subject',
+        'edit'        => 'Edit Subject',
+        'list'        => 'Subjects List',
+        'archive'     => 'Archived Subjects',
+        'fields'      => [
+            'name'              => 'Subject Name',
+            'name_ar'           => 'Subject Name (Arabic)',
+            'name_en'           => 'Subject Name (English)',
+            'specialization_id' => 'Specialization',
+            'grade_id'          => 'Grade',
+            'classroom_id'      => 'Classroom',
+            'status'            => 'Status',
+        ],
+        'messages'    => [
+            'success' => [
+                'add'     => 'Subject added successfully.',
+                'update'  => 'Subject updated successfully.',
+                'delete'  => 'Subject deleted successfully.',
+                'restore' => 'Subject restored successfully.',
+                'archive' => 'Subject archived successfully.',
+            ],
+            'failed'  => [
+                'add'     => 'Failed to add subject.',
+                'update'  => 'Failed to update subject.',
+                'delete'  => 'Failed to delete subject.',
+                'restore' => 'Failed to restore subject.',
+                'archive' => 'Failed to archive subject.',
+            ],
+        ],
+    ],
 ];
