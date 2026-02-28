@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -134,6 +135,8 @@ Route::group(
                     Route::post('/avatar', [\App\Http\Controllers\Admin\ProfileController::class, 'updateAvatar'])->name('avatar');
                 });
 
+                // ─── Subject ───────────────────────────────────────────────────────────────
+                Route::resource('specializations', SubjectController::class)->except(['show','create','edit']);
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });

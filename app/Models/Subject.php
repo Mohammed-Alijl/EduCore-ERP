@@ -29,6 +29,12 @@ class Subject extends Model
         'admin_id',
     ];
 
+    // ─── Scopes ────────────────────────────────────────────────────────
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
     // ─── Relationships ────────────────────────────────────────────────────────
 
     public function specialization(): BelongsTo

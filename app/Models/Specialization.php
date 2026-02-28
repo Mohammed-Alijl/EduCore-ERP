@@ -13,6 +13,11 @@ class Specialization extends Model
     protected $fillable = ['name'];
 
 
+    // ─── Relationships ────────────────────────────────────────────────────────
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 
     // ─── Relationships ────────────────────────────────────────────────────────
     public function teachers()
