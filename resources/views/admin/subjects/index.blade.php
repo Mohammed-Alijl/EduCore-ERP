@@ -141,7 +141,7 @@
 @section('content')
     <div class="row row-sm">
         <div class="col-xl-12">
-            
+
             <!-- Modern Filter Section -->
             <div class="filter-section shadow-sm">
                 <div class="row align-items-end">
@@ -271,7 +271,7 @@
     </div>
     </div>
     </div>
-    {{-- @include('admin.subjects.add_modal') --}}
+    @include('admin.subjects.add_modal')
     {{-- @include('admin.subjects.edit_modal') --}}
 
 @endsection
@@ -292,23 +292,18 @@
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
             });
 
-            // Modern Filtering Logic
             $('#filter_grade').on('change', function () {
                 let gradeId = $(this).val();
                 let gradeName = $(this).find(':selected').data('name') || '';
-                
-                // Filter the table by Grade Name (Column 3)
+
                 table.column(3).search(gradeName).draw();
 
-                // Clear and disable Classroom dropdown
                 let classroomSelect = $('#filter_classroom');
                 classroomSelect.empty().append('<option value="">{{ __('admin.subjects.all_classrooms') }}</option>');
-                
-                // Also clear the table filter for classroom since we changed grade
+
                 table.column(4).search('').draw();
 
                 if (gradeId) {
-                    // Fetch Classrooms via AJAX using your existing route
                     $.ajax({
                         url: "{{ route('admin.classrooms.by-grade') }}",
                         type: "GET",
@@ -334,12 +329,10 @@
             });
 
             $('#filter_classroom').on('change', function () {
-                // Filter table by Classroom Name (Column 4)
                 table.column(4).search(this.value).draw();
             });
 
             $('#filter_specialization').on('change', function () {
-                // Filter table by Specialization Name (Column 2)
                 table.column(2).search(this.value).draw();
             });
 
@@ -348,6 +341,84 @@
                 $('#filter_specialization').val('').trigger('change');
                 $('#filter_classroom').val('').prop('disabled', true);
                 table.search('').columns().search('').draw();
+            });
+
+            $('#add_grade_id').on('change', function () {
+                let gradeId   = $(this).val();
+                let classroom = $('#add_classroom_id');
+                let spinner   = $('#classroom_spinner');
+
+                classroom.empty().append('<option value="" selected disabled>{{ __('admin.subjects.classroom_placeholder') }}</option>');
+                classroom.prop('disabled', true).css('background-color', '#f8f9fc');
+
+                if (!gradeId) return;
+
+                spinner.show();
+
+                $.ajax({
+                    url: "{{ route('admin.classrooms.by-grade') }}",
+                    type: "GET",
+                    data: { grade_id: gradeId },
+                    success: function (response) {
+                        spinner.hide();
+                        let classrooms = response.data;
+                        if (classrooms && Object.keys(classrooms).length > 0) {
+                            classroom.prop('disabled', false).css('background-color', '#fff');
+                            $.each(classrooms, function (id, name) {
+                                classroom.append('<option value="' + id + '">' + name + '</option>');
+                            });
+                        }
+                    },
+                    error: function () {
+                        spinner.hide();
+                    }
+                });
+            });
+
+            $('#createSubjectForm').on('submit', function (e) {
+                e.preventDefault();
+
+                $('.error-text').text('');
+                let btn = $('#saveAddBtn');
+                let originalHtml = btn.html();
+                btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm mr-2 ml-2"></span> {{ __('admin.global.saving') }}');
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: "POST",
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                    success: function (res) {
+                        if (res.status === 'success') {
+                            $('#addModal').modal('hide');
+                            swal("{{ __('admin.global.success') }}", res.message, "success");
+                            setTimeout(() => window.location.reload(), 1500);
+                        }
+                    },
+                    error: function (xhr) {
+                        btn.prop('disabled', false).html(originalHtml);
+                        if (xhr.status === 422) {
+                            let errors = xhr.responseJSON.errors;
+                            $.each(errors, function (field, messages) {
+                                let errorSpan = $('.' + field.replace('.', '_') + '_error');
+                                if(errorSpan.length > 0) {
+                                    errorSpan.text(messages[0]);
+                                    errorSpan.hide().fadeIn(300);
+                                }
+                            });
+                        } else {
+                            swal("{{ __('admin.global.error_title') }}", "{{ __('admin.global.failed') }}", "error");
+                        }
+                    }
+                });
+            });
+
+            $('#addModal').on('hidden.bs.modal', function () {
+                $(this).find('form')[0].reset();
+                $('.error-text').text('');
+                $('#add_classroom_id').empty().append('<option value="" selected disabled>{{ __('admin.subjects.classroom_placeholder') }}</option>').prop('disabled', true).css('background-color', '#f8f9fc');
             });
         });
     </script>

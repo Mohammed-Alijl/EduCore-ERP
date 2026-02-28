@@ -49,7 +49,7 @@ class Subject extends Model
 
     public function classroom(): BelongsTo
     {
-        return $this->belongsTo(Classroom::class);
+        return $this->belongsTo(ClassRoom::class);
     }
 
     public function addedBy(): BelongsTo
