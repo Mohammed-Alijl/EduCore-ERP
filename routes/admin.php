@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\GradeController;
@@ -129,14 +130,14 @@ Route::group(
 
                 // ─── Profile ───────────────────────────────────────────────────────────────
                 Route::prefix('profile')->name('profile.')->group(function () {
-                    Route::get('/', [\App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('index');
-                    Route::put('/update', [\App\Http\Controllers\Admin\ProfileController::class, 'updateProfile'])->name('update');
-                    Route::put('/password', [\App\Http\Controllers\Admin\ProfileController::class, 'updatePassword'])->name('password');
-                    Route::post('/avatar', [\App\Http\Controllers\Admin\ProfileController::class, 'updateAvatar'])->name('avatar');
+                    Route::get('/', [ProfileController::class, 'index'])->name('index');
+                    Route::put('/update', [ProfileController::class, 'updateProfile'])->name('update');
+                    Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password');
+                    Route::post('/avatar', [ProfileController::class, 'updateAvatar'])->name('avatar');
                 });
 
                 // ─── Subject ───────────────────────────────────────────────────────────────
-                Route::resource('specializations', SubjectController::class)->except(['show','create','edit']);
+                Route::resource('subjects', SubjectController::class)->except(['show','create','edit']);
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });
