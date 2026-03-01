@@ -143,10 +143,12 @@
                     <i class="las la-arrow-left mr-1 ml-1"></i> {{ __('admin.global.cancel') }}
                 </button>
                 @can('edit_subjects')
+                @if(!request()->routeIs('admin.subjects.archived'))
                 <a href="javascript:void(0)" class="btn btn-primary shadow-sm show-to-edit-btn"
                    style="border-radius: 8px; font-weight: 600; padding: 0.6rem 1.5rem; background: linear-gradient(135deg, #4e73df, #224abe); border: none;">
                     <i class="las la-pen mr-1 ml-1"></i> {{ __('admin.subjects.edit') }}
                 </a>
+                @endif
                 @endcan
             </div>
 

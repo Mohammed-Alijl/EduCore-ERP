@@ -138,6 +138,11 @@ Route::group(
 
                 // ─── Subject ───────────────────────────────────────────────────────────────
                 Route::resource('subjects', SubjectController::class)->except(['show','create','edit']);
+                Route::prefix('subjects/')->name('subjects.')->group(function () {
+                    Route::get('archive',[SubjectController::class,'archive'])->name('archived');
+                    Route::post('restore/{id}',[SubjectController::class, 'restore'])->name('restore');
+                    Route::delete('force-delete/{id}',[SubjectController::class, 'forceDelete'])->name('forceDelete');
+                });
             });
             Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
         });

@@ -123,6 +123,15 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
+            @can('view-archived_subjects')
+            <div class="pr-1 mb-3 mb-xl-0 mr-2">
+                <a class="btn btn-danger btn-modern shadow-sm"
+                   href="{{ route('admin.subjects.archived') }}">
+                    <i class="las la-trash-alt tx-18 mr-2 ml-1"></i> {{ __('admin.subjects.archive') }}
+                </a>
+            </div>
+            @endcan
+
             @can('create_subjects')
             <div class="pr-1 mb-3 mb-xl-0">
                 <a class="modal-effect btn btn-primary btn-modern shadow-sm"
