@@ -21,7 +21,8 @@
             </div>
 
             <!-- ─── Form Start ─── -->
-            <form id="createSubjectForm" action="{{ route('admin.subjects.store') }}" method="POST" data-parsley-validate>
+            <form id="createSubjectForm" action="{{ route('admin.subjects.store') }}" method="POST"
+                  class="ajax-form" data-modal-id="#addModal" data-parsley-validate>
                 @csrf
                 <div class="modal-body" style="padding: 1.5rem 2rem;">
 
@@ -154,3 +155,47 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+$(function () {
+
+    // Get Grade Classrooms 
+    $('#add_grade_id').on('change', function () {
+        var gradeId = $(this).val();
+        var select  = $('#add_classroom_id');
+        var spinner = $('#classroom_spinner');
+
+        select.empty()
+              .append('<option value="" selected disabled>{{ __('admin.subjects.classroom_placeholder') }}</option>')
+              .prop('disabled', true)
+              .css('background-color', '#f8f9fc');
+
+        if (!gradeId) return;
+
+        spinner.show();
+        $.get("{{ route('admin.classrooms.by-grade') }}", { grade_id: gradeId })
+            .done(function (response) {
+                var classrooms = response.data;
+                if (classrooms && Object.keys(classrooms).length > 0) {
+                    select.prop('disabled', false).css('background-color', '#fff');
+                    $.each(classrooms, function (id, name) {
+                        select.append($('<option>', { value: id, text: name }));
+                    });
+                }
+            })
+            .always(function () { spinner.hide(); });
+    });
+
+    // Reset Add Modal state on close
+    $('#addModal').on('hidden.bs.modal', function () {
+        $('form', this)[0].reset();
+        $('.error-text', this).text('');
+        $('#add_classroom_id').empty()
+            .append('<option value="" selected disabled>{{ __('admin.subjects.classroom_placeholder') }}</option>')
+            .prop('disabled', true).css('background-color', '#f8f9fc');
+    });
+
+});
+</script>
+@endpush
