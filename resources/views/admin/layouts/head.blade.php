@@ -29,3 +29,16 @@
 <link href="{{URL::asset('assets/admin/css-rtl/style-dark.css')}}" rel="stylesheet">
 <!---Skinmodes css-->
 <link href="{{URL::asset('assets/admin/css-rtl/skin-modes.css')}}" rel="stylesheet">
+
+<!-- Theme Initialization (Prevents FOUC) -->
+<script>
+    (function() {
+        var theme = localStorage.getItem('valex-theme');
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+            window.addEventListener('DOMContentLoaded', function() {
+                document.body.classList.add('dark-theme');
+            });
+        }
+    })();
+</script>

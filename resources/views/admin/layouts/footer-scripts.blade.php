@@ -31,3 +31,42 @@
 <!-- custom js -->
 <script src="{{URL::asset('assets/admin/js/custom.js')}}"></script><!-- Left-menu js-->
 <script src="{{URL::asset('assets/admin/plugins/side-menu/sidemenu.js')}}"></script>
+
+<!-- Theme Toggle Logic -->
+<script>
+    $(document).ready(function() {
+        var body = $('body');
+        var themeToggleBtn = $('#theme-toggle');
+        var moonIcon = $('#theme-icon-moon');
+        var sunIcon = $('#theme-icon-sun');
+
+        var savedTheme = localStorage.getItem('valex-theme');
+
+        if (savedTheme === 'dark' || document.documentElement.classList.contains('dark-theme')) {
+            body.addClass('dark-theme');
+            moonIcon.hide();
+            sunIcon.show();
+        } else {
+            body.removeClass('dark-theme');
+            sunIcon.hide();
+            moonIcon.show();
+        }
+
+        themeToggleBtn.on('click', function(e) {
+            e.preventDefault();            
+            if (body.hasClass('dark-theme')) {
+                body.removeClass('dark-theme');
+                document.documentElement.classList.remove('dark-theme');
+                sunIcon.hide();
+                moonIcon.show();
+                localStorage.setItem('valex-theme', 'light');
+            } else {
+                body.addClass('dark-theme');
+                document.documentElement.classList.add('dark-theme');
+                moonIcon.hide();
+                sunIcon.show();
+                localStorage.setItem('valex-theme', 'dark');
+            }
+        });
+    });
+</script>
