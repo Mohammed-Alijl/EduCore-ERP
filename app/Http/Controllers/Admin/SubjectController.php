@@ -20,10 +20,13 @@ class SubjectController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_subjects',   only: ['index']),
-            new Middleware('permission:create_subjects', only: ['store']),
-            new Middleware('permission:edit_subjects',   only: ['update']),
-            new Middleware('permission:delete_subjects', only: ['destroy']),
+            new Middleware('permission:view_subjects',          only: ['index']),
+            new Middleware('permission:create_subjects',        only: ['store']),
+            new Middleware('permission:edit_subjects',          only: ['update']),
+            new Middleware('permission:delete_subjects',        only: ['destroy']),
+            new Middleware('permission:view-archived_subjects', only: ['archive']),
+            new Middleware('permission:restore_subjects',       only: ['restore']),
+            new Middleware('permission:force-delete_subjects',  only: ['forceDelete']),
         ];
     }
 
@@ -93,6 +96,58 @@ class SubjectController extends Controller implements HasMiddleware
             return response()->json([
                 'status'  => 'error',
                 'message' => __('admin.subjects.messages.failed.delete'),
+            ], 500);
+        }
+    }
+
+    // ─── List The Archive ────────────────────────────────────────────────
+
+    public function archive()
+    {
+        try {
+            $subjects= $this->subjectService->archive();
+            return view('admin.subjects.archived', compact('subjects'));
+        } catch (\Exception $ex) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.archive')
+            ], 500);
+        }
+    }
+
+    // ─── Restore ─────────────────────────────────────────────────────────────
+
+    public function restore(int $id): JsonResponse
+    {
+        try {
+            $this->subjectService->restore($id);
+            return response()->json([
+                'status' => 'success',
+                'message' => trans('admin.subjects.messages.success.restore')
+            ]);
+        } catch (\Exception $ex) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.restore')
+            ], 404);
+        }
+    }
+
+    // ─── Destroy (force-delete) ────────────────────────────────────────────────
+
+    public function forceDelete($id)
+    {
+        try {
+            $this->subjectService->forceDelete($id);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => trans('admin.subjects.messages.success.delete')
+            ]);
+        } catch (\Exception $ex) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.delete')
             ], 500);
         }
     }

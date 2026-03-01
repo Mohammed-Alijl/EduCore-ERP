@@ -69,4 +69,34 @@ class SubjectService
 
         throw new \Exception(__('admin.subjects.messages.failed.delete'));
     }
+
+    public function archive()
+    {
+        return Subject::onlyTrashed()->latest()->get();
+    }
+
+    public function restore($id)
+    {
+        $subject = Subject::withTrashed()->find($id);
+
+        if (!$subject) {
+            throw new \Exception(__('admin.subjects.messages.failed.restore'));
+        }
+
+        $subject->restore();
+        return true;
+    }
+
+    public function forceDelete($id)
+    {
+        $subject = Subject::withTrashed()->find($id);
+
+        if (!$subject)
+            throw new \Exception(__('admin.subjects.messages.failed.delete'));
+
+        if($subject->forceDelete())
+            return true;
+
+        throw new \Exception(__('admin.subjects.messages.failed.delete'));
+    }
 }
