@@ -442,6 +442,7 @@ return [
         'personal_information' => "Personal Information",
         'guardian_info' => "Guardian Information",
         'student_code_help' => "This Number Is Auto Generated For the New Student",
+        'academic_note'     => "Select an Educational Grade first — Classrooms will load automatically, then choose a Section.",
 
         'fields' => [
             'name' => "Student Name",
