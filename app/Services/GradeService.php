@@ -49,8 +49,11 @@ class GradeService
         if ($grade->classrooms->count())
             throw new \Exception(__('admin.grades.messages.failed.has_classrooms'));
 
-        $grade->delete();
-        return true;
+        $grade->status = 0;
+        $grade->save();
+        if ($grade->delete())
+            return true;
+        throw new \Exception(__('admin.grades.messages.failed.archive'));
     }
     public function archive()
     {
