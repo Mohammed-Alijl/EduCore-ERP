@@ -255,8 +255,8 @@
                 <h6 class="modal-title">
                     <i class="las la-user-edit mr-2 ml-1 tx-18"></i>
                     {{ trans('admin.students.edit') }}
-                    <span class="badge badge-light font-weight-bold ml-2 mr-2 px-2 py-1" id="edit_student_code_badge"
-                          style="font-size:0.8rem; color:#057a52; border-radius:7px; letter-spacing:1px;"></span>
+                    <span class="badge  font-weight-bold ml-2 mr-2 px-2 py-1" id="edit_student_code_badge"
+                          style="font-size:0.8rem; border-radius:7px; letter-spacing:1px;"></span>
                 </h6>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                     <span aria-hidden="true">&times;</span>
