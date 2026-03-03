@@ -22,24 +22,26 @@
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('admin.grades.title') }}</span>
             </div>
         </div>
-        <div class="d-flex my-xl-auto right-content">
+        <div class="d-flex my-xl-auto right-content align-items-center">
+            @can('view-archived_grades')
+                <div class="mb-3 mb-xl-0 ml-2">
+                    <a class="btn btn-modern btn-danger shadow-sm"
+                       href="{{ route('admin.grades.archived') }}">
+                        <i class="las la-archive tx-16 mr-1 ml-1"></i>
+                        {{ trans('admin.grades.archived') }}
+                    </a>
+                </div>
+            @endcan
             @can('create_grades')
-                @can('view-archived_sections')
-                    <div class="pr-1 mb-3 mb-xl-0">
-                        <a class="modal-effect btn btn-warning-gradient btn-with-icon btn-block"
-                           href="{{route('admin.grades.archived')}}">
-                            <i class="fas fa-book ml-2"></i>  {{__('admin.grades.archived') }}
-                        </a>
-                    </div>
-                @endcan
-            <div class="pr-1 mb-3 mb-xl-0">
-                <a class="modal-effect btn btn-primary-gradient btn-with-icon btn-block"
-                   data-effect="effect-scale"
-                   data-toggle="modal"
-                   href="#addModal">
-                    <i class="fas fa-plus-circle"></i> {{ __('admin.grades.add') }}
-                </a>
-            </div>
+                <div class="mb-3 mb-xl-0 ml-2">
+                    <a class="modal-effect btn btn-primary btn-modern shadow-sm"
+                       data-effect="effect-scale"
+                       data-toggle="modal"
+                       href="#addModal">
+                        <i class="las la-plus-circle tx-18 mr-1 ml-1"></i>
+                        {{ trans('admin.grades.add') }}
+                    </a>
+                </div>
             @endcan
         </div>
     </div>

@@ -46,6 +46,7 @@ return [
         'back' => "Back",
         'view' => 'View',
         'reset_filters' => 'Reset Filters',
+        'warning_title' => 'Warning: Destructive Zone',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',
@@ -263,6 +264,8 @@ return [
         'edit' => "Edit Grade",
         'no_notes' => "No Notes",
         'archived' => 'Archived Grades',
+        'archived_list' => 'List of all soft-deleted grades',
+        'warning_body' => 'Be careful when deleting a grade, as it will be permanently removed from the system',
         'fields' => [
             'name' => "Grade Name",
             'name_ar' => "Grade Name (Arabic)",
