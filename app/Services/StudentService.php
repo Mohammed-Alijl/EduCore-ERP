@@ -168,7 +168,7 @@ class StudentService
             ->addColumn('name',             fn($row) => $row->getTranslation('name', app()->getLocale()))
             ->addColumn('grade_name',       fn($row) => $row->grade ? $row->grade->getTranslation('name', app()->getLocale()) : '—')
             ->addColumn('classroom_name',   fn($row) => $row->classroom ? $row->classroom->getTranslation('name', app()->getLocale()) : '—')
-            ->addColumn('deleted_at',       fn($row) => $row->deleted_at ? $row->deleted_at->format('Y-m-d H:i') : '—')
+            ->addColumn('deleted_at',       fn($row) => $row->deleted_at ? $row->deleted_at->format('d-m-Y') : '—')
             ->addColumn('actions', function ($row) {
                 return view('admin.students.partials.archived_actions', compact('row'))->render();
             })

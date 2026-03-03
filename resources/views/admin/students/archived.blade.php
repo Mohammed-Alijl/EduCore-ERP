@@ -13,61 +13,26 @@
            ARCHIVED STUDENTS — Custom Styles
         ══════════════════════════════════════════ */
 
-        /* ─── Page Header ─── */
-        .archived-page-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-        .archived-title-group {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-        }
-        .archived-icon-avatar {
-            width: 52px; height: 52px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #e11d48, #9f1239);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 1.5rem;
-            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
-            flex-shrink: 0;
-        }
-        .archived-title-group h4 {
-            font-size: 1.2rem; font-weight: 800; color: #1e293b;
-            margin-bottom: 0.1rem;
-        }
-        .archived-title-group p {
-            font-size: 0.78rem; color: #94a3b8; margin: 0;
+        .page-header-archive {
+            background: linear-gradient(to right, #2c3e50, #e74c3c);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* ─── Danger Banner ─── */
-        .archive-danger-banner {
-            background: linear-gradient(135deg, rgba(225,29,72,0.07) 0%, rgba(159,18,57,0.04) 100%);
-            border: 1px dashed rgba(225, 29, 72, 0.3);
-            border-radius: 12px;
-            padding: 0.85rem 1.25rem;
+        /* ─── Alert Banner ─── */
+        .archive-alert {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
             margin-bottom: 1.5rem;
             display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
+            align-items: center;
         }
-        .archive-danger-banner .banner-icon {
-            width: 36px; height: 36px; border-radius: 9px;
-            background: rgba(225, 29, 72, 0.12);
-            display: flex; align-items: center; justify-content: center;
-            color: #e11d48; font-size: 1.1rem; flex-shrink: 0;
-            margin-top: 0.05rem;
-        }
-        .archive-danger-banner .banner-title {
-            font-weight: 700; font-size: 0.88rem; color: #be123c; margin-bottom: 0.2rem;
-        }
-        .archive-danger-banner .banner-body {
-            font-size: 0.78rem; color: #6c7a9c; margin: 0;
-        }
+
 
         /* ─── Glass Card ─── */
         .glass-card-archive {
@@ -209,15 +174,24 @@
         }
         .btn-reset-archive:hover { background: #f8f9fc; border-color: #e11d48; color: #e11d48; }
 
-        /* ══════════════════════════════════════════
-           DARK THEME OVERRIDES
-        ══════════════════════════════════════════ */
-        .dark-theme .archived-title-group h4 { color: #f1f5f9; }
-        .dark-theme .archive-danger-banner {
-            background: rgba(225,29,72,0.07);
-            border-color: rgba(225,29,72,0.2);
+        /* ─── Dark Theme Overrides ─── */
+        .dark-theme .archive-alert {
+            background: rgba(231, 76, 60, 0.1);
+            border-left-color: #e74c3c;
         }
-        .dark-theme .archive-danger-banner .banner-body { color: #8896b3; }
+        .dark-theme .page-header-archive {
+            background: linear-gradient(to right, #1a252f, #922b21);
+        }
+        .dark-theme .btn-reset-archive {
+            background: #1e212b;
+            border-color: rgba(255,255,255,0.1);
+            color: #8896b3;
+        }
+        .dark-theme .btn-reset-archive:hover {
+            background: #242836;
+            border-color: #e11d48;
+            color: #e11d48;
+        }
         .dark-theme .glass-card-archive {
             background: #1e212b;
             border-color: rgba(255,255,255,0.06);
@@ -265,51 +239,35 @@
 @endsection
 
 @section('page-header')
-    <div class="breadcrumb-header justify-content-between">
-        <div class="my-auto">
-            <div class="d-flex align-items-center">
-                <h4 class="content-title mb-0 my-auto">{{ __('admin.students.title') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 ml-2 mb-0">/ {{ __('admin.students.archived') }}</span>
+    <div class="page-header-archive d-flex justify-content-between align-items-center mt-4">
+        <div class="d-flex align-items-center">
+            <div class="mr-3 ml-3">
+                <div style="width:50px;height:50px;background:rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                    <i class="las la-trash-alt tx-24 text-white"></i>
+                </div>
             </div>
+            <div>
+                <h4 class="mb-1 text-white font-weight-bold">{{ __('admin.students.archived') }}</h4>
+                <p class="mb-0 text-white-50 tx-13">{{ __('admin.students.title') }}</p>
+            </div>
+        </div>
+        <div>
+            <a href="{{ route('admin.students.index') }}" class="btn btn-light shadow-sm" style="border-radius:8px;font-weight:600;">
+                <i class="las la-arrow-left mr-1 ml-1"></i> {{ trans('admin.global.back') }}
+            </a>
         </div>
     </div>
 @endsection
 
 @section('content')
 
-    {{-- ─── PAGE HEADER ─── --}}
-    <div class="archived-page-header">
-        <div class="archived-title-group">
-            <div class="archived-icon-avatar">
-                <i class="las la-trash-alt"></i>
-            </div>
-            <div>
-                <h4>{{ __('admin.students.archived') }}</h4>
-                <p>{{ __('admin.students.title') }} &mdash; {{ __('admin.global.archive') }}</p>
-            </div>
+    <div class="archive-alert shadow-sm">
+        <div class="mr-3 ml-3" style="width:40px;height:40px;border-radius:50%;background:#fc8181;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="las la-exclamation-triangle text-white tx-20"></i>
         </div>
         <div>
-            <a href="{{ route('admin.students.index') }}" class="btn btn-back-active">
-                <i class="las la-arrow-left mr-1 ml-1"></i>
-                {{ trans('admin.global.back') }}
-            </a>
-        </div>
-    </div>
-
-    {{-- ─── DANGER BANNER ─── --}}
-    <div class="archive-danger-banner">
-        <div class="banner-icon">
-            <i class="las la-exclamation-triangle"></i>
-        </div>
-        <div>
-            <p class="banner-title">
-                <i class="las la-fire-alt mr-1"></i>
-                {{ __('admin.students.archived') }} &mdash; {{ trans('admin.global.warning_title') }}
-            </p>
-            <p class="banner-body">
-                {{ trans('admin.global.warning_body') }}
-                {{ trans('admin.students.archived') }}.
-            </p>
+            <h6 class="text-danger font-weight-bold mb-1">{{ trans('admin.students.warning_title') }}</h6>
+            <p class="text-muted mb-0 tx-13">{{ trans('admin.students.warning_body') }}</p>
         </div>
     </div>
 
@@ -394,6 +352,7 @@
     <script src="{{ URL::asset('assets/admin/plugins/datatable/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ URL::asset('assets/admin/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ URL::asset('assets/admin/js/crud.js') }}"></script>
+    @include('admin.layouts.scripts.datatable_config')
     @include('admin.students.show_modal')
     @include('admin.layouts.scripts.delete_script')
     @include('admin.layouts.scripts.restore_script')
@@ -405,23 +364,10 @@
            DATATABLE — Archived Students
         ═══════════════════════════════════════ */
         var archiveTable = $('#archivedStudentsTable').DataTable({
+            ...globalTableConfig, 
             processing: true,
             serverSide: true,
-            responsive: true,
-            language: {
-                url: '{{ app()->getLocale() === "ar"
-                    ? URL::asset("assets/admin/plugins/datatable/lang/Arabic.json")
-                    : URL::asset("assets/admin/plugins/datatable/lang/English.json") }}',
-                emptyTable: `
-                    <div class="text-center py-5">
-                        <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,rgba(225,29,72,0.08),rgba(159,18,57,0.05));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2rem;color:#e11d48;">
-                            <i class="las la-check-circle"></i>
-                        </div>
-                        <h6 style="color:#374151;font-weight:700;">No archived students</h6>
-                        <p style="color:#94a3b8;font-size:0.82rem;">All students are active — nothing in the trash bin.</p>
-                    </div>
-                `,
-            },
+            language: $.extend({}, datatable_lang),
             ajax: {
                 url: '{{ route("admin.students.archived") }}',
                 data: function (d) {
@@ -430,34 +376,35 @@
                 },
             },
             columns: [
-                { data: 'DT_RowIndex',     name: 'DT_RowIndex',   orderable: false, searchable: false },
-                {
-                    data: 'student_code',
-                    name: 'student_code',
-                    render: function(data) {
-                        return '<span class="student-code-pill">' + (data || '—') + '</span>';
-                    }
-                },
-                { data: 'name',          name: 'name' },
-                { data: 'grade_name',    name: 'grade_name',     orderable: false },
-                { data: 'classroom_name',name: 'classroom_name',  orderable: false },
-                {
-                    data: 'deleted_at',
-                    name: 'deleted_at',
-                    render: function(data) {
-                        if (!data || data === '—') return '<span class="text-muted">—</span>';
-                        return '<span class="deleted-at-pill"><i class="las la-clock"></i>' + data + '</span>';
-                    }
-                },
-                { data: 'actions',       name: 'actions',        orderable: false, searchable: false },
-            ],
-            order: [[5, 'desc']],
-            drawCallback: function(settings) {
-                var info = this.api().page.info();
-                $('#archive_count').text(info.recordsTotal);
+            { data: 'DT_RowIndex',     name: 'DT_RowIndex',   orderable: false, searchable: false },
+            {
+                data: 'student_code',
+                name: 'student_code',
+                searchable: false,
+                render: function(data) {
+                    return '<span class="student-code-pill">' + (data || '—') + '</span>';
+                }
             },
-        });
-
+            { data: 'name',          name: 'name',           searchable: false },
+            { data: 'grade_name',    name: 'grade_name',     orderable: false, searchable: false },
+            { data: 'classroom_name',name: 'classroom_name', orderable: false, searchable: false },
+            {
+                data: 'deleted_at',
+                name: 'deleted_at',
+                searchable: false,
+                render: function(data) {
+                    if (!data || data === '—') return '<span class="text-muted">—</span>';
+                    return '<span class="deleted-at-pill"><i class="las la-clock"></i>' + data + '</span>';
+                }
+            },
+            { data: 'actions', name: 'actions', orderable: false, searchable: false },
+        ],
+        order: [[5, 'desc']],
+        drawCallback: function(settings) {
+            var info = this.api().page.info();
+            $('#archive_count').text(info.recordsTotal);
+        },
+    });
         /* ═══════════════════════════════════════
            FILTER — Grade → Classroom cascade
         ═══════════════════════════════════════ */

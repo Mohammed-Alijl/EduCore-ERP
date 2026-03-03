@@ -437,12 +437,16 @@ return [
         'show' => "Show Student",
         'delete' => "Delete Student",
         'archived' => "Archived Students",
+        'no_archived' => "No Archived Students",
+        'no_archived_body' => "All students are currently active — no records in the trash bin.",
         'student_information' => "Student Information",
         'academic_information' => "Academic Information",
         'personal_information' => "Personal Information",
         'guardian_info' => "Guardian Information",
         'student_code_help' => "This Number Is Auto Generated For the New Student",
         'academic_note'     => "Select an Educational Grade first — Classrooms will load automatically, then choose a Section.",
+        'warning_title' => "Warning: Destructive Zone",
+        'warning_body' => "Be careful when deleting a student, as it will be permanently removed from the system.",
 
         'fields' => [
             'name' => "Student Name",
