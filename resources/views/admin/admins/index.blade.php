@@ -12,6 +12,9 @@
     <link href="{{URL::asset('assets/admin/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
+
+    {{-- Admins Dedicated CSS --}}
+    <link href="{{ URL::asset('assets/admin/css/admin/admin-crud.css') }}" rel="stylesheet" />
 @endsection
 
 @section('page-header')
@@ -25,12 +28,15 @@
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
                 @can('create_admins')
-                <a class="modal-effect btn btn-primary-gradient btn-with-icon btn-block"
-                   data-effect="effect-scale"
-                   data-toggle="modal"
-                   href="#addModal">
-                    <i class="fas fa-plus-circle"></i> {{ __('admin.admins.add') }}
-                </a>
+                <div class="mb-3 mb-xl-0 ml-2">
+                    <a class="modal-effect btn btn-primary btn-modern shadow-sm"
+                       data-effect="effect-scale"
+                       data-toggle="modal"
+                       href="#addModal">
+                        <i class="las la-plus-circle tx-18 mr-1 ml-1"></i>
+                        {{ trans('admin.admins.add') }}
+                    </a>
+                </div>
                 @endcan
             </div>
         </div>
@@ -40,8 +46,8 @@
 @section('content')
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header pb-0"></div>
+            <div class="card admin-glass-card">
+                <div class="card-header pb-0 border-bottom-0"></div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="admins_table">
@@ -83,31 +89,33 @@
                                     @if(auth()->user()->canAny(['edit_admins', 'delete_admins']))
                                         <td class="align-content-center">
                                             @if(! $admin->hasRole('Super Admin'))
-                                                @can('edit_admins')
-                                                    <a class="btn btn-info btn-sm edit-btn"
-                                                       href="#"
-                                                       data-toggle="modal"
-                                                       data-target="#editModal"
-                                                       data-url="{{ route('admin.admins.update', $admin->id) }}"
-                                                       data-id="{{ $admin->id }}"
-                                                       data-name="{{ $admin->name }}"
-                                                       data-email="{{ $admin->email }}"
-                                                       data-status="{{ $admin->status }}"
-                                                       data-roles='@json($admin->roles->pluck("name"))'
-                                                       title="{{ __('admin.actions.edit') }}">
-                                                        <i class="las la-pen"></i> {{__('admin.global.edit')}}
-                                                    </a>
-                                                @endcan
+                                                <div class="admin-actions-container">
+                                                    @can('edit_admins')
+                                                        <a class="btn-admin-edit edit-btn"
+                                                           href="#"
+                                                           data-toggle="modal"
+                                                           data-target="#editModal"
+                                                           data-url="{{ route('admin.admins.update', $admin->id) }}"
+                                                           data-id="{{ $admin->id }}"
+                                                           data-name="{{ $admin->name }}"
+                                                           data-email="{{ $admin->email }}"
+                                                           data-status="{{ $admin->status }}"
+                                                           data-roles='@json($admin->roles->pluck("name"))'
+                                                           title="{{ __('admin.actions.edit') }}">
+                                                            <i class="las la-pen"></i> {{__('admin.global.edit')}}
+                                                        </a>
+                                                    @endcan
 
-                                                @can('delete_admins')
-                                                    <a class="modal-effect btn btn-sm btn-danger delete-item"
-                                                       href="#"
-                                                       data-id="{{ $admin->id }}"
-                                                       data-url="{{ route('admin.admins.destroy', $admin->id) }}"
-                                                       data-name="{{ $admin->name }}">
-                                                        <i class="las la-trash"></i> {{__('admin.global.delete')}}
-                                                    </a>
-                                                @endcan
+                                                    @can('delete_admins')
+                                                        <a class="modal-effect btn-admin-delete delete-item"
+                                                           href="#"
+                                                           data-id="{{ $admin->id }}"
+                                                           data-url="{{ route('admin.admins.destroy', $admin->id) }}"
+                                                           data-name="{{ $admin->name }}">
+                                                            <i class="las la-trash"></i> {{__('admin.global.delete')}}
+                                                        </a>
+                                                    @endcan
+                                                </div>
                                             @else
                                                 <span class="text-muted"><i class="las la-lock"></i></span> {{__('admin.global.protected')}}
                                             @endif

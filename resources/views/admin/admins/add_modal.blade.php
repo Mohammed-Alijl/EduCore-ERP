@@ -1,8 +1,8 @@
 <div class="modal fade" id="addModal">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">{{ __('admin.admins.add') }}</h6>
+                <h6 class="modal-title"><i class="fas fa-plus-circle mr-1 ml-1"></i> {{ __('admin.admins.add') }}</h6>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
 
@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ __('admin.admins.fields.name') }} <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" placeholder="{{ __('admin.admins.fields.name') }}" required minlength="3" maxlength="30" autocomplete="off">
+                                <input type="text" name="name" class="form-control form-control-modern" required minlength="3" maxlength="30" autocomplete="off">
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ __('admin.admins.fields.email') }} <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" placeholder="{{ __('admin.admins.fields.email') }}" required minlength="3" maxlength="30" autocomplete="off">
+                                <input type="email" name="email" class="form-control form-control-modern" required minlength="3" maxlength="30" autocomplete="off">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ __('admin.admins.fields.password') }} <span class="text-danger">*</span></label>
-                                <input type="password" name="password" id="password" class="form-control" required minlength="8" maxlength="30">
+                                <input type="password" name="password" id="password" class="form-control form-control-modern" required minlength="8" maxlength="30">
                                 <span class="text-danger error-text password_error"></span>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ __('admin.admins.fields.confirm_password') }} <span class="text-danger">*</span></label>
-                                <input type="password" name="password_confirmation" class="form-control" required data-parsley-equalto="#password">
+                                <input type="password" name="password_confirmation" class="form-control form-control-modern" required data-parsley-equalto="#password">
                                 <span class="text-danger error-text password_confirmation_error"></span>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ __('admin.admins.fields.status') }} <span class="text-danger">*</span></label>
-                                <select name="status" class="form-control" required>
+                                <select name="status" class="form-control form-control-modern" required>
                                     <option value="1" selected>{{ __('admin.global.active') }}</option>
                                     <option value="0">{{ __('admin.global.disabled') }}</option>
                                 </select>
