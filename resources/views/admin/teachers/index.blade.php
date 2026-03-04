@@ -18,15 +18,9 @@
 
     <!--Internal telephoneInput css-->
     <link rel="stylesheet" href="{{URL::asset('assets/admin/plugins/telephoneinput/telephoneinput.css')}}">
-    <style>
-        .ui-datepicker {
-            z-index: 999999 !important;
-            position: absolute !important;
-        }
-        .ui-widget.ui-widget-content {
-            z-index: 999999 !important;
-        }
-    </style>
+    {{-- Teacher CRUD Styles --}}
+    <link href="{{ URL::asset('assets/admin/css/teacher/teacher-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/teacher/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
@@ -40,7 +34,7 @@
         <div class="d-flex my-xl-auto right-content">
             @can('view-archived_teachers')
                  <div class="pr-1 mb-3 mb-xl-0">
-                    <a class="modal-effect btn btn-warning-gradient btn-with-icon btn-block"
+                    <a class="modal-effect btn btn-danger btn-with-icon btn-block"
                        href="{{route('admin.teachers.archived')}}">
                         <i class="fas fa-book ml-2"></i>  {{trans('admin.teachers.archived') }}
                     </a>
@@ -48,7 +42,7 @@
             @endcan
             @can('create_teachers')
                   <div class="pr-1 mb-3 mb-xl-0">
-                <a class="modal-effect btn btn-primary-gradient btn-with-icon btn-block"
+                <a class="modal-effect btn btn-primary btn-with-icon btn-block"
                    data-effect="effect-scale"
                    data-toggle="modal"
                    href="#addModal">
@@ -63,7 +57,7 @@
 @section('content')
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
+            <div class="card teacher-glass-card">
                 <div class="card-header pb-0"></div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -131,72 +125,74 @@
                                     </td>
                                     @canany(['edit_teachers','delete_teachers'])
                                             <td>
-                                                @can('edit_teachers')
-                                                    @php
-                                                        $attachmentUrls = [];
-                                                        $attachmentConfigs = [];
+                                                <div class="teacher-actions-container">
+                                                    @can('edit_teachers')
+                                                        @php
+                                                            $attachmentUrls = [];
+                                                            $attachmentConfigs = [];
 
-                                                        if($teacher->attachments->count() > 0) {
-                                                            foreach($teacher->attachments as $attachment) {
-                                                                $filePath = $attachment->attachment_path;
-                                                                $fullUrl = asset('storage/' . $filePath);
-                                                                $attachmentUrls[] = $fullUrl;
+                                                            if($teacher->attachments->count() > 0) {
+                                                                foreach($teacher->attachments as $attachment) {
+                                                                    $filePath = $attachment->attachment_path;
+                                                                    $fullUrl = asset('storage/' . $filePath);
+                                                                    $attachmentUrls[] = $fullUrl;
 
-                                                                $fileName = basename($filePath);
-                                                                $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+                                                                    $fileName = basename($filePath);
+                                                                    $extension = pathinfo($filePath, PATHINFO_EXTENSION);
 
 
-                                                                if(in_array($extension, ['jpg', 'jpeg', 'png', 'svg']))
-                                                                    $type = 'image';
-                                                                 elseif ($extension == 'pdf')
-                                                                    $type = 'pdf';
-                                                                 elseif (in_array($extension, ['doc', 'docx']))
-                                                                    $type = 'office';
-                                                                 else
-                                                                    $type = 'other';
+                                                                    if(in_array($extension, ['jpg', 'jpeg', 'png', 'svg']))
+                                                                        $type = 'image';
+                                                                     elseif ($extension == 'pdf')
+                                                                        $type = 'pdf';
+                                                                     elseif (in_array($extension, ['doc', 'docx']))
+                                                                        $type = 'office';
+                                                                     else
+                                                                        $type = 'other';
 
-                                                                $attachmentConfigs[] = [
-                                                                    'caption' => $fileName,
-                                                                    'type' => $type,
-                                                                    'url' => route('admin.teachers.attachments.destroy', $attachment->id),
-                                                                    'key' => $attachment->id
-                                                                ];
+                                                                    $attachmentConfigs[] = [
+                                                                        'caption' => $fileName,
+                                                                        'type' => $type,
+                                                                        'url' => route('admin.teachers.attachments.destroy', $attachment->id),
+                                                                        'key' => $attachment->id
+                                                                    ];
+                                                                }
                                                             }
-                                                        }
-                                                    @endphp
-                                                    <a class="btn btn-info btn-sm edit-btn"
-                                                       href="#"
-                                                       data-toggle="modal"
-                                                       data-target="#editModal"
-                                                       data-url="{{ route('admin.teachers.update', $teacher->id) }}"
-                                                       data-name_ar="{{ $teacher->getTranslation('name', 'ar') }}"
-                                                       data-name_en="{{ $teacher->getTranslation('name', 'en') }}"
-                                                       data-email="{{ $teacher->email }}"
-                                                       data-national_id="{{ $teacher->national_id }}"
-                                                       data-gender_id="{{ $teacher->gender_id }}"
-                                                       data-blood_type_id="{{ $teacher->blood_type_id }}"
-                                                       data-nationality_id="{{ $teacher->nationality_id }}"
-                                                       data-religion_id="{{ $teacher->religion_id }}"
-                                                       data-specialization_id="{{ $teacher->specialization_id }}"
-                                                       data-joining_date="{{ $teacher->joining_date->format('Y-m-d') }}"
-                                                       data-address="{{ $teacher->address }}"
-                                                       data-phone="{{ $teacher->phone }}"
-                                                       data-status="{{ $teacher->status }}"
-                                                       data-image="{{ $teacher->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($teacher->image) : '' }}"
-                                                       data-attachments='@json($attachmentUrls)'
-                                                       data-configs='@json($attachmentConfigs)'>
-                                                        <i class="las la-pen"></i> {{trans('admin.global.edit')}}
-                                                    </a>
-                                                @endcan
-                                                @can('delete_teachers')
-                                                    <a class="modal-effect btn btn-sm btn-danger delete-item"
-                                                       href="#"
-                                                       data-id="{{ $teacher->id }}"
-                                                       data-url="{{ route('admin.teachers.destroy', $teacher->id) }}"
-                                                       data-name="{{ $teacher->name }}">
-                                                        <i class="las la-trash"></i> {{trans('admin.global.archive')}}
-                                                    </a>
-                                                @endcan
+                                                        @endphp
+                                                        <a class="btn btn-teacher-edit btn-sm edit-btn"
+                                                           href="#"
+                                                           data-toggle="modal"
+                                                           data-target="#editModal"
+                                                           data-url="{{ route('admin.teachers.update', $teacher->id) }}"
+                                                           data-name_ar="{{ $teacher->getTranslation('name', 'ar') }}"
+                                                           data-name_en="{{ $teacher->getTranslation('name', 'en') }}"
+                                                           data-email="{{ $teacher->email }}"
+                                                           data-national_id="{{ $teacher->national_id }}"
+                                                           data-gender_id="{{ $teacher->gender_id }}"
+                                                           data-blood_type_id="{{ $teacher->blood_type_id }}"
+                                                           data-nationality_id="{{ $teacher->nationality_id }}"
+                                                           data-religion_id="{{ $teacher->religion_id }}"
+                                                           data-specialization_id="{{ $teacher->specialization_id }}"
+                                                           data-joining_date="{{ $teacher->joining_date->format('Y-m-d') }}"
+                                                           data-address="{{ $teacher->address }}"
+                                                           data-phone="{{ $teacher->phone }}"
+                                                           data-status="{{ $teacher->status }}"
+                                                           data-image="{{ $teacher->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($teacher->image) : '' }}"
+                                                           data-attachments='@json($attachmentUrls)'
+                                                           data-configs='@json($attachmentConfigs)'>
+                                                            <i class="las la-pen"></i> {{trans('admin.global.edit')}}
+                                                        </a>
+                                                    @endcan
+                                                    @can('delete_teachers')
+                                                        <a class="modal-effect btn btn-sm btn-teacher-archive delete-item"
+                                                           href="#"
+                                                           data-id="{{ $teacher->id }}"
+                                                           data-url="{{ route('admin.teachers.destroy', $teacher->id) }}"
+                                                           data-name="{{ $teacher->name }}">
+                                                            <i class="las la-trash"></i> {{trans('admin.global.archive')}}
+                                                        </a>
+                                                    @endcan
+                                                </div>
                                             </td>
                                     @endcanany
                                 </tr>

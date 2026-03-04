@@ -12,7 +12,7 @@
             <div class="modal-body p-4 text-{{ app()->getLocale() == 'ar' ? 'right' : 'left' }}">
                 <!-- Header Card / Avatar Section -->
                 <div class="card user-info-card shadow-sm mb-4 border-0 rounded-lg">
-                    <div class="card-body p-3 d-flex align-items-center bg-light rounded-lg">
+                    <div class="card-body p-3 d-flex align-items-center rounded-lg">
                         <img id="show_image" src="#" alt="Teacher Avatar" class="avatar avatar-xxl brround bg-white shadow-sm mx-4" style="object-fit: cover;">
                         <div>
                             <h4 id="show_name" class="mb-1 font-weight-bold text-dark">Teacher Name</h4>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <!-- Contact Info -->
                     <div class="col-md-6 mb-4">
-                        <h6 class="text-primary font-weight-bold mb-3 border-bottom pb-2"><i class="fas fa-address-book mx-1"></i> {{ trans('admin.teachers.contact_info') }}</h6>
+                        <h6 class="teacher-section-heading"><i class="fas fa-address-book mx-1"></i> {{ trans('admin.teachers.contact_info') }}</h6>
                         <ul class="list-unstyled mb-0 list-item-spacing">
                             <li class="mb-2 d-flex align-items-center">
                                 <div class="icon-circle bg-primary-transparent text-primary mx-3"><i class="fas fa-envelope"></i></div>
@@ -45,7 +45,7 @@
 
                     <!-- Personal Info -->
                     <div class="col-md-6 mb-4">
-                        <h6 class="text-primary font-weight-bold mb-3 border-bottom pb-2"><i class="fas fa-user-circle mx-1"></i> {{ trans('admin.teachers.teacher_information') }}</h6>
+                        <h6 class="teacher-section-heading"><i class="fas fa-user-circle mx-1"></i> {{ trans('admin.teachers.teacher_information') }}</h6>
                         <ul class="list-unstyled mb-0 list-item-spacing">
                             <li class="mb-2 d-flex align-items-center">
                                 <div class="icon-circle bg-warning-transparent text-warning mx-3"><i class="fas fa-id-card"></i></div>
@@ -66,8 +66,8 @@
                 <!-- Demographics -->
                 <div class="row">
                     <div class="col-12 mb-4">
-                        <h6 class="text-primary font-weight-bold mb-3 border-bottom pb-2"><i class="fas fa-globe mx-1"></i> {{ trans('admin.teachers.details') }}</h6>
-                        <div class="row text-center bg-light rounded p-3 m-0 shadow-sm">
+                        <h6 class="teacher-section-heading"><i class="fas fa-globe mx-1"></i> {{ trans('admin.teachers.details') }}</h6>
+                        <div class="row text-center teacher-details-grid p-3 m-0 shadow-sm">
                             <div class="col-3 {{ app()->getLocale() == 'ar' ? 'border-left' : 'border-right' }}">
                                 <small class="text-muted d-block mb-1">{{ trans('admin.specializations.title') ?? 'Specialization' }}</small>
                                 <span id="show_specialization" class="font-weight-bold text-dark"></span>
@@ -109,27 +109,6 @@
     </div>
 </div>
 
-<style>
-    .icon-circle {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-    }
-    .bg-primary-transparent { background-color: rgba(61, 80, 255, 0.1); }
-    .bg-info-transparent { background-color: rgba(0, 204, 255, 0.1); }
-    .bg-secondary-transparent { background-color: rgba(246, 38, 130, 0.1); }
-    .bg-warning-transparent { background-color: rgba(255, 171, 0, 0.1); }
-    .bg-success-transparent { background-color: rgba(0, 204, 115, 0.1); }
-    .bg-danger-transparent { background-color: rgba(255, 71, 61, 0.1); }
-    .avatar-xxl { width: 80px; height: 80px; }
-    .list-item-spacing li { margin-bottom: 12px; }
-    .badge { font-size: 13px; font-weight: 500; }
-    .gap-2 { gap: 0.5rem; }
-</style>
 @push('scripts')
     <script>
         $(document).on('click', '.show-btn', function() {

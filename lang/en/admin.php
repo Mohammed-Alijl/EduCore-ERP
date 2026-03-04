@@ -180,6 +180,9 @@ return [
         ]
     ],
     'teachers' => [
+        'warning_title' => 'Warning: Destructive Zone',
+        'warning_body' => 'Are you sure you want to archive this teacher? They will be removed from the active list but can be restored later.',
+        'archived_list' => 'List of all soft-deleted teachers',
         'title' => 'Teachers',
         'add' => "Add Teacher",
         'show' => "Teacher Profile",

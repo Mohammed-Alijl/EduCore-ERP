@@ -10,24 +10,54 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
+    {{-- Teacher Archive Styles --}}
+    <link href="{{ URL::asset('assets/admin/css/teacher/archive.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/teacher/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
-    <div class="breadcrumb-header justify-content-between">
-        <div class="my-auto">
-            <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ __('admin.teachers.title') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('admin.teachers.archived') }}</span>
+    <div class="teacher-archive-header d-flex justify-content-between align-items-center mt-4 mb-4">
+        <div class="d-flex align-items-center">
+            <div class="mr-3 ml-3">
+                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                    <i class="las la-trash-alt tx-24 text-white"></i>
+                </div>
             </div>
+            <div>
+                <h4 class="mb-1 text-white font-weight-bold">{{ __('admin.teachers.archived') }}</h4>
+                <p class="mb-0 text-white-50 tx-13">{{ __('admin.teachers.archived_list') ?? __('admin.global.archived_list') }}</p>
+            </div>
+        </div>
+        <div>
+            <a href="{{ route('admin.teachers.index') }}" class="btn btn-light shadow-sm" style="border-radius: 8px; font-weight: 600;">
+                <i class="las la-arrow-right mr-1 ml-1"></i> {{ __('admin.global.back') }}
+            </a>
         </div>
     </div>
 @endsection
 
 @section('content')
+    {{-- ─── Warning Alert ─── --}}
+    <div class="teacher-archive-alert shadow-sm">
+        <div class="mr-3 ml-3" style="width:40px;height:40px;border-radius:50%;background:#fc8181;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="las la-exclamation-triangle text-white tx-20"></i>
+        </div>
+        <div>
+            <h6 class="text-danger font-weight-bold mb-1">{{ trans('admin.teachers.warning_title') ?? trans('admin.global.warning') }}</h6>
+            <p class="text-muted mb-0 tx-13">{{ trans('admin.teachers.warning_body') ?? trans('admin.global.archive_warning') }}</p>
+        </div>
+    </div>
+
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header pb-0"></div>
+            <div class="card teacher-glass-card-archive">
+                <div class="archive-table-card-header pb-0">
+                    <div class="archive-table-title">
+                        <span class="title-dot"></span>
+                        {{ __('admin.teachers.archived') }}
+                        <span class="archive-count-badge" id="archive_count">{{ $teachers->count() }}</span>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="teachers_table">
@@ -90,25 +120,27 @@
                                     </td>
                                     @canany(['restore_teachers','force-delete_teachers'])
                                         <td>
-                                            @can('restore_teachers')
-                                                <a class="btn btn-info btn-sm restore-item"
-                                                   href="#"
-                                                   data-url="{{ route('admin.teachers.restore', $teacher->id) }}"
-                                                   data-id="{{ $teacher->id }}"
-                                                   data-name="{{ $teacher->name }}"
-                                                >
-                                                    <i class="las la-store"></i> {{__('admin.global.restore')}}
-                                                </a>
-                                            @endcan
-                                            @can('force-delete_teachers')
-                                                <a class="modal-effect btn btn-sm btn-danger delete-item"
-                                                   href="#"
-                                                   data-id="{{ $teacher->id }}"
-                                                   data-url="{{ route('admin.teachers.forceDelete', $teacher->id) }}"
-                                                   data-name="{{ $teacher->name }}">
-                                                    <i class="las la-trash"></i> {{trans('admin.global.delete')}}
-                                                </a>
-                                            @endcan
+                                            <div class="teacher-actions-container">
+                                                @can('restore_teachers')
+                                                    <a class="btn btn-sm btn-teacher-restore restore-item"
+                                                       href="#"
+                                                       data-url="{{ route('admin.teachers.restore', $teacher->id) }}"
+                                                       data-id="{{ $teacher->id }}"
+                                                       data-name="{{ $teacher->name }}"
+                                                    >
+                                                        <i class="las la-store"></i> {{__('admin.global.restore')}}
+                                                    </a>
+                                                @endcan
+                                                @can('force-delete_teachers')
+                                                    <a class="btn btn-sm btn-teacher-delete delete-item"
+                                                       href="#"
+                                                       data-id="{{ $teacher->id }}"
+                                                       data-url="{{ route('admin.teachers.forceDelete', $teacher->id) }}"
+                                                       data-name="{{ $teacher->name }}">
+                                                        <i class="las la-trash"></i> {{trans('admin.global.delete')}}
+                                                    </a>
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>

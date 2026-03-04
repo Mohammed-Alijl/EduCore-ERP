@@ -151,13 +151,14 @@ class TeacherService
     public function getNextTeacherCode()
     {
         $prefix = 'TCH-' . date('Y') . '-';
-        $lastTeacher = Teacher::withTrashed()->where('teacher_code', 'like', 'TCH-' . $prefix . '%')
-            ->orderBy('teacher_code', 'desc')
+        $lastTeacher = Teacher::withTrashed()
+            ->where('teacher_code', 'like', $prefix . '%')
+            ->orderBy('id', 'desc')
             ->first();
 
         if ($lastTeacher) {
-            $lastSequence = (int) substr($lastTeacher->teacher_code, 4);
-            $newSequence = str_pad($lastSequence + 1, 4, '0', STR_PAD_LEFT);
+            $lastNumber = str_replace($prefix, '', $lastTeacher->teacher_code);
+            $newSequence = str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
         } else {
             $newSequence = '0001';
         }

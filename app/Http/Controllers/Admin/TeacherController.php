@@ -46,7 +46,7 @@ class TeacherController extends Controller implements HasMiddleware
             $this->teacherService->store($request->validated());
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.teachers.messages.created'),
+                'message' => __('admin.teachers.messages.success.add'),
             ]);
 
         } catch (\Exception $e) {

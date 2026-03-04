@@ -60,7 +60,7 @@ class Teacher extends Authenticatable
     {
         static::creating(function ($teacher) {
             $prefix = 'TCH-' . date('Y') . '-';
-            $lastTeacher = self::where('teacher_code', 'like', $prefix . '%')
+            $lastTeacher = self::withTrashed()->where('teacher_code', 'like', $prefix . '%')
                 ->orderBy('id', 'desc')
                 ->first();
 
