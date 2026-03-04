@@ -7,18 +7,30 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    {{-- Guardian Dedicated CSS --}}
+    <link href="{{ URL::asset('assets/admin/css/guardian/archive.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/admin/css/guardian/show.css') }}" rel="stylesheet" />
 
-    <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
-    <div class="breadcrumb-header justify-content-between">
-        <div class="my-auto">
-            <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ __('admin.guardians.title') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('admin.guardians.archived') }}</span>
+    <div class="guardian-archive-header d-flex justify-content-between align-items-center mt-4">
+        <div class="d-flex align-items-center">
+            <div class="mr-3 ml-3">
+                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                    <i class="las la-trash-alt tx-24 text-white"></i>
+                </div>
             </div>
+            <div>
+                <h4 class="mb-1 text-white font-weight-bold">{{ __('admin.sections.archived') }}</h4>
+                <p class="mb-0 text-white-50 tx-13">{{ __('admin.teachers.archived_list') }}</p>
+            </div>
+        </div>
+        <div>
+            <a href="{{ route('admin.guardians.index') }}" class="btn btn-light shadow-sm" style="border-radius: 8px; font-weight: 600;">
+                <i class="las la-arrow-right mr-1 ml-1"></i> {{ __('admin.global.back') }}
+            </a>
         </div>
     </div>
 @endsection
@@ -26,8 +38,22 @@
 @section('content')
     <div class="row row-sm">
         <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header pb-0"></div>
+            
+            <div class="guardian-archive-alert shadow-sm">
+                <i class="las la-exclamation-triangle tx-24 text-danger mr-2 ml-2"></i>
+                <div>
+                    <strong class="text-danger">{{ __('admin.teachers.warning_title') }}</strong>
+                    <p class="mb-0 tx-13 text-muted">{{ __('admin.teachers.warning_body') }}</p>
+                </div>
+            </div>
+
+            <div class="guardian-glass-card-archive">
+                <div class="archive-table-card-header">
+                    <div class="archive-table-title">
+                        <div class="title-dot"></div>
+                        {{ __('admin.sections.archived') }}
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="guardians_table">
@@ -95,25 +121,27 @@
                                     <td>{{ $guardian->name_mother }}</td>
                                     @canany(['restore_guardians','force-delete_guardians'])
                                         <td>
-                                            @can('restore_guardian')
-                                                <a class="btn btn-info btn-sm restore-item"
-                                                   href="#"
-                                                   data-url="{{ route('admin.guardians.restore', $guardian->id) }}"
-                                                   data-id="{{ $guardian->id }}"
-                                                   data-name="{{ $guardian->name }}"
-                                                >
-                                                    <i class="las la-store"></i> {{__('admin.global.restore')}}
-                                                </a>
-                                            @endcan
-                                            @can('force-delete_guardian')
-                                                <a class="modal-effect btn btn-sm btn-danger delete-item"
-                                                   href="#"
-                                                   data-id="{{ $guardian->id }}"
-                                                   data-url="{{ route('admin.guardians.forceDelete', $guardian->id) }}"
-                                                   data-name="{{ $guardian->name }}">
-                                                    <i class="las la-trash"></i> {{__('admin.global.delete')}}
-                                                </a>
-                                            @endcan
+                                            <div class="guardian-actions-container">
+                                                @can('restore_guardian')
+                                                    <a class="btn-guardian-restore restore-item"
+                                                       href="#"
+                                                       data-url="{{ route('admin.guardians.restore', $guardian->id) }}"
+                                                       data-id="{{ $guardian->id }}"
+                                                       data-name="{{ $guardian->name }}"
+                                                    >
+                                                        <i class="las la-store"></i> {{__('admin.global.restore')}}
+                                                    </a>
+                                                @endcan
+                                                @can('force-delete_guardian')
+                                                    <a class="modal-effect btn-guardian-delete delete-item"
+                                                       href="#"
+                                                       data-id="{{ $guardian->id }}"
+                                                       data-url="{{ route('admin.guardians.forceDelete', $guardian->id) }}"
+                                                       data-name="{{ $guardian->name }}">
+                                                        <i class="las la-trash"></i> {{__('admin.global.delete')}}
+                                                    </a>
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>

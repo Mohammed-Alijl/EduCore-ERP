@@ -18,7 +18,7 @@
                 <div class="card guardian-hero-card shadow-sm mb-4 border-0 rounded-lg">
                     <div class="card-body p-4 d-flex align-items-center rounded-lg">
                         <img id="gshow_image"
-                             src="{{ URL::asset('assets/admin/img/faces/6.jpg') }}"
+                             src="{{ URL::asset('assets/guardian/img/faces/default-avatar.png') }}"
                              alt="Guardian Avatar"
                              class="avatar avatar-xxl brround bg-white shadow mx-4"
                              style="object-fit: cover; width: 90px; height: 90px;">
@@ -291,37 +291,7 @@
     </div>
 </div>
 
-<style>
-    /* Guardian Show Modal */
-    .guardian-hero-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
-    .bg-blue-gradient  { background: linear-gradient(135deg, #3d50ff 0%, #4f74ff 100%); }
-    .bg-pink-gradient  { background: linear-gradient(135deg, #f6268282 0%, #e91e63 100%); }
-    .bg-success-gradient { background: linear-gradient(135deg, #00cc73 0%, #00a65a 100%); }
-    .icon-circle {
-        width: 38px; height: 38px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 16px; flex-shrink: 0;
-    }
-    .bg-primary-transparent   { background-color: rgba(61, 80, 255, 0.12); }
-    .bg-info-transparent      { background-color: rgba(0, 204, 255, 0.12); }
-    .bg-secondary-transparent { background-color: rgba(108, 117, 125, 0.12); }
-    .bg-warning-transparent   { background-color: rgba(255, 171, 0, 0.12); }
-    .bg-success-transparent   { background-color: rgba(0, 204, 115, 0.12); }
-    .bg-danger-transparent    { background-color: rgba(255, 71, 61, 0.12); }
-    .bg-pink-transparent      { background-color: rgba(246, 38, 130, 0.12); }
-    .text-pink                { color: #e91e63; }
-    .avatar-xxl { width: 90px; height: 90px; }
-    .section-card { transition: box-shadow .2s; }
-    .section-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.09) !important; }
-    .demo-item { min-width: 120px; }
-    .demographics-strip { gap: 8px; }
-    .modal-content-demo { border: none; border-radius: 14px; overflow: hidden; }
-    .modal-header { border-bottom: 1px solid #f0f0f0; background: #fff; padding: 20px 24px; }
-    .student-card { transition: all 0.2s ease-in-out; }
-    .student-card:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important; }
-    .collapse-indicator { transition: transform 0.3s ease; }
-    .student-card[aria-expanded="true"] .collapse-indicator { transform: rotate(180deg); color: #00cc73 !important; }
-</style>
+
 
 @push('scripts')
 <script>
@@ -346,7 +316,7 @@
 
         // Profile image
         let profileImg = btn.data('image');
-        $('#gshow_image').attr('src', profileImg || "{{ URL::asset('assets/admin/img/faces/6.jpg') }}");
+        $('#gshow_image').attr('src', profileImg || "{{ URL::asset('assets/guardian/img/faces/default-avatar.png') }}");
 
         // Father fields
         $('#gshow_national_id_father').text(btn.data('national_id_father') || '—');

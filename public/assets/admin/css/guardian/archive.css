@@ -1,0 +1,219 @@
+/* ══════════════════════════════════════════════════════════
+   ARCHIVED GUARDIANS PAGE
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Page Header Banner ─── */
+.guardian-archive-header {
+    background: linear-gradient(to right, #2c3e50, #e74c3c);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Alert Banner ─── */
+.guardian-archive-alert {
+    background: #fff5f5;
+    border-left: 4px solid #fc8181;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* ─── Glass Card & Archive Header ─── */
+.guardian-glass-card-archive {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #f0f2f8;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.guardian-glass-card-archive:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+.archive-table-card-header {
+    background: #fff;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #f0f2f8;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.archive-table-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.title-dot {
+    width: 10px;
+    height: 10px;
+    background: #e74c3c;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+.archive-count-badge {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+}
+
+/* ─── Archive Table ─── */
+#guardians_table thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid #f0f2f8 !important;
+    border-top: none !important;
+    background: #fafbff;
+    white-space: nowrap;
+}
+
+#guardians_table tbody tr {
+    transition: background 0.15s;
+}
+
+#guardians_table tbody tr:hover {
+    background: #fdf2f4;
+}
+
+#guardians_table tbody td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    padding: 0.8rem 1rem;
+    color: #374151;
+    border-bottom: 1px solid #f8f9fb !important;
+}
+
+/* ─── Action Buttons ─── */
+.guardian-actions-container {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.btn-guardian-restore {
+    background: linear-gradient(135deg, #0ea573, #057a52);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(14, 165, 115, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-guardian-restore:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(14, 165, 115, 0.35);
+}
+
+.btn-guardian-delete {
+    background: linear-gradient(135deg, #e11d48, #9f1239);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(225, 29, 72, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-guardian-delete:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(225, 29, 72, 0.4);
+}
+
+/* ─── Dark Theme Overrides ─── */
+.dark-theme .guardian-archive-alert {
+    background: rgba(231, 76, 60, 0.10);
+    border-left-color: #e74c3c;
+}
+
+.dark-theme .guardian-archive-header {
+    background: linear-gradient(to right, #1a252f, #922b21);
+}
+
+.dark-theme .guardian-glass-card-archive {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .guardian-glass-card-archive:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.dark-theme .archive-table-card-header {
+    background: #1e212b;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .archive-table-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .archive-count-badge {
+    background: rgba(231, 76, 60, 0.15);
+    color: #fc8181;
+}
+
+.dark-theme #guardians_table thead th {
+    background: #14161f;
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme #guardians_table tbody tr:hover {
+    background: rgba(225, 29, 72, 0.05);
+}
+
+.dark-theme #guardians_table tbody td {
+    color: #cbd5e1;
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_info,
+.dark-theme .dataTables_wrapper .dataTables_length label,
+.dark-theme .dataTables_wrapper .dataTables_filter label {
+    color: #8896b3;
+}
+
+.dark-theme .dataTables_wrapper input,
+.dark-theme .dataTables_wrapper select {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #8896b3 !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: rgba(225, 29, 72, 0.15) !important;
+    color: #e11d48 !important;
+    border-color: transparent !important;
+}

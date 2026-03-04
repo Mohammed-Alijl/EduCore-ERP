@@ -41,7 +41,7 @@ class Guardian extends Authenticatable
         if ($this->image && Storage::disk('public')->exists($this->image)) {
             return Storage::url($this->image);
         }
-        return asset('assets/guardian/img/default-avatar.png');
+        return asset('assets/guardian/img/faces/default-avatar.png');
     }
 
     public function nationalityFather()
