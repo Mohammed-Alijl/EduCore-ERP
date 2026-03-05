@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\TeacherAssigment;
+namespace App\Http\Requests\Admin\TeacherAssignment;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
