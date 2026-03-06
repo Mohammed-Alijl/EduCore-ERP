@@ -658,6 +658,50 @@ return [
         ]
     ],
 
+    'attendances' => [
+        'title' => 'Attendance',
+        'subtitle' => 'Manage student attendance quickly and accurately',
+        'print_title' => 'Attendance Report',
+        'total_students' => 'Total Students',
+        'print_footer' => 'This is an automatically generated report',
+        'attendance_date' => 'Attendance Date',
+        'filter_grade' => 'Grade',
+        'select_grade' => 'Select Grade',
+        'filter_classroom' => 'Classroom',
+        'select_classroom' => 'Select Classroom',
+        'filter_section' => 'Section',
+        'select_section' => 'Select Section',
+        'students_list' => 'Students List',
+        'student' => 'Student',
+        'student_details' => 'Student Details',
+        'attendance_status' => 'Attendance Status',
+        'load_students' => 'Load Students',
+        'loading' => 'Loading...',
+        'save' => 'Save Attendance',
+        'saving' => 'Saving...',
+        'present' => 'Present',
+        'absent' => 'Absent',
+        'late' => 'Late',
+        'excused' => 'Excused',
+        'no_students' => 'No students in this section.',
+        'print_section' => 'Print Section Attendance',
+        'messages' => [
+            'success' => [
+                'add' => 'Attendance saved successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to save attendance.',
+                'warning' => 'Warning',
+                'error' => 'Error',
+            ],
+            'warning_select' => 'Please select section and attendance date first.',
+            'error_fetch' => 'An error occurred while fetching students data.',
+            'error_save' => 'An error occurred while saving the attendance sheet.',
+            'error_print' => 'An error occurred while generating the print document.'
+        ],
+    ],
+
+
     // ─── Subjects ─────────────────────────────────────────────────────────────
     'subjects' => [
         'title'       => 'Subjects',

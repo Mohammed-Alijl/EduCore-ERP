@@ -66,4 +66,29 @@ class AttendanceController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Print section attendance report
+     */
+    public function printSectionAttendance(ShowRequest $request)
+    {
+        try {
+            $students = $this->attendanceService->getStudentsForAttendance(
+                $request->section_id,
+                $request->attendance_date
+            );
+
+            $html = view('admin.attendances.partials._print_attendance', compact('students'))->render();
+
+            return response()->json([
+                'status' => 'success',
+                'html' => $html
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage() ?? trans('admin.attendances.messages.error_print') ?? 'Error generating print document'
+            ], 500);
+        }
+    }
 }

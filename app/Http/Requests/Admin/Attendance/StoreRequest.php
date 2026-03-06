@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
         return [
             'attendance_date' => 'required|date|before_or_equal:today',
             'grade_id' => 'required|exists:grades,id',
-            'classroom_id' => 'required|exists:classrooms,id',
+            'classroom_id' => 'required|exists:class_rooms,id',
             'section_id' => 'required|exists:sections,id',
             'attendances' => 'required|array|min:1',
             'attendances.*.student_id' => 'required|exists:students,id',
