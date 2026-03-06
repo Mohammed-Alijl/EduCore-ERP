@@ -26,6 +26,7 @@ class Exam extends Model
         'title',
         'subject_id',
         'teacher_id',
+        'academic_year_id',
         'start_time',
         'end_time',
         'duration_minutes',
@@ -72,5 +73,10 @@ class Exam extends Model
     public function finalResults()
     {
         return $this->hasMany(StudentExamResult::class);
+    }
+
+    public function AcademicYear()
+    {
+        return $this->belongsTo(AcademicYear::class);
     }
 }
