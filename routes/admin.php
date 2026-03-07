@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\RoleController;
@@ -160,6 +161,14 @@ Route::group(
                         Route::get('/students', [AttendanceController::class, 'getStudents'])->name('students');
                         Route::post('/', [AttendanceController::class, 'store'])->name('store');
                         Route::post('/print-section', [AttendanceController::class, 'printSectionAttendance'])->name('print-section');
+                    });
+
+                    // ─── Exams ───────────────────────────────────────────────────────────────
+                    Route::prefix('exams')->name('exams.')->group(function () {
+                        Route::get('/', [ExamController::class, 'index'])->name('index');
+                        Route::get('/datatable', [ExamController::class, 'datatable'])->name('datatable');
+                        Route::get('/{exam}/attempts', [ExamController::class, 'showAttempts'])->name('attempts');
+                        Route::post('/{exam}/reset-attempt', [ExamController::class, 'resetAttempt'])->name('resetAttempt');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

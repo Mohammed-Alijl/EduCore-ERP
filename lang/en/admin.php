@@ -777,4 +777,90 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Exams
+    |--------------------------------------------------------------------------
+    */
+    'exams' => [
+        'title'     => 'Exam Management',
+        'subtitle'  => 'Manage exams, view attempts & reset student data',
+        'published' => 'Published',
+        'draft'     => 'Draft',
+
+        'filters' => [
+            'title'            => 'Advanced Filters',
+            'subtitle'         => 'Narrow down exams by criteria',
+            'academic_year'    => 'Academic Year',
+            'grade'            => 'Grade',
+            'classroom'        => 'Classroom',
+            'section'          => 'Section',
+            'select_classroom' => 'Select a classroom',
+            'select_section'   => 'Select a section',
+            'search'           => 'Search',
+            'reset'            => 'Reset',
+        ],
+
+        'table' => [
+            'title'         => 'All Exams',
+            'subtitle'      => 'Browse and manage all available exams',
+            'exam_title'    => 'Exam Title',
+            'academic_year' => 'Academic Year',
+            'teacher'       => 'Teacher',
+            'subject'       => 'Subject',
+            'time_window'   => 'Time Window',
+            'status'        => 'Status',
+        ],
+
+        'attempts' => [
+            'title'          => 'Exam Attempts',
+            'subtitle'       => 'Student attempts & disaster recovery',
+            'back_to_exams'  => 'Back to Exams',
+            'reset_attempt'  => 'Reset Attempt',
+            'no_attempts'    => 'No attempts found for this exam.',
+
+            'info' => [
+                'teacher'         => 'Teacher',
+                'subject'         => 'Subject',
+                'total_questions' => 'Questions',
+                'max_attempts'    => 'Max Attempts',
+                'duration'        => 'Duration',
+                'minutes'         => 'min',
+            ],
+
+            'table' => [
+                'title'        => 'Student Attempts',
+                'subtitle'     => ':count total attempts recorded',
+                'student_name' => 'Student Name',
+                'started_at'   => 'Started At',
+                'completed_at' => 'Completed At',
+                'score'        => 'Score',
+                'status'       => 'Status',
+            ],
+
+            'statuses' => [
+                'in_progress' => 'In Progress',
+                'completed'   => 'Completed',
+                'timeout'     => 'Timeout',
+            ],
+
+            'swal' => [
+                'title'         => 'Are you sure?',
+                'text'          => 'This will delete the student\'s current attempt and allow them to retake the exam.',
+                'confirm'       => 'Yes, Reset Attempt',
+                'processing'    => 'Processing...',
+                'success_title' => 'Attempt Reset!',
+            ],
+        ],
+
+        'messages' => [
+            'success' => [
+                'attempt_reset' => 'The student attempt has been reset successfully.',
+            ],
+            'failed' => [
+                'attempt_reset' => 'Failed to reset the student attempt.',
+            ],
+        ],
+    ],
 ];

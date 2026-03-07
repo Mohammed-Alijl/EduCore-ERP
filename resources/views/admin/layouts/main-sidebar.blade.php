@@ -245,8 +245,9 @@
                 </li>
             @endcan
             <li class="slide">
-                <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                        class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
+                <a class="side-menu__item" href="{{ route('admin.exams.index') }}"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                        width="24px" fill="#e3e3e3">
                         <g>
                             <path d="M0,0h24v24H0V0z" fill="none" />
                         </g>
