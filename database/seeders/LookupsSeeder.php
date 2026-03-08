@@ -78,7 +78,7 @@ class LookupsSeeder extends Seeder
         // ==========================================
         $genders = [
             ['en' => 'Male', 'ar' => 'ذكر'],
-            ['en' => 'Female', 'ar' => 'أنثر'],
+            ['en' => 'Female', 'ar' => 'أنثى'],
             ['en' => 'Other', 'ar' => 'أخرى'],
         ];
 
