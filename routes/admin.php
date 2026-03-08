@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
+use App\Http\Controllers\Admin\OnlineClassController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
@@ -170,6 +171,16 @@ Route::group(
                         Route::get('/{exam}/attempts', [ExamController::class, 'showAttempts'])->name('attempts');
                         Route::post('/{exam}/reset-attempt', [ExamController::class, 'resetAttempt'])->name('resetAttempt');
                     });
+
+                    // ─── Online Classes ───────────────────────────────────────────────────────────────
+                    Route::prefix('online_classes')->name('online_classes.')->group(function () {
+                        Route::get('/datatable', [OnlineClassController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('online_classes', OnlineClassController::class)->except(['create', 'edit']);
+
+                    // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
+                    Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
+                    Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
             });

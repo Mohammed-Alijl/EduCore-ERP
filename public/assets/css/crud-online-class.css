@@ -1,0 +1,799 @@
+/* ============================================
+   ONLINE CLASSES MODULE - Custom Styles
+   Premium Valex-Compatible Styling
+   Supports: RTL (Arabic) + Dark Mode
+   ============================================ */
+
+/* ======================
+   1. FILTER CARD
+   ====================== */
+.filter-card {
+    border: 1px solid rgba(227, 231, 241, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.filter-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.filter-card .card-header {
+    background: transparent;
+    padding: 1.25rem 1.5rem 0;
+}
+
+.card-header-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.filter-toggle-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0;
+    border: 1px solid #e3e7f1;
+    background: #f8f9fc;
+    transition: all 0.2s ease;
+}
+
+.filter-toggle-btn:hover {
+    background: #edf0f7;
+    transform: scale(1.05);
+}
+
+.filter-card .card-body {
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+/* Select2 Overrides for Valex */
+.filter-card .select2-container--default .select2-selection--single {
+    height: 40px;
+    border: 1px solid #e3e7f1;
+    border-radius: 8px;
+    background-color: #f8f9fc;
+    transition: all 0.2s ease;
+}
+
+.filter-card .select2-container--default .select2-selection--single:hover {
+    border-color: #c5cde0;
+}
+
+.filter-card .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+    color: #3b4863;
+    font-size: 13px;
+}
+
+.filter-card .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 40px;
+    right: 8px;
+}
+
+.filter-card .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #6259ca;
+    box-shadow: 0 0 0 3px rgba(98, 89, 202, 0.15);
+}
+
+/* Filter Buttons */
+.filter-card .btn-with-icon {
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+}
+
+.filter-card .btn-with-icon:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-card .btn-primary.btn-with-icon {
+    background: linear-gradient(135deg, #6259ca 0%, #7c72d5 100%);
+    border: none;
+}
+
+.filter-card .btn-primary.btn-with-icon:hover {
+    background: linear-gradient(135deg, #5548b8 0%, #6e64c9 100%);
+}
+
+.filter-card .btn-outline-danger.btn-with-icon {
+    border: 1.5px solid #ee335e;
+}
+
+/* ======================
+   2. TABLE CARD
+   ====================== */
+.table-card {
+    border: 1px solid rgba(227, 231, 241, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.table-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.table-card .card-header {
+    background: transparent;
+    padding: 1.25rem 1.5rem 0;
+}
+
+/* Table Styling */
+#online_classes_table thead th {
+    background: linear-gradient(135deg, #f5f6fa 0%, #edf0f7 100%);
+    color: #3b4863;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e3e7f1;
+    padding: 14px 15px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+#online_classes_table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-color: #f0f2f8;
+    font-size: 13px;
+    color: #3b4863;
+    transition: background 0.15s ease;
+}
+
+#online_classes_table tbody tr:hover td {
+    background-color: rgba(98, 89, 202, 0.03);
+}
+
+#online_classes_table tbody tr:nth-child(even) td {
+    background-color: #fafbfd;
+}
+
+#online_classes_table tbody tr:nth-child(even):hover td {
+    background-color: rgba(98, 89, 202, 0.05);
+}
+
+/* Grade Info Cell */
+.grade-info-cell {
+    line-height: 1.6;
+}
+
+.grade-info-cell small {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+}
+
+/* Timing Cell */
+.timing-cell {
+    line-height: 1.6;
+}
+
+.timing-cell small {
+    font-size: 11px;
+}
+
+/* ======================
+   3. ACTION BUTTONS
+   ====================== */
+.action-btns {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0;
+    font-size: 16px;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn-info-light {
+    background-color: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+.btn-info-light:hover {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-primary-light {
+    background-color: rgba(98, 89, 202, 0.1);
+    color: #6259ca;
+}
+
+.btn-primary-light:hover {
+    background-color: #6259ca;
+    color: #fff;
+}
+
+.btn-danger-light {
+    background-color: rgba(238, 51, 94, 0.1);
+    color: #ee335e;
+}
+
+.btn-danger-light:hover {
+    background-color: #ee335e;
+    color: #fff;
+}
+
+.btn-success-light {
+    background-color: rgba(16, 183, 89, 0.1);
+    color: #10b759;
+}
+
+.btn-success-light:hover {
+    background-color: #10b759;
+    color: #fff;
+}
+
+/* Join Link Button */
+.btn-join-link {
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ======================
+   4. BADGES
+   ====================== */
+.badge.rounded-pill {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+#records-count-badge {
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-weight: 600;
+}
+
+/* Avatar in Table */
+.avatar.avatar-sm {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ======================
+   5. DATATABLE CONTROLS
+   ====================== */
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #e3e7f1;
+    border-radius: 8px;
+    padding: 5px 12px;
+    background-color: #f8f9fc;
+    font-size: 13px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #e3e7f1;
+    border-radius: 8px;
+    padding: 6px 14px;
+    background-color: #f8f9fc;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: #6259ca;
+    box-shadow: 0 0 0 3px rgba(98, 89, 202, 0.15);
+    outline: none;
+}
+
+.dataTables_wrapper .dataTables_info {
+    font-size: 13px;
+    color: #7987a1;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 8px !important;
+    margin: 0 2px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #6259ca 0%, #7c72d5 100%) !important;
+    border-color: #6259ca !important;
+    color: #fff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #f0eeff !important;
+    border-color: #6259ca !important;
+    color: #6259ca !important;
+}
+
+/* Processing Overlay */
+.dt-loading-spinner {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.empty-state i {
+    opacity: 0.4;
+}
+
+/* ======================
+   6. SWEETALERT2 CUSTOM
+   ====================== */
+.swal-custom-popup {
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.swal-custom-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3b4863;
+}
+
+.swal2-actions .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 6px;
+    min-width: 120px;
+}
+
+/* ======================
+   7. RTL SUPPORT
+   ====================== */
+html[dir="rtl"] .filter-card .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 14px;
+    padding-right: 14px;
+    text-align: right;
+}
+
+html[dir="rtl"] .filter-card .select2-container--default .select2-selection--single .select2-selection__arrow {
+    right: auto;
+    left: 8px;
+}
+
+html[dir="rtl"] .action-btns {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .me-1 {
+    margin-right: 0 !important;
+    margin-left: 0.25rem !important;
+}
+
+html[dir="rtl"] .me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+html[dir="rtl"] .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+html[dir="rtl"] .ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+html[dir="rtl"] .mg-r-5 {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+html[dir="rtl"] .mg-l-5 {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+html[dir="rtl"] .card-sub-title {
+    text-align: right;
+}
+
+html[dir="rtl"] #online_classes_table thead th,
+html[dir="rtl"] #online_classes_table tbody td {
+    text-align: right;
+}
+
+html[dir="rtl"] #online_classes_table thead th:first-child,
+html[dir="rtl"] #online_classes_table tbody td:first-child,
+html[dir="rtl"] #online_classes_table thead th:last-child,
+html[dir="rtl"] #online_classes_table tbody td:last-child {
+    text-align: center;
+}
+
+html[dir="rtl"] .d-flex.justify-content-end {
+    justify-content: flex-start !important;
+}
+
+html[dir="rtl"] .gap-2 {
+    gap: 0.5rem;
+}
+
+html[dir="rtl"] .breadcrumb-header .right-content {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+html[dir="rtl"] .select2-container--default .select2-results__option {
+    text-align: right;
+}
+
+html[dir="rtl"] .dataTables_wrapper .dataTables_filter {
+    text-align: left;
+}
+
+html[dir="rtl"] .dataTables_wrapper .dataTables_length {
+    text-align: right;
+}
+
+html[dir="rtl"] .dataTables_wrapper .dataTables_info {
+    text-align: right;
+}
+
+html[dir="rtl"] .dataTables_wrapper .dataTables_paginate {
+    text-align: left;
+}
+
+/* ======================
+   8. DARK MODE SUPPORT
+   ====================== */
+.dark-theme .filter-card,
+.dark-theme .table-card {
+    background-color: #1a1c2e;
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .filter-card:hover,
+.dark-theme .table-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .filter-toggle-btn {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #a9b2c9;
+}
+
+.dark-theme .filter-toggle-btn:hover {
+    background: #2e3050;
+}
+
+/* Dark Mode Select2 */
+.dark-theme .filter-card .select2-container--default .select2-selection--single {
+    background-color: #252742;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .filter-card .select2-container--default .select2-selection--single:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-theme .filter-card .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #c5cde0;
+}
+
+.dark-theme .select2-container--default .select2-results {
+    background-color: #252742;
+}
+
+.dark-theme .select2-container--default .select2-results__option {
+    color: #c5cde0;
+}
+
+.dark-theme .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #6259ca;
+}
+
+.dark-theme .select2-container--default .select2-search--dropdown .select2-search__field {
+    background-color: #1a1c2e;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #c5cde0;
+}
+
+.dark-theme .select2-dropdown {
+    background-color: #252742;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Dark Mode Table */
+.dark-theme #online_classes_table thead th {
+    background: linear-gradient(135deg, #252742 0%, #1e2035 100%);
+    color: #c5cde0;
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme #online_classes_table tbody td {
+    color: #a9b2c9;
+    border-color: rgba(255, 255, 255, 0.04);
+    background-color: transparent;
+}
+
+.dark-theme #online_classes_table tbody tr:hover td {
+    background-color: rgba(98, 89, 202, 0.06);
+}
+
+.dark-theme #online_classes_table tbody tr:nth-child(even) td {
+    background-color: rgba(255, 255, 255, 0.015);
+}
+
+.dark-theme #online_classes_table tbody tr:nth-child(even):hover td {
+    background-color: rgba(98, 89, 202, 0.08);
+}
+
+/* Dark Mode Grade Info */
+.dark-theme .grade-info-cell .fw-semibold {
+    color: #d0d6e2 !important;
+}
+
+/* Dark Mode DataTable Controls */
+.dark-theme .dataTables_wrapper .dataTables_length select {
+    background-color: #252742;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #c5cde0;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_filter input {
+    background-color: #252742;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #c5cde0;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_filter input:focus {
+    border-color: #6259ca;
+    box-shadow: 0 0 0 3px rgba(98, 89, 202, 0.2);
+}
+
+.dark-theme .dataTables_wrapper .dataTables_info {
+    color: #7987a1;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #a9b2c9 !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgba(98, 89, 202, 0.15) !important;
+    border-color: transparent !important;
+    color: #6259ca !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #6259ca 0%, #7c72d5 100%) !important;
+    border-color: #6259ca !important;
+    color: #fff !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    color: #555a6e !important;
+}
+
+/* Dark Mode Action Buttons */
+.dark-theme .btn-info-light {
+    background-color: rgba(23, 162, 184, 0.15);
+}
+
+.dark-theme .btn-primary-light {
+    background-color: rgba(98, 89, 202, 0.15);
+}
+
+.dark-theme .btn-danger-light {
+    background-color: rgba(238, 51, 94, 0.15);
+}
+
+.dark-theme .btn-success-light {
+    background-color: rgba(16, 183, 89, 0.15);
+}
+
+/* Dark Mode SweetAlert */
+.dark-theme .swal-custom-popup {
+    background-color: #1a1c2e;
+    color: #c5cde0;
+}
+
+.dark-theme .swal-custom-title {
+    color: #d0d6e2;
+}
+
+.dark-theme .swal2-html-container {
+    color: #a9b2c9;
+}
+
+/* Dark Mode Badges Adjustment */
+.dark-theme .badge.bg-primary-transparent {
+    background-color: rgba(98, 89, 202, 0.18) !important;
+}
+
+.dark-theme .badge.bg-warning-transparent {
+    background-color: rgba(255, 183, 0, 0.18) !important;
+}
+
+.dark-theme .badge.bg-success-transparent {
+    background-color: rgba(16, 183, 89, 0.18) !important;
+}
+
+.dark-theme .badge.bg-info-transparent {
+    background-color: rgba(23, 162, 184, 0.18) !important;
+}
+
+.dark-theme .badge.bg-danger-transparent {
+    background-color: rgba(238, 51, 94, 0.18) !important;
+}
+
+/* ======================
+   9. RESPONSIVE
+   ====================== */
+@media (max-width: 991px) {
+    .filter-card .card-body .row .col-lg {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .filter-card .card-body .row .col-lg,
+    .filter-card .card-body .row .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .breadcrumb-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .breadcrumb-header .right-content {
+        margin-left: 0 !important;
+    }
+
+    .action-btns {
+        gap: 4px;
+    }
+
+    .action-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    #records-count-badge {
+        display: none !important;
+    }
+
+    .card-header-icon {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 575px) {
+    .filter-card .card-header,
+    .filter-card .card-body,
+    .table-card .card-header,
+    .table-card .card-body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .filter-card .btn-with-icon {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .d-flex.justify-content-end.gap-2 {
+        flex-direction: column;
+    }
+}
+
+/* ======================
+   10. ANIMATIONS
+   ====================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filter-card,
+.table-card {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.table-card {
+    animation-delay: 0.1s;
+}
+
+/* Ripple Effect Enhancement */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.8s;
+}
+
+.ripple:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+/* Select2 Dropdown Animation */
+.select2-container--open .select2-dropdown {
+    animation: fadeInUp 0.2s ease;
+}
+
+/* Row Hover Border Accent */
+#online_classes_table tbody tr {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+html[dir="rtl"] #online_classes_table tbody tr {
+    border-left: none;
+    border-right: 3px solid transparent;
+}
+
+#online_classes_table tbody tr:hover {
+    border-left-color: #6259ca;
+}
+
+html[dir="rtl"] #online_classes_table tbody tr:hover {
+    border-left-color: transparent;
+    border-right-color: #6259ca;
+}

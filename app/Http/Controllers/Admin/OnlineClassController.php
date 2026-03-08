@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OnlineClass\DatatableRequest;
 use App\Models\OnlineClass;
 use App\Services\OnlineClassService;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Yajra\DataTables\Facades\DataTables;
@@ -18,7 +17,7 @@ class OnlineClassController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_online_classes', only: ['index', 'datatable']),
+            new Middleware('permission:view_online_classes', only: ['index', 'datatable', 'show']),
             new Middleware('permission:delete_online_classes', only: ['destroy']),
         ];
     }
@@ -53,11 +52,34 @@ class OnlineClassController extends Controller implements HasMiddleware
                     return '<a href="' . $row->join_url . '" target="_blank" class="btn btn-sm btn-success" title="Join"><i class="las la-sign-in-alt"></i></a>';
                 })
                 ->addColumn('actions', function ($row) {
-                    return '<button class="btn btn-sm btn-danger delete-btn" data-id="' . $row->id . '" title="Delete Meeting"><i class="las la-trash"></i></button>';
+                    return view('admin.online_classes.partials.index_actions', compact('row'))->render();
                 })
                 ->rawColumns(['integration', 'join_link', 'actions'])
                 ->make(true);
         }
+    }
+
+
+    public function show(OnlineClass $onlineClass)
+    {
+        $onlineClass->load(['academicYear', 'grade', 'classroom', 'section', 'teacher', 'subject']);
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'id' => $onlineClass->id,
+                'academic_year' => $onlineClass->academicYear->name ?? '-',
+                'grade' => $onlineClass->grade->name ?? '-',
+                'classroom' => $onlineClass->classroom->name ?? '-',
+                'section' => $onlineClass->section->name ?? '-',
+                'teacher' => $onlineClass->teacher->name ?? '-',
+                'subject' => $onlineClass->subject->name ?? '-',
+                'integration' => $onlineClass->integration_type == OnlineClass::INTEGRATION_ZOOM ? 'Zoom' : 'Manual',
+                'start_at' => $onlineClass->start_at?->format('Y-m-d h:i A') ?? '-',
+                'duration' => $onlineClass->duration,
+                'join_url' => $onlineClass->join_url,
+            ],
+        ]);
     }
 
 

@@ -48,10 +48,11 @@ class OnlineClassService
     public function getLookups()
     {
         return [
-            'academicYears' => AcademicYear::orderBy('name')->get(),
+            'academic_years' => AcademicYear::orderBy('name')->get(),
             'grades'        => Grade::all(),
             'classrooms' => ClassRoom::all(),
             'sections' => Section::all(),
+            'teachers' => \App\Models\Teacher::all(),
             'subjects' => Subject::all(),
         ];
     }

@@ -51,6 +51,7 @@ return [
         'promote' => 'Promote',
         'graduate' => 'Graduate',
         'reset_filters' => 'Reset Filters',
+        'search' => 'Search',
         'archive_warning_title' => 'Warning: Destructive Zone',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
@@ -80,6 +81,7 @@ return [
         'attendance' => 'Attendance',
         'subjects' => 'Subjects',
         'exams' => 'Exams',
+        'online_classes' => 'Online Classes',
         'zoom' => 'Online Classes - Zoom',
         'accounts' => 'Accounts',
         'fees' => 'Fees',
@@ -860,6 +862,76 @@ return [
             ],
             'failed' => [
                 'attempt_reset' => 'Failed to reset the student attempt.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Online Classes
+    |--------------------------------------------------------------------------
+    */
+    'online_classes' => [
+        'title'             => 'Online Classes',
+        'management'        => 'Manage Online Classes',
+        'add_new'           => 'Create New Class',
+        'edit'              => 'Edit Online Class',
+        'show'              => 'View Details',
+        'delete'            => 'Delete Class',
+        'delete_confirm_title' => 'Are you sure?',
+        'delete_confirm_text'  => 'Are you sure you want to delete this online class? This action cannot be undone.',
+        'delete_confirm_yes'   => 'Yes, Delete',
+        'delete_confirm_cancel' => 'Cancel',
+        'delete_error'      => 'Failed to delete the class',
+        'deleted_title'     => 'Deleted!',
+        'deleted_text'      => 'The online class has been deleted successfully.',
+        'ok'                => 'OK',
+        'minutes'           => 'min',
+
+        // Filter Section
+        'filter_title'      => 'Advanced Search & Filters',
+        'filter_subtitle'   => 'Filter online classes by academic year, grade, classroom, section, and teacher',
+        'filter'            => 'Search',
+        'reset'             => 'Clear Filters',
+        'all'               => 'All',
+        'select_option'     => 'Select an option',
+        'no_results'        => 'No results found',
+
+        // Table Section
+        'list_title'        => 'Online Classes List',
+        'list_subtitle'     => 'View and manage all scheduled online classes',
+        'records'           => 'Records',
+        'loading'           => 'Loading data...',
+        'no_data'           => 'No online classes available',
+        'no_matching'       => 'No matching records found',
+
+        // Fields
+        'academic_year'     => 'Academic Year',
+        'grade'             => 'Grade',
+        'classroom'         => 'Classroom',
+        'section'           => 'Section',
+        'teacher'           => 'Teacher',
+        'subject'           => 'Subject',
+        'timing'            => 'Schedule',
+        'integration'       => 'Platform',
+        'join_link'         => 'Join Link',
+        'actions'           => 'Actions',
+        'grade_info'        => 'Grade Info',
+        'join'              => 'Join',
+        'open_link'         => 'Open Meeting Link',
+        'no_link'           => 'N/A',
+
+        // Messages
+        'message' => [
+            'success' => [
+                'delete' => 'Online class deleted successfully',
+                'create' => 'Online class created successfully',
+                'update' => 'Online class updated successfully',
+            ],
+            'failed' => [
+                'delete' => 'Failed to delete online class',
+                'create' => 'Failed to create online class',
+                'update' => 'Failed to update online class',
             ],
         ],
     ],
