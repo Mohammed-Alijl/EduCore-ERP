@@ -1,0 +1,127 @@
+.year-hero-card,
+.year-glass-card {
+    border: 1px solid rgba(227, 231, 241, 0.8);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.year-hero-card {
+    background: linear-gradient(135deg, #f7f8ff 0%, #eef1ff 100%);
+}
+
+.year-hero-card h5 {
+    font-weight: 700;
+    color: #2f3a56;
+}
+
+.year-count-badge {
+    font-size: 12px;
+    padding: 8px 14px;
+}
+
+#academic_years_table thead th {
+    background: linear-gradient(135deg, #f5f6fa 0%, #edf0f7 100%);
+    color: #3b4863;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e3e7f1;
+}
+
+#academic_years_table tbody td {
+    font-size: 13px;
+    vertical-align: middle;
+    color: #3b4863;
+}
+
+#academic_years_table tbody tr:hover td {
+    background-color: rgba(98, 89, 202, 0.04);
+}
+
+.year-current-badge,
+.year-inactive-badge {
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 12px;
+}
+
+.year-show-modal-content {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.year-show-modal-header,
+.year-show-modal-footer {
+    border: 0;
+}
+
+.year-show-banner {
+    background: rgba(98, 89, 202, 0.08);
+    border: 1px solid rgba(98, 89, 202, 0.2);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.year-show-card-item {
+    border: 1px solid rgba(227, 231, 241, 0.9);
+    border-radius: 10px;
+    padding: 12px;
+    background: #fff;
+}
+
+.year-show-card-item small {
+    color: #7987a1;
+    display: block;
+    margin-bottom: 6px;
+}
+
+html[dir="rtl"] .year-hero-card,
+html[dir="rtl"] .year-glass-card,
+html[dir="rtl"] .year-show-card-item {
+    text-align: right;
+}
+
+html[dir="rtl"] #academic_years_table thead th,
+html[dir="rtl"] #academic_years_table tbody td {
+    text-align: right;
+}
+
+html[dir="rtl"] #academic_years_table thead th:first-child,
+html[dir="rtl"] #academic_years_table tbody td:first-child,
+html[dir="rtl"] #academic_years_table thead th:last-child,
+html[dir="rtl"] #academic_years_table tbody td:last-child {
+    text-align: center;
+}
+
+.dark-theme .year-hero-card,
+.dark-theme .year-glass-card,
+.dark-theme .year-show-card-item,
+.dark-theme .year-show-modal-content {
+    background-color: #1a1c2e;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .year-hero-card {
+    background: linear-gradient(135deg, #232642 0%, #1d2037 100%);
+}
+
+.dark-theme .year-hero-card h5,
+.dark-theme #academic_years_table tbody td,
+.dark-theme .year-show-card-item h6 {
+    color: #d3dbef;
+}
+
+.dark-theme .year-show-banner {
+    background: rgba(98, 89, 202, 0.16);
+    border-color: rgba(98, 89, 202, 0.35);
+}
+
+.dark-theme #academic_years_table thead th {
+    background: linear-gradient(135deg, #252742 0%, #1f223a 100%);
+    color: #d0d6e2;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme #academic_years_table tbody tr:hover td {
+    background-color: rgba(98, 89, 202, 0.1);
+}

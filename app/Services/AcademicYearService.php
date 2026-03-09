@@ -12,7 +12,7 @@ class AcademicYearService
      */
     public function getAll()
     {
-        return AcademicYear::get()->sortBy('start_at');
+        return AcademicYear::orderBy('starts_at')->get();
     }
 
 
@@ -26,15 +26,19 @@ class AcademicYearService
 
     public function store(array $data)
     {
-        if ($data['is_current'] && $this->getCurrent())
-            throw new Exception(__('admin.academic_year.messages.failed.is_current'));
+        if (($data['is_current'] ?? false) && $this->getCurrent()) {
+            throw new Exception(__('admin.academic_years.messages.failed.is_current'));
+        }
+
         return AcademicYear::create($data);
     }
 
     public function update($academicYear, array $data)
     {
-        if (!$academicYear->is_current && $data['is_current'] && $this->getCurrent())
-            throw new Exception(__('admin.academic_year.messages.failed.is_current'));
+        if (!$academicYear->is_current && ($data['is_current'] ?? false) && $this->getCurrent()) {
+            throw new Exception(__('admin.academic_years.messages.failed.is_current'));
+        }
+
         $academicYear->update($data);
         return $academicYear;
     }

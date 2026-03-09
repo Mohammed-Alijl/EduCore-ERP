@@ -59,6 +59,18 @@
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.grades') }}</span></a>
                 </li>
             @endcan
+            @can('view_years')
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.academic_years.index') }}"><svg
+                            xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px"
+                            fill="#e3e3e3">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"
+                                opacity=".9" />
+                        </svg><span class="side-menu__label">{{ __('admin.sidebar.academic_years') }}</span></a>
+                </li>
+            @endcan
             @can('view_classrooms')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.classrooms.index') }}"><svg
@@ -96,8 +108,9 @@
             <li class="side-item side-item-category">{{ __('admin.sidebar.users') }}</li>
             @canany(['view_teachers', 'view_specializations'])
                 <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                            class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
+                    <a class="side-menu__item" data-toggle="slide" href="#"><svg
+                            xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
                             <g>
                                 <rect fill="none" height="24" width="24" />
                             </g>

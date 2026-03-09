@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AcademicYear\StoreRequest;
+use App\Http\Requests\Admin\AcademicYear\UpdateRequest;
 use App\Models\AcademicYear;
 use App\Services\AcademicYearService;
 use Illuminate\Http\Request;
@@ -34,7 +36,7 @@ class AcademicYearController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         try {
             $this->academic_year->store($request->validated());
@@ -53,7 +55,7 @@ class AcademicYearController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AcademicYear $academicYear)
+    public function update(UpdateRequest $request, AcademicYear $academicYear)
     {
         try {
             $this->academic_year->update($academicYear, $request->validated());
