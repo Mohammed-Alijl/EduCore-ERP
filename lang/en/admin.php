@@ -57,6 +57,7 @@ return [
         'graduate' => 'Graduate',
         'reset_filters' => 'Reset Filters',
         'search' => 'Search',
+        'print' => 'Print',
         'filters' => 'Filters',
         'archive_warning_title' => 'Warning: Destructive Zone',
         'dropify' => [
