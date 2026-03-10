@@ -1090,4 +1090,48 @@ return [
             ],
         ],
     ],
+
+    'books' => [
+        'title'             => 'Library',
+        'sub_title'         => 'List of Books',
+        'create'            => 'Upload Book',
+        'update'            => 'Edit Book',
+        'delete'            => 'Delete Book',
+        'form'              => [
+            'title'         => 'Book Title',
+            'description'   => 'Description',
+            'file'          => 'File',
+            'academic_target' => 'Academic Target',
+            'teacher'       => 'Teacher',
+            'subject'       => 'Subject',
+            'select_grade'  => 'Select Grade',
+            'select_classroom' => 'Select Classroom',
+            'select_section' => 'Select Section',
+            'select_teacher' => 'Select Teacher',
+            'select_subject' => 'Select Subject',
+        ],
+        'table'             => [
+            'title'         => 'Title & Description',
+            'academic_target' => 'Target',
+            'teacher'       => 'Teacher',
+            'subject'       => 'Subject',
+            'actions'       => 'Actions',
+        ],
+        'actions'           => [
+            'download'      => 'Download File',
+            'delete'        => 'Delete Book',
+        ],
+        'messages'          => [
+            'success'       => [
+                'create'    => 'Book added successfully',
+                'update'    => 'Book updated successfully',
+                'delete'    => 'Book deleted successfully',
+            ],
+            'failed'        => [
+                'download'  => 'Requested file could not be found',
+                'delete'    => 'Failed to delete book'
+            ],
+            'confirm_delete' => 'Are you sure you want to delete this book?',
+        ]
+    ]
 ];

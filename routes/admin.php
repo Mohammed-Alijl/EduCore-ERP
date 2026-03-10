@@ -179,6 +179,14 @@ Route::group(
                     });
                     Route::resource('online_classes', OnlineClassController::class)->except(['create', 'edit']);
 
+                    // ─── Library (Books) ───────────────────────────────────────────────────────────────
+                    Route::prefix('library')->name('library.')->group(function () {
+                        Route::get('/', [\App\Http\Controllers\Admin\BookController::class, 'index'])->name('index');
+                        Route::get('/datatable', [\App\Http\Controllers\Admin\BookController::class, 'datatable'])->name('datatable');
+                        Route::get('/download/{book}', [\App\Http\Controllers\Admin\BookController::class, 'download'])->name('download');
+                        Route::delete('/destroy/{book}', [\App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('destroy');
+                    });
+
                     // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
                     Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
                     Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');

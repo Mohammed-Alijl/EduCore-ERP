@@ -1080,4 +1080,48 @@ return [
             ],
         ],
     ],
+
+    'books' => [
+        'title'             => 'المكتبة',
+        'sub_title'         => 'قائمة الكتب',
+        'create'            => 'رفع كتاب',
+        'update'            => 'تعديل كتاب',
+        'delete'            => 'حذف كتاب',
+        'form'              => [
+            'title'         => 'عنوان الكتاب',
+            'description'   => 'الوصف',
+            'file'          => 'الملف',
+            'academic_target' => 'المرحلة الدراسية المستهدفة',
+            'teacher'       => 'المعلم',
+            'subject'       => 'المادة الدراسية',
+            'select_grade'  => 'اختر المرحلة',
+            'select_classroom' => 'اختر الصف',
+            'select_section' => 'اختر القسم',
+            'select_teacher' => 'اختر المعلم',
+            'select_subject' => 'اختر المادة',
+        ],
+        'table'             => [
+            'title'         => 'العنوان والوصف',
+            'academic_target' => 'المرحلة المستهدفة',
+            'teacher'       => 'المعلم',
+            'subject'       => 'المادة',
+            'actions'       => 'العمليات',
+        ],
+        'actions'           => [
+            'download'      => 'تحميل الملف',
+            'delete'        => 'حذف الكتاب',
+        ],
+        'messages'          => [
+            'success'       => [
+                'create'    => 'تم إضافة الكتاب بنجاح',
+                'update'    => 'تم تحديث الكتاب بنجاح',
+                'delete'    => 'تم حذف الكتاب بنجاح',
+            ],
+            'failed'        => [
+                'download'  => 'الملف المطلوب غير موجود',
+                'delete'    => 'فشل حذف الكتاب'
+            ],
+            'confirm_delete' => 'هل أنت متأكد من عملية الحذف؟',
+        ]
+    ]
 ];

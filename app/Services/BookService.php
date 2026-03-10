@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Str;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\Grade;
+use App\Models\Subject;
+use App\Models\Teacher;
 
 class BookService
 {
@@ -66,6 +69,15 @@ class BookService
         }
 
         return null;
+    }
+
+    public function getLookups()
+    {
+        return [
+            'grades'        => Grade::all(),
+            'subjects'      => Subject::all(),
+            'teachers'      => Teacher::all(),
+        ];
     }
 
     private function getBookFilePath(Book $book): string

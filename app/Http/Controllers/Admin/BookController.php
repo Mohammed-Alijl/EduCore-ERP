@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,13 +9,12 @@ use App\Services\BookService;
 use App\Services\StudentService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller implements HasMiddleware
 {
     public function __construct(
         protected readonly BookService $bookService,
-        protected readonly StudentService $studentService
     ) {}
 
     public static function middleware(): array
@@ -28,7 +28,8 @@ class BookController extends Controller implements HasMiddleware
 
     public function index()
     {
-        $lookups = $this->studentService->getLookups();
+        $lookups = $this->bookService->getLookups();
+
         return view('admin.library.index', $lookups);
     }
 
@@ -59,7 +60,7 @@ class BookController extends Controller implements HasMiddleware
         try {
             $deleted = $this->bookService->deleteBook($book);
 
-                if ($deleted) {
+            if ($deleted) {
                 return response()->json([
                     'status' => 'success',
                     'message' => trans('admin.books.messages.success.delete')
@@ -71,7 +72,7 @@ class BookController extends Controller implements HasMiddleware
                 'message' => trans('admin.books.messages.failed.delete')
             ], 400);
         } catch (\Exception $e) {
-            \Log::error('Book deletion failed: ' . $e->getMessage());
+            Log::error('Book deletion failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
