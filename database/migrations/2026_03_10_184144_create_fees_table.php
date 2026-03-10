@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
+            $table->json('title');
 
             $table->decimal('amount', 8, 2);
             $table->foreignId('fee_category_id')->constrained('fee_categories')->restrictOnDelete();

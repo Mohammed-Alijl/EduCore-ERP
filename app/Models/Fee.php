@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Translatable\HasTranslations;
 
 class Fee extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
         'title',
@@ -19,6 +20,8 @@ class Fee extends Model
         'classroom_id',
         'description',
     ];
+
+    protected $translatable = ['title'];
 
     protected $casts = [
         'amount' => 'decimal:2',
