@@ -98,7 +98,9 @@ return [
         'online_classes' => 'Online Classes',
         'zoom' => 'Online Classes - Zoom',
         'accounts' => 'Accounts',
-        'fees' => 'Fees',
+        'fee_categories' => 'Fee Categories',
+        'fees' => 'Fees List',
+        'fees_parent' => 'Fees Management',
         'invoices' => 'Invoices',
         'receipts' => 'Receipts',
         'payment' => 'Payment Processing',
@@ -1133,5 +1135,56 @@ return [
             ],
             'confirm_delete' => 'Are you sure you want to delete this book?',
         ]
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Finance CRUD
+    |--------------------------------------------------------------------------
+    */
+    'finance' => [
+        'messages' => [
+            'success' => [
+                'store' => 'Fee record created successfully.',
+                'update' => 'Fee record updated successfully.',
+                'delete' => 'Fee record deleted successfully.',
+            ],
+            'failed' => [
+                'store' => 'Failed to create fee record.',
+                'update' => 'Failed to update fee record.',
+                'delete' => 'Failed to delete fee record.',
+            ],
+        ],
+
+        'fee_categories' => [
+            'title' => 'Fee Categories',
+            'add' => 'Add Category',
+            'edit' => 'Edit Category',
+            'fields' => [
+                'title' => 'Category Name',
+                'title_ar' => 'Category Name (Arabic)',
+                'title_en' => 'Category Name (English)',
+                'description' => 'Description',
+            ],
+        ],
+
+        'fees' => [
+            'title' => 'School Fees',
+            'add' => 'Add Fee',
+            'edit' => 'Edit Fee',
+            'show' => 'Fee Details',
+            'fields' => [
+                'title' => 'Fee Title',
+                'title_ar' => 'Title (Arabic)',
+                'title_en' => 'Title (English)',
+                'amount' => 'Amount',
+                'grade' => 'Grade',
+                'classroom' => 'Classroom',
+                'category' => 'Fee Category',
+                'academic_year' => 'Academic Year',
+                'academic_target' => 'Academic Target',
+                'description' => 'Description',
+            ],
+        ],
+    ],
 ];

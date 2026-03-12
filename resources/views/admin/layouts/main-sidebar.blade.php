@@ -303,12 +303,23 @@
             <!-- START  Accounts -->
             <li class="side-item side-item-category">{{ __('admin.sidebar.accounts') }}</li>
             <li class="slide">
-                <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                <a class="side-menu__item" data-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg"
                         class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path
                             d="M11.5 17.1c-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79z" />
-                    </svg><span class="side-menu__label">{{ __('admin.sidebar.fees') }}</span></a>
+                    </svg><span class="side-menu__label">{{ __('admin.sidebar.fees_parent') }}</span><i
+                        class="angle fe fe-chevron-down"></i></a>
+                <ul class="slide-menu">
+                    @can('view_fee_categories')
+                        <li><a class="slide-item"
+                                href="{{ route('admin.fee_categories.index') }}">{{ __('admin.sidebar.fee_categories') }}</a>
+                        </li>
+                    @endcan
+                    @can('view_fees')
+                        <li><a class="slide-item" href="{{ route('admin.fees.index') }}">{{ __('admin.sidebar.fees') }}</a></li>
+                    @endcan
+                </ul>
             </li>
             <li class="slide">
                 <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"

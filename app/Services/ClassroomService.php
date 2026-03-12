@@ -84,7 +84,12 @@ class ClassroomService
     }
 
     public function getGradeClassrooms($id) {
-        return Classroom::active()->where('grade_id', $id)->pluck('name', 'id');
+        return ClassRoom::active()->where('grade_id', $id)->get()->map(function($classroom) {
+            return [
+                'id' => $classroom->id,
+                'name' => $classroom->name
+            ];
+        });
     }
 
 }
