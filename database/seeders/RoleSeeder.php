@@ -25,7 +25,8 @@ class RoleSeeder extends Seeder
             'attendances'       => ['view', 'create', 'print'],
             'online_classes'    => ['view', 'delete'],
             'exams'             => ['view', 'view-student-attempts', 'reset-attempts'],
-            'invoices'          => ['view', 'create', 'edit', 'delete', 'print'],
+            'fees'              => ['view', 'create', 'edit', 'delete'],
+            'invoices'          => ['view', 'create', 'delete', 'print'],
         ];
 
         foreach ($permissions as $module => $actions) {
