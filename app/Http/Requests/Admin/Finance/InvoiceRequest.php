@@ -11,7 +11,7 @@ class InvoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('admin')->user()->can('create-invoice');
+        return auth('admin')->user()->can('create_invoices');
     }
 
     /**

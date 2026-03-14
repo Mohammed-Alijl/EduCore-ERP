@@ -1200,20 +1200,18 @@ return [
         'invoices' => [
             'title' => 'Invoices Management',
             'show'             => 'Invoice Details',
-            'currency'         => 'Doller',
+            'currency'         => 'American Dollar',
             'amount_auto_note' => 'Amount is automatically set from the selected fee.',
             'add' => 'Issue New Invoice',
             'fields' => [
                 'student' => 'Student',
                 'fee' => 'Fee',
                 'fee_details' => 'Fee Details',
+                'academic_year' => 'Academic Year',
                 'amount' => 'Amount',
                 'date' => 'Date',
                 'description' => 'Description',
             ],
-            'show'             => 'Invoice Details',
-            'currency'         => 'American Doller',
-            'amount_auto_note' => 'Amount is automatically set from the selected fee.',
             'messages' => [
                 'success' => [
                     'store' => 'Invoice issued successfully.',

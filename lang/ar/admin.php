@@ -1194,6 +1194,7 @@ return [
                 'student' => 'الطالب',
                 'fee' => 'الرسوم',
                 'fee_details' => 'تفاصيل الرسوم',
+                'academic_year' => 'السنة الدراسية',
                 'amount' => 'المبلغ',
                 'date' => 'التاريخ',
                 'description' => 'الوصف',

@@ -85,6 +85,12 @@
                                 <span class="invoice-field-value" id="show-fee-category">—</span>
                             </div>
                         </div>
+                        <div class="col-md-12 mt-3">
+                            <div class="invoice-field">
+                                <span class="invoice-field-label">{{ trans('admin.finance.invoices.fields.academic_year') }}</span>
+                                <span class="invoice-field-value" id="show-academic-year">—</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -117,7 +123,7 @@
 
             // Header
             $('#show-invoice-number').text('INV-#' + (btn.data('id') || '—'));
-            $('#show-invoice-hero-date').text(btn.data('created_at') || '—');
+            $('#show-invoice-hero-date').text(btn.data('invoice_date') || '—');
 
             $('#show-invoice-amount').text(btn.data('amount') || '0.00');
 
@@ -126,6 +132,7 @@
 
             $('#show-fee-title').text(btn.data('fee_title') || '—');
             $('#show-fee-category').text(btn.data('fee_category') || '—');
+            $('#show-academic-year').text(btn.data('academic_year') || '—');
 
             var desc = btn.data('description');
             $('#show-invoice-description').text(desc ? desc : '{{ trans('admin.global.no_description') }}');

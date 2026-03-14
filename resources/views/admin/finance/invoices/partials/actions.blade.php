@@ -6,8 +6,9 @@
             data-student_code="{{ $invoice->student->student_code ?? '—' }}"
             data-fee_title="{{ $invoice->fee->title ?? '—' }}"
             data-fee_category="{{ $invoice->fee->feeCategory->title ?? '—' }}"
+            data-academic_year="{{ $invoice->academicYear->name ?? '—' }}"
             data-amount="{{ number_format($invoice->amount, 2) }}" data-description="{{ $invoice->description ?? '' }}"
-            data-created_at="{{ $invoice->created_at ? $invoice->created_at->format('Y-m-d') : '—' }}"
+            data-invoice_date="{{ $invoice->invoice_date ? $invoice->invoice_date->format('Y-m-d') : '—' }}"
             title="{{ trans('admin.global.view') }}">
             <i class="las la-eye"></i>
         </button>

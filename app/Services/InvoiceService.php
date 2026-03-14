@@ -11,9 +11,11 @@ use Yajra\DataTables\Facades\DataTables;
 
 class InvoiceService
 {
+    public function __construct(protected readonly AcademicYearService $academicYearService) {}
+
     public function getInvoicesQuery(array $filters): Builder
     {
-        $query = Invoice::with(['student', 'fee', 'grade', 'classroom']);
+        $query = Invoice::with(['student', 'fee.feeCategory', 'grade', 'classroom', 'academicYear']);
 
         return $this->applyFilters($query, $filters);
     }
@@ -65,6 +67,7 @@ class InvoiceService
         $query->when(!empty($filters['student_id']), fn($q) => $q->where('student_id', $filters['student_id']));
         $query->when(!empty($filters['grade_id']), fn($q) => $q->where('grade_id', $filters['grade_id']));
         $query->when(!empty($filters['classroom_id']), fn($q) => $q->where('classroom_id', $filters['classroom_id']));
+        $query->when(!empty($filters['academic_year_id']), fn($q) => $q->where('academic_year_id', $filters['academic_year_id']));
         $query->when(!empty($filters['fee_id']), fn($q) => $q->where('fee_id', $filters['fee_id']));
 
         return $query->latest();
@@ -82,8 +85,15 @@ class InvoiceService
 
     private function buildInvoicePayload(Student $student, Fee $fee, string $description, string $date): array
     {
+        $currentAcademicYear = $this->academicYearService->getCurrent();
+
+        if (!$currentAcademicYear) {
+            throw new \RuntimeException(trans('admin.finance.messages.failed.no_current_academic_year'));
+        }
+
         return [
             'student_id'   => $student->id,
+            'academic_year_id' => $currentAcademicYear->id,
             'grade_id'     => $student->grade_id,
             'classroom_id' => $student->classroom_id,
             'fee_id'       => $fee->id,

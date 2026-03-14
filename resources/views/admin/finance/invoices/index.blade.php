@@ -77,8 +77,22 @@
                                 </select>
                             </div>
 
+                            {{-- Academic Year --}}
+                            <div class="col-md-2 mb-3 mb-md-0">
+                                <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
+                                    <i class="las la-calendar mr-1"></i>
+                                    {{ trans('admin.finance.invoices.fields.academic_year') }}
+                                </label>
+                                <select class="form-control form-control-modern select2-filter" id="filter_academic_year">
+                                    <option value="">{{ trans('admin.global.all') }}</option>
+                                    @foreach ($academicYears as $academicYear)
+                                        <option value="{{ $academicYear->id }}">{{ $academicYear->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             {{-- Student --}}
-                            <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="col-md-2 mb-3 mb-md-0">
                                 <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
                                     <i class="las la-user-graduate mr-1"></i>
                                     {{ trans('admin.finance.invoices.fields.student') }}
@@ -90,7 +104,7 @@
                             </div>
 
                             {{-- Fee --}}
-                            <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="col-md-2 mb-3 mb-md-0">
                                 <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
                                     <i class="las la-file-invoice-dollar mr-1"></i>
                                     {{ trans('admin.finance.invoices.fields.fee_details') }}
@@ -167,6 +181,7 @@
                 addInvoiceModal: $('#addInvoiceModal'),
                 filterGrade: $('#filter_grade'),
                 filterClassroom: $('#filter_classroom'),
+                filterAcademicYear: $('#filter_academic_year'),
                 filterStudent: $('#filter_student'),
                 filterFee: $('#filter_fee'),
                 resetFilters: $('#reset_filters'),
@@ -223,7 +238,7 @@
                     },
                     {
                         data: 'date',
-                        name: 'created_at'
+                        name: 'invoice_date'
                     },
                     {
                         data: 'actions',
@@ -251,6 +266,10 @@
             });
 
             elements.filterStudent.add(elements.filterFee).on('change', function() {
+                drawTable();
+            });
+
+            elements.filterAcademicYear.on('change', function() {
                 drawTable();
             });
 
@@ -323,6 +342,7 @@
                 return {
                     grade_id: elements.filterGrade.val(),
                     classroom_id: elements.filterClassroom.val(),
+                    academic_year_id: elements.filterAcademicYear.val(),
                     student_id: elements.filterStudent.val(),
                     fee_id: elements.filterFee.val()
                 };
@@ -394,6 +414,7 @@
                 elements.filterGrade.val('').trigger('change.select2');
                 resetClassroomFilter();
                 resetStudentFilter();
+                elements.filterAcademicYear.val('').trigger('change.select2');
                 elements.filterFee.val('').trigger('change.select2');
                 drawTable();
             }

@@ -26,4 +26,9 @@ class AcademicYear extends Model
     {
         return $this->hasMany(StudentEnrollment::class);
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

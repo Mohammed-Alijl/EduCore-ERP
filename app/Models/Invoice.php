@@ -15,6 +15,7 @@ class Invoice extends Model
         'student_id',
         'grade_id',
         'classroom_id',
+        'academic_year_id',
         'fee_id',
         'amount',
         'invoice_date',
@@ -34,6 +35,11 @@ class Invoice extends Model
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function academicYear(): BelongsTo
+    {
+        return $this->belongsTo(AcademicYear::class);
     }
 
     public function grade(): BelongsTo

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\InvoiceRequest;
+use App\Models\AcademicYear;
 use App\Models\Fee;
 use App\Models\Grade;
 use App\Models\Invoice;
@@ -31,6 +32,7 @@ class InvoiceController extends Controller implements HasMiddleware
         return view('admin.finance.invoices.index', [
             'fees' => Fee::select('id', 'title', 'amount')->orderBy('title')->get(),
             'grades' => Grade::select('id', 'name')->orderBy('name')->get(),
+            'academicYears' => AcademicYear::select('id', 'name')->orderByDesc('starts_at')->get(),
         ]);
     }
 
