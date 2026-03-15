@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
 use App\Http\Controllers\Admin\Finance\FeeController;
 use App\Http\Controllers\Admin\Finance\InvoiceController;
+use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
@@ -159,6 +160,12 @@ Route::group(
                         Route::get('/{invoice}/print', [InvoiceController::class, 'print'])->name('print');
                     });
                     Route::resource('invoices', InvoiceController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Receipts ───────────────────────────────────────────────────────────────
+                    Route::prefix('receipts')->name('receipts.')->group(function () {
+                        Route::get('/datatable', [ReceiptController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);

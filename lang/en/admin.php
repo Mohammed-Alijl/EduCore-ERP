@@ -1155,14 +1155,18 @@ return [
                 'update' => 'Fee record updated successfully.',
                 'delete' => 'Fee record deleted successfully.',
                 'invoice_created' => 'Invoice created successfuly.',
-                'invoice_deleted' => 'invoice deleted successfuly.'
+                'invoice_deleted' => 'invoice deleted successfuly.',
+                'receipt_created' => 'Receipt created successfully.',
+                'receipt_deleted' => 'Receipt deleted successfully.'
             ],
             'failed' => [
                 'store' => 'Failed to create fee record.',
                 'update' => 'Failed to update fee record.',
                 'delete' => 'Failed to delete fee record.',
                 'invoice_created' => 'Failed to create invoice record.',
-                'invoice_deleted' => 'Failed to delete invoice record.'
+                'invoice_deleted' => 'Failed to delete invoice record.',
+                'receipt_created' => 'Failed to create receipt record.',
+                'receipt_delete' => 'Failed to delete receipt record.'
             ],
         ],
 
@@ -1222,6 +1226,27 @@ return [
                     'delete' => 'Failed to delete invoice.',
                 ],
                 'delete_warning' => 'Deleting this invoice will also remove its record from the students financial ledger.',
+            ],
+        ],
+
+        'receipts' => [
+            'title' => 'Receipts Management',
+            'add' => 'Create New Receipt',
+            'fields' => [
+                'student' => 'Student',
+                'payment_gateway' => 'Payment Gateway',
+                'amount_details' => 'Amount details (Paid & Base)',
+                'paid_amount' => 'Paid Amount',
+                'base_amount' => 'Base Amount',
+                'currency' => 'Currency',
+                'date' => 'Date',
+                'description' => 'Description',
+                'academic_year' => 'Academic Year',
+                'transaction_id' => 'Transaction ID',
+                'transaction_placeholder' => 'Optional, for online payments',
+            ],
+            'messages' => [
+                'delete_warning' => "Warning: Deleting this receipt will reverse the credit in the student's financial ledger.",
             ],
         ],
     ],
