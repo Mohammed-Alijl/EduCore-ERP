@@ -1224,5 +1224,39 @@ return [
                 'delete_warning' => 'Deleting this invoice will also remove its record from the students financial ledger.',
             ],
         ],
+
+        'receipts' => [
+            'title'    => 'Receipts Management',
+            'add'      => 'Issue New Receipt',
+            'show'     => 'Receipt Details',
+            'currency' => 'American Dollar',
+            'fields'   => [
+                'receipt_number'  => 'Receipt No.',
+                'invoice'         => 'Invoice Reference',
+                'student'         => 'Student',
+                'amount'          => 'Amount',
+                'payment_method'  => 'Payment Method',
+                'date'            => 'Date',
+                'academic_year'   => 'Academic Year',
+                'description'     => 'Notes',
+            ],
+            'payment_methods' => [
+                'cash'          => 'Cash',
+                'bank_transfer' => 'Bank Transfer',
+                'cheque'        => 'Cheque',
+                'online'        => 'Online',
+            ],
+            'messages' => [
+                'success' => [
+                    'store'  => 'Receipt issued successfully.',
+                    'delete' => 'Receipt deleted successfully.',
+                ],
+                'failed' => [
+                    'store'  => 'Failed to issue receipt.',
+                    'delete' => 'Failed to delete receipt.',
+                ],
+                'delete_warning' => 'Are you sure you want to delete this receipt? This action cannot be undone.',
+            ],
+        ],
     ],
 ];

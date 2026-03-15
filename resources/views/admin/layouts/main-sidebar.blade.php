@@ -337,8 +337,9 @@
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.invoices') }}</span></a>
                 </li>
             @endcan
+            @can('view_receipts')
             <li class="slide">
-                <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                <a class="side-menu__item" href="{{ route('admin.receipts.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                         class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
                         <path d="M19,19c0,0.55-0.45,1-1,1s-1-0.45-1-1v-3H8V5h11V19z" opacity=".3" />
                         <path d="M0,0h24v24H0V0z" fill="none" />
@@ -352,6 +353,7 @@
                         </g>
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.receipts') }}</span></a>
             </li>
+            @endcan
             <li class="slide">
                 <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"
                         class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">

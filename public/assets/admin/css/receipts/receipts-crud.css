@@ -1,0 +1,870 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   RECEIPTS CRUD — Premium Stylesheet
+ *   Color Palette: Emerald / Teal (Payment Confirmed)
+ * ══════════════════════════════════════════════════════════
+ *
+ *  TABLE OF CONTENTS
+ *  ─────────────────────────────────────────────────────────
+ *  1.  GOOGLE FONT IMPORT
+ *  2.  CSS CUSTOM PROPERTIES
+ *  3.  GLASS CARD
+ *  4.  FILTER SECTION
+ *  5.  MODERN FORM CONTROLS
+ *  6.  FORM LABELS & GROUPS
+ *  7.  INDEX TABLE
+ *  8.  PAYMENT METHOD BADGES
+ *  9.  ACTION BUTTONS
+ *  10. ADD MODAL — Shell & Header
+ *  11. ADD MODAL — Amount Preview
+ *  12. ADD MODAL — Save/Cancel
+ *  13. SHOW MODAL — Shell & Header
+ *  14. SHOW MODAL — Hero Amount Card
+ *  15. SHOW MODAL — Info Cards
+ *  16. SHOW MODAL — Footer
+ *  17. PRINT PAGE
+ *  18. DARK THEME OVERRIDES
+ *  19. RTL SUPPORT
+ *  20. ANIMATIONS & TRANSITIONS
+ *  21. RESPONSIVE BREAKPOINTS
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────────────────
+   1. GOOGLE FONT IMPORT
+───────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────────────────────────
+   2. CSS CUSTOM PROPERTIES
+───────────────────────────────────────────────────────── */
+:root {
+    /* Primary palette — Emerald */
+    --receipt-primary:       #10b981;
+    --receipt-primary-dark:  #059669;
+    --receipt-primary-light: #d1fae5;
+    --receipt-primary-glow:  rgba(16, 185, 129, 0.25);
+
+    /* Add modal accent */
+    --receipt-add-accent:    #10b981;
+    --receipt-add-dark:      #047857;
+
+    /* Show modal accent */
+    --receipt-show-accent:   #0f766e;
+    --receipt-show-dark:     #134e4a;
+
+    /* Payment method badge colors */
+    --badge-cash:      #10b981;
+    --badge-transfer:  #3b82f6;
+    --badge-cheque:    #f59e0b;
+    --badge-online:    #8b5cf6;
+
+    /* Neutral */
+    --receipt-border:  #e2e8f0;
+    --receipt-text:    #1e293b;
+    --receipt-muted:   #64748b;
+    --receipt-bg:      #f8fafc;
+    --receipt-white:   #ffffff;
+
+    /* Shadows */
+    --shadow-sm:   0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md:   0 4px 20px rgba(0,0,0,.06);
+    --shadow-lg:   0 8px 30px rgba(0,0,0,.10);
+    --shadow-xl:   0 20px 60px rgba(0,0,0,.18);
+    --shadow-glow: 0 6px 20px var(--receipt-primary-glow);
+}
+
+/* ─────────────────────────────────────────────────────────
+   3. GLASS CARD
+───────────────────────────────────────────────────────── */
+.glass-card {
+    background: var(--receipt-white);
+    border-radius: 18px;
+    box-shadow: var(--shadow-md) !important;
+    border: 1px solid rgba(0,0,0,.03);
+    transition: box-shadow .3s ease, transform .3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.glass-card:hover {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   4. FILTER SECTION
+───────────────────────────────────────────────────────── */
+.filter-section {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border: 1px solid #bbf7d0;
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.filter-section .form-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--receipt-muted);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* ─────────────────────────────────────────────────────────
+   5. MODERN FORM CONTROLS
+───────────────────────────────────────────────────────── */
+.form-control-modern {
+    border-radius: 10px;
+    border: 1.5px solid var(--receipt-border);
+    padding: 0.55rem 0.9rem;
+    font-size: 0.875rem;
+    box-shadow: none;
+    height: auto;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    background: var(--receipt-white);
+    color: var(--receipt-text);
+    font-family: 'Inter', sans-serif;
+}
+
+.form-control-modern:focus {
+    border-color: var(--receipt-primary);
+    box-shadow: 0 0 0 0.2rem var(--receipt-primary-glow);
+    background: var(--receipt-white);
+    outline: none;
+}
+
+.form-control-modern:disabled {
+    background-color: #f1f5f9;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Select2 alignment inside modals */
+.select2-container--default .select2-selection--single {
+    border-radius: 10px !important;
+    border: 1.5px solid var(--receipt-border) !important;
+    height: auto !important;
+    padding: 0.45rem 0.9rem !important;
+    font-size: 0.875rem !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5 !important;
+    padding: 0 !important;
+    color: var(--receipt-text) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 6px !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: var(--receipt-primary) !important;
+    box-shadow: 0 0 0 0.2rem var(--receipt-primary-glow) !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   6. FORM LABELS & GROUPS
+───────────────────────────────────────────────────────── */
+.receipt-form-label {
+    font-size: 0.815rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.receipt-form-group .error-text {
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+    min-height: 1rem;
+    display: block;
+    color: #ef4444;
+}
+
+/* ─────────────────────────────────────────────────────────
+   7. INDEX TABLE
+───────────────────────────────────────────────────────── */
+#receipts_table {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+}
+
+#receipts_table thead th {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    color: #064e3b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.85rem 1rem;
+    border-bottom: 2px solid #a7f3d0;
+    white-space: nowrap;
+}
+
+#receipts_table tbody tr {
+    transition: background-color .15s ease;
+}
+
+#receipts_table tbody tr:hover td {
+    background-color: rgba(16, 185, 129, 0.04);
+}
+
+#receipts_table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    border-color: #f1f5f9;
+    color: var(--receipt-text);
+    font-size: 0.865rem;
+}
+
+#receipts_table tbody tr:nth-child(even) td {
+    background-color: #fafffe;
+}
+
+/* Receipt number column */
+.badge-receipt-number {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    color: #065f46;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', monospace;
+    border: 1px solid #6ee7b7;
+}
+
+/* Amount column */
+.receipt-amount-cell {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #059669;
+    letter-spacing: -0.3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   8. PAYMENT METHOD BADGES
+───────────────────────────────────────────────────────── */
+.receipt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-badge-cash {
+    background: rgba(16, 185, 129, 0.12);
+    color: #065f46;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.receipt-badge-transfer {
+    background: rgba(59, 130, 246, 0.12);
+    color: #1e40af;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.receipt-badge-cheque {
+    background: rgba(245, 158, 11, 0.12);
+    color: #92400e;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.receipt-badge-online {
+    background: rgba(139, 92, 246, 0.12);
+    color: #4c1d95;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────────
+   9. ACTION BUTTONS
+───────────────────────────────────────────────────────── */
+.btn-receipt-view {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.8rem;
+    transition: all .2s ease;
+}
+
+.btn-receipt-view:hover {
+    background: #10b981;
+    color: #fff;
+    border-color: #10b981;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.btn-receipt-print {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.8rem;
+    transition: all .2s ease;
+}
+
+.btn-receipt-print:hover {
+    background: #0ea5e9;
+    color: #fff;
+    border-color: #0ea5e9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+}
+
+.btn-receipt-delete {
+    background: #fff1f2;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.8rem;
+    transition: all .2s ease;
+}
+
+.btn-receipt-delete:hover {
+    background: #ef4444;
+    color: #fff;
+    border-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+
+.receipt-actions-container {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   10. ADD MODAL — Shell & Header
+───────────────────────────────────────────────────────── */
+#addReceiptModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-add-header {
+    background: linear-gradient(135deg, var(--receipt-add-accent) 0%, var(--receipt-add-dark) 100%);
+    padding: 1.3rem 1.6rem;
+    border-bottom: none;
+}
+
+.receipt-add-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-add-header .close {
+    color: rgba(255,255,255,.75);
+    text-shadow: none;
+    font-size: 1.4rem;
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+.receipt-add-header .close:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+#addReceiptModal .modal-body {
+    background: #fafffe;
+    padding: 1.75rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   11. ADD MODAL — Amount Preview
+───────────────────────────────────────────────────────── */
+.receipt-amount-preview {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1.5px solid #6ee7b7;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-amount-preview-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--receipt-primary), var(--receipt-primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-glow);
+}
+
+.receipt-amount-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #064e3b;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.receipt-amount-currency {
+    font-size: 0.78rem;
+    color: #065f46;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   12. ADD MODAL — Save / Cancel Buttons
+───────────────────────────────────────────────────────── */
+#addReceiptModal .modal-footer {
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    padding: 1rem 1.6rem;
+    gap: 0.5rem;
+}
+
+.btn-save-receipt {
+    background: linear-gradient(135deg, var(--receipt-primary) 0%, var(--receipt-primary-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: all .25s ease;
+    box-shadow: var(--shadow-glow);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.btn-save-receipt:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    color: #fff;
+}
+
+.btn-save-receipt:active {
+    transform: translateY(0);
+}
+
+.btn-save-receipt .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+}
+
+/* ─────────────────────────────────────────────────────────
+   13. SHOW MODAL — Shell & Header
+───────────────────────────────────────────────────────── */
+#showReceiptModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-show-header {
+    background: linear-gradient(135deg, var(--receipt-show-accent) 0%, var(--receipt-show-dark) 100%);
+    padding: 1.3rem 1.6rem;
+    border-bottom: none;
+}
+
+.receipt-show-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+#showReceiptModal .close {
+    color: rgba(255,255,255,.75);
+    text-shadow: none;
+    opacity: 1;
+    font-size: 1.4rem;
+    transition: opacity .2s;
+}
+
+#showReceiptModal .close:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+#showReceiptModal .modal-body {
+    background: #f8fafc;
+    padding: 1.5rem 1.75rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   14. SHOW MODAL — Hero Amount Card
+───────────────────────────────────────────────────────── */
+.receipt-amount-hero {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 6px 24px rgba(16, 185, 129, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.receipt-amount-hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    pointer-events: none;
+}
+
+.receipt-amount-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    pointer-events: none;
+}
+
+.receipt-hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,.7);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.receipt-hero-amount {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-hero-date {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,.75);
+    font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────
+   15. SHOW MODAL — Section Titles & Info Cards
+───────────────────────────────────────────────────────── */
+.receipt-section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--receipt-primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #d1fae5;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-section-title i {
+    font-size: 1rem;
+    color: var(--receipt-primary);
+}
+
+.receipt-info-card {
+    background: var(--receipt-white);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.receipt-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.6rem;
+}
+
+.receipt-field:last-child {
+    margin-bottom: 0;
+}
+
+.receipt-field-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--receipt-muted);
+    margin-bottom: 0.2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-field-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--receipt-text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* ─────────────────────────────────────────────────────────
+   16. SHOW MODAL — Footer
+───────────────────────────────────────────────────────── */
+.receipt-show-footer {
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    padding: 1rem 1.6rem;
+    gap: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────────────────
+   17. PRINT PAGE  (scoped to body.receipt-print-page)
+───────────────────────────────────────────────────────── */
+.receipt-print-stamp {
+    display: inline-block;
+    border: 3px solid #10b981;
+    border-radius: 8px;
+    padding: 0.3rem 1rem;
+    color: #10b981;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transform: rotate(-5deg);
+}
+
+/* ─────────────────────────────────────────────────────────
+   18. DARK THEME OVERRIDES
+───────────────────────────────────────────────────────── */
+[data-theme="dark"] .glass-card,
+.dark-theme .glass-card {
+    background: #1e2433;
+    border-color: rgba(255,255,255,.05);
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .filter-section,
+.dark-theme .filter-section {
+    background: linear-gradient(135deg, #1a2e22 0%, #1a2924 100%);
+    border-color: #2d4a3a;
+}
+
+[data-theme="dark"] .form-control-modern,
+.dark-theme .form-control-modern {
+    background: #273040;
+    border-color: #3a4560;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .form-control-modern:focus,
+.dark-theme .form-control-modern:focus {
+    background: #273040;
+    border-color: var(--receipt-primary);
+}
+
+[data-theme="dark"] #receipts_table thead th,
+.dark-theme #receipts_table thead th {
+    background: linear-gradient(135deg, #1a2e22 0%, #1a2924 100%);
+    color: #a7f3d0;
+    border-bottom-color: #2d4a3a;
+}
+
+[data-theme="dark"] #receipts_table tbody td,
+.dark-theme #receipts_table tbody td {
+    border-color: #273040;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] #receipts_table tbody tr:hover td,
+.dark-theme #receipts_table tbody tr:hover td {
+    background-color: rgba(16, 185, 129, 0.06);
+}
+
+[data-theme="dark"] #addReceiptModal .modal-body,
+.dark-theme #addReceiptModal .modal-body {
+    background: #1e2433;
+}
+
+[data-theme="dark"] #addReceiptModal .modal-footer,
+.dark-theme #addReceiptModal .modal-footer {
+    background: #1a1f2e;
+    border-color: #3a4560;
+}
+
+[data-theme="dark"] .receipt-info-card,
+.dark-theme .receipt-info-card {
+    background: #1e2433;
+    border-color: #3a4560;
+}
+
+[data-theme="dark"] #showReceiptModal .modal-body,
+.dark-theme #showReceiptModal .modal-body {
+    background: #151b26;
+}
+
+[data-theme="dark"] .receipt-show-footer,
+.dark-theme .receipt-show-footer {
+    background: #1a1f2e;
+    border-color: #3a4560;
+}
+
+[data-theme="dark"] .receipt-form-label,
+.dark-theme .receipt-form-label {
+    color: #d1fae5;
+}
+
+[data-theme="dark"] .receipt-field-label,
+.dark-theme .receipt-field-label {
+    color: #6ee7b7;
+}
+
+[data-theme="dark"] .receipt-field-value,
+.dark-theme .receipt-field-value {
+    color: #e2e8f0;
+}
+
+/* DataTables dark fix */
+[data-theme="dark"] .dataTables_wrapper .dataTables_length select,
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter input,
+.dark-theme .dataTables_wrapper .dataTables_length select,
+.dark-theme .dataTables_wrapper .dataTables_filter input {
+    background-color: #273040;
+    color: #e2e8f0;
+    border-color: #3a4560;
+}
+
+/* ─────────────────────────────────────────────────────────
+   19. RTL SUPPORT
+───────────────────────────────────────────────────────── */
+[dir="rtl"] .receipt-form-label {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .receipt-section-title {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .receipt-amount-preview {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .receipt-actions-container {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .receipt-hero-date {
+    text-align: left;
+}
+
+[dir="rtl"] .receipt-amount-hero .row {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .receipt-hero-amount {
+    letter-spacing: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   20. ANIMATIONS & TRANSITIONS
+───────────────────────────────────────────────────────── */
+@keyframes receiptFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#addReceiptModal .modal-content,
+#showReceiptModal .modal-content {
+    animation: receiptFadeIn .25s ease;
+}
+
+/* Smooth table row appear */
+@keyframes rowSlideIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   21. RESPONSIVE BREAKPOINTS
+───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .filter-section .row > div {
+        margin-bottom: 0.75rem;
+    }
+
+    .receipt-hero-amount {
+        font-size: 1.8rem;
+    }
+
+    #receipts_table thead th {
+        font-size: 0.72rem;
+        padding: 0.65rem 0.6rem;
+    }
+
+    #receipts_table tbody td {
+        padding: 0.65rem 0.6rem;
+    }
+
+    .receipt-actions-container {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .btn-receipt-view,
+    .btn-receipt-print,
+    .btn-receipt-delete {
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .receipt-amount-preview {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .receipt-hero-amount {
+        font-size: 1.5rem;
+    }
+}
