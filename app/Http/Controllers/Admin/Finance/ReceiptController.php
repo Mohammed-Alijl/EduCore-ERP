@@ -23,6 +23,7 @@ class ReceiptController extends Controller implements HasMiddleware
             new Middleware('permission:view_receipts', only: ['index', 'datatable']),
             new Middleware('permission:create_receipts', only: ['store']),
             new Middleware('permission:delete_receipts', only: ['destroy']),
+            new Middleware('permission:print_receipts', only: ['print']),
         ];
     }
 
@@ -84,5 +85,12 @@ class ReceiptController extends Controller implements HasMiddleware
                 'message' => trans('admin.finance.messages.failed.receipt_delete')
             ], 500);
         }
+    }
+
+    public function print(Receipt $receipt)
+    {
+        $receipt->load(['student.grade', 'student.classroom', 'academicYear', 'currency', 'paymentGateway']);
+
+        return view('admin.finance.receipts.print', compact('receipt'));
     }
 }

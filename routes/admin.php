@@ -165,6 +165,7 @@ Route::group(
                     // ─── Receipts ───────────────────────────────────────────────────────────────
                     Route::prefix('receipts')->name('receipts.')->group(function () {
                         Route::get('/datatable', [ReceiptController::class, 'datatable'])->name('datatable');
+                        Route::get('/{receipt}/print', [ReceiptController::class, 'print'])->name('print');
                     });
                     Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
 

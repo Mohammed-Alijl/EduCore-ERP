@@ -1241,14 +1241,16 @@ return [
 
         'receipts' => [
             'title' => 'Receipts Management',
+            'show'  => 'Payment Receipt',
             'add' => 'Create New Receipt',
             'fields' => [
                 'student' => 'Student',
                 'payment_gateway' => 'Payment Gateway',
                 'amount_details' => 'Amount details (Paid & Base)',
                 'paid_amount' => 'Paid Amount',
-                'base_amount' => 'Base Amount',
+                'base_amount' => 'Base Amount (USD)',
                 'currency' => 'Currency',
+                'exchange_rate' => 'Exchange Rate',
                 'date' => 'Date',
                 'description' => 'Description',
                 'academic_year' => 'Academic Year',

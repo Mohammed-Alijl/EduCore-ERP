@@ -1228,14 +1228,16 @@ return [
 
         'receipts' => [
             'title' => 'إدارة سندات القبض',
+            'show'  => 'سند قبض',
             'add' => 'إنشاء سند قبض',
             'fields' => [
                 'student' => 'الطالب',
                 'payment_gateway' => 'بوابة الدفع',
                 'amount_details' => 'تفاصيل المبلغ (المدفوع والأساسي)',
                 'paid_amount' => 'المبلغ المدفوع',
-                'base_amount' => 'المبلغ الأساسي',
+                'base_amount' => 'المبلغ الأساسي (USD)',
                 'currency' => 'العملة',
+                'exchange_rate' => 'سعر الصرف',
                 'date' => 'التاريخ',
                 'description' => 'الوصف',
                 'academic_year' => 'السنة الدراسية',
