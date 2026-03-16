@@ -1,0 +1,136 @@
+/* Receipts page styles (scoped to avoid global overrides) */
+
+.receipt-page .glass-card {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.receipt-page .filter-section {
+    background: #f8f9fc;
+    border: 1px solid #e8ecf4;
+    border-radius: 10px;
+}
+
+.receipt-page .form-control-modern {
+    border-radius: 8px;
+    min-height: 38px;
+}
+
+.receipt-page .btn-modern {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.receipt-page .table-hover tbody tr:hover {
+    background-color: #f8f9fc;
+}
+
+.receipt-page .select2-container--default .select2-selection--single,
+#addReceiptModal .select2-container--default .select2-selection--single {
+    min-height: 38px;
+    border-radius: 8px;
+    border-color: #d8dde6;
+}
+
+.receipt-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+#addReceiptModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+    padding-left: 0.7rem;
+}
+
+#addReceiptModal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+#addReceiptModal .modal-header {
+    border-bottom: 1px solid #eef0f4;
+    padding: 1rem 1.25rem;
+}
+
+#addReceiptModal .modal-footer {
+    border-top: 1px solid #eef0f4;
+}
+
+#addReceiptModal .error-text {
+    font-size: 0.78rem;
+    min-height: 1rem;
+    display: block;
+}
+
+#addReceiptModal .is-invalid,
+.receipt-page .is-invalid {
+    border-color: #dc3545 !important;
+}
+
+#addReceiptModal .is-invalid:focus,
+.receipt-page .is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
+}
+
+[data-theme="dark"] .receipt-page .glass-card {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .receipt-page .filter-section {
+    background: #232736;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .receipt-page .filter-section label {
+    color: #c7cedd !important;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .form-control-modern {
+    background: #1b1f2b;
+    border-color: #3b4256;
+    color: #e6eaf2;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .form-control-modern:focus {
+    background: #1b1f2b;
+    border-color: #5c6ac4;
+    box-shadow: 0 0 0 0.2rem rgba(92, 106, 196, 0.2);
+}
+
+[data-theme="dark"] .receipt-page .filter-section .select2-container--default .select2-selection--single {
+    background: #1b1f2b;
+    border-color: #3b4256;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #e6eaf2;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #9aa3b8;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-top-color: #9aa3b8;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .btn-outline-primary {
+    color: #c9d4ff;
+    border-color: #5c6ac4;
+}
+
+[data-theme="dark"] .receipt-page .filter-section .btn-outline-primary:hover {
+    color: #ffffff;
+    background-color: #5c6ac4;
+    border-color: #5c6ac4;
+}
+
+[data-theme="dark"] #addReceiptModal .modal-header,
+[data-theme="dark"] #addReceiptModal .modal-footer {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[dir="rtl"] .receipt-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+[dir="rtl"] #addReceiptModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}

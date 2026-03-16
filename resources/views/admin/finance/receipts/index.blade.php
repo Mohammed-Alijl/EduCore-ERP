@@ -9,6 +9,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/receipts/receipt-crud.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
@@ -42,7 +43,7 @@
         ];
     @endphp
 
-    <div class="row row-sm">
+    <div class="row row-sm receipt-page">
         <div class="col-12">
             <div class="card glass-card overflow-hidden">
                 <div class="card-header border-0 pb-0">
@@ -61,7 +62,7 @@
                                     <i class="las la-user-graduate mr-1"></i>
                                     {{ trans('admin.finance.receipts.fields.student') }}
                                 </label>
-                                <select class="form-control" id="filter_student"
+                                <select class="form-control form-control-modern" id="filter_student"
                                     data-placeholder="{{ trans('admin.global.all') }}">
                                     <option value="">{{ trans('admin.global.all') }}</option>
                                 </select>
@@ -72,7 +73,7 @@
                                     <i class="las la-credit-card mr-1"></i>
                                     {{ trans('admin.finance.receipts.fields.payment_gateway') }}
                                 </label>
-                                <select class="form-control select2-filter" id="filter_payment_gateway">
+                                <select class="form-control form-control-modern select2-filter" id="filter_payment_gateway">
                                     <option value="">{{ trans('admin.global.all') }}</option>
                                     @foreach ($lookups['payment_gateways'] as $gateway)
                                         <option value="{{ $gateway->id }}">{{ $gateway->name }}</option>
@@ -81,7 +82,7 @@
                             </div>
 
                             <div class="col-md-3 text-right">
-                                <button class="btn btn-outline-primary w-100" id="reset_filters">
+                                <button class="btn btn-modern btn-outline-primary w-100" id="reset_filters">
                                     <i class="las la-sync-alt mr-1 ml-1"></i>
                                     {{ trans('admin.global.reset_filters') }}
                                 </button>
@@ -113,8 +114,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     @include('admin.finance.receipts.add_modal')
 @endsection
