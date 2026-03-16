@@ -115,6 +115,8 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
     @include('admin.finance.receipts.add_modal')
 @endsection
 
