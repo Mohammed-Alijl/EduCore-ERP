@@ -107,6 +107,7 @@ return [
         'fee_categories' => 'Fee Categories',
         'fees' => 'Fees List',
         'fees_parent' => 'Fees Management',
+        'currencies' => 'Currencies',
         'invoices' => 'Invoices',
         'receipts' => 'Receipts',
         'payment' => 'Payment Processing',
@@ -1157,7 +1158,10 @@ return [
                 'invoice_created' => 'Invoice created successfuly.',
                 'invoice_deleted' => 'invoice deleted successfuly.',
                 'receipt_created' => 'Receipt created successfully.',
-                'receipt_deleted' => 'Receipt deleted successfully.'
+                'receipt_deleted' => 'Receipt deleted successfully.',
+                'currency_created' => 'Currency created successfully.',
+                'currency_updated' => 'Currency updated successfully.',
+                'currency_deleted' => 'Currency deleted successfully.',
             ],
             'failed' => [
                 'store' => 'Failed to create fee record.',
@@ -1166,7 +1170,13 @@ return [
                 'invoice_created' => 'Failed to create invoice record.',
                 'invoice_deleted' => 'Failed to delete invoice record.',
                 'receipt_created' => 'Failed to create receipt record.',
-                'receipt_delete' => 'Failed to delete receipt record.'
+                'receipt_delete' => 'Failed to delete receipt record.',
+                'currency_created' => 'Failed to create currency.',
+                'currency_updated' => 'Failed to update currency.',
+                'currency_deleted' => 'Failed to delete currency.',
+                'cannot_delete_default_currency' => 'Cannot delete the default system currency.',
+                'currency_in_use' => 'Cannot delete this currency — it is used in existing financial records. Disable it instead.',
+                'cannot_edit_default_currency'   => 'Cannot edit the default system currency.',
             ],
         ],
 
@@ -1247,6 +1257,23 @@ return [
             ],
             'messages' => [
                 'delete_warning' => "Warning: Deleting this receipt will reverse the credit in the student's financial ledger.",
+            ],
+        ],
+
+        'currencies' => [
+            'title' => 'Currencies Management',
+            'add'   => 'Add Currency',
+            'edit'  => 'Edit Currency',
+            'fields' => [
+                'code'          => 'Currency Code',
+                'name'          => 'Currency Name',
+                'name_ar'       => 'Currency Name (Arabic)',
+                'name_en'       => 'Currency Name (English)',
+                'exchange_rate' => 'Exchange Rate',
+                'is_default'    => 'Default Currency',
+                'status'        => 'Active',
+                'sort_order'    => 'Sort Order',
+                'options'       => 'Options',
             ],
         ],
     ],

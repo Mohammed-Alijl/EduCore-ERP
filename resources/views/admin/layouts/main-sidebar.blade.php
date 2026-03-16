@@ -322,6 +322,11 @@
                         <li><a class="slide-item"
                                 href="{{ route('admin.fees.index') }}">{{ __('admin.sidebar.fees') }}</a></li>
                     @endcan
+                    @can('view_currencies')
+                        <li><a class="slide-item"
+                                href="{{ route('admin.currencies.index') }}">{{ __('admin.sidebar.currencies') }}</a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
             @can('view_invoices')

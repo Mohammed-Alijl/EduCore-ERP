@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
 use App\Http\Controllers\Admin\Finance\FeeController;
 use App\Http\Controllers\Admin\Finance\InvoiceController;
+use App\Http\Controllers\Admin\Finance\CurrencyController;
 use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
@@ -166,6 +167,12 @@ Route::group(
                         Route::get('/datatable', [ReceiptController::class, 'datatable'])->name('datatable');
                     });
                     Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Currencies ─────────────────────────────────────────────────────────────────
+                    Route::prefix('currencies')->name('currencies.')->group(function () {
+                        Route::get('/datatable', [CurrencyController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('currencies', CurrencyController::class)->except(['show', 'create', 'edit']);
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);

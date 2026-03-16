@@ -85,6 +85,7 @@ return [
         'fee_categories' => 'أنواع الرسوم',
         'fees' => 'قائمة الرسوم',
         'fees_parent' => 'إدارة الرسوم',
+        'currencies' => 'العملات',
         'invoices' => 'الفواتير',
         'receipts' => 'سندات القبض',
         'payment' => 'سندات الصرف',
@@ -1144,7 +1145,10 @@ return [
                 'invoice_created' => 'تم نشاء الفاتورة بنجاح',
                 'invoice_deleted' => 'تم حذف الفاتورة بنجاح.',
                 'receipt_created' => 'تم إنشاء سند القبض بنجاح.',
-                'receipt_deleted' => 'تم حذف سند القبض بنجاح.'
+                'receipt_deleted' => 'تم حذف سند القبض بنجاح.',
+                'currency_created' => 'تم إنشاء العملة بنجاح.',
+                'currency_updated' => 'تم تحديث العملة بنجاح.',
+                'currency_deleted' => 'تم حذف العملة بنجاح.',
             ],
             'failed' => [
                 'store' => 'فشل في حفظ بيانات الرسوم.',
@@ -1153,7 +1157,13 @@ return [
                 'invoice_created' => 'فشل انشاء الفاتورة',
                 'invoice_deleted' => 'فشل حذف الفاتورة',
                 'receipt_created' => 'فشل في إنشاء سند القبض.',
-                'receipt_delete' => 'فشل في حذف سند القبض.'
+                'receipt_delete' => 'فشل في حذف سند القبض.',
+                'currency_created' => 'فشل في إنشاء العملة.',
+                'currency_updated' => 'فشل في تحديث العملة.',
+                'currency_deleted' => 'فشل في حذف العملة.',
+                'cannot_delete_default_currency' => 'لا يمكن حذف العملة الأساسية للنظام.',
+                'currency_in_use' => 'لا يمكن حذف هذه العملة — إنها مستخدمة في سجلات مالية سابقة. قم بتعطيلها بدلاً من ذلك.',
+                'cannot_edit_default_currency'   => 'لا يمكن تعديل العملة الأساسية للنظام.',
             ],
         ],
 
@@ -1234,6 +1244,23 @@ return [
             ],
             'messages' => [
                 'delete_warning' => 'تحذير: حذف سند القبض سيؤدي إلى عكس القيد الدائن في الدفتر المالي للطالب.',
+            ],
+        ],
+
+        'currencies' => [
+            'title' => 'إدارة العملات',
+            'add'   => 'إضافة عملة',
+            'edit'  => 'تعديل عملة',
+            'fields' => [
+                'code'          => 'رمز العملة',
+                'name'          => 'اسم العملة',
+                'name_ar'       => 'اسم العملة (عربي)',
+                'name_en'       => 'اسم العملة (انجليزي)',
+                'exchange_rate' => 'سعر الصرف',
+                'is_default'    => 'العملة الأساسية',
+                'status'        => 'نشطة',
+                'sort_order'    => 'ترتيب العرض',
+                'options'       => 'خيارات',
             ],
         ],
     ],
