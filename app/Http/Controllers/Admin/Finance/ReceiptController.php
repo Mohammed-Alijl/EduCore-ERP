@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\ReceiptRequest;
+use App\DTOs\PaymentResult;
 use App\Models\Receipt;
 use App\Services\ReceiptService;
 use Illuminate\Http\Request;
@@ -47,18 +48,27 @@ class ReceiptController extends Controller implements HasMiddleware
     public function store(ReceiptRequest $request)
     {
         try {
-            $this->receiptService->createReceipt($request->validated());
+            $result = $this->receiptService->createReceipt($request->validated());
+
+            // Online gateway — return redirect URL for the frontend
+            if ($result instanceof PaymentResult && $result->isPending) {
+                return response()->json([
+                    'status'       => 'pending',
+                    'message'      => $result->message,
+                    'redirect_url' => $result->redirectUrl,
+                ]);
+            }
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.receipt_created')
+                'message' => trans('admin.finance.messages.success.receipt_created'),
             ]);
         } catch (\Exception $e) {
+            Log::error('Receipt creation failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.receipt_created')
-            ]);
-            Log::error('Receipt creation failed: ' . $e->getMessage());
+                'message' => $e->getMessage() ?? trans('admin.finance.messages.failed.receipt_created'),
+            ],500);
         }
     }
 

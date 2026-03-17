@@ -15,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(
+            \App\Services\Payments\PaymentGatewayManager::class,
+            fn() => new \App\Services\Payments\PaymentGatewayManager()
+        );
     }
 
     /**
@@ -47,6 +50,5 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             }
         });
-
     }
 }

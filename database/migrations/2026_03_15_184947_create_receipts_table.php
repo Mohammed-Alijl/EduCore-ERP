@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('exchange_rate', 10, 4);
 
             $table->decimal('base_amount', 10, 2)->comment('The amount converted to the base currency using the exchange rate at the time of payment');
+            $table->decimal('surcharge_amount', 10, 2)->default(0.00);
 
             $table->foreignId('payment_gateway_id')->constrained('payment_gateways')->restrictOnDelete();
             $table->string('transaction_id')->nullable()->comment('Reference ID from payment gateway or bank transaction');

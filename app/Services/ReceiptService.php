@@ -2,15 +2,22 @@
 
 namespace App\Services;
 
+use App\DTOs\PaymentResult;
 use App\Models\Currency;
+use App\Models\PaymentGateway;
 use App\Models\Receipt;
 use App\Models\Student;
+use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class ReceiptService
 {
+    public function __construct(
+        private readonly PaymentGatewayManager $gatewayManager,
+    ) {}
+
     /**
      * Get the base query for fetching receipts with necessary relationships and filters.
      */
@@ -30,12 +37,16 @@ class ReceiptService
             ->addIndexColumn()
             ->addColumn('student', fn($row) => '<strong>' . e($row->student->name) . '</strong>')
             ->addColumn('payment_method', fn($row) => '<span class="badge badge-info">' . e($row->paymentGateway->name) . '</span>')
-            ->addColumn(
-                'amount',
-                fn($row) =>
-                '<span class="text-success fw-bold">' . number_format($row->paid_amount, 2) . ' ' . $row->currency_code . '</span><br>' .
-                    '<small class="text-muted">' . __('admin.finance.receipt.fields.base_amount') . ': $' . number_format($row->base_amount, 2) . '</small>'
-            )
+            ->addColumn('amount', function ($row) {
+                $html = '<span class="text-success fw-bold">' . number_format($row->paid_amount, 2) . ' ' . $row->currency_code . '</span><br>'
+                    . '<small class="text-muted">' . __('admin.finance.receipts.fields.base_amount') . ': $' . number_format($row->base_amount, 2) . '</small>';
+
+                if ($row->surcharge_amount > 0) {
+                    $html .= '<br><small class="text-warning">' . __('admin.finance.receipts.fields.surcharge') . ': ' . number_format($row->surcharge_amount, 2) . ' ' . $row->currency_code . '</small>';
+                }
+
+                return $html;
+            })
             ->addColumn('date', fn($row) => '<small class="text-muted">' . $row->date->format('Y-m-d') . '</small>')
             ->addColumn('actions', fn($row) => $this->renderActionsColumn($row))
             ->rawColumns(['student', 'payment_method', 'amount', 'date', 'actions'])
@@ -43,30 +54,82 @@ class ReceiptService
     }
 
     /**
-     * create receipts and corresponding student account entries in a single transaction.
+     * Initiate receipt creation using the Strategy Pattern for payment processing.
+     *
+     * For offline gateways: creates DB records immediately and returns the Receipt.
+     * For online gateways: returns a PaymentResult with redirect_url (no DB records yet).
      */
-    public function createReceipt(array $data): Receipt
+    public function createReceipt(array $data): Receipt|PaymentResult
     {
-        return DB::transaction(function () use ($data) {
-            $student = Student::findOrFail($data['student_id']);
-            $currency = Currency::where('code', $data['currency_code'])->firstOrFail();
+        $student  = Student::findOrFail($data['student_id']);
+        $currency = Currency::where('code', $data['currency_code'])->firstOrFail();
+        $gateway  = PaymentGateway::findOrFail($data['payment_gateway_id']);
 
-            $baseAmount = $this->calculateBaseAmount($data['paid_amount'], $currency->exchange_rate);
+        $processor = $this->gatewayManager->resolveFromGateway($gateway);
+        $processor->validatePayment($data);
+        $result = $processor->initiatePayment($data, $gateway);
 
-            $receipt = Receipt::create(
-                $this->buildReceiptPayload($student, $data, $currency->exchange_rate, $baseAmount)
-            );
+        // online payment
+        if ($result->isPending) {
+            return $result;
+        }
 
-            $receipt->studentAccount()->create(
-                $this->buildStudentAccountPayload($student, $baseAmount, $data)
-            );
+        // Payment failed
+        if (!$result->success) {
+            throw new \RuntimeException($result->message);
+        }
+
+        // offline payment create the result
+        return $this->createReceiptFromResult($data, $result, $student, $currency, $gateway);
+    }
+
+    /**
+     * Create the receipt and student ledger entry from a verified payment result.
+     *
+     * Used by createReceipt() for sync gateways, and by future webhook handler for async gateways.
+     */
+    public function createReceiptFromResult(
+        array $data,
+        PaymentResult $result,
+        Student $student,
+        Currency $currency,
+        PaymentGateway $gateway,
+    ): Receipt {
+        return DB::transaction(function () use ($data, $result, $student, $currency, $gateway) {
+            $paidForDebt     = $data['paid_amount'];
+            $surchargeAmount = $result->surchargeAmount;
+            $baseAmount      = $this->calculateBaseAmount($paidForDebt, $currency->exchange_rate);
+
+            $receipt = Receipt::create([
+                'student_id'         => $student->id,
+                'academic_year_id'   => $data['academic_year_id'],
+                'payment_gateway_id' => $gateway->id,
+                'paid_amount'        => $paidForDebt,
+                'surcharge_amount'   => $surchargeAmount,
+                'currency_code'      => $data['currency_code'],
+                'exchange_rate'      => $currency->exchange_rate,
+                'base_amount'        => $baseAmount,
+                'transaction_id'     => $result->transactionReference,
+                'date'               => $data['date'] ?? now()->toDateString(),
+                'description'        => $data['description'] ?? 'Receipt for student ' . $student->name,
+            ]);
+
+            // Student ledger — ONLY credit the debt portion (surcharge excluded)
+            $receipt->studentAccount()->create([
+                'student_id'  => $student->id,
+                'debit'       => 0.00,
+                'credit'      => $baseAmount,
+                'date'        => $data['date'] ?? now()->toDateString(),
+                'description' => 'Receipt #' . $receipt->id . ' via ' . $gateway->name
+                    . ' - Ref: ' . $result->transactionReference,
+            ]);
 
             return $receipt;
         });
     }
 
     /**
-     * delete the receipt and its associated student account entry in a single transaction.
+     * Delete the receipt and its associated student account entry in a single transaction.
      */
     public function deleteReceipt(Receipt $receipt): bool
     {
@@ -78,19 +141,23 @@ class ReceiptService
     }
 
     /**
-     * Get The Required Data
+     * Get the required lookup data for the receipts form.
      */
     public function getLookups(): array
     {
         return [
             'academic_years'   => \App\Models\AcademicYear::select('id', 'name')->get(),
-            'payment_gateways' => \App\Models\PaymentGateway::where('status', true)->select('id', 'name')->get(),
+            'payment_gateways' => \App\Models\PaymentGateway::where('status', true)
+                ->select('id', 'code', 'name')
+                ->get()
+                ->filter(fn($gateway) => !$this->gatewayManager->resolveFromGateway($gateway)->isOnline())
+                ->values(),
             'currencies'       => \App\Models\Currency::select('code', 'name', 'is_default')->get(),
         ];
     }
 
     /**
-     * convert the paid amount to the base currency using the exchange rate at the time of payment.
+     * Convert the paid amount to the base currency using the exchange rate.
      */
     private function calculateBaseAmount(float $paidAmount, float $exchangeRate): float
     {
@@ -98,40 +165,7 @@ class ReceiptService
     }
 
     /**
-     * construct the payload for creating a receipt, including all necessary fields and relationships.
-     */
-    private function buildReceiptPayload(Student $student, array $data, float $exchangeRate, float $baseAmount): array
-    {
-        return [
-            'student_id'         => $student->id,
-            'academic_year_id'   => $data['academic_year_id'],
-            'payment_gateway_id' => $data['payment_gateway_id'],
-            'paid_amount'        => $data['paid_amount'],
-            'currency_code'      => $data['currency_code'],
-            'exchange_rate'      => $exchangeRate,
-            'base_amount'        => $baseAmount,
-            'transaction_id'     => $data['transaction_id'] ?? null,
-            'date'               => $data['date'] ?? now()->toDateString(),
-            'description'        => $data['description'] ?? 'Receipt for student ' . $student->name,
-        ];
-    }
-
-    /**
-     * construct the payload for creating a student account entry, including all necessary fields.
-     */
-    private function buildStudentAccountPayload(Student $student, float $baseAmount, array $data): array
-    {
-        return [
-            'student_id'  => $student->id,
-            'debit'       => 0.00,
-            'credit'      => $baseAmount,
-            'date'        => $data['date'] ?? now()->toDateString(),
-            'description' => 'Receipt for student ' . $student->name . ' - Transaction ID: ' . ($data['transaction_id'] ?? 'Cash Payment'),
-        ];
-    }
-
-    /**
-     * delete the associated student account entry.
+     * Delete the associated student account entry.
      */
     private function deleteStudentAccount(Receipt $receipt): void
     {
@@ -141,7 +175,7 @@ class ReceiptService
     }
 
     /**
-     * apply filters to the query
+     * Apply filters to the query.
      */
     private function applyFilters(Builder $query, array $filters): Builder
     {
@@ -152,7 +186,7 @@ class ReceiptService
     }
 
     /**
-     * render the actions column for the receipt table
+     * Render the actions column for the receipt table.
      */
     private function renderActionsColumn(Receipt $receipt): string
     {

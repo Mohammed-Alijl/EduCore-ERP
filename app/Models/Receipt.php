@@ -15,7 +15,8 @@ class Receipt extends Model
         'currency_code',
         'exchange_rate',
         'base_amount',
-        'payment_method_id',
+        'surcharge_amount',
+        'payment_gateway_id',
         'transaction_id',
         'date',
         'description',
@@ -24,8 +25,9 @@ class Receipt extends Model
     protected $casts = [
         'paid_amount'   => 'decimal:2',
         'exchange_rate' => 'decimal:4',
-        'base_amount'   => 'decimal:2',
-        'date'          => 'date',
+        'base_amount'      => 'decimal:2',
+        'surcharge_amount' => 'decimal:2',
+        'date'             => 'date',
     ];
 
     public function student(): BelongsTo
@@ -50,6 +52,6 @@ class Receipt extends Model
 
     public function paymentGateway(): BelongsTo
     {
-        return $this->belongsTo(PaymentGateway::class, 'payment_method_id');
+        return $this->belongsTo(PaymentGateway::class);
     }
 }

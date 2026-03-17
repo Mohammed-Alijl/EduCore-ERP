@@ -5,6 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
@@ -127,9 +128,9 @@
         src="{{ URL::asset('assets/admin/plugins/parsleyjs/i18n/' . LaravelLocalization::getCurrentLocale() . '.js') }}">
     </script>
     <script src="{{ URL::asset('assets/admin/js/crud.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @include('admin.layouts.scripts.datatable_config')
+    @include('admin.layouts.scripts.delete_script')
 
     <script>
         $(function() {
@@ -272,54 +273,28 @@
                 $(this).find('input, select, textarea').removeClass('is-invalid');
                 $('#student_id').val(null).trigger('change');
                 $('.select2-modal').val(null).trigger('change');
+                $('#transaction_id').prop('readonly', false).prop('required', false);
+                $('label[for="transaction_id"]').find('.text-danger').remove();
             });
 
-            $(document).on('click', '.delete-btn', function() {
-                const receiptId = $(this).data('id');
-                const destroyUrl = '{{ route('admin.receipts.destroy', ':id') }}'.replace(':id',
-                    receiptId);
+            // Toggle transaction ID requirement based on gateway selection
+            $('#payment_gateway_id').on('change', function() {
+                var selectedOption = $(this).find('option:selected');
+                var gatewayCode = selectedOption.data('code');
+                var $transactionInput = $('#transaction_id');
+                var $transactionLabel = $('label[for="transaction_id"]');
 
-                Swal.fire({
-                    title: '{{ trans('admin.global.warning_title') }}',
-                    text: '{{ trans('admin.finance.receipts.messages.delete_warning') }}',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: '{{ trans('admin.global.delete') }}',
-                    cancelButtonText: '{{ trans('admin.global.cancel') }}',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (!result.isConfirmed) {
-                        return;
+                if (gatewayCode === 'bank_transfer') {
+                    $transactionInput.prop('readonly', false).prop('required', true);
+                    if ($transactionLabel.find('.text-danger').length === 0) {
+                        $transactionLabel.append(' <span class="text-danger">*</span>');
                     }
-
-                    $.ajax({
-                        url: destroyUrl,
-                        type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: '{{ trans('admin.global.success') }}',
-                                text: response.message,
-                                timer: 2000,
-                                showConfirmButton: false
-                            });
-                            receiptsTable.draw(false);
-                        },
-                        error: function(xhr) {
-                            const errorMessage = xhr.responseJSON && xhr.responseJSON
-                                .message ? xhr.responseJSON
-                                .message : '{{ trans('admin.global.failed') }}';
-                            Swal.fire({
-                                icon: 'error',
-                                title: '{{ trans('admin.global.error_title') }}',
-                                text: errorMessage
-                            });
-                        }
-                    });
-                });
+                } else {
+                    $transactionInput.prop('readonly', true).prop('required', false).val('');
+                    $transactionLabel.find('.text-danger').remove();
+                    $transactionInput.removeClass('parsley-error is-invalid');
+                    $('.transaction_id_error').text('');
+                }
             });
         });
     </script>
