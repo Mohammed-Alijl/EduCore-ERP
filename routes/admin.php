@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
 use App\Http\Controllers\Admin\Finance\FeeController;
 use App\Http\Controllers\Admin\Finance\InvoiceController;
+use App\Http\Controllers\Admin\Finance\CurrencyController;
+use App\Http\Controllers\Admin\Finance\ReceiptController;
+use App\Http\Controllers\Admin\Finance\PaymentGatewayController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
@@ -159,6 +162,27 @@ Route::group(
                         Route::get('/{invoice}/print', [InvoiceController::class, 'print'])->name('print');
                     });
                     Route::resource('invoices', InvoiceController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Receipts ───────────────────────────────────────────────────────────────
+                    Route::prefix('receipts')->name('receipts.')->group(function () {
+                        Route::get('/datatable', [ReceiptController::class, 'datatable'])->name('datatable');
+                        Route::get('/{receipt}/print', [ReceiptController::class, 'print'])->name('print');
+                    });
+                    Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Currencies ─────────────────────────────────────────────────────────────────
+                    Route::prefix('currencies')->name('currencies.')->group(function () {
+                        Route::get('/datatable', [CurrencyController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('currencies', CurrencyController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Payment Gateways ──────────────────────────────────────────────────────────
+                    Route::prefix('payment_gateways')->name('payment_gateways.')->group(function () {
+                        Route::get('/settings-schema', [PaymentGatewayController::class, 'settingsSchema'])->name('settings-schema');
+                        Route::post('/activate', [PaymentGatewayController::class, 'activate'])->name('activate');
+                        Route::patch('/{payment_gateway}/toggle-status', [PaymentGatewayController::class, 'toggleStatus'])->name('toggle-status');
+                    });
+                    Route::resource('payment_gateways', PaymentGatewayController::class)->only(['index', 'update']);
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);

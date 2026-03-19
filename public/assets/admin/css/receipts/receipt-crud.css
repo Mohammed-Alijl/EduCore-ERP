@@ -1,0 +1,239 @@
+/* ══════════════════════════════════════════
+   RECEIPTS — Page & Modal Styles
+══════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   1. PAGE — Card & Layout
+───────────────────────────────────────── */
+.receipt-page .glass-card {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* ─────────────────────────────────────────
+   2. PAGE — Filter Section
+───────────────────────────────────────── */
+.receipt-page .filter-section {
+    background: #f8f9fc;
+    border: 1px solid #e8ecf4;
+    border-radius: 10px;
+}
+
+.receipt-page .form-control-modern {
+    border-radius: 8px;
+    min-height: 38px;
+}
+
+.receipt-page .btn-modern {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.receipt-page .table-hover tbody tr:hover {
+    background-color: #f8f9fc;
+}
+
+/* ─────────────────────────────────────────
+   3. PAGE & MODAL — Select2
+───────────────────────────────────────── */
+.receipt-page .select2-container--default .select2-selection--single,
+#addReceiptModal .select2-container--default .select2-selection--single {
+    min-height: 38px;
+    border-radius: 8px;
+    border-color: #d8dde6;
+}
+
+.receipt-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+#addReceiptModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+    padding-left: 0.7rem;
+}
+
+[dir="rtl"] .receipt-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+[dir="rtl"] #addReceiptModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+/* ─────────────────────────────────────────
+   4. MODAL — Shell Structure
+───────────────────────────────────────── */
+#addReceiptModal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+#addReceiptModal .modal-header {
+    border-bottom: 1px solid #eef0f4;
+    padding: 1rem 1.25rem;
+}
+
+#addReceiptModal .modal-footer {
+    border-top: 1px solid #eef0f4;
+}
+
+/* ─────────────────────────────────────────
+   5. SHARED — Validation States
+───────────────────────────────────────── */
+#addReceiptModal .error-text,
+.receipt-page .error-text {
+    font-size: 0.78rem;
+    min-height: 1rem;
+    display: block;
+}
+
+#addReceiptModal .is-invalid,
+.receipt-page .is-invalid {
+    border-color: #dc3545 !important;
+}
+
+#addReceiptModal .is-invalid:focus,
+.receipt-page .is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
+}
+
+/* ══════════════════════════════════════════
+   DARK THEME OVERRIDES
+══════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   6. DARK — Page Card & Filter
+───────────────────────────────────────── */
+.dark-theme .receipt-page .glass-card {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .receipt-page .filter-section {
+    background: #1e2130;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .receipt-page .filter-section label {
+    color: #cbd5e1 !important;
+}
+
+.dark-theme .receipt-page .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ─────────────────────────────────────────
+   7. DARK — Filter Form Controls
+───────────────────────────────────────── */
+.dark-theme .receipt-page .filter-section .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .receipt-page .filter-section .form-control-modern:focus {
+    background: #14161f;
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.18);
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────
+   8. DARK — Filter Select2
+───────────────────────────────────────── */
+.dark-theme .receipt-page .filter-section .select2-container--default .select2-selection--single {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #e2e8f0;
+}
+
+.dark-theme .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #8896b3;
+}
+
+.dark-theme .receipt-page .filter-section .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-top-color: #8896b3;
+}
+
+/* ─────────────────────────────────────────
+   9. DARK — Filter Buttons
+───────────────────────────────────────── */
+.dark-theme .receipt-page .filter-section .btn-outline-primary {
+    color: #7b96f0;
+    border-color: #4e73df;
+}
+
+.dark-theme .receipt-page .filter-section .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #4e73df;
+}
+
+/* ─────────────────────────────────────────
+   10. DARK — Modal Shell
+───────────────────────────────────────── */
+.dark-theme #addReceiptModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #addReceiptModal .modal-header,
+.dark-theme #addReceiptModal .modal-footer {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme #addReceiptModal .modal-title {
+    color: #e2e8f0;
+}
+
+.dark-theme #addReceiptModal .close {
+    color: #8896b3;
+    text-shadow: none;
+}
+
+.dark-theme #addReceiptModal .close:hover {
+    color: #e2e8f0;
+}
+
+/* ─────────────────────────────────────────
+   11. DARK — Modal Form Controls
+───────────────────────────────────────── */
+.dark-theme #addReceiptModal .form-control {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addReceiptModal .form-control:focus {
+    background: #14161f;
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.18);
+    color: #fff;
+}
+
+.dark-theme #addReceiptModal .form-control::placeholder {
+    color: #8896b3;
+}
+
+.dark-theme #addReceiptModal label {
+    color: #cbd5e1;
+}
+
+/* ─────────────────────────────────────────
+   12. DARK — Modal Select2
+───────────────────────────────────────── */
+.dark-theme #addReceiptModal .select2-container--default .select2-selection--single {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme #addReceiptModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #e2e8f0;
+}
+
+.dark-theme #addReceiptModal .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #8896b3;
+}
+
+.dark-theme #addReceiptModal .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-top-color: #8896b3;
+}
