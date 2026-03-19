@@ -16,6 +16,7 @@
         "mcamara/laravel-localization": "*",
         "spatie/laravel-permission": "*",
         "spatie/laravel-translatable": "*",
+        "stripe/stripe-php": "*",
         "symfony/http-client": "*",
         "symfony/mailgun-mailer": "*",
         "yajra/laravel-datatables-oracle": "*"
