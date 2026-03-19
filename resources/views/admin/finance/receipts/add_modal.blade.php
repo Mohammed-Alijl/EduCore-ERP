@@ -61,8 +61,9 @@
                                 <select id="payment_gateway_id" name="payment_gateway_id"
                                     class="form-control select2-modal" required>
                                     <option value="">{{ trans('admin.global.select') }}</option>
-                                    @foreach ($lookups['payment_gateways'] as $gateway)
-                                        <option value="{{ $gateway->id }}" data-code="{{ $gateway->code }}">{{ $gateway->name }}</option>
+                                    @foreach ($lookups['offline_payment_gateways'] as $gateway)
+                                        <option value="{{ $gateway->id }}" data-code="{{ $gateway->code }}">
+                                            {{ $gateway->name }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger error-text payment_gateway_id_error"></span>

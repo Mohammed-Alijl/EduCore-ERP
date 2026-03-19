@@ -40,6 +40,7 @@
         $lookups = $lookups ?? [
             'academic_years' => $academic_years ?? collect(),
             'payment_gateways' => $payment_gateways ?? collect(),
+            'offline_payment_gateways' => $offline_payment_gateways ?? collect(),
             'currencies' => $currencies ?? collect(),
         ];
     @endphp
