@@ -10,12 +10,14 @@ use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\ExamController;
+use App\Http\Controllers\Admin\Finance\CurrencyController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
 use App\Http\Controllers\Admin\Finance\FeeController;
 use App\Http\Controllers\Admin\Finance\InvoiceController;
-use App\Http\Controllers\Admin\Finance\CurrencyController;
-use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\Finance\PaymentGatewayController;
+use App\Http\Controllers\Admin\Finance\PaymentVoucherController;
+use App\Http\Controllers\Admin\Finance\ReceiptController;
+use App\Http\Controllers\Admin\Finance\StudentDiscountController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
@@ -33,7 +35,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
 
@@ -170,6 +172,19 @@ Route::group(
                     });
                     Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
 
+                    // ─── Payment Vouchers ──────────────────────────────────────────────────────────
+                    Route::prefix('payment_vouchers')->name('payment_vouchers.')->group(function () {
+                        Route::get('/datatable', [PaymentVoucherController::class, 'datatable'])->name('datatable');
+                        Route::get('/{payment_voucher}/print', [PaymentVoucherController::class, 'print'])->name('print');
+                    });
+                    Route::resource('payment_vouchers', PaymentVoucherController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Student Discounts ─────────────────────────────────────────────────────────
+                    Route::prefix('student_discounts')->name('student_discounts.')->group(function () {
+                        Route::get('/datatable', [StudentDiscountController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('student_discounts', StudentDiscountController::class)->except(['show', 'create', 'edit']);
+
                     // ─── Currencies ─────────────────────────────────────────────────────────────────
                     Route::prefix('currencies')->name('currencies.')->group(function () {
                         Route::get('/datatable', [CurrencyController::class, 'datatable'])->name('datatable');
@@ -236,7 +251,6 @@ Route::group(
                     // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
                     Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
                     Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
-
 
                     // ─── Academic Year ───────────────────────────────────────────────────────────────
                     Route::resource('academic_years', AcademicYearController::class)->except(['show', 'create', 'edit', 'destroy']);
