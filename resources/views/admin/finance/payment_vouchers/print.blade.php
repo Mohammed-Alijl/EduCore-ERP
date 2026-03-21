@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ trans('admin.finance.payment_vouchers.print_title') }} #{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}
+    <title>{{ trans('admin.finance.payment_vouchers.print_title') }}
+        #{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}
     </title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -456,7 +457,8 @@
 
             {{-- Amount hero --}}
             <div class="amount-hero">
-                <div class="amount-hero-paid-stamp">{{ trans('admin.finance.payment_vouchers.print_paid_stamp') }}</div>
+                <div class="amount-hero-paid-stamp">{{ trans('admin.finance.payment_vouchers.print_paid_stamp') }}
+                </div>
                 <div class="amount-label">{{ trans('admin.finance.payment_vouchers.fields.amount') }}</div>
                 <div class="amount-value">
                     {{ number_format($paymentVoucher->amount, 2) }}
@@ -510,14 +512,17 @@
 
                 {{-- Voucher details card --}}
                 <div class="info-card">
-                    <div class="info-card-header">{{ trans('admin.finance.payment_vouchers.print_voucher_details') }}</div>
+                    <div class="info-card-header">{{ trans('admin.finance.payment_vouchers.print_voucher_details') }}
+                    </div>
                     <div class="info-card-body">
                         <div class="info-row">
-                            <span class="info-key">{{ trans('admin.finance.payment_vouchers.print_voucher_no') }}</span>
+                            <span
+                                class="info-key">{{ trans('admin.finance.payment_vouchers.print_voucher_no') }}</span>
                             <span class="info-val">PV-#{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-key">{{ trans('admin.finance.payment_vouchers.fields.payment_gateway') }}</span>
+                            <span
+                                class="info-key">{{ trans('admin.finance.payment_vouchers.fields.payment_gateway') }}</span>
                             <span class="info-val">
                                 <span class="badge-gateway">{{ $paymentVoucher->paymentGateway->name ?? '-' }}</span>
                             </span>
