@@ -59,6 +59,7 @@ return [
         'filters' => 'الفلاتر',
         'search' => 'بحث',
         'print' => 'طباعة',
+        'print_date' => 'تاريخ الطباعة',
         'name' => 'الاسم',
         'code' => 'الكود',
         'no_description' => 'لا يوجد وصف.',

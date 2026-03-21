@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ trans('admin.finance.vouchers.print_title') }} #{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}
+    <title>{{ trans('admin.finance.payment_vouchers.print_title') }} #{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}
     </title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -437,14 +437,14 @@
         <div class="voucher-header">
             <div class="brand-block">
                 <div class="school-name">{{ config('app.name') }}</div>
-                <div class="doc-label">{{ trans('admin.finance.vouchers.print_title') }}</div>
+                <div class="doc-label">{{ trans('admin.finance.payment_vouchers.print_title') }}</div>
             </div>
             <div class="voucher-meta">
                 <div class="voucher-number">
                     PV-#{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}
                 </div>
                 <div class="voucher-date">
-                    {{ trans('admin.finance.vouchers.fields.date') }}:
+                    {{ trans('admin.finance.payment_vouchers.fields.date') }}:
                     {{ $paymentVoucher->date->format('d M Y') }}
                 </div>
             </div>
@@ -456,8 +456,8 @@
 
             {{-- Amount hero --}}
             <div class="amount-hero">
-                <div class="amount-hero-paid-stamp">{{ trans('admin.finance.vouchers.print_paid_stamp') }}</div>
-                <div class="amount-label">{{ trans('admin.finance.vouchers.fields.amount') }}</div>
+                <div class="amount-hero-paid-stamp">{{ trans('admin.finance.payment_vouchers.print_paid_stamp') }}</div>
+                <div class="amount-label">{{ trans('admin.finance.payment_vouchers.fields.amount') }}</div>
                 <div class="amount-value">
                     {{ number_format($paymentVoucher->amount, 2) }}
                     <span
@@ -466,17 +466,17 @@
                 <div class="amount-sub">
                     @if ($paymentVoucher->base_amount != $paymentVoucher->amount)
                         <span class="amount-sub-item">
-                            {{ trans('admin.finance.vouchers.fields.base_amount') }}:
+                            {{ trans('admin.finance.payment_vouchers.fields.base_amount') }}:
                             <strong>${{ number_format($paymentVoucher->base_amount, 2) }}</strong>
                         </span>
                         <span class="amount-sub-item">
-                            {{ trans('admin.finance.vouchers.print_exchange_rate') }}:
+                            {{ trans('admin.finance.payment_vouchers.print_exchange_rate') }}:
                             <strong>1 {{ $paymentVoucher->currency_code }} =
                                 {{ number_format($paymentVoucher->exchange_rate, 4) }}</strong>
                         </span>
                     @endif
                     <span class="amount-sub-item">
-                        {{ trans('admin.finance.vouchers.fields.academic_year') }}:
+                        {{ trans('admin.finance.payment_vouchers.fields.academic_year') }}:
                         <strong>{{ $paymentVoucher->academicYear->name ?? '-' }}</strong>
                     </span>
                 </div>
@@ -487,7 +487,7 @@
 
                 {{-- Student card --}}
                 <div class="info-card">
-                    <div class="info-card-header">{{ trans('admin.finance.vouchers.fields.student') }}</div>
+                    <div class="info-card-header">{{ trans('admin.finance.payment_vouchers.fields.student') }}</div>
                     <div class="info-card-body">
                         <div class="info-row">
                             <span class="info-key">{{ trans('admin.global.name') }}</span>
@@ -510,14 +510,14 @@
 
                 {{-- Voucher details card --}}
                 <div class="info-card">
-                    <div class="info-card-header">{{ trans('admin.finance.vouchers.print_voucher_details') }}</div>
+                    <div class="info-card-header">{{ trans('admin.finance.payment_vouchers.print_voucher_details') }}</div>
                     <div class="info-card-body">
                         <div class="info-row">
-                            <span class="info-key">{{ trans('admin.finance.vouchers.print_voucher_no') }}</span>
+                            <span class="info-key">{{ trans('admin.finance.payment_vouchers.print_voucher_no') }}</span>
                             <span class="info-val">PV-#{{ str_pad($paymentVoucher->id, 6, '0', STR_PAD_LEFT) }}</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-key">{{ trans('admin.finance.vouchers.fields.payment_gateway') }}</span>
+                            <span class="info-key">{{ trans('admin.finance.payment_vouchers.fields.payment_gateway') }}</span>
                             <span class="info-val">
                                 <span class="badge-gateway">{{ $paymentVoucher->paymentGateway->name ?? '-' }}</span>
                             </span>
@@ -525,7 +525,7 @@
                         @if ($paymentVoucher->reference_number)
                             <div class="info-row">
                                 <span
-                                    class="info-key">{{ trans('admin.finance.vouchers.fields.reference_number') }}</span>
+                                    class="info-key">{{ trans('admin.finance.payment_vouchers.fields.reference_number') }}</span>
                                 <span class="info-val">
                                     <span class="badge-ref">{{ $paymentVoucher->reference_number }}</span>
                                 </span>
@@ -543,7 +543,7 @@
             {{-- Notes --}}
             @if ($paymentVoucher->description)
                 <div class="notes-section">
-                    <div class="notes-header">{{ trans('admin.finance.vouchers.fields.description') }}</div>
+                    <div class="notes-header">{{ trans('admin.finance.payment_vouchers.fields.description') }}</div>
                     <div class="notes-body">{{ $paymentVoucher->description }}</div>
                 </div>
             @endif
@@ -554,10 +554,10 @@
         <div class="voucher-footer">
             <div class="footer-left">
                 <strong>{{ config('app.name') }}</strong>
-                {{ trans('admin.finance.vouchers.print_footer_note') }}
+                {{ trans('admin.finance.payment_vouchers.print_footer_note') }}
             </div>
             <div class="footer-right">
-                <div class="official-stamp">&#10003; {{ trans('admin.finance.vouchers.print_official') }}</div>
+                <div class="official-stamp">&#10003; {{ trans('admin.finance.payment_vouchers.print_official') }}</div>
             </div>
         </div>
 

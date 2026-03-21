@@ -58,6 +58,7 @@ return [
         'reset_filters' => 'Reset Filters',
         'search' => 'Search',
         'print' => 'Print',
+        'print_date' => 'Print Date',
         'name' => 'Name',
         'code' => 'Code',
         'no_description' => 'No description provided.',
