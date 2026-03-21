@@ -30,6 +30,8 @@ class RoleSeeder extends Seeder
             'receipts'          => ['view', 'create', 'delete', 'print'],
             'currencies'        => ['view', 'create', 'edit', 'delete'],
             'payment_gateways'  => ['view', 'create', 'edit', 'delete'],
+            'paymentVoucher'   => ['view', 'create', 'delete', 'print'],
+            'studentDiscounts' => ['view', 'create', 'delete'],
         ];
 
         foreach ($permissions as $module => $actions) {

@@ -90,6 +90,7 @@ return [
         'invoices' => 'الفواتير',
         'receipts' => 'سندات القبض',
         'payment' => 'سندات الصرف',
+        'student_discounts' => 'خصومات الطلاب',
         'finance' => 'المالية',
         'reports_settings' => 'التقارير والإعدادات',
         'settings' => 'الإعدادات',
@@ -1155,6 +1156,8 @@ return [
                 'payment_gateway_disabled' => 'تم تعطيل بوابة الدفع بنجاح.',
                 'payment_voucher_created' => 'تم إنشاء سند الصرف بنجاح.',
                 'payment_voucher_deleted' => 'تم حذف سند الصرف بنجاح.',
+                'student_discount_created' => 'تم إنشاء خصم الطالب بنجاح وتم تخفيض المديونية.',
+                'student_discount_deleted' => 'تم حذف خصم الطالب بنجاح وإعادة المديونية.',
             ],
             'failed' => [
                 'store' => 'فشل في حفظ بيانات الرسوم.',
@@ -1180,6 +1183,8 @@ return [
                 'payment_voucher_created' => 'فشل في إنشاء سند الصرف.',
                 'payment_voucher_deleted' => 'فشل في حذف سند الصرف.',
                 'payment_voucher_delete' => 'فشل في حذف سند الصرف.',
+                'student_discount_created' => 'فشل في إنشاء خصم الطالب.',
+                'student_discount_delete' => 'فشل في حذف خصم الطالب.',
             ],
 
         ],
@@ -1198,6 +1203,20 @@ return [
                 'base_amount' => 'المبلغ الأساسي',
                 'date' => 'التاريخ',
                 'reference_number' => 'رقم المرجع',
+                'description' => 'الوصف',
+            ],
+        ],
+
+        'student_discounts' => [
+            'title' => 'خصومات الطلاب',
+            'management' => 'إدارة خصومات الطلاب',
+            'add' => 'إنشاء خصم جديد',
+            'show' => 'تفاصيل الخصم',
+            'fields' => [
+                'student' => 'الطالب',
+                'academic_year' => 'السنة الدراسية',
+                'amount' => 'مبلغ الخصم',
+                'date' => 'التاريخ',
                 'description' => 'الوصف',
             ],
         ],
