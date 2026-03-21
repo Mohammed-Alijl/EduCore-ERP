@@ -1211,6 +1211,7 @@ return [
             'print_exchange_rate' => 'سعر الصرف',
             'print_footer_note' => 'هذا سند صرف رسمي. احفظه للمراجعة.',
             'print_official' => 'سند رسمي',
+            'print_paid_stamp' => 'مدفوع',
         ],
 
         'student_discounts' => [

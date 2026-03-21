@@ -151,7 +151,21 @@
         }
 
         .amount-hero::after {
-            content: 'PAID';
+            position: absolute;
+            {{ LaravelLocalization::getCurrentLocale() === 'ar' ? 'left: -14px;' : 'right: -14px;' }} top: 50%;
+            transform: translateY(-50%) {{ LaravelLocalization::getCurrentLocale() === 'ar' ? 'rotate(90deg)' : 'rotate(-90deg)' }};
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            color: var(--paid-red);
+            background: #fee2e2;
+            border: 1.5px solid #fecaca;
+            border-radius: 4px;
+            padding: 3px 10px;
+            white-space: nowrap;
+        }
+
+        .amount-hero-paid-stamp {
             position: absolute;
             {{ LaravelLocalization::getCurrentLocale() === 'ar' ? 'left: -14px;' : 'right: -14px;' }} top: 50%;
             transform: translateY(-50%) {{ LaravelLocalization::getCurrentLocale() === 'ar' ? 'rotate(90deg)' : 'rotate(-90deg)' }};
@@ -442,6 +456,7 @@
 
             {{-- Amount hero --}}
             <div class="amount-hero">
+                <div class="amount-hero-paid-stamp">{{ trans('admin.finance.vouchers.print_paid_stamp') }}</div>
                 <div class="amount-label">{{ trans('admin.finance.vouchers.fields.amount') }}</div>
                 <div class="amount-value">
                     {{ number_format($paymentVoucher->amount, 2) }}

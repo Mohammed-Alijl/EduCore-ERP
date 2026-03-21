@@ -1357,6 +1357,7 @@ return [
             'print_exchange_rate' => 'Exchange Rate',
             'print_footer_note' => 'This is an official payment voucher. Keep for your records.',
             'print_official' => 'Official Voucher',
+            'print_paid_stamp' => 'PAID',
         ],
         'student_discounts' => [
             'title' => 'Student Discounts',
