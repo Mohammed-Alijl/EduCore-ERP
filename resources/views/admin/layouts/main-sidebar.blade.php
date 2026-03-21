@@ -361,6 +361,18 @@
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.receipts') }}</span></a>
                 </li>
             @endcan
+            @can('view_paymentVoucher')
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.payment_vouchers.index') }}"><svg
+                            xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M4 6h16v2H4zm0 6h16v6H4z" opacity=".3" />
+                            <path
+                                d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+                        </svg><span class="side-menu__label">{{ __('admin.sidebar.payment_vouchers') }}</span></a>
+                </li>
+            @endcan
             <li class="slide">
                 <a class="side-menu__item" href="#"><svg xmlns="http://www.w3.org/2000/svg"
                         class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">

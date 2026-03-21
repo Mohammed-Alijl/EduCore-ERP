@@ -1179,6 +1179,27 @@ return [
                 'payment_gateway_in_use'  => 'لا يمكن حذف بوابة الدفع — إنها مستخدمة في سندات قبض موجودة. قم بتعطيلها بدلاً من ذلك.',
                 'payment_processing_failed' => 'فشل في معالجة الدفع. يرجى المحاولة مرة أخرى.',
                 'bank_transfer_ref_required' => 'رقم مرجع التحويل البنكي مطلوب.',
+                'payment_voucher_created' => 'تم إنشاء سند الصرف بنجاح.',
+                'payment_voucher_deleted' => 'تم حذف سند الصرف بنجاح.',
+            ],
+
+        ],
+
+        'payment_vouchers' => [
+            'title' => 'سندات الصرف',
+            'management' => 'إدارة سندات الصرف',
+            'add' => 'إنشاء سند صرف',
+            'show' => 'تفاصيل سند الصرف',
+            'fields' => [
+                'student' => 'الطالب',
+                'academic_year' => 'السنة الدراسية',
+                'payment_gateway' => 'بوابة الدفع',
+                'currency' => 'العملة',
+                'amount' => 'المبلغ',
+                'base_amount' => 'المبلغ الأساسي',
+                'date' => 'التاريخ',
+                'reference_number' => 'رقم المرجع',
+                'description' => 'الوصف',
             ],
         ],
 

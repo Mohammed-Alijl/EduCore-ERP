@@ -10,12 +10,13 @@ use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\ExamController;
+use App\Http\Controllers\Admin\Finance\CurrencyController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
 use App\Http\Controllers\Admin\Finance\FeeController;
 use App\Http\Controllers\Admin\Finance\InvoiceController;
-use App\Http\Controllers\Admin\Finance\CurrencyController;
-use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\Finance\PaymentGatewayController;
+use App\Http\Controllers\Admin\Finance\PaymentVoucherController;
+use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
@@ -169,6 +170,12 @@ Route::group(
                         Route::get('/{receipt}/print', [ReceiptController::class, 'print'])->name('print');
                     });
                     Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Payment Vouchers ──────────────────────────────────────────────────────────
+                    Route::prefix('payment_vouchers')->name('payment_vouchers.')->group(function () {
+                        Route::get('/datatable', [PaymentVoucherController::class, 'datatable'])->name('datatable');
+                    });
+                    Route::resource('payment_vouchers', PaymentVoucherController::class)->except(['show', 'create', 'edit']);
 
                     // ─── Currencies ─────────────────────────────────────────────────────────────────
                     Route::prefix('currencies')->name('currencies.')->group(function () {
