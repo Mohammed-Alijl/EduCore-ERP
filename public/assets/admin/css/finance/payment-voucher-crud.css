@@ -1,0 +1,199 @@
+/* ══════════════════════════════════════════
+   PAYMENT VOUCHERS — Page & Modal Styles
+══════════════════════════════════════════ */
+
+.voucher-page .glass-card {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.voucher-page .filter-section {
+    background: #f8f9fc;
+    border: 1px solid #e8ecf4;
+    border-radius: 10px;
+}
+
+.voucher-page .form-control-modern {
+    border-radius: 8px;
+    min-height: 38px;
+}
+
+.voucher-page .btn-modern {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.voucher-page .table-hover tbody tr:hover {
+    background-color: #f8f9fc;
+}
+
+.voucher-page .select2-container--default .select2-selection--single,
+#addPaymentVoucherModal .select2-container--default .select2-selection--single {
+    min-height: 38px;
+    border-radius: 8px;
+    border-color: #d8dde6;
+}
+
+.voucher-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+#addPaymentVoucherModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+    padding-left: 0.7rem;
+}
+
+[dir="rtl"] .voucher-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+[dir="rtl"] #addPaymentVoucherModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+#addPaymentVoucherModal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+#addPaymentVoucherModal .modal-header {
+    border-bottom: 1px solid #eef0f4;
+    padding: 1rem 1.25rem;
+}
+
+#addPaymentVoucherModal .modal-footer {
+    border-top: 1px solid #eef0f4;
+}
+
+#addPaymentVoucherModal .error-text,
+.voucher-page .error-text {
+    font-size: 0.78rem;
+    min-height: 1rem;
+    display: block;
+}
+
+#addPaymentVoucherModal .is-invalid,
+.voucher-page .is-invalid {
+    border-color: #dc3545 !important;
+}
+
+#addPaymentVoucherModal .is-invalid:focus,
+.voucher-page .is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
+}
+
+.dark-theme .voucher-page .glass-card {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .voucher-page .filter-section {
+    background: #1e2130;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .voucher-page .filter-section label {
+    color: #cbd5e1 !important;
+}
+
+.dark-theme .voucher-page .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dark-theme .voucher-page .filter-section .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .voucher-page .filter-section .form-control-modern:focus {
+    background: #14161f;
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.18);
+    color: #fff;
+}
+
+.dark-theme .voucher-page .filter-section .select2-container--default .select2-selection--single {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .voucher-page .filter-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #e2e8f0;
+}
+
+.dark-theme .voucher-page .filter-section .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #8896b3;
+}
+
+.dark-theme .voucher-page .filter-section .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-top-color: #8896b3;
+}
+
+.dark-theme .voucher-page .filter-section .btn-outline-primary {
+    color: #7b96f0;
+    border-color: #4e73df;
+}
+
+.dark-theme .voucher-page .filter-section .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #4e73df;
+}
+
+.dark-theme #addPaymentVoucherModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #addPaymentVoucherModal .modal-header,
+.dark-theme #addPaymentVoucherModal .modal-footer {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme #addPaymentVoucherModal .modal-title {
+    color: #e2e8f0;
+}
+
+.dark-theme #addPaymentVoucherModal .close {
+    color: #8896b3;
+    text-shadow: none;
+}
+
+.dark-theme #addPaymentVoucherModal .close:hover {
+    color: #e2e8f0;
+}
+
+.dark-theme #addPaymentVoucherModal .form-control {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addPaymentVoucherModal .form-control:focus {
+    background: #14161f;
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.18);
+    color: #fff;
+}
+
+.dark-theme #addPaymentVoucherModal .form-control::placeholder {
+    color: #8896b3;
+}
+
+.dark-theme #addPaymentVoucherModal label {
+    color: #cbd5e1;
+}
+
+.dark-theme #addPaymentVoucherModal .select2-container--default .select2-selection--single {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme #addPaymentVoucherModal .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #e2e8f0;
+}
+
+.dark-theme #addPaymentVoucherModal .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #8896b3;
+}
+
+.dark-theme #addPaymentVoucherModal .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-top-color: #8896b3;
+}

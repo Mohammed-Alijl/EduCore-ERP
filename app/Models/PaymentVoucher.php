@@ -35,6 +35,11 @@ class PaymentVoucher extends Model
         return $this->belongsTo(PaymentGateway::class);
     }
 
+    public function academicYear(): BelongsTo
+    {
+        return $this->belongsTo(AcademicYear::class);
+    }
+
     public function studentAccount(): MorphOne
     {
         return $this->morphOne(StudentAccount::class, 'transactionable');
