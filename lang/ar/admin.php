@@ -1227,6 +1227,12 @@ return [
                 'date' => 'التاريخ',
                 'description' => 'الوصف',
             ],
+            'placeholders' => [
+                'description' => 'مثال: خصم الأخوة، منحة التفوق',
+            ],
+            'hints' => [
+                'description' => 'أدخل سبب الخصم (مثال: خصم الأخوة، الدفع المبكر).',
+            ],
         ],
 
         'fee_categories' => [

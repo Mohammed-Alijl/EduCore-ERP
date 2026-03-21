@@ -1372,6 +1372,12 @@ return [
                 'date' => 'Date',
                 'description' => 'Description',
             ],
+            'placeholders' => [
+                'description' => 'e.g., Sibling Discount, Merit Scholarship',
+            ],
+            'hints' => [
+                'description' => 'Enter a brief reason for the discount (e.g., Sibling Discount, Early Payment).',
+            ],
         ],
     ],
 ];

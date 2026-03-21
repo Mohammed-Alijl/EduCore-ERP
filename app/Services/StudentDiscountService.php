@@ -16,7 +16,7 @@ class StudentDiscountService
      */
     public function getDiscountsQuery(array $filters): Builder
     {
-        $query = StudentDiscount::with(['student', 'studentAccount']);
+        $query = StudentDiscount::with(['student', 'academicYear', 'studentAccount']);
 
         return $this->applyFilters($query, $filters);
     }
@@ -29,13 +29,18 @@ class StudentDiscountService
         return DataTables::of($query)
             ->addIndexColumn()
             ->addColumn('student', fn($row) => '<strong>' . e($row->student->name) . '</strong>')
+            ->addColumn('academic_year', function ($row) {
+                return $row->academicYear
+                    ? '<span class="badge bg-info">' . e($row->academicYear->name) . '</span>'
+                    : '-';
+            })
             ->addColumn('amount', function ($row) {
                 return '<span class="text-success fw-bold">' . number_format($row->amount, 2) . '</span>';
             })
             ->addColumn('date', fn($row) => '<small class="text-muted">' . $row->date->format('Y-m-d') . '</small>')
             ->addColumn('description', fn($row) => '<small>' . e($row->description) . '</small>')
             ->addColumn('actions', fn($row) => $this->renderActionsColumn($row))
-            ->rawColumns(['student', 'amount', 'date', 'description', 'actions'])
+            ->rawColumns(['student', 'academic_year', 'amount', 'date', 'description', 'actions'])
             ->make(true);
     }
 
