@@ -175,6 +175,7 @@ Route::group(
                     // ─── Payment Vouchers ──────────────────────────────────────────────────────────
                     Route::prefix('payment_vouchers')->name('payment_vouchers.')->group(function () {
                         Route::get('/datatable', [PaymentVoucherController::class, 'datatable'])->name('datatable');
+                        Route::get('/{payment_voucher}/print', [PaymentVoucherController::class, 'print'])->name('print');
                     });
                     Route::resource('payment_vouchers', PaymentVoucherController::class)->except(['show', 'create', 'edit']);
 

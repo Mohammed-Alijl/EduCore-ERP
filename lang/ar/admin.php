@@ -1205,6 +1205,12 @@ return [
                 'reference_number' => 'رقم المرجع',
                 'description' => 'الوصف',
             ],
+            'print_title' => 'سند الصرف',
+            'print_voucher_details' => 'تفاصيل السند',
+            'print_voucher_no' => 'رقم السند',
+            'print_exchange_rate' => 'سعر الصرف',
+            'print_footer_note' => 'هذا سند صرف رسمي. احفظه للمراجعة.',
+            'print_official' => 'سند رسمي',
         ],
 
         'student_discounts' => [

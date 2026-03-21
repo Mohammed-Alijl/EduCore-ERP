@@ -23,6 +23,7 @@ class PaymentVoucherController extends Controller implements HasMiddleware
             new Middleware('permission:view_paymentVoucher', only: ['index', 'datatable']),
             new Middleware('permission:create_paymentVoucher', only: ['store']),
             new Middleware('permission:delete_paymentVoucher', only: ['destroy']),
+            new Middleware('permission:print_paymentVoucher', only: ['print']),
         ];
     }
 
@@ -87,5 +88,12 @@ class PaymentVoucherController extends Controller implements HasMiddleware
                 'message' => __('admin.finance.messages.failed.payment_voucher_delete'),
             ], 500);
         }
+    }
+
+    public function print(PaymentVoucher $paymentVoucher)
+    {
+        $paymentVoucher->load(['student.grade', 'student.classroom', 'academicYear', 'paymentGateway']);
+
+        return view('admin.finance.payment_vouchers.print', compact('paymentVoucher'));
     }
 }

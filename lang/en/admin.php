@@ -1351,6 +1351,12 @@ return [
                 'reference_number' => 'Reference Number',
                 'description' => 'Description',
             ],
+            'print_title' => 'Payment Voucher',
+            'print_voucher_details' => 'Voucher Details',
+            'print_voucher_no' => 'Voucher No.',
+            'print_exchange_rate' => 'Exchange Rate',
+            'print_footer_note' => 'This is an official payment voucher. Keep for your records.',
+            'print_official' => 'Official Voucher',
         ],
         'student_discounts' => [
             'title' => 'Student Discounts',
