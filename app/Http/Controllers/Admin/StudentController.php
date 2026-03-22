@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Student\StoreRequest;
 use App\Http\Requests\Admin\Student\UpdateRequest;
 use App\Models\Student;
 use App\Services\StudentFinanceService;
+use App\Services\StudentGradeService;
 use App\Services\StudentService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -16,13 +17,14 @@ class StudentController extends Controller implements HasMiddleware
 {
     public function __construct(
         protected readonly StudentService $studentService,
-        protected readonly StudentFinanceService $financeService
+        protected readonly StudentFinanceService $financeService,
+        protected readonly StudentGradeService $gradeService
     ) {}
 
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_students', only: ['index', 'finance']),
+            new Middleware('permission:view_students', only: ['index', 'finance', 'grades']),
             new Middleware('permission:create_students', only: ['store']),
             new Middleware('permission:edit_students', only: ['update']),
             new Middleware('permission:delete_students', only: ['destroy']),
@@ -187,5 +189,14 @@ class StudentController extends Controller implements HasMiddleware
         $data = $this->financeService->getFinancialOverview($student);
 
         return view('admin.students.finance_modal', $data);
+    }
+
+    public function grades(Request $request, Student $student)
+    {
+        $academicYearId = $request->input('academic_year_id');
+
+        $data = $this->gradeService->getGradeData($student, $academicYearId);
+
+        return view('admin.students.grades', $data);
     }
 }
