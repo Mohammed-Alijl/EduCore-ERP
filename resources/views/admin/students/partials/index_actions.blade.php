@@ -29,6 +29,15 @@
         </a>
     @endcan
 
+    {{-- ─── Grades ─── --}}
+    @can('view_students')
+        <a class="btn btn-sm btn-light shadow-sm mx-1 text-primary px-2 py-1"
+            href="{{ route('admin.students.grades', $row->id) }}" title="{{ trans('admin.students.grades.title') }}"
+            style="border-radius: 6px;">
+            <i class="las la-chart-bar tx-18"></i>
+        </a>
+    @endcan
+
     @can('edit_students')
         <a href="javascript:void(0)" class="btn btn-info btn-sm edit-btn" data-id="{{ $row->id }}"
             data-url="{{ route('admin.students.update', $row->id) }}" data-student_code="{{ $row->student_code }}"

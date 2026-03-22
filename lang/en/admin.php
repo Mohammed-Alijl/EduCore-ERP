@@ -721,6 +721,24 @@ return [
                 'vouchers' => 'No payment vouchers found.',
             ],
         ],
+
+        'grades' => [
+            'title' => 'Student Grades',
+            'academic_year' => 'Academic Year',
+            'overall_grade' => 'Overall Grade',
+            'subjects' => 'Subjects',
+            'with_exams' => 'with exams',
+            'total_exams' => 'Total Exams',
+            'completed' => 'completed',
+            'total_score' => 'Total Score',
+            'points' => 'points',
+            'grade_distribution' => 'Grade Distribution',
+            'subjects_breakdown' => 'Subjects Breakdown',
+            'exams' => 'exams',
+            'no_exams' => 'No exams yet',
+            'no_subjects' => 'No subjects found for this student.',
+            'no_exams_for_subject' => 'No exams taken for this subject yet.',
+        ],
     ],
 
     /*

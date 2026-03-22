@@ -706,6 +706,24 @@ return [
                 'vouchers' => 'لا توجد سندات صرف.',
             ],
         ],
+
+        'grades' => [
+            'title' => 'درجات الطالب',
+            'academic_year' => 'السنة الدراسية',
+            'overall_grade' => 'التقدير العام',
+            'subjects' => 'المواد',
+            'with_exams' => 'لديها اختبارات',
+            'total_exams' => 'إجمالي الاختبارات',
+            'completed' => 'مكتملة',
+            'total_score' => 'مجموع الدرجات',
+            'points' => 'نقطة',
+            'grade_distribution' => 'توزيع التقديرات',
+            'subjects_breakdown' => 'تفاصيل المواد',
+            'exams' => 'اختبارات',
+            'no_exams' => 'لا توجد اختبارات بعد',
+            'no_subjects' => 'لا توجد مواد لهذا الطالب.',
+            'no_exams_for_subject' => 'لم يتم إجراء اختبارات لهذه المادة بعد.',
+        ],
     ],
 
     /*
