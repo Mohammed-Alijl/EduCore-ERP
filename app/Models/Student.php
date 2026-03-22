@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Translatable\HasTranslations;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Translatable\HasTranslations;
 
 class Student extends Authenticatable
 {
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, HasTranslations, SoftDeletes;
 
     public $translatable = ['name'];
 
@@ -54,10 +54,11 @@ class Student extends Authenticatable
 
     public function getImageUrlAttribute()
     {
-        if (!empty($this->image)) {
+        if (! empty($this->image)) {
             return asset('storage/' . $this->image);
         }
         $gender = $this->gender->getTranslation('name', 'en');
+
         return $gender === 'Female'
             ? asset('assets/student/img/faces/girl_student.png')
             : asset('assets/student/img/faces/boy_student.png');
@@ -82,7 +83,7 @@ class Student extends Authenticatable
         });
     }
 
-    //======================== RELATIONSHIPS ========================
+    // ======================== RELATIONSHIPS ========================
     public function guardian()
     {
         return $this->belongsTo(Guardian::class, 'guardian_id');
@@ -136,5 +137,30 @@ class Student extends Authenticatable
     public function attendances()
     {
         return $this->hasMany(Attendance::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
+    }
+
+    public function discounts()
+    {
+        return $this->hasMany(StudentDiscount::class);
+    }
+
+    public function paymentVouchers()
+    {
+        return $this->hasMany(PaymentVoucher::class);
+    }
+
+    public function studentAccounts()
+    {
+        return $this->hasMany(StudentAccount::class);
     }
 }

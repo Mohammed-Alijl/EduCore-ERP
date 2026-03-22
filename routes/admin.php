@@ -133,6 +133,7 @@ Route::group(
                         Route::get('/next-code', [StudentController::class, 'getNextStudentCode'])->name('next-code');
                         Route::post('attachments/destroy', [StudentController::class, 'deleteAttachment'])->name('attachment.destroy');
                         Route::get('search', [StudentController::class, 'search'])->name('search');
+                        Route::get('{student}/finance', [StudentController::class, 'finance'])->name('finance');
                     });
 
                     // ─── Teachers ───────────────────────────────────────────────────────────────
