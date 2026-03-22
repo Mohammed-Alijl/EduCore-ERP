@@ -19,8 +19,10 @@
 @else
     <link rel="stylesheet" href="{{ URL::asset('assets/admin/css/sidemenu.css') }}">
 @endif
-{{-- Vite Assets (ApexCharts and other npm packages) --}}
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+{{-- Header Icons Fix for ApexCharts/Vite conflicts --}}
+<link href="{{ URL::asset('assets/admin/css/header-icons-fix.css') }}" rel="stylesheet">
+
 @yield('css')
 <!--- Style css -->
 @if (App::getLocale() == 'ar')

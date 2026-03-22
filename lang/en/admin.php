@@ -1474,6 +1474,13 @@ return [
                 'distribution' => 'Student Distribution',
                 'payment_timeline' => 'Payment Timeline',
                 'coming_soon' => 'Chart will be displayed soon',
+                'charges' => 'Charges',
+                'payments' => 'Payments',
+                'outstanding' => 'Outstanding',
+                'month' => 'Month',
+                'amount' => 'Amount',
+                'total_students' => 'Total Students',
+                'students' => 'Students',
             ],
 
             'table' => [

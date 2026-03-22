@@ -1462,6 +1462,13 @@ return [
                 'distribution' => 'توزيع الطلاب',
                 'payment_timeline' => 'الجدول الزمني للمدفوعات',
                 'coming_soon' => 'سيتم عرض الرسم البياني قريباً',
+                'charges' => 'الرسوم',
+                'payments' => 'المدفوعات',
+                'outstanding' => 'المتبقي',
+                'month' => 'الشهر',
+                'amount' => 'المبلغ',
+                'total_students' => 'إجمالي الطلاب',
+                'students' => 'طلاب',
             ],
 
             'table' => [

@@ -3,6 +3,9 @@
 @section('title', trans('admin.reports.financial.title'))
 
 @section('css')
+    {{-- Vite Assets (ApexCharts and other npm packages) - Only for Financial Reports --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -137,34 +140,26 @@
     <div class="row row-sm mb-4">
         {{-- Revenue Trend Chart --}}
         <div class="col-xl-8 col-lg-12">
-            <div class="chart-placeholder" id="revenue-trend-chart">
-                <div class="text-center">
-                    <i class="las la-chart-area chart-icon"></i>
-                    <div class="mt-3">
-                        <h5 style="font-weight: 700; color: #4361ee; opacity: 0.8;">
-                            {{ trans('admin.reports.financial.charts.revenue_trend') }}
-                        </h5>
-                        <p class="text-muted mb-0" style="font-size: 0.875rem;">
-                            {{ trans('admin.reports.financial.charts.coming_soon') }}
-                        </p>
-                    </div>
+            <div class="card" style="border-radius: 16px; border: 1px solid rgba(67, 97, 238, 0.1); box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);">
+                <div class="card-body p-4">
+                    <h5 style="font-weight: 700; color: #4361ee; margin-bottom: 1rem;">
+                        <i class="las la-chart-area mr-2 ml-2"></i>
+                        {{ trans('admin.reports.financial.charts.revenue_trend') }}
+                    </h5>
+                    <div id="revenue-trend-chart"></div>
                 </div>
             </div>
         </div>
 
         {{-- Student Distribution Chart --}}
         <div class="col-xl-4 col-lg-12">
-            <div class="chart-placeholder" id="student-distribution-chart">
-                <div class="text-center">
-                    <i class="las la-chart-pie chart-icon"></i>
-                    <div class="mt-3">
-                        <h5 style="font-weight: 700; color: #4361ee; opacity: 0.8;">
-                            {{ trans('admin.reports.financial.charts.distribution') }}
-                        </h5>
-                        <p class="text-muted mb-0" style="font-size: 0.875rem;">
-                            {{ trans('admin.reports.financial.charts.coming_soon') }}
-                        </p>
-                    </div>
+            <div class="card" style="border-radius: 16px; border: 1px solid rgba(67, 97, 238, 0.1); box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);">
+                <div class="card-body p-4">
+                    <h5 style="font-weight: 700; color: #4361ee; margin-bottom: 1rem;">
+                        <i class="las la-chart-pie mr-2 ml-2"></i>
+                        {{ trans('admin.reports.financial.charts.distribution') }}
+                    </h5>
+                    <div id="student-distribution-chart"></div>
                 </div>
             </div>
         </div>
@@ -173,17 +168,13 @@
     <div class="row row-sm mb-4">
         {{-- Payment Timeline Chart --}}
         <div class="col-12">
-            <div class="chart-placeholder" id="payment-timeline-chart" style="min-height: 320px;">
-                <div class="text-center">
-                    <i class="las la-chart-bar chart-icon"></i>
-                    <div class="mt-3">
-                        <h5 style="font-weight: 700; color: #4361ee; opacity: 0.8;">
-                            {{ trans('admin.reports.financial.charts.payment_timeline') }}
-                        </h5>
-                        <p class="text-muted mb-0" style="font-size: 0.875rem;">
-                            {{ trans('admin.reports.financial.charts.coming_soon') }}
-                        </p>
-                    </div>
+            <div class="card" style="border-radius: 16px; border: 1px solid rgba(67, 97, 238, 0.1); box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);">
+                <div class="card-body p-4">
+                    <h5 style="font-weight: 700; color: #4361ee; margin-bottom: 1rem;">
+                        <i class="las la-chart-bar mr-2 ml-2"></i>
+                        {{ trans('admin.reports.financial.charts.payment_timeline') }}
+                    </h5>
+                    <div id="payment-timeline-chart"></div>
                 </div>
             </div>
         </div>
@@ -441,6 +432,462 @@
                 '{{ trans('admin.reports.financial.table.title') }}');
 
             console.log('✨ Financial Report initialized successfully');
+
+            // ────────────────────────────────────────────────────────────
+            // 📊 Modern ApexCharts Implementation
+            // ────────────────────────────────────────────────────────────
+
+            // Chart data from server
+            const chartData = @json($chartData);
+
+            // Detect dark mode
+            const isDarkMode = document.documentElement.classList.contains('dark-theme') ||
+                             document.body.classList.contains('dark-theme');
+
+            // 🎨 Modern Color Palette (2024 Design Trends)
+            const colors = {
+                // Primary modern colors
+                charges: '#F43F5E',      // Rose 500 - Modern red/pink
+                payments: '#10B981',      // Emerald 500 - Fresh green
+                outstanding: '#F59E0B',   // Amber 500 - Warm yellow
+                primary: '#6366F1',       // Indigo 500 - Modern purple-blue
+
+                // Distribution chart colors (Gradient feel)
+                dist1: '#22C55E',         // Green 500 - Low debt
+                dist2: '#3B82F6',         // Blue 500 - Medium debt
+                dist3: '#F59E0B',         // Amber 500 - High debt
+                dist4: '#EF4444',         // Red 500 - Very high debt
+
+                // Grid and text colors
+                gridLight: '#E5E7EB',
+                gridDark: 'rgba(255,255,255,0.1)',
+                textLight: '#6B7280',
+                textDark: '#9CA3AF'
+            };
+
+            // Common chart configuration
+            const commonConfig = {
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                background: 'transparent',
+                foreColor: isDarkMode ? '#E5E7EB' : '#374151'
+            };
+
+            // Grid configuration
+            const gridConfig = {
+                show: true,
+                borderColor: isDarkMode ? colors.gridDark : colors.gridLight,
+                strokeDashArray: 4,
+                xaxis: { lines: { show: false } },
+                yaxis: { lines: { show: true } },
+                padding: { top: 0, right: 0, bottom: 0, left: 10 }
+            };
+
+            // 1. Revenue Trend Chart (Modern Area Chart)
+            const revenueTrendOptions = {
+                chart: {
+                    type: 'area',
+                    height: 380,
+                    ...commonConfig,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            download: true,
+                            selection: false,
+                            zoom: true,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: true
+                        },
+                        autoSelected: 'zoom'
+                    },
+                    animations: {
+                        enabled: true,
+                        easing: 'easeinout',
+                        speed: 800,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 150
+                        },
+                        dynamicAnimation: {
+                            enabled: true,
+                            speed: 350
+                        }
+                    },
+                    dropShadow: {
+                        enabled: true,
+                        top: 3,
+                        left: 0,
+                        blur: 4,
+                        opacity: 0.1
+                    }
+                },
+                series: [{
+                    name: '{{ trans('admin.reports.financial.charts.charges') }}',
+                    data: chartData.revenueTrend.charges
+                }, {
+                    name: '{{ trans('admin.reports.financial.charts.payments') }}',
+                    data: chartData.revenueTrend.payments
+                }, {
+                    name: '{{ trans('admin.reports.financial.charts.outstanding') }}',
+                    data: chartData.revenueTrend.outstanding
+                }],
+                colors: [colors.charges, colors.payments, colors.outstanding],
+                xaxis: {
+                    categories: chartData.revenueTrend.categories,
+                    axisBorder: { show: false },
+                    axisTicks: { show: false },
+                    labels: {
+                        style: {
+                            colors: isDarkMode ? colors.textDark : colors.textLight,
+                            fontSize: '12px',
+                            fontWeight: 500
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            colors: isDarkMode ? colors.textDark : colors.textLight,
+                            fontSize: '12px',
+                            fontWeight: 500
+                        },
+                        formatter: function(val) {
+                            if (val >= 1000) {
+                                return '$' + (val / 1000).toFixed(0) + 'K';
+                            }
+                            return '$' + val.toFixed(0);
+                        }
+                    }
+                },
+                grid: gridConfig,
+                dataLabels: { enabled: false },
+                stroke: {
+                    curve: 'smooth',
+                    width: [3, 3, 3],
+                    lineCap: 'round'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.45,
+                        opacityTo: 0.05,
+                        stops: [0, 100]
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'left',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    markers: {
+                        width: 12,
+                        height: 12,
+                        radius: 12
+                    },
+                    itemMargin: { horizontal: 15, vertical: 8 }
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    theme: isDarkMode ? 'dark' : 'light',
+                    style: { fontSize: '13px' },
+                    y: {
+                        formatter: function(val) {
+                            return new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                                minimumFractionDigits: 0
+                            }).format(val);
+                        }
+                    },
+                    marker: { show: true }
+                },
+                markers: {
+                    size: 0,
+                    hover: { size: 6, sizeOffset: 3 }
+                }
+            };
+
+            // 2. Student Distribution Chart (Modern Donut)
+            const studentDistributionOptions = {
+                chart: {
+                    type: 'donut',
+                    height: 380,
+                    ...commonConfig,
+                    animations: {
+                        enabled: true,
+                        easing: 'easeinout',
+                        speed: 800
+                    },
+                    dropShadow: {
+                        enabled: true,
+                        top: 2,
+                        left: 0,
+                        blur: 8,
+                        opacity: 0.15
+                    }
+                },
+                series: chartData.studentDistribution.values,
+                labels: chartData.studentDistribution.labels,
+                colors: [colors.dist1, colors.dist2, colors.dist3, colors.dist4],
+                plotOptions: {
+                    pie: {
+                        startAngle: -90,
+                        endAngle: 270,
+                        donut: {
+                            size: '70%',
+                            labels: {
+                                show: true,
+                                name: {
+                                    show: true,
+                                    fontSize: '14px',
+                                    fontWeight: 600,
+                                    color: isDarkMode ? '#E5E7EB' : '#374151',
+                                    offsetY: -10
+                                },
+                                value: {
+                                    show: true,
+                                    fontSize: '28px',
+                                    fontWeight: 700,
+                                    color: isDarkMode ? '#F3F4F6' : '#111827',
+                                    offsetY: 5,
+                                    formatter: function(val) {
+                                        return val;
+                                    }
+                                },
+                                total: {
+                                    show: true,
+                                    label: '{{ trans('admin.reports.financial.charts.total_students') }}',
+                                    fontSize: '13px',
+                                    fontWeight: 500,
+                                    color: isDarkMode ? '#9CA3AF' : '#6B7280',
+                                    formatter: function(w) {
+                                        return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                stroke: {
+                    show: true,
+                    width: 3,
+                    colors: [isDarkMode ? '#1F2937' : '#ffffff']
+                },
+                legend: {
+                    position: 'bottom',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    markers: {
+                        width: 12,
+                        height: 12,
+                        radius: 12
+                    },
+                    itemMargin: { horizontal: 12, vertical: 8 }
+                },
+                tooltip: {
+                    enabled: true,
+                    theme: isDarkMode ? 'dark' : 'light',
+                    style: { fontSize: '13px' },
+                    y: {
+                        formatter: function(val) {
+                            return val + ' {{ trans('admin.reports.financial.charts.students') }}';
+                        }
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: { height: 300 },
+                        legend: { position: 'bottom' }
+                    }
+                }]
+            };
+
+            // 3. Payment Timeline Chart (Modern Column Chart)
+            const paymentTimelineOptions = {
+                chart: {
+                    type: 'bar',
+                    height: 380,
+                    ...commonConfig,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            download: true,
+                            selection: false,
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false
+                        }
+                    },
+                    animations: {
+                        enabled: true,
+                        easing: 'easeinout',
+                        speed: 800,
+                        animateGradually: {
+                            enabled: true,
+                            delay: 100
+                        }
+                    }
+                },
+                series: [{
+                    name: '{{ trans('admin.reports.financial.charts.charges') }}',
+                    data: chartData.paymentTimeline.charges
+                }, {
+                    name: '{{ trans('admin.reports.financial.charts.payments') }}',
+                    data: chartData.paymentTimeline.payments
+                }],
+                colors: [colors.charges, colors.payments],
+                xaxis: {
+                    categories: chartData.paymentTimeline.categories,
+                    axisBorder: { show: false },
+                    axisTicks: { show: false },
+                    labels: {
+                        style: {
+                            colors: isDarkMode ? colors.textDark : colors.textLight,
+                            fontSize: '12px',
+                            fontWeight: 500
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            colors: isDarkMode ? colors.textDark : colors.textLight,
+                            fontSize: '12px',
+                            fontWeight: 500
+                        },
+                        formatter: function(val) {
+                            if (val >= 1000) {
+                                return '$' + (val / 1000).toFixed(0) + 'K';
+                            }
+                            return '$' + val.toFixed(0);
+                        }
+                    }
+                },
+                grid: gridConfig,
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '60%',
+                        borderRadius: 8,
+                        borderRadiusApplication: 'end',
+                        dataLabels: { position: 'top' }
+                    }
+                },
+                dataLabels: { enabled: false },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'left',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    markers: {
+                        width: 12,
+                        height: 12,
+                        radius: 12
+                    },
+                    itemMargin: { horizontal: 15, vertical: 8 }
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    theme: isDarkMode ? 'dark' : 'light',
+                    style: { fontSize: '13px' },
+                    y: {
+                        formatter: function(val) {
+                            return new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                                minimumFractionDigits: 0
+                            }).format(val);
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        filter: {
+                            type: 'darken',
+                            value: 0.9
+                        }
+                    },
+                    active: {
+                        filter: {
+                            type: 'darken',
+                            value: 0.85
+                        }
+                    }
+                }
+            };
+
+            // Render Charts
+            const revenueTrendChart = new ApexCharts(document.querySelector("#revenue-trend-chart"), revenueTrendOptions);
+            const studentDistributionChart = new ApexCharts(document.querySelector("#student-distribution-chart"), studentDistributionOptions);
+            const paymentTimelineChart = new ApexCharts(document.querySelector("#payment-timeline-chart"), paymentTimelineOptions);
+
+            // Render all charts
+            revenueTrendChart.render();
+            studentDistributionChart.render();
+            paymentTimelineChart.render();
+
+            // Dark mode toggle handler with full theme update
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const newIsDarkMode = document.documentElement.classList.contains('dark-theme') ||
+                                             document.body.classList.contains('dark-theme');
+
+                        // Update all charts with new theme
+                        const newGridColor = newIsDarkMode ? 'rgba(255,255,255,0.1)' : '#E5E7EB';
+                        const newTextColor = newIsDarkMode ? '#9CA3AF' : '#6B7280';
+                        const newForeColor = newIsDarkMode ? '#E5E7EB' : '#374151';
+
+                        const themeUpdate = {
+                            chart: { foreColor: newForeColor },
+                            grid: { borderColor: newGridColor },
+                            xaxis: { labels: { style: { colors: newTextColor } } },
+                            yaxis: { labels: { style: { colors: newTextColor } } },
+                            tooltip: { theme: newIsDarkMode ? 'dark' : 'light' }
+                        };
+
+                        revenueTrendChart.updateOptions(themeUpdate);
+                        paymentTimelineChart.updateOptions(themeUpdate);
+                        studentDistributionChart.updateOptions({
+                            chart: { foreColor: newForeColor },
+                            stroke: { colors: [newIsDarkMode ? '#1F2937' : '#ffffff'] },
+                            plotOptions: {
+                                pie: {
+                                    donut: {
+                                        labels: {
+                                            name: { color: newIsDarkMode ? '#E5E7EB' : '#374151' },
+                                            value: { color: newIsDarkMode ? '#F3F4F6' : '#111827' },
+                                            total: { color: newIsDarkMode ? '#9CA3AF' : '#6B7280' }
+                                        }
+                                    }
+                                }
+                            },
+                            tooltip: { theme: newIsDarkMode ? 'dark' : 'light' }
+                        });
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+            observer.observe(document.body, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+
+            console.log('📊 Modern ApexCharts initialized successfully');
         });
 
         // ────────────────────────────────────────────────────────────
