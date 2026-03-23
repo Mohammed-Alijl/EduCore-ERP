@@ -1491,5 +1491,70 @@ return [
                 'view_profile' => 'عرض الملف الشخصي',
             ],
         ],
+
+        'grades' => [
+            'title' => 'تقرير الدرجات',
+            'subtitle' => 'تحليل شامل لأداء الطلاب في الاختبارات عبر المواد والمراحل',
+
+            'filters' => [
+                'title' => 'تصفية متقدمة',
+                'subtitle' => 'تضييق النتائج حسب المعايير',
+                'academic_year' => 'العام الدراسي',
+                'all_years' => 'جميع السنوات',
+                'grade' => 'المرحلة الدراسية',
+                'all_grades' => 'جميع المراحل',
+                'classroom' => 'الصف الدراسي',
+                'select_classroom' => 'اختر الصف',
+                'section' => 'الشعبة',
+                'select_section' => 'اختر الشعبة',
+                'subject' => 'المادة',
+                'all_subjects' => 'جميع المواد',
+                'exam' => 'الاختبار',
+                'all_exams' => 'جميع الاختبارات',
+                'search' => 'تطبيق الفلاتر',
+                'reset' => 'إعادة تعيين',
+            ],
+
+            'kpis' => [
+                'total_students' => 'الطلاب المختبرون',
+                'average_score' => 'متوسط الدرجات',
+                'pass_rate' => 'نسبة النجاح',
+                'total_exams' => 'إجمالي الاختبارات',
+                'unique_students' => 'طلاب فريدون',
+                'overall_avg' => 'المتوسط العام',
+                'passing_threshold' => 'النجاح ≥ ٥٠٪',
+                'exams_with_results' => 'اختبارات لها نتائج',
+            ],
+
+            'charts' => [
+                'score_distribution' => 'توزيع الدرجات',
+                'subject_performance' => 'أداء المواد',
+                'grade_comparison' => 'مقارنة المراحل',
+                'students_count' => 'الطلاب',
+                'average_score' => 'متوسط الدرجة ٪',
+                'pass_rate' => 'نسبة النجاح ٪',
+            ],
+
+            'table' => [
+                'title' => 'نتائج الاختبارات التفصيلية',
+                'subtitle' => 'تحليل كامل لأداء الطلاب في الاختبارات',
+                'records' => 'سجل',
+                'student_name' => 'اسم الطالب',
+                'grade' => 'المرحلة',
+                'classroom' => 'الصف',
+                'section' => 'الشعبة',
+                'subject' => 'المادة',
+                'exam' => 'الاختبار',
+                'score' => 'الدرجة',
+                'percentage' => 'النسبة المئوية',
+                'status' => 'الحالة',
+            ],
+
+            'statuses' => [
+                'excellent' => 'ممتاز',
+                'pass' => 'ناجح',
+                'fail' => 'راسب',
+            ],
+        ],
     ],
 ];
