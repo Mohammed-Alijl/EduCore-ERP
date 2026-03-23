@@ -67,6 +67,8 @@ return [
         'no_description' => 'No description provided.',
         'filters' => 'Filters',
         'archive_warning_title' => 'Warning: Destructive Zone',
+        'error_loading' => 'Error loading data. Please try again.',
+        'error' => 'Error',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',

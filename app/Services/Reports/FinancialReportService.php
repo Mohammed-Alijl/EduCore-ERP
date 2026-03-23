@@ -61,7 +61,7 @@ class FinancialReportService
                 return '<span class="badge bg-secondary">'.\Carbon\Carbon::parse($row->last_payment_date)->diffForHumans().'</span><br><small class="text-muted">'.$row->last_payment_date.'</small>';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.reports.partials.finance_actions', compact('row'))->render();
+                return view('admin.reports.finance.partials._actions', compact('row'))->render();
             })
             ->rawColumns(['last_payment_date', 'actions'])
             ->make(true);
