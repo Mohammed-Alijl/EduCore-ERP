@@ -1504,5 +1504,70 @@ return [
                 'view_profile' => 'View Profile',
             ],
         ],
+
+        'grades' => [
+            'title' => 'Grades Report',
+            'subtitle' => 'Comprehensive analysis of student exam performance across subjects and grades',
+
+            'filters' => [
+                'title' => 'Advanced Filters',
+                'subtitle' => 'Narrow down results by criteria',
+                'academic_year' => 'Academic Year',
+                'all_years' => 'All Years',
+                'grade' => 'Grade',
+                'all_grades' => 'All Grades',
+                'classroom' => 'Classroom',
+                'select_classroom' => 'Select Classroom',
+                'section' => 'Section',
+                'select_section' => 'Select Section',
+                'subject' => 'Subject',
+                'all_subjects' => 'All Subjects',
+                'exam' => 'Exam',
+                'all_exams' => 'All Exams',
+                'search' => 'Apply Filters',
+                'reset' => 'Reset',
+            ],
+
+            'kpis' => [
+                'total_students' => 'Students Examined',
+                'average_score' => 'Average Score',
+                'pass_rate' => 'Pass Rate',
+                'total_exams' => 'Total Exams',
+                'unique_students' => 'Unique Students',
+                'overall_avg' => 'Overall Average',
+                'passing_threshold' => 'Passing ≥ 50%',
+                'exams_with_results' => 'Exams with Results',
+            ],
+
+            'charts' => [
+                'score_distribution' => 'Score Distribution',
+                'subject_performance' => 'Subject Performance',
+                'grade_comparison' => 'Grade Comparison',
+                'students_count' => 'Students',
+                'average_score' => 'Avg Score %',
+                'pass_rate' => 'Pass Rate %',
+            ],
+
+            'table' => [
+                'title' => 'Detailed Exam Results',
+                'subtitle' => 'Complete breakdown of student exam performance',
+                'records' => 'Records',
+                'student_name' => 'Student Name',
+                'grade' => 'Grade',
+                'classroom' => 'Classroom',
+                'section' => 'Section',
+                'subject' => 'Subject',
+                'exam' => 'Exam',
+                'score' => 'Score',
+                'percentage' => 'Percentage',
+                'status' => 'Status',
+            ],
+
+            'statuses' => [
+                'excellent' => 'Excellent',
+                'pass' => 'Pass',
+                'fail' => 'Fail',
+            ],
+        ],
     ],
 ];

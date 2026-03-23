@@ -418,7 +418,9 @@
                             </a>
                         </li>
                     @endcan
-                    <li><a class="slide-item" href="#">{{ __('admin.sidebar.grades_report') }}</a></li>
+                    @can('view_grades-reports')
+                        <li><a class="slide-item" href="{{ route('admin.reports.grades.index') }}">{{ __('admin.sidebar.grades_report') }}</a></li>
+                    @endcan
                 </ul>
             </li>
             <li class="slide">

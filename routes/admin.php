@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
 use App\Http\Controllers\Admin\Reports\FinancialReportController;
+use App\Http\Controllers\Admin\Reports\GradesReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
@@ -207,6 +208,13 @@ Route::group(
                         // Financial Reports
                         Route::prefix('financial')->name('financial.')->group(function () {
                             Route::get('/outstanding-balances', [FinancialReportController::class, 'outstandingBalances'])->name('outstanding-balances');
+                        });
+
+                        // Grades Reports
+                        Route::prefix('grades')->name('grades.')->group(function () {
+                            Route::get('/', [GradesReportController::class, 'index'])->name('index');
+                            Route::get('/subjects/filter', [GradesReportController::class, 'getSubjects'])->name('subjects');
+                            Route::get('/exams/filter', [GradesReportController::class, 'getExams'])->name('exams');
                         });
                     });
 
