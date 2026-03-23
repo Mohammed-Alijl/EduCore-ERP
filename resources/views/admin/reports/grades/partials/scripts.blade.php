@@ -209,7 +209,64 @@
             window.location.href = '{{ route("admin.reports.grades.index") }}';
         });
 
-        // ─── Cascading Filters: Grade → Classroom → Section ───────
+        // ─── Smart Cascading Filters ───────
+        function loadSubjects() {
+            const gradeId = $('#filter-grade').val();
+            const classroomId = $('#filter-classroom').val();
+            const subjectSelect = $('#filter-subject');
+            const currentSubjectId = subjectSelect.val();
+
+            $.ajax({
+                url: '{{ route("admin.reports.grades.subjects") }}',
+                type: 'GET',
+                data: { grade_id: gradeId, classroom_id: classroomId },
+                success: function(response) {
+                    if (response.success) {
+                        subjectSelect.empty().append('<option value="">{{ trans("admin.reports.grades.filters.all_subjects") }}</option>');
+                        $.each(response.data, function(id, name) {
+                            subjectSelect.append('<option value="' + id + '"' + (id == currentSubjectId ? ' selected' : '') + '>' + name + '</option>');
+                        });
+                    }
+                }
+            });
+        }
+
+        function loadExams() {
+            const academicYearId = $('#filter-academic-year').val();
+            const gradeId = $('#filter-grade').val();
+            const classroomId = $('#filter-classroom').val();
+            const subjectId = $('#filter-subject').val();
+            const examSelect = $('#filter-exam');
+            const currentExamId = examSelect.val();
+
+            $.ajax({
+                url: '{{ route("admin.reports.grades.exams") }}',
+                type: 'GET',
+                data: {
+                    academic_year_id: academicYearId,
+                    grade_id: gradeId,
+                    classroom_id: classroomId,
+                    subject_id: subjectId
+                },
+                success: function(response) {
+                    if (response.success) {
+                        examSelect.empty().append('<option value="">{{ trans("admin.reports.grades.filters.all_exams") }}</option>');
+                        $.each(response.data, function(id, title) {
+                            examSelect.append('<option value="' + id + '"' + (id == currentExamId ? ' selected' : '') + '>' + title + '</option>');
+                        });
+                    }
+                }
+            });
+        }
+
+        $('#filter-academic-year').on('change', function() {
+            loadExams();
+        });
+
+        $('#filter-subject').on('change', function() {
+            loadExams();
+        });
+
         $('#filter-grade').on('change', function() {
             const gradeId = $(this).val();
             const classroomSelect = $('#filter-classroom');
@@ -232,6 +289,9 @@
                     }
                 });
             }
+            
+            loadSubjects();
+            loadExams();
         });
 
         $('#filter-classroom').on('change', function() {
@@ -254,7 +314,18 @@
                     }
                 });
             }
+
+            loadSubjects();
+            loadExams();
         });
+
+        // Initialize smart filters on page load to reflect current selections
+        if ($('#filter-grade').val() || $('#filter-classroom').val()) {
+            loadSubjects();
+        }
+        if ($('#filter-academic-year').val() || $('#filter-grade').val() || $('#filter-classroom').val() || $('#filter-subject').val()) {
+            loadExams();
+        }
 
         // ─── Animation Keyframes ───────────────────────────────────
         $('<style>@keyframes fadeInUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}</style>').appendTo('head');

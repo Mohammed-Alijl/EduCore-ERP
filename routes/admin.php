@@ -213,6 +213,8 @@ Route::group(
                         // Grades Reports
                         Route::prefix('grades')->name('grades.')->group(function () {
                             Route::get('/', [GradesReportController::class, 'index'])->name('index');
+                            Route::get('/subjects/filter', [GradesReportController::class, 'getSubjects'])->name('subjects');
+                            Route::get('/exams/filter', [GradesReportController::class, 'getExams'])->name('exams');
                         });
                     });
 

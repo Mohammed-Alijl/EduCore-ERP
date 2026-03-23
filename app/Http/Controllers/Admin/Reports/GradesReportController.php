@@ -44,4 +44,28 @@ class GradesReportController extends Controller implements HasMiddleware
 
         return view('admin.reports.grades.index', compact('kpis', 'chartData', 'filterData', 'filters'));
     }
+
+    /**
+     * Get subjects filtered dynamically by grade and classroom
+     */
+    public function getSubjects(Request $request)
+    {
+      $data = $this->reportService->getSubjects($request);   
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+        ]);
+    }
+
+    /**
+     * Get exams filtered dynamically by academic year, subject, and bounds
+     */
+    public function getExams(Request $request)
+    {
+        $data = $this->reportService->getExames($request);
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+        ]);
+    }
 }

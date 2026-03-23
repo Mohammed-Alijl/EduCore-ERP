@@ -6,6 +6,7 @@ use App\Models\AcademicYear;
 use App\Models\Exam;
 use App\Models\Grade;
 use App\Models\Subject;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -161,6 +162,55 @@ class GradesReportService
         ];
     }
 
+    /**
+     * Get subjects dropdown data.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getSubjects($request) {
+        $query = \App\Models\Subject::active();
+
+        if ($request->filled('grade_id')) {
+            $query->where('grade_id', $request->grade_id);
+        }
+
+        if ($request->filled('classroom_id')) {
+            $query->where('classroom_id', $request->classroom_id);
+        }
+
+        return $query->pluck('name', 'id');
+    }
+
+    /**
+     * Get exames dropdown data.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getExames(Request $request) 
+    {
+        $query = Exam::query()
+            ->where('is_published', true);
+
+        if ($request->filled('academic_year_id')) {
+            $query->where('academic_year_id', $request->academic_year_id);
+        }
+
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->subject_id);
+        }
+
+        if ($request->filled('grade_id') || $request->filled('classroom_id')) {
+            $query->whereHas('subject', function ($q) use ($request) {
+                if ($request->filled('grade_id')) {
+                    $q->where('grade_id', $request->grade_id);
+                }
+                if ($request->filled('classroom_id')) {
+                    $q->where('classroom_id', $request->classroom_id);
+                }
+            });
+        }
+        return $query->pluck('title', 'id');
+    }
     /**
      * Get score distribution data for the bar chart.
      *
