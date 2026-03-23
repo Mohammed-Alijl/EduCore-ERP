@@ -410,7 +410,9 @@
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.reports') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="#">{{ __('admin.sidebar.attendance_report') }}</a></li>
+                    @can('view_attendance-reports')
+                    <li><a class="slide-item" href="{{ route('admin.reports.attendance.index') }}">{{ __('admin.sidebar.attendance_report') }}</a></li>
+                   @endcan
                     @can('view_financial-reports')
                         <li>
                             <a class="slide-item" href="{{ route('admin.reports.financial.outstanding-balances') }}">

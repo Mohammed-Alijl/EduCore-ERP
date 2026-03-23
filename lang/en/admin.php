@@ -1571,5 +1571,57 @@ return [
                 'fail' => 'Fail',
             ],
         ],
+
+        'attendance' => [
+            'title' => 'Attendance Report',
+            'subtitle' => 'Comprehensive analysis of student attendance, at-risk detection, and absence trends',
+
+            'filters' => [
+                'title' => 'Filter Options',
+                'subtitle' => 'Select academic year to analyze',
+                'academic_year' => 'Academic Year',
+                'search' => 'Apply Filter',
+                'reset' => 'Reset',
+            ],
+
+            'kpis' => [
+                'absent_today' => 'Absent Today',
+                'absent_today_hint' => 'Students absent today',
+                'average_attendance' => 'Average Attendance',
+                'average_attendance_hint' => 'School-wide average',
+                'at_risk' => 'At-Risk Students',
+                'at_risk_hint' => 'Attendance below 85%',
+            ],
+
+            'charts' => [
+                'absences_by_day' => 'Absences by Day of the Week',
+                'absences_by_grade' => 'Absences by Grade',
+                'absences_count' => 'Absences',
+                'no_data' => 'No Data',
+            ],
+
+            'days' => [
+                'sunday' => 'Sunday',
+                'monday' => 'Monday',
+                'tuesday' => 'Tuesday',
+                'wednesday' => 'Wednesday',
+                'thursday' => 'Thursday',
+                'friday' => 'Friday',
+                'saturday' => 'Saturday',
+            ],
+
+            'table' => [
+                'title' => 'Student Attendance Summary',
+                'subtitle' => 'Detailed breakdown per student ordered by attendance percentage',
+                'records' => 'Records',
+                'student_name' => 'Student Name',
+                'section' => 'Section',
+                'total_days' => 'Total Days',
+                'present' => 'Present',
+                'absent' => 'Absent',
+                'late' => 'Late',
+                'percentage' => 'Attendance %',
+            ],
+        ],
     ],
 ];

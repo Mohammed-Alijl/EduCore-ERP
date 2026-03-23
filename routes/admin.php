@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Finance\StudentDiscountController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
+use App\Http\Controllers\Admin\Reports\AttendanceReportController;
 use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\Reports\GradesReportController;
 use App\Http\Controllers\Admin\RoleController;
@@ -215,6 +216,11 @@ Route::group(
                             Route::get('/', [GradesReportController::class, 'index'])->name('index');
                             Route::get('/subjects/filter', [GradesReportController::class, 'getSubjects'])->name('subjects');
                             Route::get('/exams/filter', [GradesReportController::class, 'getExams'])->name('exams');
+                        });
+
+                        // Attendance Reports
+                        Route::prefix('attendance')->name('attendance.')->group(function () {
+                            Route::get('/', [AttendanceReportController::class, 'index'])->name('index');
                         });
                     });
 
