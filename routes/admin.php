@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Finance\StudentDiscountController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\OnlineClassController;
+use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
@@ -200,6 +201,14 @@ Route::group(
                         Route::patch('/{payment_gateway}/toggle-status', [PaymentGatewayController::class, 'toggleStatus'])->name('toggle-status');
                     });
                     Route::resource('payment_gateways', PaymentGatewayController::class)->only(['index', 'update']);
+
+                    // ─── Reports ───────────────────────────────────────────────────────────────
+                    Route::prefix('reports')->name('reports.')->group(function () {
+                        // Financial Reports
+                        Route::prefix('financial')->name('financial.')->group(function () {
+                            Route::get('/outstanding-balances', [FinancialReportController::class, 'outstandingBalances'])->name('outstanding-balances');
+                        });
+                    });
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);

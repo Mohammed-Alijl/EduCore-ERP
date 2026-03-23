@@ -67,6 +67,8 @@ return [
         'no_description' => 'No description provided.',
         'filters' => 'Filters',
         'archive_warning_title' => 'Warning: Destructive Zone',
+        'error_loading' => 'Error loading data. Please try again.',
+        'error' => 'Error',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',
@@ -1443,6 +1445,63 @@ return [
             ],
             'hints' => [
                 'description' => 'Enter a brief reason for the discount (e.g., Sibling Discount, Early Payment).',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Reports
+    |--------------------------------------------------------------------------
+    */
+    'reports' => [
+        'title' => 'Reports',
+        'financial' => [
+            'title' => 'Financial Reports',
+            'subtitle' => 'Comprehensive analysis of outstanding debts and expected revenues',
+            'outstanding_balances' => 'Outstanding Balances',
+            'last_payment_not_found' => 'No Payments',
+
+            'kpis' => [
+                'total_outstanding' => 'Total Outstanding',
+                'students_count' => 'Students with Debt',
+                'average_debt' => 'Average Debt Per Student',
+                'currency' => 'Base Currency',
+                'active_students' => 'Active Students',
+                'per_student' => 'Per Student',
+            ],
+
+            'charts' => [
+                'revenue_trend' => 'Revenue & Debt Trend',
+                'distribution' => 'Student Distribution',
+                'payment_timeline' => 'Payment Timeline',
+                'coming_soon' => 'Chart will be displayed soon',
+                'charges' => 'Charges',
+                'payments' => 'Payments',
+                'outstanding' => 'Outstanding',
+                'month' => 'Month',
+                'amount' => 'Amount',
+                'total_students' => 'Total Students',
+                'students' => 'Students',
+            ],
+
+            'table' => [
+                'title' => 'Outstanding Balances by Student',
+                'subtitle' => 'Comprehensive list of all students with outstanding balances',
+                'records' => 'Records',
+                'student_name' => 'Student Name',
+                'total_charges' => 'Total Charges',
+                'total_payments' => 'Total Payments',
+                'net_balance' => 'Net Balance',
+                'last_payment' => 'Last Payment',
+            ],
+
+            'actions' => [
+                'view_ledger' => 'View Financial Ledger',
+                'ledger' => 'Ledger',
+                'add_payment' => 'Add Payment',
+                'payment' => 'Payment',
+                'view_profile' => 'View Profile',
             ],
         ],
     ],
