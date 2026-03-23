@@ -860,6 +860,8 @@ return [
         'total_students' => 'إجمالي الطلاب',
         'print_footer' => 'هذا التقرير تم إنشاؤه تلقائياً من النظام',
         'attendance_date' => 'تاريخ الحضور',
+        'academic_year' => 'السنة الدراسية',
+        'select_academic_year' => 'اختر السنة الدراسية',
         'filter_grade' => 'المرحلة الدراسية',
         'select_grade' => 'اختر المرحلة',
         'filter_classroom' => 'الصف الدراسي',

@@ -876,6 +876,8 @@ return [
         'total_students' => 'Total Students',
         'print_footer' => 'This is an automatically generated report',
         'attendance_date' => 'Attendance Date',
+        'academic_year' => 'Academic Year',
+        'select_academic_year' => 'Select Academic Year',
         'filter_grade' => 'Grade',
         'select_grade' => 'Select Grade',
         'filter_classroom' => 'Classroom',

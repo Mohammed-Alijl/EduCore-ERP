@@ -3,6 +3,7 @@
         @csrf
 
         <input type="hidden" name="attendance_date" value="{{ request('attendance_date', now()->toDateString()) }}">
+        <input type="hidden" name="academic_year_id" value="{{ request('academic_year_id') }}">
         <input type="hidden" name="grade_id" value="{{ request('grade_id') }}">
         <input type="hidden" name="classroom_id" value="{{ request('classroom_id') }}">
         <input type="hidden" name="section_id" value="{{ request('section_id') }}">

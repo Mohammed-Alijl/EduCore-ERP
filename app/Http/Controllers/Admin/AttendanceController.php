@@ -13,6 +13,7 @@ use Illuminate\Routing\Controllers\Middleware;
 class AttendanceController extends Controller implements HasMiddleware
 {
     protected $attendanceService;
+
     protected $studentService;
 
     public function __construct(AttendanceService $attendanceService, StudentService $studentService)
@@ -20,7 +21,6 @@ class AttendanceController extends Controller implements HasMiddleware
         $this->attendanceService = $attendanceService;
         $this->studentService = $studentService;
     }
-
 
     public static function middleware(): array
     {
@@ -49,7 +49,8 @@ class AttendanceController extends Controller implements HasMiddleware
 
         $students = $this->attendanceService->getStudentsForAttendance(
             $request->section_id,
-            $request->attendance_date
+            $request->attendance_date,
+            $request->academic_year_id
         );
 
         $html = view('admin.attendances.partials._students_grid', compact('students'))->render();
@@ -69,12 +70,12 @@ class AttendanceController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.attendances.messages.success.add')
+                'message' => trans('admin.attendances.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? trans('admin.attendances.messages.failed.add')
+                'message' => $e->getMessage() ?? trans('admin.attendances.messages.failed.add'),
             ], 500);
         }
     }
@@ -87,19 +88,20 @@ class AttendanceController extends Controller implements HasMiddleware
         try {
             $students = $this->attendanceService->getStudentsForAttendance(
                 $request->section_id,
-                $request->attendance_date
+                $request->attendance_date,
+                $request->academic_year_id
             );
 
             $html = view('admin.attendances.partials._print_attendance', compact('students'))->render();
 
             return response()->json([
                 'status' => 'success',
-                'html' => $html
+                'html' => $html,
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? trans('admin.attendances.messages.error_print') ?? 'Error generating print document'
+                'message' => $e->getMessage() ?? trans('admin.attendances.messages.error_print') ?? 'Error generating print document',
             ], 500);
         }
     }
