@@ -10,6 +10,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/css/reports/attendance-report.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
@@ -43,6 +44,10 @@
     @include('admin.reports.attendance.partials.kpis')
     @include('admin.reports.attendance.partials.charts')
     @include('admin.reports.attendance.partials.table')
+
+    @can('export_attendance-reports')
+        @include('admin.reports.attendance.partials.export-modal')
+    @endcan
 @endsection
 
 @section('js')

@@ -1575,7 +1575,6 @@ return [
         'attendance' => [
             'title' => 'Attendance Report',
             'subtitle' => 'Comprehensive analysis of student attendance, at-risk detection, and absence trends',
-
             'filters' => [
                 'title' => 'Filter Options',
                 'subtitle' => 'Select academic year to analyze',
@@ -1623,5 +1622,39 @@ return [
                 'percentage' => 'Attendance %',
             ],
         ],
+    ],
+
+    'exports' => [
+        'attendance_report' => [
+            'title' => 'Attendance Report',
+            'subtitle' => 'Detailed attendance summaries for students in a selected academic year, grade, and section.',
+            'sheet_title' => 'Attendance Report',
+            'ready_message' => 'Your attendance report is ready for download. Click here!',
+            'generate_report_message' => 'Your export is being generated. You will receive a notification when it\'s ready.',
+            'export_button' => 'Export Excel',
+            'modal_title' => 'Export Attendance Report',
+            'modal_description' => 'Select the filters below to customize your export. Leave grade and section empty to export all data.',
+            'generate_button' => 'Generate Export',
+            'info_message' => 'The export will be processed in the background. You\'ll receive a notification when it\'s ready.',
+            'student_code' => 'Student Code',
+            'student_name' => 'Student Name',
+            'section' => 'Section',
+            'total_days' => 'Total Days',
+            'present_days' => 'Present Days',
+            'absent_days' => 'Absent Days',
+            'late_days' => 'Late Days',
+            'attendance_percentage' => 'Attendance %',
+        ],
+        'errors' => [
+            'file_not_found' => 'The requested file was not found or has expired.',
+            'failed_message' => 'Export generation failed: :error',
+        ],
+    ],
+
+    'notifications' => [
+        'empty' => 'No notifications yet',
+        'marked_as_read' => 'Notification marked as read',
+        'all_marked_as_read' => 'All notifications marked as read',
+        'deleted' => 'Notification deleted successfully',
     ],
 ];

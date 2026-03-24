@@ -70,3 +70,4 @@
         });
     });
 </script>
+@stack('scripts')

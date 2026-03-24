@@ -39,6 +39,13 @@
                         {{-- Action Buttons --}}
                         <div class="col-xl-8 col-lg-6 col-md-6 mb-3">
                             <div class="d-flex justify-content-end gap-2">
+                                @can('export_attendance-reports')
+                                    <button type="button" class="btn btn-success mr-2 ml-2" id="btn-export-excel"
+                                        data-toggle="modal" data-target="#exportModal">
+                                        <i class="las la-file-excel mr-1 ml-1"></i>
+                                        {{ trans('admin.exports.attendance_report.export_button') }}
+                                    </button>
+                                @endcan
                                 <button type="button" class="btn btn-filter-reset mr-2 ml-2" id="btn-reset-filters">
                                     <i class="las la-undo-alt mr-1 ml-1"></i>
                                     {{ trans('admin.reports.attendance.filters.reset') }}

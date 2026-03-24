@@ -3,30 +3,39 @@
 namespace App\Http\Controllers\Admin\Reports;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Export\AttendanceReportRequest;
+use App\Jobs\GenerateAttendanceExportJob;
 use App\Models\AcademicYear;
+use App\Services\GradeService;
 use App\Services\Reports\AttendanceReportService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\View\View;
 
 class AttendanceReportController extends Controller implements HasMiddleware
 {
     public function __construct(
-        private readonly AttendanceReportService $reportService
+        private readonly AttendanceReportService $reportService,
+        private readonly GradeService $gradeService,
     ) {}
 
     public static function middleware(): array
     {
         return [
             new Middleware('permission:view_attendance-reports', only: ['index']),
+            new Middleware('permission:export_attendance-reports', only: ['requestExport']),
         ];
     }
 
-    public function index(Request $request)
+    /**
+     * Display the attendance report dashboard.
+     */
+    public function index(Request $request): View|JsonResponse
     {
         $academicYears = AcademicYear::orderBy('name')->get();
 
-        // Default to the current academic year if no filter is provided
         $academicYearId = $request->input(
             'academic_year_id',
             $academicYears->firstWhere('is_current', true)?->id ?? $academicYears->first()?->id
@@ -40,12 +49,34 @@ class AttendanceReportController extends Controller implements HasMiddleware
 
         $kpis = $this->reportService->getAttendanceKPIs((int) $academicYearId);
         $chartData = $this->reportService->getChartData((int) $academicYearId);
+        $grades = $this->gradeService->getActive();
 
         return view('admin.reports.attendance.index', compact(
             'kpis',
             'chartData',
             'academicYears',
             'academicYearId',
+            'grades',
         ));
+    }
+
+    /**
+     * Request an attendance report export.
+     */
+    public function requestExport(AttendanceReportRequest $request): JsonResponse
+    {
+        $admin = auth('admin')->user();
+
+        GenerateAttendanceExportJob::dispatch(
+            $admin,
+            $request->validated('academic_year_id'),
+            $request->validated('grade_id'),
+            $request->validated('section_id')
+        );
+
+        return response()->json([
+            'status' => 'success',
+            'message' => trans('admin.exports.attendance_report.generate_report_message'),
+        ]);
     }
 }

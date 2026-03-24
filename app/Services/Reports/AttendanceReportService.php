@@ -3,6 +3,7 @@
 namespace App\Services\Reports;
 
 use App\Models\Attendance;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -13,22 +14,29 @@ class AttendanceReportService
     // --------------------------------------------------------
 
     /**
-     * Build the student attendance summary query for a given academic year.
+     * Build the base student attendance summary query.
+     *
+     * @param  string|null  $locale  Override locale for export
      */
-    public function getStudentAttendanceSummaryQuery(int $academicYearId)
-    {
-        $locale = app()->getLocale();
+    private function buildAttendanceSummaryQuery(
+        int $academicYearId,
+        ?int $gradeId = null,
+        ?int $sectionId = null,
+        ?string $locale = null
+    ): Builder {
+        $locale = $locale ?? app()->getLocale();
 
         $present = Attendance::STATUS_PRESENT;
         $absent = Attendance::STATUS_ABSENT;
         $late = Attendance::STATUS_LATE;
 
-        return DB::table('attendances')
+        $query = DB::table('attendances')
             ->join('students', 'attendances.student_id', '=', 'students.id')
             ->join('sections', 'attendances.section_id', '=', 'sections.id')
             ->where('attendances.academic_year_id', $academicYearId)
             ->select(
                 'students.id as student_id',
+                'students.student_code',
                 DB::raw("JSON_UNQUOTE(JSON_EXTRACT(students.name, '$.\"$locale\"')) as student_name"),
                 DB::raw("JSON_UNQUOTE(JSON_EXTRACT(sections.name, '$.\"$locale\"')) as section_name"),
 
@@ -41,9 +49,47 @@ class AttendanceReportService
                     (SUM(CASE WHEN attendances.attendance_status = {$present} THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2
                 ) as attendance_percentage")
             )
-            ->groupBy('students.id', DB::raw("JSON_UNQUOTE(JSON_EXTRACT(students.name, '$.\"$locale\"'))"), DB::raw("JSON_UNQUOTE(JSON_EXTRACT(sections.name, '$.\"$locale\"'))"))
+            ->groupBy(
+                'students.id',
+                'students.student_code',
+                DB::raw("JSON_UNQUOTE(JSON_EXTRACT(students.name, '$.\"$locale\"'))"),
+                DB::raw("JSON_UNQUOTE(JSON_EXTRACT(sections.name, '$.\"$locale\"'))")
+            );
+
+        if ($gradeId) {
+            $query->where('attendances.grade_id', $gradeId);
+        }
+
+        if ($sectionId) {
+            $query->where('attendances.section_id', $sectionId);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Build the student attendance summary query for a given academic year.
+     */
+    public function getStudentAttendanceSummaryQuery(int $academicYearId)
+    {
+        return $this->buildAttendanceSummaryQuery($academicYearId)
             ->orderBy('attendance_percentage', 'asc')
             ->get();
+    }
+
+    /**
+     * Get query builder for export (returns Builder, not Collection).
+     *
+     * @param  string|null  $locale  Force specific locale for export file
+     */
+    public function getExportQuery(
+        int $academicYearId,
+        ?int $gradeId = null,
+        ?int $sectionId = null,
+        ?string $locale = null
+    ): Builder {
+        return $this->buildAttendanceSummaryQuery($academicYearId, $gradeId, $sectionId, $locale)
+            ->orderBy('students.id');
     }
 
     // --------------------------------------------------------
