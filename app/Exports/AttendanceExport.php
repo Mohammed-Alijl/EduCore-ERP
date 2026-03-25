@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -17,9 +18,11 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithChunkReading, WithHeadings, WithMapping, WithStyles, WithTitle
+class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithChunkReading, WithColumnFormatting, WithHeadings, WithMapping, WithStyles, WithTitle
 {
     use Exportable;
+
+    private $currentRow = 2;
 
     private const CHUNK_SIZE = 1000;
 
@@ -89,7 +92,9 @@ class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithCh
      */
     public function map($student): array
     {
-        return [
+        $formula = "=IF(D{$this->currentRow}=0,0,(E{$this->currentRow}/D{$this->currentRow})*100)";
+
+        $row = [
             $student->student_code,
             $student->student_name,
             $student->section_name,
@@ -97,7 +102,23 @@ class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithCh
             $student->present_days,
             $student->absent_days,
             $student->late_days,
-            $student->attendance_percentage . '%',
+            $formula,
+        ];
+
+        $this->currentRow++;
+
+        return $row;
+    }
+
+    /**
+     * Define column formatting for the worksheet.
+     *
+     * @return array<string, string>
+     */
+    public function columnFormats(): array
+    {
+        return [
+            'H' => '0.00"%"',
         ];
     }
 
