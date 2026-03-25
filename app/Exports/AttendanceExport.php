@@ -92,6 +92,7 @@ class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithCh
         return [
             $student->student_code,
             $student->student_name,
+            $student->section_name,
             $student->total_days,
             $student->present_days,
             $student->absent_days,
