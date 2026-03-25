@@ -427,26 +427,28 @@
             </div>
         </div>
 
-        {{-- Charts Section --}}
-        <div class="charts-section">
-            {{-- Absences by Day of Week --}}
-            <div class="chart-card">
-                <div class="chart-title">{{ trans('admin.reports.attendance.charts.absences_by_day', [], $locale) }}</div>
-                <div id="absencesByDayChart" class="chart-container"></div>
-            </div>
+        {{-- Charts Section (only when no grade/section filter) --}}
+        @if ($chartData)
+            <div class="charts-section">
+                {{-- Absences by Day of Week --}}
+                <div class="chart-card">
+                    <div class="chart-title">{{ trans('admin.reports.attendance.charts.absences_by_day', [], $locale) }}</div>
+                    <div id="absencesByDayChart" class="chart-container"></div>
+                </div>
 
-            {{-- Attendance Distribution --}}
-            <div class="chart-card">
-                <div class="chart-title">{{ trans('admin.reports.attendance.charts.distribution', [], $locale) }}</div>
-                <div id="distributionChart" class="chart-container"></div>
-            </div>
+                {{-- Attendance Distribution --}}
+                <div class="chart-card">
+                    <div class="chart-title">{{ trans('admin.reports.attendance.charts.distribution', [], $locale) }}</div>
+                    <div id="distributionChart" class="chart-container"></div>
+                </div>
 
-            {{-- Absences by Grade --}}
-            <div class="chart-card">
-                <div class="chart-title">{{ trans('admin.reports.attendance.charts.absences_by_grade', [], $locale) }}</div>
-                <div id="absencesByGradeChart" class="chart-container"></div>
+                {{-- Absences by Grade --}}
+                <div class="chart-card">
+                    <div class="chart-title">{{ trans('admin.reports.attendance.charts.absences_by_grade', [], $locale) }}</div>
+                    <div id="absencesByGradeChart" class="chart-container"></div>
+                </div>
             </div>
-        </div>
+        @endif
 
         {{-- Data Table --}}
         <div class="table-section">
@@ -521,156 +523,158 @@
         </div>
     </div>
 
-    {{-- ApexCharts Initialization --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const isRtl = {{ $isRtl ? 'true' : 'false' }};
-            const fontFamily = isRtl ? 'Cairo, sans-serif' : 'Inter, sans-serif';
+    {{-- ApexCharts Initialization (only when charts are included) --}}
+    @if ($chartData)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const isRtl = {{ $isRtl ? 'true' : 'false' }};
+                const fontFamily = isRtl ? 'Cairo, sans-serif' : 'Inter, sans-serif';
 
-            // Chart data from backend
-            const absencesByDay = @json($chartData['absencesByDay']);
-            const absencesByGrade = @json($chartData['absencesByGrade']);
-            const distribution = @json($chartData['distribution']);
+                // Chart data from backend
+                const absencesByDay = @json($chartData['absencesByDay']);
+                const absencesByGrade = @json($chartData['absencesByGrade']);
+                const distribution = @json($chartData['distribution']);
 
-            // Translation labels
-            const labels = {
-                excellent: '{{ trans('admin.reports.attendance.charts.excellent', [], $locale) }}',
-                good: '{{ trans('admin.reports.attendance.charts.good', [], $locale) }}',
-                warning: '{{ trans('admin.reports.attendance.charts.warning', [], $locale) }}',
-                critical: '{{ trans('admin.reports.attendance.charts.critical', [], $locale) }}',
-                absences: '{{ trans('admin.reports.attendance.charts.absences', [], $locale) }}',
-            };
+                // Translation labels
+                const labels = {
+                    excellent: '{{ trans('admin.reports.attendance.charts.excellent', [], $locale) }}',
+                    good: '{{ trans('admin.reports.attendance.charts.good', [], $locale) }}',
+                    warning: '{{ trans('admin.reports.attendance.charts.warning', [], $locale) }}',
+                    critical: '{{ trans('admin.reports.attendance.charts.critical', [], $locale) }}',
+                    absences: '{{ trans('admin.reports.attendance.charts.absences', [], $locale) }}',
+                };
 
-            // 1. Absences by Day of Week (Bar Chart)
-            const absencesByDayOptions = {
-                series: [{
-                    name: labels.absences,
-                    data: absencesByDay.values
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 220,
-                    fontFamily: fontFamily,
-                    toolbar: { show: false },
-                    animations: { enabled: false }
-                },
-                plotOptions: {
-                    bar: {
-                        borderRadius: 6,
-                        columnWidth: '60%',
-                        distributed: true
-                    }
-                },
-                colors: ['#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe', '#6366f1', '#818cf8', '#a5b4fc'],
-                dataLabels: {
-                    enabled: true,
-                    style: { fontSize: '11px', fontWeight: 600 }
-                },
-                xaxis: {
-                    categories: absencesByDay.categories,
-                    labels: { style: { fontSize: '10px' } }
-                },
-                yaxis: {
-                    labels: { style: { fontSize: '10px' } }
-                },
-                grid: {
-                    borderColor: '#e2e8f0',
-                    strokeDashArray: 3
-                },
-                legend: { show: false }
-            };
+                // 1. Absences by Day of Week (Bar Chart)
+                const absencesByDayOptions = {
+                    series: [{
+                        name: labels.absences,
+                        data: absencesByDay.values
+                    }],
+                    chart: {
+                        type: 'bar',
+                        height: 220,
+                        fontFamily: fontFamily,
+                        toolbar: { show: false },
+                        animations: { enabled: false }
+                    },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 6,
+                            columnWidth: '60%',
+                            distributed: true
+                        }
+                    },
+                    colors: ['#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe', '#6366f1', '#818cf8', '#a5b4fc'],
+                    dataLabels: {
+                        enabled: true,
+                        style: { fontSize: '11px', fontWeight: 600 }
+                    },
+                    xaxis: {
+                        categories: absencesByDay.categories,
+                        labels: { style: { fontSize: '10px' } }
+                    },
+                    yaxis: {
+                        labels: { style: { fontSize: '10px' } }
+                    },
+                    grid: {
+                        borderColor: '#e2e8f0',
+                        strokeDashArray: 3
+                    },
+                    legend: { show: false }
+                };
 
-            new ApexCharts(document.querySelector("#absencesByDayChart"), absencesByDayOptions).render();
+                new ApexCharts(document.querySelector("#absencesByDayChart"), absencesByDayOptions).render();
 
-            // 2. Attendance Distribution (Donut Chart)
-            const distributionOptions = {
-                series: [distribution.excellent, distribution.good, distribution.warning, distribution.critical],
-                chart: {
-                    type: 'donut',
-                    height: 220,
-                    fontFamily: fontFamily,
-                    animations: { enabled: false }
-                },
-                labels: [labels.excellent, labels.good, labels.warning, labels.critical],
-                colors: ['#10b981', '#6366f1', '#f59e0b', '#ef4444'],
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '55%',
-                            labels: {
-                                show: true,
-                                total: {
+                // 2. Attendance Distribution (Donut Chart)
+                const distributionOptions = {
+                    series: [distribution.excellent, distribution.good, distribution.warning, distribution.critical],
+                    chart: {
+                        type: 'donut',
+                        height: 220,
+                        fontFamily: fontFamily,
+                        animations: { enabled: false }
+                    },
+                    labels: [labels.excellent, labels.good, labels.warning, labels.critical],
+                    colors: ['#10b981', '#6366f1', '#f59e0b', '#ef4444'],
+                    plotOptions: {
+                        pie: {
+                            donut: {
+                                size: '55%',
+                                labels: {
                                     show: true,
-                                    label: '{{ trans('admin.reports.attendance.table.records', [], $locale) }}',
-                                    fontSize: '12px',
-                                    fontWeight: 600
+                                    total: {
+                                        show: true,
+                                        label: '{{ trans('admin.reports.attendance.table.records', [], $locale) }}',
+                                        fontSize: '12px',
+                                        fontWeight: 600
+                                    }
                                 }
                             }
                         }
-                    }
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function(val, opts) {
-                        return opts.w.config.series[opts.seriesIndex];
                     },
-                    style: { fontSize: '11px', fontWeight: 600 }
-                },
-                legend: {
-                    position: 'bottom',
-                    fontSize: '11px',
-                    markers: { width: 10, height: 10 }
-                }
-            };
-
-            new ApexCharts(document.querySelector("#distributionChart"), distributionOptions).render();
-
-            // 3. Absences by Grade (Horizontal Bar Chart)
-            const absencesByGradeOptions = {
-                series: [{
-                    name: labels.absences,
-                    data: absencesByGrade.values
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 220,
-                    fontFamily: fontFamily,
-                    toolbar: { show: false },
-                    animations: { enabled: false }
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: true,
-                        borderRadius: 4,
-                        barHeight: '70%',
-                        distributed: true
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function(val, opts) {
+                            return opts.w.config.series[opts.seriesIndex];
+                        },
+                        style: { fontSize: '11px', fontWeight: 600 }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        fontSize: '11px',
+                        markers: { width: 10, height: 10 }
                     }
-                },
-                colors: ['#ef4444', '#f59e0b', '#10b981', '#6366f1', '#8b5cf6', '#ec4899'],
-                dataLabels: {
-                    enabled: true,
-                    style: { fontSize: '11px', fontWeight: 600 }
-                },
-                xaxis: {
-                    categories: absencesByGrade.categories,
-                    labels: { style: { fontSize: '10px' } }
-                },
-                yaxis: {
-                    labels: { style: { fontSize: '10px' } }
-                },
-                grid: {
-                    borderColor: '#e2e8f0',
-                    strokeDashArray: 3
-                },
-                legend: { show: false }
-            };
+                };
 
-            new ApexCharts(document.querySelector("#absencesByGradeChart"), absencesByGradeOptions).render();
+                new ApexCharts(document.querySelector("#distributionChart"), distributionOptions).render();
 
-            // Signal that charts are rendered (for Browsershot)
-            window.chartsRendered = true;
-        });
-    </script>
+                // 3. Absences by Grade (Horizontal Bar Chart)
+                const absencesByGradeOptions = {
+                    series: [{
+                        name: labels.absences,
+                        data: absencesByGrade.values
+                    }],
+                    chart: {
+                        type: 'bar',
+                        height: 220,
+                        fontFamily: fontFamily,
+                        toolbar: { show: false },
+                        animations: { enabled: false }
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: true,
+                            borderRadius: 4,
+                            barHeight: '70%',
+                            distributed: true
+                        }
+                    },
+                    colors: ['#ef4444', '#f59e0b', '#10b981', '#6366f1', '#8b5cf6', '#ec4899'],
+                    dataLabels: {
+                        enabled: true,
+                        style: { fontSize: '11px', fontWeight: 600 }
+                    },
+                    xaxis: {
+                        categories: absencesByGrade.categories,
+                        labels: { style: { fontSize: '10px' } }
+                    },
+                    yaxis: {
+                        labels: { style: { fontSize: '10px' } }
+                    },
+                    grid: {
+                        borderColor: '#e2e8f0',
+                        strokeDashArray: 3
+                    },
+                    legend: { show: false }
+                };
+
+                new ApexCharts(document.querySelector("#absencesByGradeChart"), absencesByGradeOptions).render();
+
+                // Signal that charts are rendered (for Browsershot)
+                window.chartsRendered = true;
+            });
+        </script>
+    @endif
 </body>
 
 </html>

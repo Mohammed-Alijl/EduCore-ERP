@@ -68,10 +68,11 @@ class GenerateAttendancePdfJob implements ShouldQueue
                 $this->locale
             )->get();
 
-            $chartData = $reportService->getChartDataForPdf(
-                $this->academicYearId,
-                $this->locale
-            );
+            // Only include charts when exporting all data (no grade/section filter)
+            $includeCharts = is_null($this->gradeId) && is_null($this->sectionId);
+            $chartData = $includeCharts
+                ? $reportService->getChartDataForPdf($this->academicYearId, $this->locale)
+                : null;
 
             $html = $this->renderPdfView($data, $chartData);
 
@@ -88,6 +89,7 @@ class GenerateAttendancePdfJob implements ShouldQueue
                 'grade_id' => $this->gradeId,
                 'section_id' => $this->sectionId,
                 'records_count' => $data->count(),
+                'include_charts' => $includeCharts,
             ]);
         } catch (Throwable $e) {
             Log::error('Failed to generate attendance PDF export', [
@@ -119,7 +121,7 @@ class GenerateAttendancePdfJob implements ShouldQueue
      *
      * @param  \Illuminate\Support\Collection  $data
      */
-    private function renderPdfView($data, array $chartData): string
+    private function renderPdfView($data, ?array $chartData): string
     {
         return view('admin.reports.attendance.pdf_view', [
             'records' => $data,
