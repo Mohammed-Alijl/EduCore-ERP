@@ -139,17 +139,24 @@ class AttendanceReportService
      */
     public function getChartData(int $academicYearId): array
     {
+        return $this->getChartDataForPdf($academicYearId, app()->getLocale());
+    }
+
+    /**
+     * Get chart data for PDF export with custom locale.
+     */
+    public function getChartDataForPdf(int $academicYearId, string $locale): array
+    {
         $absent = Attendance::STATUS_ABSENT;
-        $locale = app()->getLocale();
 
         $dayNames = [
-            1 => trans('admin.reports.attendance.days.sunday'),
-            2 => trans('admin.reports.attendance.days.monday'),
-            3 => trans('admin.reports.attendance.days.tuesday'),
-            4 => trans('admin.reports.attendance.days.wednesday'),
-            5 => trans('admin.reports.attendance.days.thursday'),
-            6 => trans('admin.reports.attendance.days.friday'),
-            7 => trans('admin.reports.attendance.days.saturday'),
+            1 => trans('admin.reports.attendance.days.sunday', [], $locale),
+            2 => trans('admin.reports.attendance.days.monday', [], $locale),
+            3 => trans('admin.reports.attendance.days.tuesday', [], $locale),
+            4 => trans('admin.reports.attendance.days.wednesday', [], $locale),
+            5 => trans('admin.reports.attendance.days.thursday', [], $locale),
+            6 => trans('admin.reports.attendance.days.friday', [], $locale),
+            7 => trans('admin.reports.attendance.days.saturday', [], $locale),
         ];
 
         // ─── 1. Absences by Day of Week ─────────────────────────────
@@ -187,12 +194,22 @@ class AttendanceReportService
             ->get();
 
         $categoriesGrade = $gradeData->pluck('grade_name')->toArray();
-        $valuesGrade = $gradeData->pluck('absences_count')->map(fn ($val) => (int) $val)->toArray();
+        $valuesGrade = $gradeData->pluck('absences_count')->map(fn($val) => (int) $val)->toArray();
 
         if (empty($categoriesGrade)) {
-            $categoriesGrade = [trans('admin.reports.attendance.charts.no_data')];
+            $categoriesGrade = [trans('admin.reports.attendance.charts.no_data', [], $locale)];
             $valuesGrade = [0];
         }
+
+        // ─── 3. Attendance Distribution (for PDF) ───────────────────
+        $summary = $this->buildAttendanceSummaryQuery($academicYearId, null, null, $locale)->get();
+
+        $distribution = [
+            'excellent' => $summary->where('attendance_percentage', '>=', 95)->count(),
+            'good' => $summary->whereBetween('attendance_percentage', [85, 94.99])->count(),
+            'warning' => $summary->whereBetween('attendance_percentage', [75, 84.99])->count(),
+            'critical' => $summary->where('attendance_percentage', '<', 75)->count(),
+        ];
 
         return [
             'absencesByDay' => [
@@ -203,6 +220,7 @@ class AttendanceReportService
                 'categories' => $categoriesGrade,
                 'values' => $valuesGrade,
             ],
+            'distribution' => $distribution,
         ];
     }
 
@@ -222,16 +240,16 @@ class AttendanceReportService
 
                 if ($pct >= 95) {
                     return '<span class="badge bg-success" style="font-size:.8125rem;padding:.45em .85em;border-radius:8px;">'
-                        .$pct.'%</span>';
+                        . $pct . '%</span>';
                 }
 
                 if ($pct >= 85) {
                     return '<span class="badge bg-warning text-dark" style="font-size:.8125rem;padding:.45em .85em;border-radius:8px;">'
-                        .$pct.'%</span>';
+                        . $pct . '%</span>';
                 }
 
                 return '<span class="badge bg-danger" style="font-size:.8125rem;padding:.45em .85em;border-radius:8px;">'
-                    .$pct.'%</span>';
+                    . $pct . '%</span>';
             })
             ->rawColumns(['attendance_percentage'])
             ->make(true);

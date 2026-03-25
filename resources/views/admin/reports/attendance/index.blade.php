@@ -47,6 +47,7 @@
 
     @can('export_attendance-reports')
         @include('admin.reports.attendance.partials.export-modal')
+        @include('admin.reports.attendance.partials.export-pdf-modal')
     @endcan
 @endsection
 

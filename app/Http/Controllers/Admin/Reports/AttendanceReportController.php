@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Reports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Export\AttendanceReportRequest;
 use App\Jobs\GenerateAttendanceExportJob;
+use App\Jobs\GenerateAttendancePdfJob;
 use App\Models\AcademicYear;
 use App\Services\GradeService;
 use App\Services\Reports\AttendanceReportService;
@@ -25,7 +26,7 @@ class AttendanceReportController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('permission:view_attendance-reports', only: ['index']),
-            new Middleware('permission:export_attendance-reports', only: ['requestExport']),
+            new Middleware('permission:export_attendance-reports', only: ['requestExport', 'requestPdfExport']),
         ];
     }
 
@@ -61,7 +62,7 @@ class AttendanceReportController extends Controller implements HasMiddleware
     }
 
     /**
-     * Request an attendance report export.
+     * Request an attendance report export (Excel).
      */
     public function requestExport(AttendanceReportRequest $request): JsonResponse
     {
@@ -77,6 +78,27 @@ class AttendanceReportController extends Controller implements HasMiddleware
         return response()->json([
             'status' => 'success',
             'message' => trans('admin.exports.attendance_report.generate_report_message'),
+        ]);
+    }
+
+    /**
+     * Request an attendance report PDF export.
+     */
+    public function requestPdfExport(AttendanceReportRequest $request): JsonResponse
+    {
+        $admin = auth('admin')->user();
+
+        GenerateAttendancePdfJob::dispatch(
+            $admin,
+            $request->validated('academic_year_id'),
+            $request->validated('grade_id'),
+            $request->validated('section_id'),
+            app()->getLocale()
+        );
+
+        return response()->json([
+            'status' => 'success',
+            'message' => trans('admin.exports.attendance_report_pdf.generate_report_message'),
         ]);
     }
 }

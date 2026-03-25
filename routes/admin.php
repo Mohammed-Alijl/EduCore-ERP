@@ -295,6 +295,7 @@ Route::group(
                     Route::prefix('exports')->name('exports.')->group(function () {
                         Route::get('/download', [NotificationController::class, 'downloadExport'])->name('download');
                         Route::post('/attendance', [AttendanceReportController::class, 'requestExport'])->name('attendance');
+                        Route::post('/attendance-pdf', [AttendanceReportController::class, 'requestPdfExport'])->name('attendance-pdf');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

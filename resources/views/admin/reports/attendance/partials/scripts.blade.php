@@ -331,6 +331,95 @@
                     }
                 });
             });
+
+            // ─── PDF Export Modal Logic ─────────────────────────────────
+            const $exportPdfGrade = $('#export-pdf-grade');
+            const $exportPdfSection = $('#export-pdf-section');
+
+            // Load sections on grade change for PDF modal
+            $exportPdfGrade.on('change', function() {
+                const gradeId = $(this).val();
+                $exportPdfSection.val('').prop('disabled', true);
+
+                if (!gradeId) return;
+
+                $.ajax({
+                    url: '{{ route('admin.get_sections_by_grade') }}',
+                    type: 'GET',
+                    data: {
+                        grade_id: gradeId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $exportPdfSection.html(
+                            '<option value="">{{ trans('admin.global.all') }}</option>'
+                            );
+                        if (response && response.success && response.data) {
+                            $.each(response.data, function(id, name) {
+                                $exportPdfSection.append(
+                                    `<option value="${id}">${name}</option>`
+                                );
+                            });
+                            $exportPdfSection.prop('disabled', false);
+                        }
+                    },
+                    error: function() {
+                        console.error('Failed to load sections');
+                    }
+                });
+            });
+
+            // Handle PDF export form submission
+            $('#export-pdf-form').on('submit', function(e) {
+                e.preventDefault();
+
+                const $btn = $('#btn-submit-pdf-export');
+                const originalText = $btn.html();
+
+                $btn.prop('disabled', true).html(
+                    '<i class="las la-spinner la-spin mr-1"></i> {{ trans('admin.global.loading') }}'
+                );
+
+                $.ajax({
+                    url: '{{ route('admin.exports.attendance-pdf') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        academic_year_id: $('#export-pdf-academic-year').val(),
+                        grade_id: $exportPdfGrade.val() || null,
+                        section_id: $exportPdfSection.val() || null
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#exportPdfModal').modal('hide');
+                        swal({
+                            type: 'success',
+                            title: '{{ trans('admin.global.success') }}',
+                            text: response.message,
+                            timer: 2000,
+                            showConfirmButton: false
+                        })
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    },
+                    error: function(xhr) {
+                        let errorMessage = '{{ trans('admin.global.error') }}';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        swal({
+                            type: 'error',
+                            title: '{{ trans('admin.global.error_title') }}',
+                            text: errorMessage,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
         @endcan
     });
 </script>

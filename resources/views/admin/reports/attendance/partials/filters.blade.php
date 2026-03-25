@@ -40,6 +40,11 @@
                         <div class="col-xl-8 col-lg-6 col-md-6 mb-3">
                             <div class="d-flex justify-content-end gap-2">
                                 @can('export_attendance-reports')
+                                    <button type="button" class="btn btn-danger mr-2 ml-2" id="btn-export-pdf"
+                                        data-toggle="modal" data-target="#exportPdfModal">
+                                        <i class="las la-file-pdf mr-1 ml-1"></i>
+                                        {{ trans('admin.exports.attendance_report_pdf.export_button') }}
+                                    </button>
                                     <button type="button" class="btn btn-success mr-2 ml-2" id="btn-export-excel"
                                         data-toggle="modal" data-target="#exportModal">
                                         <i class="las la-file-excel mr-1 ml-1"></i>

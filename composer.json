@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.10.1",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "*",
+        "spatie/browsershot": "^5.2",
         "spatie/laravel-permission": "*",
         "spatie/laravel-translatable": "*",
         "stripe/stripe-php": "*",
