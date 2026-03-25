@@ -25,8 +25,8 @@ class AttendanceReportController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_attendance-reports', only: ['index']),
-            new Middleware('permission:export_attendance-reports', only: ['requestExport', 'requestPdfExport']),
+            new Middleware('permission:view_attendanceReports', only: ['index']),
+            new Middleware('permission:export_attendanceReports', only: ['requestExport', 'requestPdfExport']),
         ];
     }
 

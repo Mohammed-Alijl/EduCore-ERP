@@ -39,7 +39,7 @@
                         {{-- Action Buttons --}}
                         <div class="col-xl-8 col-lg-6 col-md-6 mb-3">
                             <div class="d-flex justify-content-end gap-2">
-                                @can('export_attendance-reports')
+                                @can('export_attendanceReports')
                                     <button type="button" class="btn btn-danger mr-2 ml-2" id="btn-export-pdf"
                                         data-toggle="modal" data-target="#exportPdfModal">
                                         <i class="las la-file-pdf mr-1 ml-1"></i>
