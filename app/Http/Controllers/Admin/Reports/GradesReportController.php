@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin\Reports;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Export\GradesReportRequest;
+use App\Jobs\GenerateGradesExportJob;
+use App\Jobs\GenerateGradesPdfJob;
 use App\Services\Reports\GradesReportService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -18,6 +22,7 @@ class GradesReportController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('permission:view_grades-reports', only: ['index']),
+            new Middleware('permission:export_grades-reports', only: ['requestExport', 'requestPdfExport']),
         ];
     }
 
@@ -50,7 +55,8 @@ class GradesReportController extends Controller implements HasMiddleware
      */
     public function getSubjects(Request $request)
     {
-      $data = $this->reportService->getSubjects($request);   
+        $data = $this->reportService->getSubjects($request);
+
         return response()->json([
             'success' => true,
             'data' => $data,
@@ -63,9 +69,42 @@ class GradesReportController extends Controller implements HasMiddleware
     public function getExams(Request $request)
     {
         $data = $this->reportService->getExames($request);
+
         return response()->json([
             'success' => true,
             'data' => $data,
+        ]);
+    }
+
+    /**
+     * Request Excel export
+     */
+    public function requestExport(GradesReportRequest $request): JsonResponse
+    {
+        $admin = auth('admin')->user();
+        $filters = $request->validated();
+
+        GenerateGradesExportJob::dispatch($admin, $filters);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => trans('admin.exports.grades_report.generate_report_message'),
+        ]);
+    }
+
+    /**
+     * Request PDF export
+     */
+    public function requestPdfExport(GradesReportRequest $request): JsonResponse
+    {
+        $admin = auth('admin')->user();
+        $filters = $request->validated();
+
+        GenerateGradesPdfJob::dispatch($admin, $filters, app()->getLocale());
+
+        return response()->json([
+            'status' => 'success',
+            'message' => trans('admin.exports.grades_report_pdf.generate_report_message'),
         ]);
     }
 }

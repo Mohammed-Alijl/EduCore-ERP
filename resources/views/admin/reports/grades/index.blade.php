@@ -44,6 +44,8 @@
     @include('admin.reports.grades.partials.kpis')
     @include('admin.reports.grades.partials.charts')
     @include('admin.reports.grades.partials.table')
+    @include('admin.reports.grades.partials.export-modal')
+    @include('admin.reports.grades.partials.export-pdf-modal')
 @endsection
 @section('js')
     @include('admin.layouts.scripts.datatable_config')

@@ -296,6 +296,8 @@ Route::group(
                         Route::get('/download', [NotificationController::class, 'downloadExport'])->name('download');
                         Route::post('/attendance', [AttendanceReportController::class, 'requestExport'])->name('attendance');
                         Route::post('/attendance-pdf', [AttendanceReportController::class, 'requestPdfExport'])->name('attendance-pdf');
+                        Route::post('/grades', [GradesReportController::class, 'requestExport'])->name('grades');
+                        Route::post('/grades-pdf', [GradesReportController::class, 'requestPdfExport'])->name('grades-pdf');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

@@ -6,6 +6,7 @@ use App\Models\AcademicYear;
 use App\Models\Exam;
 use App\Models\Grade;
 use App\Models\Subject;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -13,11 +14,11 @@ use Yajra\DataTables\Facades\DataTables;
 class GradesReportService
 {
     /**
-     * Get the main grades query with optional filters.
+     * Build the main grades query with optional filters.
      *
      * @param  array<string, mixed>  $filters
      */
-    public function getGradesQuery(array $filters = []): \Illuminate\Support\Collection
+    public function buildGradesQuery(array $filters = []): Builder
     {
         $locale = app()->getLocale();
 
@@ -66,7 +67,17 @@ class GradesReportService
             $query->where('exams.id', $filters['exam_id']);
         }
 
-        return $query->orderByDesc('percentage')->get();
+        return $query->orderByDesc('percentage');
+    }
+
+    /**
+     * Get the main grades query with optional filters.
+     *
+     * @param  array<string, mixed>  $filters
+     */
+    public function getGradesQuery(array $filters = []): \Illuminate\Support\Collection
+    {
+        return $this->buildGradesQuery($filters)->get();
     }
 
     /**
@@ -82,7 +93,7 @@ class GradesReportService
         $totalResults = $results->count();
         $totalStudents = $results->unique('student_id')->count();
         $averagePercentage = $totalResults > 0 ? round($results->avg('percentage'), 1) : 0;
-        $passCount = $results->filter(fn ($r) => $r->percentage >= 50)->count();
+        $passCount = $results->filter(fn($r) => $r->percentage >= 50)->count();
         $passRate = $totalResults > 0 ? round(($passCount / $totalResults) * 100, 1) : 0;
         $totalExams = $results->unique('exam_title')->count();
 
@@ -112,6 +123,31 @@ class GradesReportService
     }
 
     /**
+     * Get chart data for PDF export with custom locale.
+     *
+     * @param  array<string, mixed>  $filters
+     * @return array<string, array<string, mixed>>
+     */
+    public function getChartDataForPdf(array $filters, string $locale): array
+    {
+        // Temporarily set locale for query execution
+        $currentLocale = app()->getLocale();
+        app()->setLocale($locale);
+
+        $results = $this->getGradesQuery($filters);
+        $chartData = [
+            'scoreDistribution' => $this->getScoreDistribution($results),
+            'subjectPerformance' => $this->getSubjectPerformance($results),
+            'gradeComparison' => $this->getGradeComparison($results),
+        ];
+
+        // Restore original locale
+        app()->setLocale($currentLocale);
+
+        return $chartData;
+    }
+
+    /**
      * Build the DataTable response.
      */
     public function datatable(\Illuminate\Support\Collection $query): mixed
@@ -121,22 +157,22 @@ class GradesReportService
             ->editColumn('percentage', function ($row) {
                 $color = $row->percentage >= 80 ? 'success' : ($row->percentage >= 50 ? 'warning' : 'danger');
 
-                return '<span class="badge bg-'.$color.'" style="font-size: 0.875rem; padding: 0.375rem 0.75rem;">'.
-                    $row->percentage.'%</span>';
+                return '<span class="badge bg-' . $color . '" style="font-size: 0.875rem; padding: 0.375rem 0.75rem;">' .
+                    $row->percentage . '%</span>';
             })
             ->editColumn('final_score', function ($row) {
-                return '<span style="font-weight: 600;">'.$row->final_score.'</span> / '.
-                    '<span class="text-muted">'.$row->total_marks.'</span>';
+                return '<span style="font-weight: 600;">' . $row->final_score . '</span> / ' .
+                    '<span class="text-muted">' . $row->total_marks . '</span>';
             })
             ->addColumn('status', function ($row) {
                 if ($row->percentage >= 80) {
-                    return '<span class="badge bg-success" style="padding: 0.375rem 0.75rem;"><i class="las la-trophy mr-1 ml-1"></i>'.trans('admin.reports.grades.statuses.excellent').'</span>';
+                    return '<span class="badge bg-success" style="padding: 0.375rem 0.75rem;"><i class="las la-trophy mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.excellent') . '</span>';
                 }
                 if ($row->percentage >= 50) {
-                    return '<span class="badge bg-warning text-dark" style="padding: 0.375rem 0.75rem;"><i class="las la-check-circle mr-1 ml-1"></i>'.trans('admin.reports.grades.statuses.pass').'</span>';
+                    return '<span class="badge bg-warning text-dark" style="padding: 0.375rem 0.75rem;"><i class="las la-check-circle mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.pass') . '</span>';
                 }
 
-                return '<span class="badge bg-danger" style="padding: 0.375rem 0.75rem;"><i class="las la-times-circle mr-1 ml-1"></i>'.trans('admin.reports.grades.statuses.fail').'</span>';
+                return '<span class="badge bg-danger" style="padding: 0.375rem 0.75rem;"><i class="las la-times-circle mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.fail') . '</span>';
             })
             ->rawColumns(['percentage', 'final_score', 'status'])
             ->make(true);
@@ -167,7 +203,8 @@ class GradesReportService
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getSubjects($request) {
+    public function getSubjects($request)
+    {
         $query = \App\Models\Subject::active();
 
         if ($request->filled('grade_id')) {
@@ -186,7 +223,7 @@ class GradesReportService
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getExames(Request $request) 
+    public function getExames(Request $request)
     {
         $query = Exam::query()
             ->where('is_published', true);
@@ -209,8 +246,10 @@ class GradesReportService
                 }
             });
         }
+
         return $query->pluck('title', 'id');
     }
+
     /**
      * Get score distribution data for the bar chart.
      *
@@ -219,11 +258,11 @@ class GradesReportService
     protected function getScoreDistribution(\Illuminate\Support\Collection $results): array
     {
         $ranges = [
-            '0-20%' => $results->filter(fn ($r) => $r->percentage >= 0 && $r->percentage < 20)->count(),
-            '20-40%' => $results->filter(fn ($r) => $r->percentage >= 20 && $r->percentage < 40)->count(),
-            '40-60%' => $results->filter(fn ($r) => $r->percentage >= 40 && $r->percentage < 60)->count(),
-            '60-80%' => $results->filter(fn ($r) => $r->percentage >= 60 && $r->percentage < 80)->count(),
-            '80-100%' => $results->filter(fn ($r) => $r->percentage >= 80 && $r->percentage <= 100)->count(),
+            '0-20%' => $results->filter(fn($r) => $r->percentage >= 0 && $r->percentage < 20)->count(),
+            '20-40%' => $results->filter(fn($r) => $r->percentage >= 20 && $r->percentage < 40)->count(),
+            '40-60%' => $results->filter(fn($r) => $r->percentage >= 40 && $r->percentage < 60)->count(),
+            '60-80%' => $results->filter(fn($r) => $r->percentage >= 60 && $r->percentage < 80)->count(),
+            '80-100%' => $results->filter(fn($r) => $r->percentage >= 80 && $r->percentage <= 100)->count(),
         ];
 
         return [
@@ -271,7 +310,7 @@ class GradesReportService
         foreach ($grouped as $grade => $gradeResults) {
             $labels[] = $grade;
             $averages[] = round($gradeResults->avg('percentage'), 1);
-            $passCount = $gradeResults->filter(fn ($r) => $r->percentage >= 50)->count();
+            $passCount = $gradeResults->filter(fn($r) => $r->percentage >= 50)->count();
             $passRates[] = $gradeResults->count() > 0
                 ? round(($passCount / $gradeResults->count()) * 100, 1)
                 : 0;
