@@ -36,6 +36,8 @@ class ExportReadyNotification extends Notification
      */
     public function toDatabase(object $notifiable): array
     {
+        $isPdf = str_contains($this->exportType, '_pdf');
+
         return [
             'type' => 'export_ready',
             'export_type' => $this->exportType,
@@ -43,8 +45,8 @@ class ExportReadyNotification extends Notification
             'message' => $this->customMessage ?? trans("admin.exports.{$this->exportType}.ready_message"),
             'file_name' => $this->fileName,
             'download_url' => route('admin.exports.download', ['file' => $this->fileName]),
-            'icon' => 'fas fa-file-excel',
-            'icon_bg' => 'bg-success',
+            'icon' => $isPdf ? 'fas fa-file-pdf' : 'fas fa-file-excel',
+            'icon_bg' => $isPdf ? 'bg-danger' : 'bg-success',
             'created_at' => now()->toIso8601String(),
         ];
     }
