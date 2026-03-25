@@ -307,12 +307,8 @@
                             type: 'success',
                             title: '{{ trans('admin.global.success') }}',
                             text: response.message,
-                            timer: 2000,
-                            showConfirmButton: false
-                        })
-                        setTimeout(function() {
-                            location.reload();
-                        }, 2000);
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
                     },
                     error: function(xhr) {
                         let errorMessage = '{{ trans('admin.global.error') }}';
