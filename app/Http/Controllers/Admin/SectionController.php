@@ -16,11 +16,9 @@ use Illuminate\Routing\Controllers\Middleware;
 class SectionController extends Controller implements HasMiddleware
 {
     public function __construct(
-        protected SectionService   $sectionService,
+        protected SectionService $sectionService,
         protected ClassroomService $classroomService,
-        protected GradeService     $gradeService)
-    {
-    }
+        protected GradeService $gradeService) {}
 
     public static function middleware(): array
     {
@@ -45,12 +43,13 @@ class SectionController extends Controller implements HasMiddleware
         }
         try {
             $lookups = $this->sectionService->getLookups();
-            $grades  = $this->gradeService->getAllWithClassrooms();
+            $grades = $this->gradeService->getAllWithClassrooms();
+
             return view('admin.sections.index', array_merge($lookups, compact('grades')));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage()
+                'message' => $ex->getMessage(),
             ], 500);
         }
     }
@@ -62,14 +61,15 @@ class SectionController extends Controller implements HasMiddleware
     {
         try {
             $this->sectionService->store($request->validated());
+
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.add')
+                'message' => __('admin.sections.messages.success.add'),
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.add')
+                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.add'),
             ], 500);
         }
     }
@@ -81,14 +81,15 @@ class SectionController extends Controller implements HasMiddleware
     {
         try {
             $this->sectionService->update($section, $request->validated());
+
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.update')
+                'message' => __('admin.sections.messages.success.update'),
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.update')
+                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.update'),
             ], 500);
         }
     }
@@ -103,13 +104,13 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.archive')
+                'message' => __('admin.sections.messages.success.archive'),
             ], 200);
 
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive')
+                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive'),
             ], 500);
         }
     }
@@ -121,11 +122,12 @@ class SectionController extends Controller implements HasMiddleware
         }
         try {
             $grades = $this->gradeService->getAllWithClassrooms();
+
             return view('admin.sections.archived', compact('grades'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive')
+                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive'),
             ], 500);
         }
     }
@@ -134,14 +136,15 @@ class SectionController extends Controller implements HasMiddleware
     {
         try {
             $this->sectionService->restore($id);
+
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.restore')
+                'message' => __('admin.sections.messages.success.restore'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.restore')
+                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.restore'),
             ], 404);
         }
     }
@@ -153,21 +156,33 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.delete')
+                'message' => __('admin.sections.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.delete')
+                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.delete'),
             ], 500);
         }
     }
 
-    public function getByClassroom(Request $request) {
+    public function getByClassroom(Request $request)
+    {
         $sections = $this->sectionService->getClassroomSections($request->classroom_id);
+
         return response()->json([
             'success' => true,
-            'data' => $sections
+            'data' => $sections,
+        ]);
+    }
+
+    public function getByGrade(Request $request)
+    {
+        $sections = $this->sectionService->getGradeSections($request->grade_id);
+
+        return response()->json([
+            'success' => true,
+            'data' => $sections,
         ]);
     }
 
@@ -178,13 +193,14 @@ class SectionController extends Controller implements HasMiddleware
     {
         $students = $section->students()->with([])->get()->map(function ($s) {
             return [
-                'id'           => $s->id,
-                'name'         => $s->getTranslation('name', app()->getLocale()),
+                'id' => $s->id,
+                'name' => $s->getTranslation('name', app()->getLocale()),
                 'student_code' => $s->student_code,
-                'status'       => $s->status,
-                'status_text'  => $s->status ? trans('admin.global.active') : trans('admin.global.disabled'),
+                'status' => $s->status,
+                'status_text' => $s->status ? trans('admin.global.active') : trans('admin.global.disabled'),
             ];
         });
+
         return response()->json(['success' => true, 'data' => $students]);
     }
 }

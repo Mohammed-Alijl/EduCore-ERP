@@ -31,4 +31,9 @@ class AcademicYear extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

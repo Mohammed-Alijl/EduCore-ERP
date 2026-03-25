@@ -20,7 +20,9 @@ use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\Finance\StudentDiscountController;
 use App\Http\Controllers\Admin\GradeController;
 use App\Http\Controllers\Admin\GuardianController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\OnlineClassController;
+use App\Http\Controllers\Admin\Reports\AttendanceReportController;
 use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\Reports\GradesReportController;
 use App\Http\Controllers\Admin\RoleController;
@@ -216,6 +218,11 @@ Route::group(
                             Route::get('/subjects/filter', [GradesReportController::class, 'getSubjects'])->name('subjects');
                             Route::get('/exams/filter', [GradesReportController::class, 'getExams'])->name('exams');
                         });
+
+                        // Attendance Reports
+                        Route::prefix('attendance')->name('attendance.')->group(function () {
+                            Route::get('/', [AttendanceReportController::class, 'index'])->name('index');
+                        });
                     });
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
@@ -270,9 +277,26 @@ Route::group(
                     // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
                     Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
                     Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
+                    Route::get('get-sections-by-grade', [SectionController::class, 'getByGrade'])->name('get_sections_by_grade');
 
                     // ─── Academic Year ───────────────────────────────────────────────────────────────
                     Route::resource('academic_years', AcademicYearController::class)->except(['show', 'create', 'edit', 'destroy']);
+
+                    // ─── Notifications ───────────────────────────────────────────────────────────────
+                    Route::prefix('notifications')->name('notifications.')->group(function () {
+                        Route::get('/', [NotificationController::class, 'index'])->name('index');
+                        Route::get('/unread-count', [NotificationController::class, 'unreadCount'])->name('unread-count');
+                        Route::post('/{id}/mark-read', [NotificationController::class, 'markAsRead'])->name('mark-read');
+                        Route::post('/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('mark-all-read');
+                        Route::delete('/{id}', [NotificationController::class, 'destroy'])->name('destroy');
+                    });
+
+                    // ─── Exports ───────────────────────────────────────────────────────────────
+                    Route::prefix('exports')->name('exports.')->group(function () {
+                        Route::get('/download', [NotificationController::class, 'downloadExport'])->name('download');
+                        Route::post('/attendance', [AttendanceReportController::class, 'requestExport'])->name('attendance');
+                        Route::post('/attendance-pdf', [AttendanceReportController::class, 'requestPdfExport'])->name('attendance-pdf');
+                    });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
             });

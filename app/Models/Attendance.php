@@ -11,6 +11,7 @@ class Attendance extends Model
 
     protected $fillable = [
         'student_id',
+        'academic_year_id',
         'grade_id',
         'classroom_id',
         'section_id',
@@ -30,6 +31,11 @@ class Attendance extends Model
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    public function academicYear()
+    {
+        return $this->belongsTo(AcademicYear::class, 'academic_year_id');
     }
 
     public function grade()

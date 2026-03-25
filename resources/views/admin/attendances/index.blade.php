@@ -43,7 +43,7 @@
                 <div class="glass-card mb-4">
                     <div class="glass-card-body">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="col-lg col-md-6 mb-3">
                                 <label class="filter-label">
                                     <i class="las la-calendar"></i> {{ trans('admin.attendances.attendance_date') }}
                                 </label>
@@ -52,7 +52,19 @@
                                     max="{{ now()->toDateString() }}">
                             </div>
 
-                            <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="col-lg col-md-6 mb-3">
+                                <label class="filter-label">
+                                    <i class="las la-calendar-check"></i> {{ trans('admin.attendances.academic_year') ?? 'Academic Year' }}
+                                </label>
+                                <select class="form-control form-control-modern select2" id="filter_academic_year" name="academic_year_id">
+                                    <option value="">{{ trans('admin.attendances.select_academic_year') ?? 'Select Academic Year' }}</option>
+                                    @foreach ($lookups['academicYears'] ?? $academicYears as $year)
+                                        <option value="{{ $year->id }}" {{ $year->is_current ? 'selected' : '' }}>{{ $year->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-lg col-md-4 mb-3">
                                 <label class="filter-label">
                                     <i class="las la-layer-group"></i> {{ trans('admin.attendances.filter_grade') }}
                                 </label>
@@ -64,7 +76,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="col-lg col-md-4 mb-3">
                                 <label class="filter-label">
                                     <i class="las la-chalkboard"></i> {{ trans('admin.attendances.filter_classroom') }}
                                 </label>
@@ -74,7 +86,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="col-lg col-md-4 mb-3">
                                 <label class="filter-label">
                                     <i class="las la-users"></i> {{ trans('admin.attendances.filter_section') }}
                                 </label>
@@ -129,6 +141,7 @@
 
                 initElements() {
                     // Filters
+                    this.$academicYear = $('#filter_academic_year');
                     this.$grade = $('#filter_grade');
                     this.$classroom = $('#filter_classroom');
                     this.$section = $('#filter_section');
@@ -246,7 +259,7 @@
                 }
 
                 hasValidFilters() {
-                    return this.$section.val() && this.$date.val();
+                    return this.$academicYear.val() && this.$section.val() && this.$date.val();
                 }
 
                 toggleButton($btn, textHtml, disable) {
@@ -270,6 +283,7 @@
                     this.toggleButton(this.$loadBtn, this.trans.loading, true);
 
                     $.get(this.routes.students, {
+                            academic_year_id: this.$academicYear.val(),
                             section_id: this.$section.val(),
                             attendance_date: this.$date.val()
                         })
@@ -292,6 +306,7 @@
                     this.toggleButton(this.$printBtn, this.trans.loading, true);
 
                     $.post(this.routes.print, {
+                            academic_year_id: this.$academicYear.val(),
                             section_id: this.$section.val(),
                             attendance_date: this.$date.val()
                         })
@@ -327,6 +342,9 @@
                     // Serialize and append dynamic filters
                     const formData = $form.serializeArray();
                     formData.push({
+                        name: 'academic_year_id',
+                        value: this.$academicYear.val()
+                    }, {
                         name: 'grade_id',
                         value: this.$grade.val()
                     }, {
