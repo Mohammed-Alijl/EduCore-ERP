@@ -97,7 +97,7 @@ class AttendanceExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithCh
             $student->present_days,
             $student->absent_days,
             $student->late_days,
-            $student->attendance_percentage.'%',
+            $student->attendance_percentage . '%',
         ];
     }
 
