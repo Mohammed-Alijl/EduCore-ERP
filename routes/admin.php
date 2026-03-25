@@ -298,6 +298,8 @@ Route::group(
                         Route::post('/attendance-pdf', [AttendanceReportController::class, 'requestPdfExport'])->name('attendance-pdf');
                         Route::post('/grades', [GradesReportController::class, 'requestExport'])->name('grades');
                         Route::post('/grades-pdf', [GradesReportController::class, 'requestPdfExport'])->name('grades-pdf');
+                        Route::post('/financial', [FinancialReportController::class, 'requestExport'])->name('financial');
+                        Route::post('/financial-pdf', [FinancialReportController::class, 'requestPdfExport'])->name('financial-pdf');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

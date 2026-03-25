@@ -1485,6 +1485,7 @@ return [
                 'amount' => 'Amount',
                 'total_students' => 'Total Students',
                 'students' => 'Students',
+                'student_distribution' => 'Student Distribution',
             ],
 
             'table' => [
@@ -1662,6 +1663,26 @@ return [
             'info_message' => 'The PDF export will be processed in the background. You\'ll receive a notification when it\'s ready.',
             'ready_message' => 'Your PDF attendance report is ready for download. Click here!',
             'generate_report_message' => 'Your PDF export is being generated. You will receive a notification when it\'s ready.',
+        ],
+        'financial_report' => [
+            'title' => 'Financial Report',
+            'export_button' => 'Export Excel',
+            'sheet_title' => 'Outstanding Balances',
+            'generate_report_message' => 'Your export is being generated. You will receive a notification when it\'s ready.',
+            'ready_message' => 'Your financial report is ready for download. Click here!',
+            'generated_on' => 'Generated On',
+            'student_name' => 'Student Name',
+            'total_charges' => 'Total Charges',
+            'total_payments' => 'Total Payments',
+            'net_balance' => 'Net Balance',
+            'last_payment_date' => 'Last Payment Date',
+            'no_payment' => 'No payment yet',
+        ],
+        'financial_report_pdf' => [
+            'title' => 'Financial Report (PDF)',
+            'export_button' => 'Export PDF',
+            'ready_message' => 'Your financial report (PDF) is ready for download. Click here!',
+            'auto_generated' => 'Auto Generated',
         ],
         'grades_report' => [
             'title' => 'Grades Report',
