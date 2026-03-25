@@ -21,8 +21,14 @@
                 height: 300,
                 background: chartTheme.background,
                 foreColor: chartTheme.foreColor,
-                toolbar: { show: false },
-                animations: { enabled: true, easing: 'easeinout', speed: 800 }
+                toolbar: {
+                    show: false
+                },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800
+                }
             },
             plotOptions: {
                 bar: {
@@ -34,18 +40,37 @@
             colors: ['#ef4444', '#f97316', '#f59e0b', '#6366f1', '#10b981'],
             dataLabels: {
                 enabled: true,
-                style: { fontWeight: 700, fontSize: '13px' }
+                style: {
+                    fontWeight: 700,
+                    fontSize: '13px'
+                }
             },
             xaxis: {
                 categories: scoreDistData.labels,
-                labels: { style: { fontWeight: 600 } }
+                labels: {
+                    style: {
+                        fontWeight: 600
+                    }
+                }
             },
             yaxis: {
-                title: { text: @json(trans('admin.reports.grades.charts.students_count')), style: { fontWeight: 700 } }
+                title: {
+                    text: @json(trans('admin.reports.grades.charts.students_count')),
+                    style: {
+                        fontWeight: 700
+                    }
+                }
             },
-            grid: { borderColor: gridColor, strokeDashArray: 4 },
-            legend: { show: false },
-            tooltip: { theme: isDark ? 'dark' : 'light' }
+            grid: {
+                borderColor: gridColor,
+                strokeDashArray: 4
+            },
+            legend: {
+                show: false
+            },
+            tooltip: {
+                theme: isDark ? 'dark' : 'light'
+            }
         });
         scoreDistChart.render();
 
@@ -61,8 +86,14 @@
                 height: 300,
                 background: chartTheme.background,
                 foreColor: chartTheme.foreColor,
-                toolbar: { show: false },
-                animations: { enabled: true, easing: 'easeinout', speed: 800 }
+                toolbar: {
+                    show: false
+                },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800
+                }
             },
             plotOptions: {
                 bar: {
@@ -72,25 +103,55 @@
                     distributed: true,
                 }
             },
-            colors: ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899', '#f97316'],
+            colors: ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899',
+                '#f97316'
+            ],
             dataLabels: {
                 enabled: true,
-                formatter: function(val) { return val + '%'; },
-                style: { fontWeight: 700, fontSize: '12px' }
+                formatter: function(val) {
+                    return val + '%';
+                },
+                style: {
+                    fontWeight: 700,
+                    fontSize: '12px'
+                }
             },
             xaxis: {
                 max: 100,
-                title: { text: @json(trans('admin.reports.grades.charts.average_score')), style: { fontWeight: 700 } },
-                labels: { formatter: function(val) { return val + '%'; } }
+                title: {
+                    text: @json(trans('admin.reports.grades.charts.average_score')),
+                    style: {
+                        fontWeight: 700
+                    }
+                },
+                labels: {
+                    formatter: function(val) {
+                        return val + '%';
+                    }
+                }
             },
             yaxis: {
-                labels: { style: { fontWeight: 600, fontSize: '11px' } }
+                labels: {
+                    style: {
+                        fontWeight: 600,
+                        fontSize: '11px'
+                    }
+                }
             },
-            grid: { borderColor: gridColor, strokeDashArray: 4 },
-            legend: { show: false },
+            grid: {
+                borderColor: gridColor,
+                strokeDashArray: 4
+            },
+            legend: {
+                show: false
+            },
             tooltip: {
                 theme: isDark ? 'dark' : 'light',
-                y: { formatter: function(val) { return val + '%'; } }
+                y: {
+                    formatter: function(val) {
+                        return val + '%';
+                    }
+                }
             }
         });
         subjectChart.render();
@@ -110,8 +171,14 @@
                 height: 300,
                 background: chartTheme.background,
                 foreColor: chartTheme.foreColor,
-                toolbar: { show: false },
-                animations: { enabled: true, easing: 'easeinout', speed: 800 }
+                toolbar: {
+                    show: false
+                },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800
+                }
             },
             plotOptions: {
                 bar: {
@@ -122,26 +189,51 @@
             colors: ['#6366f1', '#10b981'],
             dataLabels: {
                 enabled: true,
-                formatter: function(val) { return val + '%'; },
-                style: { fontWeight: 700, fontSize: '11px' }
+                formatter: function(val) {
+                    return val + '%';
+                },
+                style: {
+                    fontWeight: 700,
+                    fontSize: '11px'
+                }
             },
             xaxis: {
                 categories: gradeData.labels,
-                labels: { style: { fontWeight: 600 } }
+                labels: {
+                    style: {
+                        fontWeight: 600
+                    }
+                }
             },
             yaxis: {
                 max: 100,
-                title: { text: '%', style: { fontWeight: 700 } },
-                labels: { formatter: function(val) { return val + '%'; } }
+                title: {
+                    text: '%',
+                    style: {
+                        fontWeight: 700
+                    }
+                },
+                labels: {
+                    formatter: function(val) {
+                        return val + '%';
+                    }
+                }
             },
-            grid: { borderColor: gridColor, strokeDashArray: 4 },
+            grid: {
+                borderColor: gridColor,
+                strokeDashArray: 4
+            },
             legend: {
                 position: 'top',
                 fontWeight: 600,
             },
             tooltip: {
                 theme: isDark ? 'dark' : 'light',
-                y: { formatter: function(val) { return val + '%'; } }
+                y: {
+                    formatter: function(val) {
+                        return val + '%';
+                    }
+                }
             }
         });
         gradeChart.render();
@@ -151,7 +243,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ route("admin.reports.grades.index") }}',
+                url: '{{ route('admin.reports.grades.index') }}',
                 data: function(d) {
                     d.academic_year_id = $('#filter-academic-year').val();
                     d.grade_id = $('#filter-grade').val();
@@ -167,18 +259,54 @@
                     return json.data;
                 }
             },
-            columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, className: 'text-center' },
-                { data: 'student_name', name: 'student_name' },
-                { data: 'grade_name', name: 'grade_name' },
-                { data: 'classroom_name', name: 'classroom_name' },
-                { data: 'subject_name', name: 'subject_name' },
-                { data: 'exam_title', name: 'exam_title' },
-                { data: 'final_score', name: 'final_score', className: 'text-center' },
-                { data: 'percentage', name: 'percentage', className: 'text-center' },
-                { data: 'status', name: 'status', orderable: false, searchable: false, className: 'text-center' },
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false,
+                    className: 'text-center'
+                },
+                {
+                    data: 'student_name',
+                    name: 'student_name'
+                },
+                {
+                    data: 'grade_name',
+                    name: 'grade_name'
+                },
+                {
+                    data: 'classroom_name',
+                    name: 'classroom_name'
+                },
+                {
+                    data: 'subject_name',
+                    name: 'subject_name'
+                },
+                {
+                    data: 'exam_title',
+                    name: 'exam_title'
+                },
+                {
+                    data: 'final_score',
+                    name: 'final_score',
+                    className: 'text-center'
+                },
+                {
+                    data: 'percentage',
+                    name: 'percentage',
+                    className: 'text-center'
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                    orderable: false,
+                    searchable: false,
+                    className: 'text-center'
+                },
             ],
-            order: [[7, 'desc']],
+            order: [
+                [7, 'desc']
+            ],
             drawCallback: function() {
                 $('#grades_report_table tbody tr').each(function(index) {
                     $(this).css('animation', 'fadeInUp 0.3s ease forwards');
@@ -200,13 +328,14 @@
                 if (!value) params.delete(key);
             });
             const queryString = params.toString();
-            const url = '{{ route("admin.reports.grades.index") }}' + (queryString ? '?' + queryString : '');
+            const url = '{{ route('admin.reports.grades.index') }}' + (queryString ? '?' + queryString :
+                '');
             window.location.href = url;
         });
 
         // ─── Reset Filters ─────────────────────────────────────────
         $('#btn-reset-filters').on('click', function() {
-            window.location.href = '{{ route("admin.reports.grades.index") }}';
+            window.location.href = '{{ route('admin.reports.grades.index') }}';
         });
 
         // ─── Smart Cascading Filters ───────
@@ -217,14 +346,21 @@
             const currentSubjectId = subjectSelect.val();
 
             $.ajax({
-                url: '{{ route("admin.reports.grades.subjects") }}',
+                url: '{{ route('admin.reports.grades.subjects') }}',
                 type: 'GET',
-                data: { grade_id: gradeId, classroom_id: classroomId },
+                data: {
+                    grade_id: gradeId,
+                    classroom_id: classroomId
+                },
                 success: function(response) {
                     if (response.success) {
-                        subjectSelect.empty().append('<option value="">{{ trans("admin.reports.grades.filters.all_subjects") }}</option>');
+                        subjectSelect.empty().append(
+                            '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
+                            );
                         $.each(response.data, function(id, name) {
-                            subjectSelect.append('<option value="' + id + '"' + (id == currentSubjectId ? ' selected' : '') + '>' + name + '</option>');
+                            subjectSelect.append('<option value="' + id + '"' + (id ==
+                                    currentSubjectId ? ' selected' : '') + '>' + name +
+                                '</option>');
                         });
                     }
                 }
@@ -240,7 +376,7 @@
             const currentExamId = examSelect.val();
 
             $.ajax({
-                url: '{{ route("admin.reports.grades.exams") }}',
+                url: '{{ route('admin.reports.grades.exams') }}',
                 type: 'GET',
                 data: {
                     academic_year_id: academicYearId,
@@ -250,9 +386,13 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        examSelect.empty().append('<option value="">{{ trans("admin.reports.grades.filters.all_exams") }}</option>');
+                        examSelect.empty().append(
+                            '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
+                            );
                         $.each(response.data, function(id, title) {
-                            examSelect.append('<option value="' + id + '"' + (id == currentExamId ? ' selected' : '') + '>' + title + '</option>');
+                            examSelect.append('<option value="' + id + '"' + (id ==
+                                    currentExamId ? ' selected' : '') + '>' + title +
+                                '</option>');
                         });
                     }
                 }
@@ -272,24 +412,31 @@
             const classroomSelect = $('#filter-classroom');
             const sectionSelect = $('#filter-section');
 
-            classroomSelect.html('<option value="">{{ trans("admin.reports.grades.filters.select_classroom") }}</option>');
-            sectionSelect.html('<option value="">{{ trans("admin.reports.grades.filters.select_section") }}</option>');
+            classroomSelect.html(
+                '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
+                );
+            sectionSelect.html(
+                '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>'
+                );
 
             if (gradeId) {
                 $.ajax({
-                    url: '{{ route("admin.classrooms.by-grade") }}',
+                    url: '{{ route('admin.classrooms.by-grade') }}',
                     type: 'GET',
-                    data: { grade_id: gradeId },
+                    data: {
+                        grade_id: gradeId
+                    },
                     success: function(response) {
                         if (response.success) {
                             $.each(response.data, function(id, name) {
-                                classroomSelect.append('<option value="' + id + '">' + name + '</option>');
+                                classroomSelect.append('<option value="' + id +
+                                    '">' + name + '</option>');
                             });
                         }
                     }
                 });
             }
-            
+
             loadSubjects();
             loadExams();
         });
@@ -298,17 +445,22 @@
             const classroomId = $(this).val();
             const sectionSelect = $('#filter-section');
 
-            sectionSelect.html('<option value="">{{ trans("admin.reports.grades.filters.select_section") }}</option>');
+            sectionSelect.html(
+                '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>'
+                );
 
             if (classroomId) {
                 $.ajax({
-                    url: '{{ route("admin.sections.by-classroom") }}',
+                    url: '{{ route('admin.sections.by-classroom') }}',
                     type: 'GET',
-                    data: { classroom_id: classroomId },
+                    data: {
+                        classroom_id: classroomId
+                    },
                     success: function(response) {
                         if (response.success) {
                             $.each(response.data, function(id, name) {
-                                sectionSelect.append('<option value="' + id + '">' + name + '</option>');
+                                sectionSelect.append('<option value="' + id + '">' +
+                                    name + '</option>');
                             });
                         }
                     }
@@ -323,11 +475,430 @@
         if ($('#filter-grade').val() || $('#filter-classroom').val()) {
             loadSubjects();
         }
-        if ($('#filter-academic-year').val() || $('#filter-grade').val() || $('#filter-classroom').val() || $('#filter-subject').val()) {
+        if ($('#filter-academic-year').val() || $('#filter-grade').val() || $('#filter-classroom').val() || $(
+                '#filter-subject').val()) {
             loadExams();
         }
 
         // ─── Animation Keyframes ───────────────────────────────────
-        $('<style>@keyframes fadeInUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}</style>').appendTo('head');
+        $('<style>@keyframes fadeInUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}</style>')
+            .appendTo('head');
+
+        // ─── Export Functionality ──────────────────────────────────
+        @can('export_grades-reports')
+            // Excel Export Modal Logic
+            function updateExportModalDropdowns() {
+                // Copy values from main filters to export modal
+                $('#export-academic-year').val($('#filter-academic-year').val());
+                $('#export-grade').val($('#filter-grade').val());
+                $('#export-classroom').val($('#filter-classroom').val());
+                $('#export-section').val($('#filter-section').val());
+                $('#export-subject').val($('#filter-subject').val());
+                $('#export-exam').val($('#filter-exam').val());
+
+                // Update options for cascading dropdowns
+                loadExportClassroomOptions();
+                loadExportSectionOptions();
+                loadExportSubjectOptions();
+                loadExportExamOptions();
+            }
+
+            function loadExportClassroomOptions() {
+                const gradeId = $('#export-grade').val();
+                const classroomSelect = $('#export-classroom');
+                const currentClassroomId = classroomSelect.val();
+
+                classroomSelect.html(
+                    '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
+                    );
+
+                if (gradeId) {
+                    $.ajax({
+                        url: '{{ route('admin.classrooms.by-grade') }}',
+                        type: 'GET',
+                        data: {
+                            grade_id: gradeId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                $.each(response.data, function(id, name) {
+                                    classroomSelect.append('<option value="' + id + '"' + (
+                                            id == currentClassroomId ? ' selected' : ''
+                                            ) + '>' + name + '</option>');
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+
+            function loadExportSectionOptions() {
+                const classroomId = $('#export-classroom').val();
+                const sectionSelect = $('#export-section');
+                const currentSectionId = sectionSelect.val();
+
+                sectionSelect.html(
+                    '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>');
+
+                if (classroomId) {
+                    $.ajax({
+                        url: '{{ route('admin.sections.by-classroom') }}',
+                        type: 'GET',
+                        data: {
+                            classroom_id: classroomId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                $.each(response.data, function(id, name) {
+                                    sectionSelect.append('<option value="' + id + '"' + (
+                                            id == currentSectionId ? ' selected' : '') +
+                                        '>' + name + '</option>');
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+
+            function loadExportSubjectOptions() {
+                const gradeId = $('#export-grade').val();
+                const classroomId = $('#export-classroom').val();
+                const subjectSelect = $('#export-subject');
+                const currentSubjectId = subjectSelect.val();
+
+                $.ajax({
+                    url: '{{ route('admin.reports.grades.subjects') }}',
+                    type: 'GET',
+                    data: {
+                        grade_id: gradeId,
+                        classroom_id: classroomId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            subjectSelect.empty().append(
+                                '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
+                                );
+                            $.each(response.data, function(id, name) {
+                                subjectSelect.append('<option value="' + id + '"' + (id ==
+                                        currentSubjectId ? ' selected' : '') + '>' +
+                                    name + '</option>');
+                            });
+                        }
+                    }
+                });
+            }
+
+            function loadExportExamOptions() {
+                const academicYearId = $('#export-academic-year').val();
+                const gradeId = $('#export-grade').val();
+                const classroomId = $('#export-classroom').val();
+                const subjectId = $('#export-subject').val();
+                const examSelect = $('#export-exam');
+                const currentExamId = examSelect.val();
+
+                $.ajax({
+                    url: '{{ route('admin.reports.grades.exams') }}',
+                    type: 'GET',
+                    data: {
+                        academic_year_id: academicYearId,
+                        grade_id: gradeId,
+                        classroom_id: classroomId,
+                        subject_id: subjectId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            examSelect.empty().append(
+                                '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
+                                );
+                            $.each(response.data, function(id, title) {
+                                examSelect.append('<option value="' + id + '"' + (id ==
+                                        currentExamId ? ' selected' : '') + '>' +
+                                    title + '</option>');
+                            });
+                        }
+                    }
+                });
+            }
+
+            // Export modal cascading handlers
+            $('#export-grade').on('change', function() {
+                loadExportClassroomOptions();
+                loadExportSubjectOptions();
+                loadExportExamOptions();
+            });
+
+            $('#export-classroom').on('change', function() {
+                loadExportSectionOptions();
+                loadExportSubjectOptions();
+                loadExportExamOptions();
+            });
+
+            $('#export-academic-year, #export-subject').on('change', function() {
+                loadExportExamOptions();
+            });
+
+            // Show export modal
+            $('#btn-export-excel').on('click', function() {
+                updateExportModalDropdowns();
+            });
+
+            // Handle Excel export form submission
+            $('#grades-export-form').on('submit', function(e) {
+                e.preventDefault();
+
+                const $btn = $('#btn-submit-export');
+                const originalText = $btn.html();
+
+                $btn.prop('disabled', true).html(
+                    '<i class="las la-spinner la-spin mr-1"></i> {{ trans('admin.global.loading') }}'
+                );
+
+                $.ajax({
+                    url: '{{ route('admin.exports.grades') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        academic_year_id: $('#export-academic-year').val() || null,
+                        grade_id: $('#export-grade').val() || null,
+                        classroom_id: $('#export-classroom').val() || null,
+                        section_id: $('#export-section').val() || null,
+                        subject_id: $('#export-subject').val() || null,
+                        exam_id: $('#export-exam').val() || null
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#exportModal').modal('hide');
+                        swal({
+                            type: 'success',
+                            title: '{{ trans('admin.global.success') }}',
+                            text: response.message,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    error: function(xhr) {
+                        let errorMessage = '{{ trans('admin.global.error') }}';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        swal({
+                            type: 'error',
+                            title: '{{ trans('admin.global.error_title') }}',
+                            text: errorMessage,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+
+            // PDF Export Modal Logic
+            function updatePdfExportModalDropdowns() {
+                // Copy values from main filters to PDF export modal
+                $('#export-pdf-academic-year').val($('#filter-academic-year').val());
+                $('#export-pdf-grade').val($('#filter-grade').val());
+                $('#export-pdf-classroom').val($('#filter-classroom').val());
+                $('#export-pdf-section').val($('#filter-section').val());
+                $('#export-pdf-subject').val($('#filter-subject').val());
+                $('#export-pdf-exam').val($('#filter-exam').val());
+
+                // Update options for cascading dropdowns
+                loadPdfExportClassroomOptions();
+                loadPdfExportSectionOptions();
+                loadPdfExportSubjectOptions();
+                loadPdfExportExamOptions();
+            }
+
+            function loadPdfExportClassroomOptions() {
+                const gradeId = $('#export-pdf-grade').val();
+                const classroomSelect = $('#export-pdf-classroom');
+                const currentClassroomId = classroomSelect.val();
+
+                classroomSelect.html(
+                    '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
+                    );
+
+                if (gradeId) {
+                    $.ajax({
+                        url: '{{ route('admin.classrooms.by-grade') }}',
+                        type: 'GET',
+                        data: {
+                            grade_id: gradeId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                $.each(response.data, function(id, name) {
+                                    classroomSelect.append('<option value="' + id + '"' + (
+                                            id == currentClassroomId ? ' selected' : ''
+                                            ) + '>' + name + '</option>');
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+
+            function loadPdfExportSectionOptions() {
+                const classroomId = $('#export-pdf-classroom').val();
+                const sectionSelect = $('#export-pdf-section');
+                const currentSectionId = sectionSelect.val();
+
+                sectionSelect.html(
+                    '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>');
+
+                if (classroomId) {
+                    $.ajax({
+                        url: '{{ route('admin.sections.by-classroom') }}',
+                        type: 'GET',
+                        data: {
+                            classroom_id: classroomId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                $.each(response.data, function(id, name) {
+                                    sectionSelect.append('<option value="' + id + '"' + (
+                                            id == currentSectionId ? ' selected' : '') +
+                                        '>' + name + '</option>');
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+
+            function loadPdfExportSubjectOptions() {
+                const gradeId = $('#export-pdf-grade').val();
+                const classroomId = $('#export-pdf-classroom').val();
+                const subjectSelect = $('#export-pdf-subject');
+                const currentSubjectId = subjectSelect.val();
+
+                $.ajax({
+                    url: '{{ route('admin.reports.grades.subjects') }}',
+                    type: 'GET',
+                    data: {
+                        grade_id: gradeId,
+                        classroom_id: classroomId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            subjectSelect.empty().append(
+                                '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
+                                );
+                            $.each(response.data, function(id, name) {
+                                subjectSelect.append('<option value="' + id + '"' + (id ==
+                                        currentSubjectId ? ' selected' : '') + '>' +
+                                    name + '</option>');
+                            });
+                        }
+                    }
+                });
+            }
+
+            function loadPdfExportExamOptions() {
+                const academicYearId = $('#export-pdf-academic-year').val();
+                const gradeId = $('#export-pdf-grade').val();
+                const classroomId = $('#export-pdf-classroom').val();
+                const subjectId = $('#export-pdf-subject').val();
+                const examSelect = $('#export-pdf-exam');
+                const currentExamId = examSelect.val();
+
+                $.ajax({
+                    url: '{{ route('admin.reports.grades.exams') }}',
+                    type: 'GET',
+                    data: {
+                        academic_year_id: academicYearId,
+                        grade_id: gradeId,
+                        classroom_id: classroomId,
+                        subject_id: subjectId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            examSelect.empty().append(
+                                '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
+                                );
+                            $.each(response.data, function(id, title) {
+                                examSelect.append('<option value="' + id + '"' + (id ==
+                                        currentExamId ? ' selected' : '') + '>' +
+                                    title + '</option>');
+                            });
+                        }
+                    }
+                });
+            }
+
+            // PDF export modal cascading handlers
+            $('#export-pdf-grade').on('change', function() {
+                loadPdfExportClassroomOptions();
+                loadPdfExportSubjectOptions();
+                loadPdfExportExamOptions();
+            });
+
+            $('#export-pdf-classroom').on('change', function() {
+                loadPdfExportSectionOptions();
+                loadPdfExportSubjectOptions();
+                loadPdfExportExamOptions();
+            });
+
+            $('#export-pdf-academic-year, #export-pdf-subject').on('change', function() {
+                loadPdfExportExamOptions();
+            });
+
+            // Show PDF export modal
+            $('#btn-export-pdf').on('click', function() {
+                updatePdfExportModalDropdowns();
+            });
+
+            // Handle PDF export form submission
+            $('#grades-export-pdf-form').on('submit', function(e) {
+                e.preventDefault();
+
+                const $btn = $('#btn-submit-pdf-export');
+                const originalText = $btn.html();
+
+                $btn.prop('disabled', true).html(
+                    '<i class="las la-spinner la-spin mr-1"></i> {{ trans('admin.global.loading') }}'
+                );
+
+                $.ajax({
+                    url: '{{ route('admin.exports.grades-pdf') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        academic_year_id: $('#export-pdf-academic-year').val() || null,
+                        grade_id: $('#export-pdf-grade').val() || null,
+                        classroom_id: $('#export-pdf-classroom').val() || null,
+                        section_id: $('#export-pdf-section').val() || null,
+                        subject_id: $('#export-pdf-subject').val() || null,
+                        exam_id: $('#export-pdf-exam').val() || null
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#exportPdfModal').modal('hide');
+                        swal({
+                            type: 'success',
+                            title: '{{ trans('admin.global.success') }}',
+                            text: response.message,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    error: function(xhr) {
+                        let errorMessage = '{{ trans('admin.global.error') }}';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        swal({
+                            type: 'error',
+                            title: '{{ trans('admin.global.error_title') }}',
+                            text: errorMessage,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+        @endcan
     });
 </script>

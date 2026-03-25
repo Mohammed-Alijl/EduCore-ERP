@@ -85,7 +85,8 @@
                                 {{ trans('admin.reports.grades.filters.subject') }}
                             </label>
                             <select class="form-control" id="filter-subject" name="subject_id">
-                                <option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>
+                                <option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}
+                                </option>
                                 @foreach ($filterData['subjects'] as $subject)
                                     <option value="{{ $subject->id }}"
                                         {{ ($filters['subject_id'] ?? '') == $subject->id ? 'selected' : '' }}>
@@ -113,7 +114,19 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-2 gap-2">
-                        <button type="button" class="btn btn-filter-reset mr-2 ml-2" id="btn-reset-filters">
+                        @can('export_grades-reports')
+                            <button type="button" class="btn btn-danger mr-2 ml-2" id="btn-export-pdf" data-toggle="modal"
+                                data-target="#exportPdfModal">
+                                <i class="las la-file-pdf mr-1 ml-1"></i>
+                                {{ trans('admin.exports.grades_report_pdf.export_button') }}
+                            </button>
+                            <button type="button" class="btn btn-success mr-2 ml-2" id="btn-export-excel"
+                                data-toggle="modal" data-target="#exportModal">
+                                <i class="las la-file-excel mr-1 ml-1"></i>
+                                {{ trans('admin.exports.grades_report.export_button') }}
+                            </button>
+                        @endcan
+                        <button type="button" class="btn btn-filter-reset mr-2 ml-2 btn-danger" id="btn-reset-filters">
                             <i class="las la-undo-alt mr-1 ml-1"></i>
                             {{ trans('admin.reports.grades.filters.reset') }}
                         </button>
