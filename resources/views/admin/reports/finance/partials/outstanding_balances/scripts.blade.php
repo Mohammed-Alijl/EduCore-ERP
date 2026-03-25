@@ -668,7 +668,6 @@
                 attributeFilter: ['class']
             });
 
-            console.log('📊 Modern ApexCharts initialized successfully');
         });
 
         $(document).on('click', '.student-finance-btn', function(e) {
@@ -727,4 +726,87 @@
                 </div>
             `);
         });
+
+        // ─── Export Functionality ──────────────────────────────────
+        @can('export_financial-reports')
+            $('#btn-export-excel').on('click', function(e) {
+                e.preventDefault();
+                const $btn = $(this);
+                const originalText = $btn.html();
+
+                $btn.prop('disabled', true).html('<i class="las la-spinner la-spin mr-1"></i> {{ trans('admin.global.loading') }}');
+
+                $.ajax({
+                    url: '{{ route('admin.exports.financial') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        swal({
+                            type: 'success',
+                            title: '{{ trans('admin.global.success') }}',
+                            text: response.message,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    error: function(xhr) {
+                        let errorMessage = '{{ trans('admin.global.error') }}';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        swal({
+                            type: 'error',
+                            title: '{{ trans('admin.global.error_title') }}',
+                            text: errorMessage,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+
+            $('#btn-export-pdf').on('click', function(e) {
+                e.preventDefault();
+                const $btn = $(this);
+                const originalText = $btn.html();
+
+                $btn.prop('disabled', true).html('<i class="las la-spinner la-spin mr-1"></i> {{ trans('admin.global.loading') }}');
+
+                $.ajax({
+                    url: '{{ route('admin.exports.financial-pdf') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        swal({
+                            type: 'success',
+                            title: '{{ trans('admin.global.success') }}',
+                            text: response.message,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    error: function(xhr) {
+                        let errorMessage = '{{ trans('admin.global.error') }}';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        swal({
+                            type: 'error',
+                            title: '{{ trans('admin.global.error_title') }}',
+                            text: errorMessage,
+                            confirmButtonText: '{{ trans('admin.global.ok') }}'
+                        });
+                    },
+                    complete: function() {
+                        $btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+        @endcan
     </script>

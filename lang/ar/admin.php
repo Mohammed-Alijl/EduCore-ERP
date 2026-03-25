@@ -1472,6 +1472,7 @@ return [
                 'amount' => 'المبلغ',
                 'total_students' => 'إجمالي الطلاب',
                 'students' => 'طلاب',
+                'student_distribution' => 'توزيع الطلاب'
             ],
 
             'table' => [
@@ -1649,6 +1650,26 @@ return [
             'info_message' => 'سيتم معالجة تصدير PDF في الخلفية. ستتلقى إشعاراً عندما يكون جاهزاً.',
             'ready_message' => 'تقرير الحضور PDF جاهز للتحميل. انقر هنا!',
             'generate_report_message' => 'جاري تجهيز ملف PDF في الخلفية. سيصلك إشعار برابط التحميل فور الانتهاء.',
+        ],
+        'financial_report' => [
+            'title' => 'التقرير المالي',
+            'export_button' => 'تصدير إكسل',
+            'sheet_title' => 'الأرصدة المستحقة',
+            'generate_report_message' => 'جاري تجهيز ملف الإكسل في الخلفية. سيصلك إشعار برابط التحميل فور الانتهاء.',
+            'ready_message' => 'التقرير المالي جاهز للتحميل. انقر هنا!',
+            'generated_on' => 'تاريخ الإنشاء',
+            'student_name' => 'اسم الطالب',
+            'total_charges' => 'إجمالي الرسوم',
+            'total_payments' => 'إجمالي المدفوعات',
+            'net_balance' => 'الرصيد المتبقي',
+            'last_payment_date' => 'تاريخ آخر دفعة',
+            'no_payment' => 'لم يتم الدفع بعد',
+        ],
+        'financial_report_pdf' => [
+            'title' => 'التقرير المالي (PDF)',
+            'export_button' => 'تصدير PDF',
+            'ready_message' => 'التقرير المالي PDF جاهز للتحميل. انقر هنا!',
+            'auto_generated' => 'تم التصدير تلقائياً',
         ],
         'grades_report' => [
             'title' => 'تقرير الدرجات',

@@ -11,7 +11,17 @@
                                 {{ trans('admin.reports.financial.table.subtitle') }}
                             </p>
                         </div>
-                        <div class="mt-3 mt-md-0">
+                        <div class="mt-3 mt-md-0 d-flex gap-2">
+                            @can('export_financial-reports')
+                                <button type="button" class="btn btn-danger mr-2 ml-2" id="btn-export-pdf">
+                                    <i class="las la-file-pdf mr-1 ml-1"></i>
+                                    {{ trans('admin.exports.financial_report_pdf.export_button') }}
+                                </button>
+                                <button type="button" class="btn btn-success mr-2 ml-2" id="btn-export-excel">
+                                    <i class="las la-file-excel mr-1 ml-1"></i>
+                                    {{ trans('admin.exports.financial_report.export_button') }}
+                                </button>
+                            @endcan
                             <span class="badge badge-primary"
                                 style="padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 600; border-radius: 10px;">
                                 <i class="las la-database mr-1 ml-1"></i>
