@@ -133,6 +133,7 @@ class ActivityLogService
             ->addColumn('causer', fn ($row) => $this->renderCauser($row))
             ->editColumn('created_at', fn ($row) => '<small class="text-muted">'.$row->created_at->format('Y-m-d H:i:s').'</small>')
             ->addColumn('actions', fn ($row) => $this->renderActionsColumn($row))
+            ->addColumn('DT_RowClass', fn ($row) => $this->getRowClass($row->event))
             ->rawColumns(['log_name', 'event', 'description', 'subject', 'causer', 'created_at', 'actions'])
             ->make(true);
     }
@@ -203,5 +204,18 @@ class ActivityLogService
     protected function renderActionsColumn(Activity $activity): string
     {
         return view('admin.activity_logs.partials.actions', ['log' => $activity])->render();
+    }
+
+    /**
+     * Get row CSS class based on event type.
+     */
+    protected function getRowClass(string $event): string
+    {
+        return match ($event) {
+            'created' => 'activity-row-created',
+            'updated' => 'activity-row-updated',
+            'deleted' => 'activity-row-deleted',
+            default => 'activity-row-default',
+        };
     }
 }
