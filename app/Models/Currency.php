@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
 
 class Currency extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations, LogsActivity;
 
     protected $fillable = [
         'code',
@@ -39,5 +41,31 @@ class Currency extends Model
         return Attribute::make(
             set: fn(string $value) => strtoupper($value),
         );
+    }
+
+    /**
+     * determine which attributes to log and how.
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['code', 'name', 'is_default', 'exchange_rate', 'status'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->useLogName('Finance - Currencies');
+    }
+
+
+    // --------------------------------------------------------
+    // Relationship
+    // --------------------------------------------------------
+    public function paymentVouchers()
+    {
+        return $this->hasMany(PaymentVoucher::class, 'currency_code', 'code');
+    }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class, 'currency_code', 'code');
     }
 }

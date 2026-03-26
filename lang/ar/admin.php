@@ -1472,7 +1472,7 @@ return [
                 'amount' => 'المبلغ',
                 'total_students' => 'إجمالي الطلاب',
                 'students' => 'طلاب',
-                'student_distribution' => 'توزيع الطلاب'
+                'student_distribution' => 'توزيع الطلاب',
             ],
 
             'table' => [
@@ -1714,5 +1714,67 @@ return [
         'marked_as_read' => 'تم تحديد الإشعار كمقروء',
         'all_marked_as_read' => 'تم تحديد جميع الإشعارات كمقروءة',
         'deleted' => 'تم حذف الإشعار بنجاح',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Activity Logs
+    |--------------------------------------------------------------------------
+    */
+    'activity_logs' => [
+        'title' => 'سجلات النظام',
+        'subtitle' => 'تتبع جميع الأنشطة والتغييرات في النظام',
+        'show_title' => 'تفاصيل السجل',
+        'detail_title' => 'تفاصيل السجل',
+        'view_full_details' => 'عرض التفاصيل الكاملة',
+        'properties_title' => 'التغييرات',
+        'no_subject' => 'تم حذف العنصر أو غير متاح',
+        'no_properties' => 'لا توجد تغييرات مسجلة',
+        'system_action' => 'إجراء النظام',
+        'fields' => [
+            'log_name' => 'اسم السجل',
+            'event' => 'نوع الحدث',
+            'description' => 'الوصف',
+            'subject' => 'العنصر',
+            'causer' => 'بواسطة',
+            'created_at' => 'التاريخ والوقت',
+            'batch_uuid' => 'معرف الدفعة',
+            'date_range' => 'نطاق التاريخ',
+            'select_date_range' => 'اختر نطاق التاريخ...',
+            'search_placeholder' => 'البحث في السجلات...',
+            'from' => 'من',
+            'to' => 'إلى',
+            'attribute' => 'الحقل',
+            'old_value' => 'القيمة القديمة',
+            'new_value' => 'القيمة الجديدة',
+            'value' => 'القيمة',
+        ],
+        'events' => [
+            'created' => 'إنشاء',
+            'updated' => 'تعديل',
+            'deleted' => 'حذف',
+        ],
+        'stats' => [
+            'total' => 'إجمالي السجلات',
+            'created' => 'إنشاء',
+            'updated' => 'تعديل',
+            'deleted' => 'حذف',
+        ],
+        'date_ranges' => [
+            'today' => 'اليوم',
+            'yesterday' => 'أمس',
+            'last_7_days' => 'آخر 7 أيام',
+            'last_30_days' => 'آخر 30 يوم',
+            'this_month' => 'هذا الشهر',
+            'last_month' => 'الشهر الماضي',
+        ],
+        'messages' => [
+            'success' => [
+                'cleanup' => 'تم حذف :count سجل قديم بنجاح.',
+            ],
+            'failed' => [
+                'cleanup' => 'فشل في حذف السجلات القديمة.',
+            ],
+        ],
     ],
 ];

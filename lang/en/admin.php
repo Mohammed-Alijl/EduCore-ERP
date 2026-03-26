@@ -1728,4 +1728,66 @@ return [
         'all_marked_as_read' => 'All notifications marked as read',
         'deleted' => 'Notification deleted successfully',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Activity Logs
+    |--------------------------------------------------------------------------
+    */
+    'activity_logs' => [
+        'title' => 'Activity Logs',
+        'subtitle' => 'Track all system activities and changes',
+        'show_title' => 'Activity Log Details',
+        'detail_title' => 'Log Details',
+        'view_full_details' => 'View Full Details',
+        'properties_title' => 'Changed Properties',
+        'no_subject' => 'Subject deleted or not available',
+        'no_properties' => 'No property changes recorded',
+        'system_action' => 'System Action',
+        'fields' => [
+            'log_name' => 'Log Name',
+            'event' => 'Event',
+            'description' => 'Description',
+            'subject' => 'Subject',
+            'causer' => 'Performed By',
+            'created_at' => 'Date & Time',
+            'batch_uuid' => 'Batch ID',
+            'date_range' => 'Date Range',
+            'select_date_range' => 'Select date range...',
+            'search_placeholder' => 'Search in logs...',
+            'from' => 'From',
+            'to' => 'To',
+            'attribute' => 'Attribute',
+            'old_value' => 'Old Value',
+            'new_value' => 'New Value',
+            'value' => 'Value',
+        ],
+        'events' => [
+            'created' => 'Created',
+            'updated' => 'Updated',
+            'deleted' => 'Deleted',
+        ],
+        'stats' => [
+            'total' => 'Total Logs',
+            'created' => 'Created',
+            'updated' => 'Updated',
+            'deleted' => 'Deleted',
+        ],
+        'date_ranges' => [
+            'today' => 'Today',
+            'yesterday' => 'Yesterday',
+            'last_7_days' => 'Last 7 Days',
+            'last_30_days' => 'Last 30 Days',
+            'this_month' => 'This Month',
+            'last_month' => 'Last Month',
+        ],
+        'messages' => [
+            'success' => [
+                'cleanup' => 'Successfully deleted :count old activity logs.',
+            ],
+            'failed' => [
+                'cleanup' => 'Failed to cleanup activity logs.',
+            ],
+        ],
+    ],
 ];

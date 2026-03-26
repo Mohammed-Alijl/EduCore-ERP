@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Receipt extends Model
 {
+    use HasFactory, LogsActivity;
     protected $fillable = [
         'student_id',
         'academic_year_id',
@@ -30,6 +34,22 @@ class Receipt extends Model
         'date'             => 'date',
     ];
 
+    /**
+     * determine which attributes to log and how.
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['paid_amount', 'date', 'description'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->useLogName('Finance - Receipts');
+    }
+
+
+    // --------------------------------------------------------
+    // Relationship
+    // --------------------------------------------------------
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
