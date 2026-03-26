@@ -9,7 +9,6 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ URL::asset('assets/admin/plugins/bootstrap-daterangepicker/daterangepicker.css') }}">
     <style>
         .log-badge {
             font-size: 0.75rem;
@@ -211,14 +210,21 @@
                             <div class="col-md-3 mb-3 mb-md-0">
                                 <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
                                     <i class="las la-calendar mr-1"></i>
-                                    {{ trans('admin.activity_logs.fields.date_range') }}
+                                    {{ trans('admin.activity_logs.fields.from') }}
                                 </label>
-                                <input type="text" class="form-control form-control-modern" id="filter_date_range"
-                                    placeholder="{{ trans('admin.activity_logs.fields.select_date_range') }}" readonly>
+                                <input type="date" class="form-control form-control-modern" id="filter_start_date">
+                            </div>
+
+                            <div class="col-md-2 mb-3 mb-md-0">
+                                <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
+                                    <i class="las la-calendar mr-1"></i>
+                                    {{ trans('admin.activity_logs.fields.to') }}
+                                </label>
+                                <input type="date" class="form-control form-control-modern" id="filter_end_date">
                             </div>
 
                             {{-- Search --}}
-                            <div class="col-md-3 mb-3 mb-md-0">
+                            <div class="col-md-2 mb-3 mb-md-0">
                                 <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
                                     <i class="las la-search mr-1"></i> {{ trans('admin.global.search') }}
                                 </label>
@@ -227,10 +233,12 @@
                             </div>
 
                             {{-- Reset Button --}}
-                            <div class="col-md-2 text-right">
-                                <button class="btn btn-modern w-100 btn-outline-primary" id="reset_filters">
-                                    <i class="las la-sync-alt mr-1 ml-1"></i>
-                                    {{ trans('admin.global.reset_filters') }}
+                            <div class="col-md-1 text-right">
+                                <label class="form-label tx-11 font-weight-bold text-uppercase text-muted invisible">
+                                    {{ trans('admin.global.actions') }}
+                                </label>
+                                <button class="btn btn-modern w-100 btn-outline-primary" id="reset_filters" title="{{ trans('admin.global.reset_filters') }}">
+                                    <i class="las la-sync-alt"></i>
                                 </button>
                             </div>
                         </div>
@@ -266,6 +274,8 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
 
     {{-- Details Modal --}}
     @include('admin.activity_logs.partials.details_modal')
@@ -273,8 +283,6 @@
 
 @section('js')
     <script src="{{ URL::asset('assets/admin/plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/admin/plugins/bootstrap-daterangepicker/moment.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/admin/plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
     @include('admin.layouts.scripts.datatable_config')
 
@@ -287,38 +295,11 @@
             var elements = {
                 filterLogName: $('#filter_log_name'),
                 filterEvent: $('#filter_event'),
-                filterDateRange: $('#filter_date_range'),
+                filterStartDate: $('#filter_start_date'),
+                filterEndDate: $('#filter_end_date'),
                 filterSearch: $('#filter_search'),
                 resetFilters: $('#reset_filters'),
                 detailsModal: $('#logDetailsModal')
-            };
-
-            var dateRangeConfig = {
-                autoUpdateInput: false,
-                locale: {
-                    format: 'YYYY-MM-DD',
-                    cancelLabel: '{{ trans('admin.global.cancel') }}',
-                    applyLabel: '{{ trans('admin.global.ok') }}',
-                    fromLabel: '{{ trans('admin.activity_logs.fields.from') }}',
-                    toLabel: '{{ trans('admin.activity_logs.fields.to') }}'
-                },
-                ranges: {
-                    '{{ trans('admin.activity_logs.date_ranges.today') }}': [moment(), moment()],
-                    '{{ trans('admin.activity_logs.date_ranges.yesterday') }}': [moment().subtract(1, 'days'),
-                        moment().subtract(1, 'days')
-                    ],
-                    '{{ trans('admin.activity_logs.date_ranges.last_7_days') }}': [moment().subtract(6,
-                        'days'), moment()
-                    ],
-                    '{{ trans('admin.activity_logs.date_ranges.last_30_days') }}': [moment().subtract(29,
-                        'days'), moment()],
-                    '{{ trans('admin.activity_logs.date_ranges.this_month') }}': [moment().startOf('month'),
-                        moment().endOf('month')
-                    ],
-                    '{{ trans('admin.activity_logs.date_ranges.last_month') }}': [moment().subtract(1, 'month')
-                        .startOf('month'), moment().subtract(1, 'month').endOf('month')
-                    ]
-                }
             };
 
             initializeComponents();
@@ -329,82 +310,36 @@
                 processing: true,
                 serverSide: true,
                 language: $.extend({}, datatable_lang),
-                order: [
-                    [6, 'desc']
-                ],
+                order: [[6, 'desc']],
                 ajax: {
                     url: datatableUrl,
                     data: function(d) {
                         $.extend(d, getTableFilters());
                     }
                 },
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'log_name',
-                        name: 'log_name',
-                        orderable: true
-                    },
-                    {
-                        data: 'event',
-                        name: 'event',
-                        orderable: true
-                    },
-                    {
-                        data: 'description',
-                        name: 'description',
-                        orderable: false
-                    },
-                    {
-                        data: 'subject',
-                        name: 'subject',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'causer',
-                        name: 'causer',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                        orderable: true
-                    },
-                    {
-                        data: 'actions',
-                        name: 'actions',
-                        orderable: false,
-                        searchable: false,
-                        className: 'text-center'
-                    }
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'log_name', name: 'log_name', orderable: true },
+                    { data: 'event', name: 'event', orderable: true },
+                    { data: 'description', name: 'description', orderable: false },
+                    { data: 'subject', name: 'subject', orderable: false, searchable: false },
+                    { data: 'causer', name: 'causer', orderable: false, searchable: false },
+                    { data: 'created_at', name: 'created_at', orderable: true },
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false, className: 'text-center' }
                 ]
             });
 
             // Event Listeners
             elements.filterLogName.on('change', refreshTable);
             elements.filterEvent.on('change', refreshTable);
+            elements.filterStartDate.on('change', refreshTable);
+            elements.filterEndDate.on('change', refreshTable);
             elements.filterSearch.on('keyup', debounce(refreshTable, 500));
             elements.resetFilters.on('click', resetFilters);
 
-            elements.filterDateRange.on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format(
-                    'YYYY-MM-DD'));
-                refreshTable();
-            });
-
-            elements.filterDateRange.on('cancel.daterangepicker', function() {
-                $(this).val('');
-                refreshTable();
-            });
-
             // View Details
-            $(document).on('click', '.btn-view-log', function() {
+            $(document).on('click', '.btn-view-log', function(e) {
+                e.preventDefault();
                 var logId = $(this).data('id');
                 loadLogDetails(logId);
             });
@@ -414,17 +349,14 @@
                     width: '100%',
                     allowClear: true
                 });
-
-                elements.filterDateRange.daterangepicker(dateRangeConfig);
             }
 
             function getTableFilters() {
-                var dates = elements.filterDateRange.val().split(' - ');
                 return {
                     log_name: elements.filterLogName.val(),
                     event: elements.filterEvent.val(),
-                    start_date: dates[0] || '',
-                    end_date: dates[1] || '',
+                    start_date: elements.filterStartDate.val(),
+                    end_date: elements.filterEndDate.val(),
                     search: elements.filterSearch.val()
                 };
             }
@@ -437,7 +369,8 @@
             function resetFilters() {
                 elements.filterLogName.val('').trigger('change.select2');
                 elements.filterEvent.val('').trigger('change.select2');
-                elements.filterDateRange.val('');
+                elements.filterStartDate.val('');
+                elements.filterEndDate.val('');
                 elements.filterSearch.val('');
                 refreshTable();
             }
@@ -488,8 +421,7 @@
             function debounce(func, wait) {
                 var timeout;
                 return function() {
-                    var context = this,
-                        args = arguments;
+                    var context = this, args = arguments;
                     clearTimeout(timeout);
                     timeout = setTimeout(function() {
                         func.apply(context, args);

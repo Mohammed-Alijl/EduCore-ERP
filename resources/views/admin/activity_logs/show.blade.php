@@ -58,7 +58,11 @@
 
         .detail-value {
             font-size: 0.95rem;
-            color: #212529;
+            color: inherit;
+        }
+
+        .detail-value strong {
+            color: inherit;
         }
 
         .properties-card {
@@ -83,7 +87,7 @@
         .property-name {
             font-weight: 600;
             min-width: 150px;
-            color: #495057;
+            color: inherit;
         }
 
         .property-old {
@@ -307,5 +311,7 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 @endsection

@@ -126,12 +126,12 @@ class ActivityLogService
 
         return DataTables::of($query)
             ->addIndexColumn()
-            ->addColumn('log_name', fn ($row) => '<span class="badge badge-info">'.e($row->log_name).'</span>')
-            ->addColumn('event', fn ($row) => $this->renderEventBadge($row->event))
-            ->addColumn('description', fn ($row) => '<strong>'.e($row->description).'</strong>')
+            ->editColumn('log_name', fn ($row) => '<span class="badge badge-info">'.e($row->log_name).'</span>')
+            ->editColumn('event', fn ($row) => $this->renderEventBadge($row->event))
+            ->editColumn('description', fn ($row) => '<strong>'.e($row->description).'</strong>')
             ->addColumn('subject', fn ($row) => $this->renderSubject($row))
             ->addColumn('causer', fn ($row) => $this->renderCauser($row))
-            ->addColumn('created_at', fn ($row) => '<small class="text-muted">'.$row->created_at->format('Y-m-d H:i:s').'</small>')
+            ->editColumn('created_at', fn ($row) => '<small class="text-muted">'.$row->created_at->format('Y-m-d H:i:s').'</small>')
             ->addColumn('actions', fn ($row) => $this->renderActionsColumn($row))
             ->rawColumns(['log_name', 'event', 'description', 'subject', 'causer', 'created_at', 'actions'])
             ->make(true);

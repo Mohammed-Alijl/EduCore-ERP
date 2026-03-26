@@ -307,11 +307,11 @@ Route::group(
                     Route::prefix('activity_logs')->name('activity_logs.')->group(function () {
                         Route::get('/', [ActivityLogController::class, 'index'])->name('index');
                         Route::get('/datatable', [ActivityLogController::class, 'datatable'])->name('datatable');
-                        Route::get('/{id}', [ActivityLogController::class, 'show'])->name('show');
                         Route::get('/subject/logs', [ActivityLogController::class, 'forSubject'])->name('for-subject');
                         Route::get('/causer/logs', [ActivityLogController::class, 'byCauser'])->name('by-causer');
                         Route::get('/statistics/summary', [ActivityLogController::class, 'statistics'])->name('statistics');
                         Route::post('/cleanup', [ActivityLogController::class, 'cleanup'])->name('cleanup');
+                        Route::get('/{id}', [ActivityLogController::class, 'show'])->name('show')->where('id', '[0-9]+');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
