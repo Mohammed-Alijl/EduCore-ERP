@@ -356,7 +356,7 @@
                     if (response.success) {
                         subjectSelect.empty().append(
                             '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
-                            );
+                        );
                         $.each(response.data, function(id, name) {
                             subjectSelect.append('<option value="' + id + '"' + (id ==
                                     currentSubjectId ? ' selected' : '') + '>' + name +
@@ -388,7 +388,7 @@
                     if (response.success) {
                         examSelect.empty().append(
                             '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
-                            );
+                        );
                         $.each(response.data, function(id, title) {
                             examSelect.append('<option value="' + id + '"' + (id ==
                                     currentExamId ? ' selected' : '') + '>' + title +
@@ -414,10 +414,10 @@
 
             classroomSelect.html(
                 '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
-                );
+            );
             sectionSelect.html(
                 '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>'
-                );
+            );
 
             if (gradeId) {
                 $.ajax({
@@ -447,7 +447,7 @@
 
             sectionSelect.html(
                 '<option value="">{{ trans('admin.reports.grades.filters.select_section') }}</option>'
-                );
+            );
 
             if (classroomId) {
                 $.ajax({
@@ -510,7 +510,7 @@
 
                 classroomSelect.html(
                     '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
-                    );
+                );
 
                 if (gradeId) {
                     $.ajax({
@@ -523,8 +523,8 @@
                             if (response.success) {
                                 $.each(response.data, function(id, name) {
                                     classroomSelect.append('<option value="' + id + '"' + (
-                                            id == currentClassroomId ? ' selected' : ''
-                                            ) + '>' + name + '</option>');
+                                        id == currentClassroomId ? ' selected' : ''
+                                    ) + '>' + name + '</option>');
                                 });
                             }
                         }
@@ -577,7 +577,7 @@
                         if (response.success) {
                             subjectSelect.empty().append(
                                 '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
-                                );
+                            );
                             $.each(response.data, function(id, name) {
                                 subjectSelect.append('<option value="' + id + '"' + (id ==
                                         currentSubjectId ? ' selected' : '') + '>' +
@@ -609,7 +609,7 @@
                         if (response.success) {
                             examSelect.empty().append(
                                 '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
-                                );
+                            );
                             $.each(response.data, function(id, title) {
                                 examSelect.append('<option value="' + id + '"' + (id ==
                                         currentExamId ? ' selected' : '') + '>' +
@@ -695,9 +695,16 @@
 
             // PDF Export Modal Logic
             function updatePdfExportModalDropdowns() {
-                // Copy values from main filters to PDF export modal
-                $('#export-pdf-academic-year').val($('#filter-academic-year').val());
-                $('#export-pdf-grade').val($('#filter-grade').val());
+                const academicYear = $('#filter-academic-year').val();
+                if (academicYear) {
+                    $('#export-pdf-academic-year').val(academicYear);
+                }
+
+                const grade = $('#filter-grade').val();
+                if (grade) {
+                    $('#export-pdf-grade').val(grade);
+                }
+
                 $('#export-pdf-classroom').val($('#filter-classroom').val());
                 $('#export-pdf-section').val($('#filter-section').val());
                 $('#export-pdf-subject').val($('#filter-subject').val());
@@ -717,7 +724,7 @@
 
                 classroomSelect.html(
                     '<option value="">{{ trans('admin.reports.grades.filters.select_classroom') }}</option>'
-                    );
+                );
 
                 if (gradeId) {
                     $.ajax({
@@ -730,8 +737,8 @@
                             if (response.success) {
                                 $.each(response.data, function(id, name) {
                                     classroomSelect.append('<option value="' + id + '"' + (
-                                            id == currentClassroomId ? ' selected' : ''
-                                            ) + '>' + name + '</option>');
+                                        id == currentClassroomId ? ' selected' : ''
+                                    ) + '>' + name + '</option>');
                                 });
                             }
                         }
@@ -784,7 +791,7 @@
                         if (response.success) {
                             subjectSelect.empty().append(
                                 '<option value="">{{ trans('admin.reports.grades.filters.all_subjects') }}</option>'
-                                );
+                            );
                             $.each(response.data, function(id, name) {
                                 subjectSelect.append('<option value="' + id + '"' + (id ==
                                         currentSubjectId ? ' selected' : '') + '>' +
@@ -816,7 +823,7 @@
                         if (response.success) {
                             examSelect.empty().append(
                                 '<option value="">{{ trans('admin.reports.grades.filters.all_exams') }}</option>'
-                                );
+                            );
                             $.each(response.data, function(id, title) {
                                 examSelect.append('<option value="' + id + '"' + (id ==
                                         currentExamId ? ' selected' : '') + '>' +

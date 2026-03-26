@@ -12,7 +12,7 @@ class AttendanceReportRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('admin')->user()->can('export_attendance-reports');
+        return auth('admin')->user()->can('export_attendanceReports');
     }
 
     /**

@@ -63,7 +63,7 @@ class GradesExport implements FromQuery, ShouldAutoSize, ShouldQueue, WithChunkR
             $result->exam_title,
             $result->final_score,
             $result->total_marks,
-            $formula,  // Percentage formula
+            $formula,
         ];
 
         $this->currentRow++;

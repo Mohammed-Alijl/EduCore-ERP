@@ -27,9 +27,9 @@
                                 {{ trans('admin.reports.grades.filters.academic_year') }}
                             </label>
                             <select class="form-control" id="export-pdf-academic-year" name="academic_year_id">
-                                <option value="">{{ trans('admin.reports.grades.filters.all_years') }}</option>
                                 @foreach ($filterData['academicYears'] as $year)
-                                    <option value="{{ $year->id }}">
+                                    <option value="{{ $year->id }}"
+                                        @if ($year->is_current) selected data-current="true" @endif>
                                         {{ $year->name }}
                                         @if ($year->is_current)
                                             ★
@@ -46,9 +46,10 @@
                                 {{ trans('admin.reports.grades.filters.grade') }}
                             </label>
                             <select class="form-control" id="export-pdf-grade" name="grade_id">
-                                <option value="">{{ trans('admin.reports.grades.filters.all_grades') }}</option>
                                 @foreach ($filterData['grades'] as $grade)
-                                    <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                    <option value="{{ $grade->id }}">
+                                        {{ $grade->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

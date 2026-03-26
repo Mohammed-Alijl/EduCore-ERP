@@ -24,9 +24,9 @@
                             <label class="form-label font-weight-bold">
                                 <i class="las la-calendar mr-1"></i>
                                 {{ trans('admin.reports.grades.filters.academic_year') }}
+                                <span class="text-danger">*</span>
                             </label>
-                            <select class="form-control" id="export-academic-year" name="academic_year_id">
-                                <option value="">{{ trans('admin.reports.grades.filters.all_years') }}</option>
+                            <select class="form-control" id="export-academic-year" name="academic_year_id" required>
                                 @foreach ($filterData['academicYears'] as $year)
                                     <option value="{{ $year->id }}">
                                         {{ $year->name }}
@@ -43,9 +43,9 @@
                             <label class="form-label font-weight-bold">
                                 <i class="las la-layer-group mr-1"></i>
                                 {{ trans('admin.reports.grades.filters.grade') }}
+                                <span class="text-danger">*</span>
                             </label>
-                            <select class="form-control" id="export-grade" name="grade_id">
-                                <option value="">{{ trans('admin.reports.grades.filters.all_grades') }}</option>
+                            <select class="form-control" id="export-grade" name="grade_id" required>
                                 @foreach ($filterData['grades'] as $grade)
                                     <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                 @endforeach
