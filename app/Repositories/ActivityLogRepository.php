@@ -6,6 +6,7 @@ use App\Repositories\Contracts\ActivityLogRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Spatie\Activitylog\Models\Activity;
 
 class ActivityLogRepository implements ActivityLogRepositoryInterface
@@ -95,7 +96,7 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
         return $this->model->where('created_at', '<', $date)->delete();
     }
 
-    public function getUniqueLogNames(): Collection
+    public function getUniqueLogNames(): SupportCollection
     {
         return $this->model
             ->select('log_name')
@@ -104,7 +105,7 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
             ->pluck('log_name');
     }
 
-    public function getUniqueEvents(): Collection
+    public function getUniqueEvents(): SupportCollection
     {
         return $this->model
             ->select('event')
@@ -121,60 +122,60 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
         // Filter by log name
         $query->when(
             ! empty($filters['log_name']),
-            fn($q) => $q->where('log_name', $filters['log_name'])
+            fn ($q) => $q->where('log_name', $filters['log_name'])
         );
 
         // Filter by event type
         $query->when(
             ! empty($filters['event']),
-            fn($q) => $q->where('event', $filters['event'])
+            fn ($q) => $q->where('event', $filters['event'])
         );
 
         // Filter by subject type
         $query->when(
             ! empty($filters['subject_type']),
-            fn($q) => $q->where('subject_type', $filters['subject_type'])
+            fn ($q) => $q->where('subject_type', $filters['subject_type'])
         );
 
         // Filter by subject ID
         $query->when(
             ! empty($filters['subject_id']),
-            fn($q) => $q->where('subject_id', $filters['subject_id'])
+            fn ($q) => $q->where('subject_id', $filters['subject_id'])
         );
 
         // Filter by causer type
         $query->when(
             ! empty($filters['causer_type']),
-            fn($q) => $q->where('causer_type', $filters['causer_type'])
+            fn ($q) => $q->where('causer_type', $filters['causer_type'])
         );
 
         // Filter by causer ID
         $query->when(
             ! empty($filters['causer_id']),
-            fn($q) => $q->where('causer_id', $filters['causer_id'])
+            fn ($q) => $q->where('causer_id', $filters['causer_id'])
         );
 
         // Filter by batch UUID
         $query->when(
             ! empty($filters['batch_uuid']),
-            fn($q) => $q->where('batch_uuid', $filters['batch_uuid'])
+            fn ($q) => $q->where('batch_uuid', $filters['batch_uuid'])
         );
 
         // Filter by date range
         $query->when(
             ! empty($filters['start_date']),
-            fn($q) => $q->whereDate('created_at', '>=', $filters['start_date'])
+            fn ($q) => $q->whereDate('created_at', '>=', $filters['start_date'])
         );
 
         $query->when(
             ! empty($filters['end_date']),
-            fn($q) => $q->whereDate('created_at', '<=', $filters['end_date'])
+            fn ($q) => $q->whereDate('created_at', '<=', $filters['end_date'])
         );
 
         // Search in description
         $query->when(
             ! empty($filters['search']),
-            fn($q) => $q->where('description', 'like', '%' . $filters['search'] . '%')
+            fn ($q) => $q->where('description', 'like', '%'.$filters['search'].'%')
         );
 
         return $query->latest();

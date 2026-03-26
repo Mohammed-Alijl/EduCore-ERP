@@ -54,6 +54,6 @@ readonly class ActivityLogFilterDTO
             'start_date' => $this->startDate,
             'end_date' => $this->endDate,
             'search' => $this->search,
-        ], fn($value) => $value !== null);
+        ], fn ($value) => $value !== null);
     }
 }

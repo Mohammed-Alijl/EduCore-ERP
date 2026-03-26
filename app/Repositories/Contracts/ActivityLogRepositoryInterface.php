@@ -5,6 +5,7 @@ namespace App\Repositories\Contracts;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Spatie\Activitylog\Models\Activity;
 
 interface ActivityLogRepositoryInterface
@@ -67,10 +68,10 @@ interface ActivityLogRepositoryInterface
     /**
      * Get unique log names.
      */
-    public function getUniqueLogNames(): Collection;
+    public function getUniqueLogNames(): SupportCollection;
 
     /**
      * Get unique event types.
      */
-    public function getUniqueEvents(): Collection;
+    public function getUniqueEvents(): SupportCollection;
 }

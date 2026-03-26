@@ -50,12 +50,16 @@ class ActivityLogController extends Controller implements HasMiddleware
     /**
      * Display a single activity log.
      */
-    public function show(int $id)
+    public function show(Request $request, int $id)
     {
         $log = $this->activityLogService->getLogById($id);
 
         if (! $log) {
             abort(404, 'Activity log not found.');
+        }
+
+        if ($request->ajax()) {
+            return view('admin.activity_logs.partials.ajax_details', compact('log'));
         }
 
         return view('admin.activity_logs.show', compact('log'));

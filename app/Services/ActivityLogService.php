@@ -6,6 +6,7 @@ use App\DTOs\ActivityLogFilterDTO;
 use App\Repositories\Contracts\ActivityLogRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -103,7 +104,7 @@ class ActivityLogService
     /**
      * Get available log names for filtering.
      */
-    public function getAvailableLogNames(): Collection
+    public function getAvailableLogNames(): SupportCollection
     {
         return $this->repository->getUniqueLogNames();
     }
@@ -111,7 +112,7 @@ class ActivityLogService
     /**
      * Get available event types for filtering.
      */
-    public function getAvailableEvents(): Collection
+    public function getAvailableEvents(): SupportCollection
     {
         return $this->repository->getUniqueEvents();
     }
@@ -125,13 +126,13 @@ class ActivityLogService
 
         return DataTables::of($query)
             ->addIndexColumn()
-            ->addColumn('log_name', fn($row) => '<span class="badge badge-info">' . e($row->log_name) . '</span>')
-            ->addColumn('event', fn($row) => $this->renderEventBadge($row->event))
-            ->addColumn('description', fn($row) => '<strong>' . e($row->description) . '</strong>')
-            ->addColumn('subject', fn($row) => $this->renderSubject($row))
-            ->addColumn('causer', fn($row) => $this->renderCauser($row))
-            ->addColumn('created_at', fn($row) => '<small class="text-muted">' . $row->created_at->format('Y-m-d H:i:s') . '</small>')
-            ->addColumn('actions', fn($row) => $this->renderActionsColumn($row))
+            ->addColumn('log_name', fn ($row) => '<span class="badge badge-info">'.e($row->log_name).'</span>')
+            ->addColumn('event', fn ($row) => $this->renderEventBadge($row->event))
+            ->addColumn('description', fn ($row) => '<strong>'.e($row->description).'</strong>')
+            ->addColumn('subject', fn ($row) => $this->renderSubject($row))
+            ->addColumn('causer', fn ($row) => $this->renderCauser($row))
+            ->addColumn('created_at', fn ($row) => '<small class="text-muted">'.$row->created_at->format('Y-m-d H:i:s').'</small>')
+            ->addColumn('actions', fn ($row) => $this->renderActionsColumn($row))
             ->rawColumns(['log_name', 'event', 'description', 'subject', 'causer', 'created_at', 'actions'])
             ->make(true);
     }
@@ -164,7 +165,7 @@ class ActivityLogService
 
         $class = $badges[$event] ?? 'secondary';
 
-        return '<span class="badge badge-' . $class . '">' . ucfirst($event) . '</span>';
+        return '<span class="badge badge-'.$class.'">'.ucfirst($event).'</span>';
     }
 
     /**
@@ -178,7 +179,7 @@ class ActivityLogService
 
         $type = class_basename($activity->subject_type);
 
-        return '<small><strong>' . e($type) . '</strong><br>ID: ' . $activity->subject_id . '</small>';
+        return '<small><strong>'.e($type).'</strong><br>ID: '.$activity->subject_id.'</small>';
     }
 
     /**
@@ -193,7 +194,7 @@ class ActivityLogService
         $name = $activity->causer->name ?? 'Unknown';
         $type = class_basename($activity->causer_type);
 
-        return '<strong>' . e($name) . '</strong><br><small class="text-muted">' . e($type) . '</small>';
+        return '<strong>'.e($name).'</strong><br><small class="text-muted">'.e($type).'</small>';
     }
 
     /**
