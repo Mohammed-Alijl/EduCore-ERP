@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AcademicYearController;
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
@@ -300,6 +301,17 @@ Route::group(
                         Route::post('/grades-pdf', [GradesReportController::class, 'requestPdfExport'])->name('grades-pdf');
                         Route::post('/financial', [FinancialReportController::class, 'requestExport'])->name('financial');
                         Route::post('/financial-pdf', [FinancialReportController::class, 'requestPdfExport'])->name('financial-pdf');
+                    });
+
+                    // ─── Activity Logs ───────────────────────────────────────────────────────────────
+                    Route::prefix('activity_logs')->name('activity_logs.')->group(function () {
+                        Route::get('/', [ActivityLogController::class, 'index'])->name('index');
+                        Route::get('/datatable', [ActivityLogController::class, 'datatable'])->name('datatable');
+                        Route::get('/{id}', [ActivityLogController::class, 'show'])->name('show');
+                        Route::get('/subject/logs', [ActivityLogController::class, 'forSubject'])->name('for-subject');
+                        Route::get('/causer/logs', [ActivityLogController::class, 'byCauser'])->name('by-causer');
+                        Route::get('/statistics/summary', [ActivityLogController::class, 'statistics'])->name('statistics');
+                        Route::post('/cleanup', [ActivityLogController::class, 'cleanup'])->name('cleanup');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');
