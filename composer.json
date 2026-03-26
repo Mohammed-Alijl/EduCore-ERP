@@ -16,6 +16,7 @@
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "*",
         "spatie/browsershot": "^5.2",
+        "spatie/laravel-activitylog": "^4.12",
         "spatie/laravel-permission": "*",
         "spatie/laravel-translatable": "*",
         "stripe/stripe-php": "*",
