@@ -13,6 +13,9 @@ class DepartmentService
     {
         return Department::query()
             ->withCount(['employees', 'designations'])
+            ->with(['designations' => function ($query) {
+                $query->withCount('employees');
+            }])
             ->latest()
             ->get();
     }
