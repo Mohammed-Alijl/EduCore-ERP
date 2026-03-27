@@ -22,11 +22,11 @@ class BookDatatableRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'grade_id'     => 'nullable|numeric|integer|exists:grades,id',
+            'grade_id' => 'nullable|numeric|integer|exists:grades,id',
             'classroom_id' => 'nullable|numeric|integer|exists:class_rooms,id',
-            'section_id'   => 'nullable|numeric|integer|exists:sections,id',
-            'teacher_id'   => 'nullable|numeric|integer|exists:teachers,id',
-            'subject_id'   => 'nullable|numeric|integer|exists:subjects,id',
+            'section_id' => 'nullable|numeric|integer|exists:sections,id',
+            'teacher_id' => 'nullable|numeric|integer|exists:employees,id',
+            'subject_id' => 'nullable|numeric|integer|exists:subjects,id',
         ];
     }
 }
