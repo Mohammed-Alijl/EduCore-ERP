@@ -15,8 +15,6 @@ class Employee extends Authenticatable
 {
     use HasFactory, HasTranslations, SoftDeletes;
 
-    protected $table = 'employees';
-
     protected $fillable = [
         'employee_code',
         'name',
@@ -68,7 +66,7 @@ class Employee extends Authenticatable
     public function getImageUrlAttribute(): string
     {
         if (! empty($this->image)) {
-            return asset('storage/'.$this->image);
+            return asset('storage/' . $this->image);
         }
 
         return asset('assets/admin/img/faces/admin.png');
@@ -78,9 +76,9 @@ class Employee extends Authenticatable
     {
         static::creating(function (Employee $employee) {
             if (empty($employee->employee_code)) {
-                $prefix = 'EMP-'.date('Y').'-';
+                $prefix = 'EMP-' . date('Y') . '-';
                 $lastEmployee = self::withTrashed()
-                    ->where('employee_code', 'like', $prefix.'%')
+                    ->where('employee_code', 'like', $prefix . '%')
                     ->orderBy('id', 'desc')
                     ->first();
 
@@ -90,7 +88,7 @@ class Employee extends Authenticatable
                 } else {
                     $nextNumber = '0001';
                 }
-                $employee->employee_code = $prefix.$nextNumber;
+                $employee->employee_code = $prefix . $nextNumber;
             }
 
             if (empty($employee->type)) {
@@ -133,7 +131,17 @@ class Employee extends Authenticatable
 
     public function attachments(): HasMany
     {
-        return $this->hasMany(TeacherAttachment::class, 'teacher_id');
+        return $this->hasMany(EmployeeAttachment::class, 'employee_id');
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Departments::class, 'department_id');
     }
 
     // ─── Scopes ───────────────────────────────────────────────────────────────
@@ -146,15 +154,5 @@ class Employee extends Authenticatable
     public function scopeActive($query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('status', 1);
-    }
-
-    public function designation()
-    {
-        return $this->belongsTo(Designation::class);
-    }
-
-    public function department()
-    {
-        return $this->belongsTo(Departments::class, 'department_id');
     }
 }

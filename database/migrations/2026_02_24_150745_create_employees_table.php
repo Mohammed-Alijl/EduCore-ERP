@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignId('gender_id')->constrained('genders')->cascadeOnUpdate()->restrictOnDelete();
 
             $table->date('joining_date');
-            $table->foreignId('specialization_id')->constrained()->nullable()->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('specialization_id')->nullable()->constrained()->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnUpdate()->restrictOnDelete();
             $table->enum('contract_type', ['full_time', 'part_time', 'contract']);
 
@@ -49,6 +49,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('employees');
     }
 };

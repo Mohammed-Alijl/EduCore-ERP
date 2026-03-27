@@ -9,7 +9,7 @@ use App\Models\Nationality;
 use App\Models\Religion;
 use App\Models\Specialization;
 use App\Models\Teacher;
-use App\Models\TeacherAttachment;
+use App\Models\EmployeeAttachment;
 use App\Models\TypeBlood;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,8 +58,8 @@ class TeacherService
                 foreach ($attachments as $file) {
                     if ($file->isValid()) {
                         $path = $file->store("teachers/{$folderName}/attachments", 'public');
-                        $attachment = new TeacherAttachment;
-                        $attachment->teacher_id = $teacher->id;
+                        $attachment = new EmployeeAttachment;
+                        $attachment->employee_id = $teacher->id;
                         $attachment->attachment_path = $path;
                         $attachment->save();
                     }
@@ -86,12 +86,11 @@ class TeacherService
         }
 
         if (isset($data['attachments']) && is_array($data['attachments'])) {
-
             foreach ($data['attachments'] as $file) {
                 if ($file->isValid()) {
                     $path = $file->store("teachers/{$folderName}/attachments", 'public');
-                    $attachment = new TeacherAttachment;
-                    $attachment->teacher_id = $teacher->id;
+                    $attachment = new EmployeeAttachment;
+                    $attachment->employee_id = $teacher->id;
                     $attachment->attachment_path = $path;
                     $attachment->save();
                 }
@@ -158,9 +157,9 @@ class TeacherService
 
     public function getNextTeacherCode()
     {
-        $prefix = 'TCH-'.date('Y').'-';
+        $prefix = 'TCH-' . date('Y') . '-';
         $lastTeacher = Teacher::withTrashed()
-            ->where('employee_code', 'like', $prefix.'%')
+            ->where('employee_code', 'like', $prefix . '%')
             ->orderBy('id', 'desc')
             ->first();
 
@@ -171,12 +170,12 @@ class TeacherService
             $newSequence = '0001';
         }
 
-        return $prefix.$newSequence;
+        return $prefix . $newSequence;
     }
 
     public function deleteAttachment($id)
     {
-        $attachment = TeacherAttachment::findOrFail($id);
+        $attachment = EmployeeAttachment::findOrFail($id);
 
         if (Storage::disk('public')->exists($attachment->attachment_path)) {
             Storage::disk('public')->delete($attachment->attachment_path);

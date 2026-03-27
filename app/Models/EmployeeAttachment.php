@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class TeacherAttachment extends Model
+class EmployeeAttachment extends Model
 {
     protected $fillable = [
-      'teacher_id',
-      'attachment_path',
+        'employee_id',
+        'attachment_path',
     ];
 
     // ─── Relationships ─────────────────────────────────────────
-    public function teacher(): BelongsTo {
-        return $this->belongsTo(Teacher::class);
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
     }
-
 }
