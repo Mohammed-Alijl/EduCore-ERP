@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\Departments;
+use App\Models\Department;
 use App\Models\Designation;
+use App\Models\EmployeeAttachment;
 use App\Models\Gender;
 use App\Models\Nationality;
 use App\Models\Religion;
 use App\Models\Specialization;
 use App\Models\Teacher;
-use App\Models\EmployeeAttachment;
 use App\Models\TypeBlood;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +30,7 @@ class TeacherService
             'religions' => Religion::all(),
             'genders' => Gender::all(),
             'specializations' => Specialization::all(),
-            'departments' => Departments::all(),
+            'departments' => Department::all(),
             'designations' => Designation::all(),
         ];
     }

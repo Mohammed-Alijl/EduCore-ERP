@@ -37,7 +37,16 @@ class UpdateRequest extends FormRequest
             'religion_id' => ['required', 'exists:religions,id'],
             'gender_id' => ['required', 'exists:genders,id'],
             'specialization_id' => ['required', 'exists:specializations,id'],
-            'designation_id' => ['required', 'exists:designations,id'],
+            'designation_id' => [
+                'required',
+                'exists:designations,id',
+                function ($attribute, $value, $fail) {
+                    $designation = \App\Models\Designation::find($value);
+                    if ($designation && ! $designation->can_teach) {
+                        $fail(__('The selected designation is not authorized for teaching positions.'));
+                    }
+                },
+            ],
             'department_id' => ['required', 'exists:departments,id'],
             'contract_type' => ['required', 'in:full_time,part_time,contract'],
             'basic_salary' => ['required', 'numeric', 'min:0'],
