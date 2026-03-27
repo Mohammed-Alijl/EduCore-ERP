@@ -41,7 +41,7 @@ class Book extends Model
 
     public function teacher()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Employee::class, 'teacher_id');
     }
 
     public function subject()

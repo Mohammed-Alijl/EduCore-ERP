@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departments extends Model
+class Department extends Model
 {
     protected $fillable = [
         'name',
@@ -16,7 +16,7 @@ class Departments extends Model
         return $this->hasMany(Employee::class);
     }
 
-    public function designation()
+    public function designations()
     {
         return $this->hasMany(Designation::class);
     }

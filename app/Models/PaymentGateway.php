@@ -34,6 +34,11 @@ class PaymentGateway extends Model
         return $this->hasMany(Receipt::class);
     }
 
+    public function paymentVouchers(): HasMany
+    {
+        return $this->hasMany(PaymentVoucher::class);
+    }
+
     public function processor(): PaymentProcessorInterface
     {
         return app(PaymentGatewayManager::class)->resolveFromGateway($this);
