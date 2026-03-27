@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\EmployeeType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,7 +30,6 @@ class Employee extends Authenticatable
         'religion_id',
         'status',
         'image',
-        'type',
         'designation_id',
         'department_id',
         'contract_type',
@@ -54,7 +52,6 @@ class Employee extends Authenticatable
     {
         return [
             'joining_date' => 'date',
-            'type' => EmployeeType::class,
         ];
     }
 
@@ -89,10 +86,6 @@ class Employee extends Authenticatable
                     $nextNumber = '0001';
                 }
                 $employee->employee_code = $prefix . $nextNumber;
-            }
-
-            if (empty($employee->type)) {
-                $employee->type = EmployeeType::Staff;
             }
         });
     }
@@ -141,7 +134,7 @@ class Employee extends Authenticatable
 
     public function department()
     {
-        return $this->belongsTo(Departments::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     // ─── Scopes ───────────────────────────────────────────────────────────────

@@ -11,6 +11,7 @@ class Designation extends Model
         'description',
         'department_id',
         'default_salary',
+        'can_teach',
     ];
 
     public function employees()
@@ -20,6 +21,6 @@ class Designation extends Model
 
     public function department()
     {
-        return $this->belongsTo(Departments::class);
+        return $this->belongsTo(Department::class);
     }
 }

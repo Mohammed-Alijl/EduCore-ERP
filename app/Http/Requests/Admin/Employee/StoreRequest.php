@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Admin\Employee;
 
-use App\Enums\EmployeeType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -42,7 +40,6 @@ class StoreRequest extends FormRequest
             'contract_type' => ['required', 'in:full_time,part_time,contract'],
             'basic_salary' => ['required', 'numeric', 'min:0'],
             'bank_account_number' => ['nullable', 'string', 'max:255'],
-            'type' => ['required', Rule::enum(EmployeeType::class)],
             'status' => ['required', 'boolean'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'attachments' => ['nullable', 'array'],

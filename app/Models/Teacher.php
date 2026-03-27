@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\EmployeeType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -11,12 +10,12 @@ class Teacher extends Employee
     protected static function booted(): void
     {
         static::addGlobalScope('teacher', function (Builder $builder) {
-            $builder->where('type', EmployeeType::Teacher);
+            $builder->whereHas('designation', function ($query) {
+                $query->where('can_teach', true);
+            });
         });
 
         static::creating(function (Teacher $teacher) {
-            $teacher->type = EmployeeType::Teacher;
-
             $prefix = 'TCH-'.date('Y').'-';
             $lastTeacher = self::withoutGlobalScope('teacher')
                 ->withTrashed()

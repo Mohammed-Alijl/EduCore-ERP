@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('description')->nullable();
+            $table->boolean('can_teach')->default(false);
             $table->foreignId('department_id')->constrained('departments')->cascadeOnUpdate()->restrictOnDelete();
             $table->decimal('default_salary', 10, 2)->nullable();
             $table->timestamps();
