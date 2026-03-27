@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\CurrencyController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
@@ -149,6 +150,15 @@ Route::group(
                         Route::get('archive', [TeacherController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [TeacherController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [TeacherController::class, 'forceDelete'])->name('forceDelete');
+                    });
+
+                    // ─── HR Employees ─────────────────────────────────────────────────────────────
+                    Route::resource('employees', EmployeeController::class)->except(['show', 'create', 'edit']);
+                    Route::prefix('employees/')->name('employees.')->group(function () {
+                        Route::delete('attachments/{id}', [EmployeeController::class, 'deleteAttachment'])->name('attachments.destroy');
+                        Route::get('archive', [EmployeeController::class, 'archive'])->name('archived');
+                        Route::post('restore/{id}', [EmployeeController::class, 'restore'])->name('restore');
+                        Route::delete('force-delete/{id}', [EmployeeController::class, 'forceDelete'])->name('forceDelete');
                     });
 
                     // ─── Teacher Assignments ───────────────────────────────────────────────────────────────

@@ -83,7 +83,7 @@
                                         <a href="#" class="text-primary font-weight-bold show-btn"
                                            data-toggle="modal"
                                            data-target="#showModal"
-                                           data-teacher_code="{{ $teacher->teacher_code }}"
+                                           data-employee_code="{{ $teacher->employee_code }}"
                                            data-name_ar="{{ $teacher->getTranslation('name', 'ar') }}"
                                            data-name_en="{{ $teacher->getTranslation('name', 'en') }}"
                                            data-email="{{ $teacher->email }}"
@@ -104,7 +104,7 @@
                                                    "name" => basename($att->attachment_path)
                                                ];
                                            }))'>
-                                            {{ $teacher->teacher_code }}
+                                            {{ $teacher->employee_code }}
                                         </a>
                                     </td>
                                     <td>{{ $teacher->name }}</td>

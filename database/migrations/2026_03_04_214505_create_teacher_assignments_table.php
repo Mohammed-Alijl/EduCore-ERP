@@ -13,28 +13,28 @@ return new class extends Migration
     {
         Schema::create('teacher_assignments', function (Blueprint $table) {
             $table->id();
-            
-            $table->foreignId('teacher_id')
-                  ->constrained('teachers')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-                  
+
+            $table->foreignId('employee_id')
+                ->constrained('employees')->where('role', 'teacher')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->foreignId('subject_id')
-                  ->constrained('subjects')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-                  
+                ->constrained('subjects')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->foreignId('section_id')
-                  ->constrained('sections')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-                  
+                ->constrained('sections')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->string('academic_year');
-            
+
             $table->timestamps();
 
             $table->unique(
-                ['teacher_id', 'subject_id', 'section_id', 'academic_year'], 
+                ['teacher_id', 'subject_id', 'section_id', 'academic_year'],
                 'teacher_assignment_unique'
             );
         });

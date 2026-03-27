@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Requests\Admin\Teacher;
+namespace App\Http\Requests\Admin\Employee;
 
+use App\Enums\EmployeeType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth('admin')->user()->can('create_teachers');
+        return auth('admin')->user()->can('edit_employees');
     }
 
     /**
@@ -21,12 +23,14 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        $employee = $this->route('employee');
+
         return [
-            'password' => ['required', 'string', 'min:8', 'max:30', 'confirmed'],
+            'password' => ['string', 'min:8', 'max:30', 'confirmed', 'nullable'],
             'name.ar' => ['required', 'string', 'max:100', 'min:3'],
             'name.en' => ['required', 'string', 'max:100', 'min:3'],
-            'email' => ['required', 'email', 'max:100', 'unique:employees,email'],
-            'national_id' => ['required', 'string', 'max:50', 'unique:employees,national_id'],
+            'email' => ['required', 'email', 'max:100', "unique:employees,email,{$employee->id}"],
+            'national_id' => ['required', 'string', 'max:50', "unique:employees,national_id,{$employee->id}"],
             'phone' => ['nullable', 'string', 'max:20'],
             'address' => ['nullable', 'string', 'max:500'],
             'joining_date' => ['required', 'date'],
@@ -34,12 +38,13 @@ class StoreRequest extends FormRequest
             'nationality_id' => ['required', 'exists:nationalities,id'],
             'religion_id' => ['required', 'exists:religions,id'],
             'gender_id' => ['required', 'exists:genders,id'],
-            'specialization_id' => ['required', 'exists:specializations,id'],
+            'specialization_id' => ['nullable', 'exists:specializations,id'],
             'designation_id' => ['required', 'exists:designations,id'],
             'department_id' => ['required', 'exists:departments,id'],
             'contract_type' => ['required', 'in:full_time,part_time,contract'],
             'basic_salary' => ['required', 'numeric', 'min:0'],
             'bank_account_number' => ['nullable', 'string', 'max:255'],
+            'type' => ['required', Rule::enum(EmployeeType::class)],
             'status' => ['required', 'boolean'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'attachments' => ['nullable', 'array'],

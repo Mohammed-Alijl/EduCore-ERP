@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teacher_attachments', function (Blueprint $table) {
+        Schema::create('designations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->constrained('teachers');
-            $table->string('attachment_path');
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
+            $table->foreignId('department_id')->constrained('departments')->cascadeOnUpdate()->restrictOnDelete();
+            $table->decimal('default_salary', 10, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teacher_attachments');
+        Schema::dropIfExists('designations');
     }
 };

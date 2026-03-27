@@ -1,13 +1,12 @@
 @extends('admin.layouts.master')
 
-@section('title', trans('admin.teachers.title'))
+@section('title', trans('admin.employees.title'))
 
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
@@ -18,7 +17,7 @@
 
     <!--Internal telephoneInput css-->
     <link rel="stylesheet" href="{{URL::asset('assets/admin/plugins/telephoneinput/telephoneinput.css')}}">
-    {{-- Teacher CRUD Styles --}}
+    {{-- Reuse Teacher CRUD Styles --}}
     <link href="{{ URL::asset('assets/admin/css/teacher/teacher-crud.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/css/teacher/show.css') }}" rel="stylesheet">
 @endsection
@@ -27,26 +26,26 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ trans('admin.sidebar.users') }}</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('admin.teachers.title') }}</span>
+                <h4 class="content-title mb-0 my-auto">{{ trans('admin.sidebar.hr') }}</h4>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('admin.employees.title') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-            @can('view-archived_teachers')
+            @can('view-archived_employees')
                  <div class="pr-1 mb-3 mb-xl-0">
                     <a class="modal-effect btn btn-danger btn-with-icon btn-block"
-                       href="{{route('admin.teachers.archived')}}">
-                        <i class="fas fa-book ml-2"></i>  {{trans('admin.teachers.archived') }}
+                       href="{{route('admin.employees.archived')}}">
+                        <i class="fas fa-book ml-2"></i>  {{trans('admin.employees.archived') }}
                     </a>
             </div>
             @endcan
-            @can('create_teachers')
+            @can('create_employees')
                   <div class="pr-1 mb-3 mb-xl-0">
                 <a class="modal-effect btn btn-primary btn-with-icon btn-block"
                    data-effect="effect-scale"
                    data-toggle="modal"
-                   href="#addModal">
-                    <i class="fas fa-plus-circle ml-2"></i> {{ trans('admin.teachers.add') }}
+                   href="#addEmployeeModal">
+                    <i class="fas fa-plus-circle ml-2"></i> {{ trans('admin.employees.add') }}
                 </a>
             </div>
             @endcan
@@ -61,85 +60,85 @@
                 <div class="card-header pb-0"></div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="teachers_table">
+                        <table class="table text-md-nowrap" id="employees_table">
                             <thead>
                             <tr>
                                 <th class="wd-5p border-bottom-0">#</th>
-                                <th class="wd-5p border-bottom-0">{{ trans('admin.teachers.fields.image') }}</th>
-                                <th class="wd-10p border-bottom-0">{{ trans('admin.teachers.fields.teacher_code') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ trans('admin.teachers.fields.name') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ trans('admin.teachers.fields.email') }}</th>
-                                <th class="wd-10p border-bottom-0">{{ trans('admin.teachers.fields.national_id') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ trans('admin.teachers.fields.phone') }}</th>
-                                <th class="wd-10p border-bottom-0">{{ trans('admin.teachers.fields.status') }}</th>
-                                @canany(['edit_teachers','delete_teachers'])
+                                <th class="wd-5p border-bottom-0">{{ trans('admin.employees.fields.image') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.employee_code') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.type') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ trans('admin.employees.fields.name') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ trans('admin.employees.fields.email') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.phone') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.status') }}</th>
+                                @canany(['edit_employees','delete_employees'])
                                     <th class="wd-15p border-bottom-0">{{ trans('admin.global.actions') }}</th>
                                 @endcanany
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($teachers as $teacher)
+                            @foreach($employees as $employee)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <img alt="avatar" class="avatar avatar-md brround bg-white" src="{{ $teacher->image_url}}">
+                                        <img alt="avatar" class="avatar avatar-md brround bg-white" src="{{ $employee->image_url}}">
                                     </td>
                                     <td>
-                                        <a href="#" class="text-primary font-weight-bold show-btn"
+                                        <a href="#" class="text-primary font-weight-bold emp-show-btn"
                                            data-toggle="modal"
-                                           data-target="#showModal"
-                                           data-employee_code="{{ $teacher->employee_code }}"
-                                           data-name_ar="{{ $teacher->getTranslation('name', 'ar') }}"
-                                           data-name_en="{{ $teacher->getTranslation('name', 'en') }}"
-                                           data-email="{{ $teacher->email }}"
-                                           data-national_id="{{ $teacher->national_id }}"
-                                           data-gender="{{ optional($teacher->gender)->name }}"
-                                           data-blood_type="{{ optional($teacher->bloodType)->name }}"
-                                           data-nationality="{{ optional($teacher->nationality)->name }}"
-                                           data-religion="{{ optional($teacher->religion)->name }}"
-                                           data-specialization="{{ optional($teacher->specialization)->name }}"
-                                           data-joining_date="{{ $teacher->joining_date->format('Y-m-d') }}"
-                                           data-address="{{ $teacher->address }}"
-                                           data-phone="{{ $teacher->phone }}"
-                                           data-status="{{ $teacher->status ? trans('admin.global.active') : trans('admin.global.disabled') }}"
-                                           data-image="{{ $teacher->imageUrl }}"
-                                           data-attachments='@json($teacher->attachments->map(function($att) {
+                                           data-target="#showEmployeeModal"
+                                           data-employee_code="{{ $employee->employee_code }}"
+                                           data-type="{{ $employee->type?->label() }}"
+                                           data-name_ar="{{ $employee->getTranslation('name', 'ar') }}"
+                                           data-name_en="{{ $employee->getTranslation('name', 'en') }}"
+                                           data-email="{{ $employee->email }}"
+                                           data-national_id="{{ $employee->national_id }}"
+                                           data-gender="{{ optional($employee->gender)->name }}"
+                                           data-blood_type="{{ optional($employee->bloodType)->name }}"
+                                           data-nationality="{{ optional($employee->nationality)->name }}"
+                                           data-religion="{{ optional($employee->religion)->name }}"
+                                           data-specialization="{{ optional($employee->specialization)->name ?? '-' }}"
+                                           data-joining_date="{{ $employee->joining_date->format('Y-m-d') }}"
+                                           data-address="{{ $employee->address }}"
+                                           data-phone="{{ $employee->phone }}"
+                                           data-status="{{ $employee->status ? trans('admin.global.active') : trans('admin.global.disabled') }}"
+                                           data-image="{{ $employee->imageUrl }}"
+                                           data-attachments='@json($employee->attachments->map(function($att) {
                                                return [
                                                    "url" => asset("storage/" . $att->attachment_path),
                                                    "name" => basename($att->attachment_path)
                                                ];
                                            }))'>
-                                            {{ $teacher->employee_code }}
+                                            {{ $employee->employee_code }}
                                         </a>
                                     </td>
-                                    <td>{{ $teacher->name }}</td>
-                                    <td>{{ $teacher->email }}</td>
-                                    <td>{{ $teacher->national_id }}</td>
-                                    <td>{{ $teacher->phone }}</td>
+                                    <td><span class="badge badge-pill badge-primary-transparent">{{ $employee->type?->label() }}</span></td>
+                                    <td>{{ $employee->name }}</td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->phone }}</td>
                                     <td>
-                                        @if ($teacher->status)
+                                        @if ($employee->status)
                                             <span class="label text-success d-flex">{{ trans('admin.global.active') }}</span>
                                         @else
                                             <span class="label text-danger d-flex">{{ trans('admin.global.disabled') }}</span>
                                         @endif
                                     </td>
-                                    @canany(['edit_teachers','delete_teachers'])
+                                    @canany(['edit_employees','delete_employees'])
                                             <td>
                                                 <div class="teacher-actions-container">
-                                                    @can('edit_teachers')
+                                                    @can('edit_employees')
                                                         @php
                                                             $attachmentUrls = [];
                                                             $attachmentConfigs = [];
 
-                                                            if($teacher->attachments->count() > 0) {
-                                                                foreach($teacher->attachments as $attachment) {
+                                                            if($employee->attachments->count() > 0) {
+                                                                foreach($employee->attachments as $attachment) {
                                                                     $filePath = $attachment->attachment_path;
                                                                     $fullUrl = asset('storage/' . $filePath);
                                                                     $attachmentUrls[] = $fullUrl;
 
                                                                     $fileName = basename($filePath);
                                                                     $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-
 
                                                                     if(in_array($extension, ['jpg', 'jpeg', 'png', 'svg']))
                                                                         $type = 'image';
@@ -153,7 +152,7 @@
                                                                     $attachmentConfigs[] = [
                                                                         'caption' => $fileName,
                                                                         'type' => $type,
-                                                                        'url' => route('admin.teachers.attachments.destroy', $attachment->id),
+                                                                        'url' => route('admin.employees.attachments.destroy', $attachment->id),
                                                                         'key' => $attachment->id
                                                                     ];
                                                                 }
@@ -162,33 +161,34 @@
                                                         <a class="btn btn-teacher-edit btn-sm edit-btn"
                                                            href="#"
                                                            data-toggle="modal"
-                                                           data-target="#editModal"
-                                                           data-url="{{ route('admin.teachers.update', $teacher->id) }}"
-                                                           data-name_ar="{{ $teacher->getTranslation('name', 'ar') }}"
-                                                           data-name_en="{{ $teacher->getTranslation('name', 'en') }}"
-                                                           data-email="{{ $teacher->email }}"
-                                                           data-national_id="{{ $teacher->national_id }}"
-                                                           data-gender_id="{{ $teacher->gender_id }}"
-                                                           data-blood_type_id="{{ $teacher->blood_type_id }}"
-                                                           data-nationality_id="{{ $teacher->nationality_id }}"
-                                                           data-religion_id="{{ $teacher->religion_id }}"
-                                                           data-specialization_id="{{ $teacher->specialization_id }}"
-                                                           data-joining_date="{{ $teacher->joining_date->format('Y-m-d') }}"
-                                                           data-address="{{ $teacher->address }}"
-                                                           data-phone="{{ $teacher->phone }}"
-                                                           data-status="{{ $teacher->status }}"
-                                                           data-image="{{ $teacher->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($teacher->image) : '' }}"
+                                                           data-target="#editEmployeeModal"
+                                                           data-url="{{ route('admin.employees.update', $employee->id) }}"
+                                                           data-name_ar="{{ $employee->getTranslation('name', 'ar') }}"
+                                                           data-name_en="{{ $employee->getTranslation('name', 'en') }}"
+                                                           data-email="{{ $employee->email }}"
+                                                           data-national_id="{{ $employee->national_id }}"
+                                                           data-gender_id="{{ $employee->gender_id }}"
+                                                           data-blood_type_id="{{ $employee->blood_type_id }}"
+                                                           data-nationality_id="{{ $employee->nationality_id }}"
+                                                           data-religion_id="{{ $employee->religion_id }}"
+                                                           data-specialization_id="{{ $employee->specialization_id }}"
+                                                           data-type="{{ $employee->type?->value }}"
+                                                           data-joining_date="{{ $employee->joining_date->format('Y-m-d') }}"
+                                                           data-address="{{ $employee->address }}"
+                                                           data-phone="{{ $employee->phone }}"
+                                                           data-status="{{ $employee->status }}"
+                                                           data-image="{{ $employee->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($employee->image) : '' }}"
                                                            data-attachments='@json($attachmentUrls)'
                                                            data-configs='@json($attachmentConfigs)'>
                                                             <i class="las la-pen"></i> {{trans('admin.global.edit')}}
                                                         </a>
                                                     @endcan
-                                                    @can('delete_teachers')
+                                                    @can('delete_employees')
                                                         <a class="modal-effect btn btn-sm btn-teacher-archive delete-item"
                                                            href="#"
-                                                           data-id="{{ $teacher->id }}"
-                                                           data-url="{{ route('admin.teachers.destroy', $teacher->id) }}"
-                                                           data-name="{{ $teacher->name }}">
+                                                           data-id="{{ $employee->id }}"
+                                                           data-url="{{ route('admin.employees.destroy', $employee->id) }}"
+                                                           data-name="{{ $employee->name }}">
                                                             <i class="las la-trash"></i> {{trans('admin.global.archive')}}
                                                         </a>
                                                     @endcan
@@ -207,9 +207,9 @@
     </div>
     </div>
 
-    @include('admin.teachers.add_modal')
-    @include('admin.teachers.edit_modal')
-    @include('admin.teachers.show_modal')
+    @include('admin.employees.add_modal')
+    @include('admin.employees.edit_modal')
+    @include('admin.employees.show_modal')
 
 @endsection
 
@@ -230,7 +230,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#teachers_table').DataTable(globalTableConfig);
+            $('#employees_table').DataTable(globalTableConfig);
 
             $('.select2').select2({
                 placeholder: '{{trans("admin.global.select")}}',
