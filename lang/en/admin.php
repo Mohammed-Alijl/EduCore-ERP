@@ -902,6 +902,45 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Departments CRUD
+    |--------------------------------------------------------------------------
+    */
+    'departments' => [
+        'title' => 'Departments',
+        'add' => 'Add Department',
+        'edit' => 'Edit Department',
+        'show' => 'Department Details',
+        'delete' => 'Delete Department',
+        'no_description' => 'No description provided.',
+        'designations_list' => 'Designations',
+        'no_designations' => 'No designations in this department yet.',
+        'fields' => [
+            'name' => 'Department Name',
+            'description' => 'Description',
+            'employees_count' => 'Employees',
+            'designations_count' => 'Designations',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Department added successfully.',
+                'update' => 'Department updated successfully.',
+                'delete' => 'Department deleted successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add department.',
+                'update' => 'Failed to update department.',
+                'delete' => 'Failed to delete department.',
+                'has_employees' => 'Cannot delete this department because it has assigned employees.',
+                'has_designations' => 'Cannot delete this department because it has designations.',
+            ],
+            'error' => [
+                'name_unique' => 'The department name already exists.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Profile Page
     |--------------------------------------------------------------------------
     */
