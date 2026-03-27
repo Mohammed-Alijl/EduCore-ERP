@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Teacher extends Employee
 {
+    protected $table = 'employees';
+
     protected static function booted(): void
     {
         static::addGlobalScope('teacher', function (Builder $builder) {
