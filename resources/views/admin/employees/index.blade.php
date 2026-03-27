@@ -66,7 +66,7 @@
                                 <th class="wd-5p border-bottom-0">#</th>
                                 <th class="wd-5p border-bottom-0">{{ trans('admin.employees.fields.image') }}</th>
                                 <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.employee_code') }}</th>
-                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.type') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.designation') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ trans('admin.employees.fields.name') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ trans('admin.employees.fields.email') }}</th>
                                 <th class="wd-10p border-bottom-0">{{ trans('admin.employees.fields.phone') }}</th>
@@ -88,7 +88,7 @@
                                            data-toggle="modal"
                                            data-target="#showEmployeeModal"
                                            data-employee_code="{{ $employee->employee_code }}"
-                                           data-type="{{ $employee->type?->label() }}"
+                                           data-designation="{{ optional($employee->designation)->name }}"
                                            data-name_ar="{{ $employee->getTranslation('name', 'ar') }}"
                                            data-name_en="{{ $employee->getTranslation('name', 'en') }}"
                                            data-email="{{ $employee->email }}"
@@ -112,7 +112,7 @@
                                             {{ $employee->employee_code }}
                                         </a>
                                     </td>
-                                    <td><span class="badge badge-pill badge-primary-transparent">{{ $employee->type?->label() }}</span></td>
+                                    <td><span class="badge badge-pill badge-primary-transparent">{{ optional($employee->designation)->name ?? '-' }}</span></td>
                                     <td>{{ $employee->name }}</td>
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->phone }}</td>

@@ -9,36 +9,35 @@
                 </button>
             </div>
 
-            <form action="{{ route('admin.employees.store') }}"
-                  method="POST"
-                  class="ajax-form"
-                  data-modal-id="#addEmployeeModal"
-                  enctype="multipart/form-data"
-                  data-parsley-validate="">
+            <form action="{{ route('admin.employees.store') }}" method="POST" class="ajax-form"
+                data-modal-id="#addEmployeeModal" enctype="multipart/form-data" data-parsley-validate="">
                 @csrf
 
                 <div class="modal-body">
 
                     <!-- Employee Information -->
-                    <h6 class="mb-3 text-primary"><i class="fas fa-user-tie"></i> {{ trans('admin.employees.employee_information') }}</h6>
+                    <h6 class="mb-3 text-primary"><i class="fas fa-user-tie"></i>
+                        {{ trans('admin.employees.employee_information') }}</h6>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.name_ar') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.name_ar') }} <span
+                                        class="text-danger">*</span></label>
                                 <input type="text" name="name[ar]" class="form-control"
-                                       placeholder="{{ trans('admin.employees.fields.name_ar') }}"
-                                       required minlength="3" maxlength="100" autocomplete="off">
+                                    placeholder="{{ trans('admin.employees.fields.name_ar') }}" required minlength="3"
+                                    maxlength="100" autocomplete="off">
                                 <span class="text-danger error-text name_ar_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.name_en') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.name_en') }} <span
+                                        class="text-danger">*</span></label>
                                 <input type="text" name="name[en]" class="form-control"
-                                       placeholder="{{ trans('admin.employees.fields.name_en') }}"
-                                       required minlength="3" maxlength="100" autocomplete="off">
+                                    placeholder="{{ trans('admin.employees.fields.name_en') }}" required minlength="3"
+                                    maxlength="100" autocomplete="off">
                                 <span class="text-danger error-text name_en_error"></span>
                             </div>
                         </div>
@@ -47,36 +46,40 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.email') }} <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" name="email"
-                                       placeholder="employee@edu.com" required minlength="5" maxlength="100" autocomplete="off">
+                                <label>{{ trans('admin.employees.fields.email') }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="email" class="form-control" name="email" placeholder="employee@edu.com"
+                                    required minlength="5" maxlength="100" autocomplete="off">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.national_id') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control numeric-only" name="national_id"
-                                       required maxlength="50" autocomplete="off">
+                                <label>{{ trans('admin.employees.fields.national_id') }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control numeric-only" name="national_id" required
+                                    maxlength="50" autocomplete="off">
                                 <span class="text-danger error-text national_id_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.password') }} <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control" name="password" id="emp_password"
-                                       required minlength="8" maxlength="30">
+                                <label>{{ trans('admin.employees.fields.password') }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="password" class="form-control" name="password" id="emp_password" required
+                                    minlength="8" maxlength="30">
                                 <span class="text-danger error-text password_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.password_confirmation') }} <span class="text-danger">*</span></label>
-                                <input type="password" name="password_confirmation" class="form-control"
-                                       required minlength="8" maxlength="30" data-parsley-equalto="#emp_password">
+                                <label>{{ trans('admin.employees.fields.password_confirmation') }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="password" name="password_confirmation" class="form-control" required
+                                    minlength="8" maxlength="30" data-parsley-equalto="#emp_password">
                                 <span class="text-danger error-text password_confirmation_error"></span>
                             </div>
                         </div>
@@ -85,23 +88,42 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.type') }} <span class="text-danger">*</span></label>
-                                <select name="type" class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($employee_types as $empType)
-                                        <option value="{{ $empType->value }}">{{ $empType->label() }}</option>
+                                <label>{{ trans('admin.employees.fields.department') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="department_id" class="form-control select2" required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error-text type_error"></span>
+                                <span class="text-danger error-text department_id_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.gender') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.designation') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="designation_id" class="form-control select2" required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($designations as $designation)
+                                        <option value="{{ $designation->id }}">{{ $designation->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text designation_id_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.gender') }} <span
+                                        class="text-danger">*</span></label>
                                 <select name="gender_id" class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($genders as $gender)
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($genders as $gender)
                                         <option value="{{ $gender->id }}">{{ $gender->name }}</option>
                                     @endforeach
                                 </select>
@@ -111,10 +133,12 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.blood_type') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.blood_type') }} <span
+                                        class="text-danger">*</span></label>
                                 <select name="blood_type_id" class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($blood_types as $blood_type)
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($blood_types as $blood_type)
                                         <option value="{{ $blood_type->id }}">{{ $blood_type->name }}</option>
                                     @endforeach
                                 </select>
@@ -124,10 +148,12 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.nationality') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.nationality') }} <span
+                                        class="text-danger">*</span></label>
                                 <select name="nationality_id" class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($nationalities as $nationality)
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($nationalities as $nationality)
                                         <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
                                     @endforeach
                                 </select>
@@ -139,10 +165,12 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.religion') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.religion') }} <span
+                                        class="text-danger">*</span></label>
                                 <select name="religion_id" class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($religions as $religion)
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($religions as $religion)
                                         <option value="{{ $religion->id }}">{{ $religion->name }}</option>
                                     @endforeach
                                 </select>
@@ -155,8 +183,9 @@
                                 <label>{{ trans('admin.specializations.title') ?? 'Specialization' }}</label>
                                 <select name="specialization_id" class="form-control select2">
                                     <option value="" selected>-- {{ trans('admin.global.select') }} --</option>
-                                    @foreach($specializations as $specialization)
-                                        <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
+                                    @foreach ($specializations as $specialization)
+                                        <option value="{{ $specialization->id }}">{{ $specialization->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger error-text specialization_id_error"></span>
@@ -165,9 +194,10 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.joining_date') }} <span class="text-danger">*</span></label>
-                                <input class="form-control emp-fc-datepicker" placeholder="YYYY-MM-DD"
-                                       type="text" required name="joining_date" autocomplete="off">
+                                <label>{{ trans('admin.employees.fields.joining_date') }} <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control emp-fc-datepicker" placeholder="YYYY-MM-DD" type="text"
+                                    required name="joining_date" autocomplete="off">
                                 <span class="text-danger error-text joining_date_error"></span>
                             </div>
                         </div>
@@ -175,9 +205,48 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.phone') }}</label>
-                                <input type="text" class="form-control numeric-only" name="phone" id="emp_phone"
-                                       maxlength="20">
+                                <input type="text" class="form-control numeric-only" name="phone"
+                                    id="emp_phone" maxlength="20">
                                 <span class="text-danger error-text phone_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.contract_type') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="contract_type" class="form-control select2" required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    <option value="full_time">{{ trans('admin.employees.contract_types.full_time') }}
+                                    </option>
+                                    <option value="part_time">{{ trans('admin.employees.contract_types.part_time') }}
+                                    </option>
+                                    <option value="contract">{{ trans('admin.employees.contract_types.contract') }}
+                                    </option>
+                                </select>
+                                <span class="text-danger error-text contract_type_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.basic_salary') }} <span
+                                        class="text-danger">*</span></label>
+                                <input type="number" name="basic_salary" class="form-control" step="0.01"
+                                    min="0" required>
+                                <span class="text-danger error-text basic_salary_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.bank_account_number') }}</label>
+                                <input type="text" name="bank_account_number" class="form-control"
+                                    maxlength="255">
+                                <span class="text-danger error-text bank_account_number_error"></span>
                             </div>
                         </div>
                     </div>
@@ -192,7 +261,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.status') }} <span class="text-danger">*</span></label>
+                                <label>{{ trans('admin.employees.fields.status') }} <span
+                                        class="text-danger">*</span></label>
                                 <select name="status" class="form-control" required>
                                     <option value="1" selected>{{ trans('admin.global.active') }}</option>
                                     <option value="0">{{ trans('admin.global.disabled') }}</option>
@@ -203,12 +273,14 @@
                     </div>
 
                     <!-- Attachments with Krajee -->
-                    <h6 class="mb-3 mt-4 text-primary"><i class="fas fa-paperclip"></i> {{ trans('admin.employees.fields.attachments') }}</h6>
+                    <h6 class="mb-3 mt-4 text-primary"><i class="fas fa-paperclip"></i>
+                        {{ trans('admin.employees.fields.attachments') }}</h6>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.image') }}</label>
-                                <input type="file" class="form-control" name="image" id="employee_image" accept="image/*">
+                                <input type="file" class="form-control" name="image" id="employee_image"
+                                    accept="image/*">
                                 <span class="text-danger error-text image_error"></span>
                             </div>
                         </div>
@@ -217,7 +289,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.attachments') }}</label>
-                                <input type="file" class="form-control" name="attachments[]" id="employee_attachments" multiple>
+                                <input type="file" class="form-control" name="attachments[]"
+                                    id="employee_attachments" multiple>
                                 <span class="text-danger error-text attachments_error"></span>
                             </div>
                         </div>
@@ -240,7 +313,6 @@
 </div>
 
 @push('scripts')
-
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/buffer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/filetype.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/piexif.min.js"></script>
@@ -248,11 +320,10 @@
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/fileinput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/themes/fa5/theme.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/locales/ar.js"></script>
-    <script src="{{URL::asset('assets/admin/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
+    <script src="{{ URL::asset('assets/admin/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
 
     <script>
-
-        $(function () {
+        $(function() {
 
             /* ===============================
             FILE INPUT INITIALIZATION
@@ -286,7 +357,7 @@
                             actionUpload: ''
                         },
 
-                        allowedFileExtensions: ['jpg','jpeg','png','svg'],
+                        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'svg'],
                         maxFileSize: 2048,
                         maxFileCount: 1,
 
@@ -311,7 +382,7 @@
                         overwriteInitial: false,
                         initialPreviewAsData: true,
 
-                        allowedFileExtensions: ['pdf','doc','docx', 'jpg','jpeg','png','svg','zip'],
+                        allowedFileExtensions: ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'svg', 'zip'],
                         maxFileSize: 5120,
                         maxFileCount: 5,
 
@@ -332,7 +403,7 @@
             WHEN MODAL OPEN
             =============================== */
 
-            $('#addEmployeeModal').on('shown.bs.modal', function () {
+            $('#addEmployeeModal').on('shown.bs.modal', function() {
                 initFileInputs();
             });
 
@@ -341,7 +412,7 @@
             RESET MODAL WHEN CLOSE
             =============================== */
 
-            $('#addEmployeeModal').on('hidden.bs.modal', function () {
+            $('#addEmployeeModal').on('hidden.bs.modal', function() {
 
                 let form = $(this).find('form');
                 form.trigger('reset');
@@ -363,7 +434,7 @@
             }
 
             /* Numeric Only */
-            $(document).on('input', '.numeric-only', function () {
+            $(document).on('input', '.numeric-only', function() {
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
 
@@ -388,12 +459,10 @@
                 window.intlTelInput(input, {
                     onlyCountries: ["ps", "sa", "eg", "jo", "qa", "us"],
                     initialCountry: "ps",
-                    utilsScript: "{{URL::asset('assets/admin/plugins/telephoneinput/utils.js')}}",
+                    utilsScript: "{{ URL::asset('assets/admin/plugins/telephoneinput/utils.js') }}",
                 });
             }
 
         });
-
     </script>
-
 @endpush
