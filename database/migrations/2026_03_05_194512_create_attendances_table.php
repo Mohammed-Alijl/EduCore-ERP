@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
             $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
-            $table->foreignId('teacher_id')->nullable()->constrained('teachers')->nullOnDelete();
+            $table->foreignId('teacher_id')->nullable()->constrained('employees')->nullOnDelete();
             $table->date('attendance_date');
             $table->tinyInteger('attendance_status')->comment('1: Present, 2: Absent, 3: Late');
             $table->timestamps();

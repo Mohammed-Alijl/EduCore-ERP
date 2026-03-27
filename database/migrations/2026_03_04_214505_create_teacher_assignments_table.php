@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('teacher_assignments', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('employee_id')
-                ->constrained('employees')->where('role', 'teacher')
+            $table->foreignId('teacher_id')
+                ->constrained('employees')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 

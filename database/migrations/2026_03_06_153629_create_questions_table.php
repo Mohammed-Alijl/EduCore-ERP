@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained('subjects')->cascadeOnDelete();
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('employees')->cascadeOnDelete();
             $table->text('content');
             $table->tinyInteger('type')->comment('1: MCQ, 2: True/False');
             $table->integer('points')->default(1);
