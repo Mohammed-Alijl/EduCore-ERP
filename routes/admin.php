@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\CurrencyController;
@@ -238,6 +239,9 @@ Route::group(
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Departments ───────────────────────────────────────────────────────────────
+                    Route::resource('departments', DepartmentController::class)->except(['show', 'create', 'edit']);
 
                     // ─── Profile ───────────────────────────────────────────────────────────────
                     Route::prefix('profile')->name('profile.')->group(function () {
