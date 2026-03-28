@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Employee\UpdateRequest;
 use App\Models\Employee;
 use App\Services\EmployeeService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -31,12 +32,15 @@ class EmployeeController extends Controller implements HasMiddleware
     /**
      * Render the main listing page.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $lookups = $this->employeeService->getLookups();
-        $employees = $this->employeeService->getAll();
+        if ($request->ajax()) {
+            return $this->employeeService->getEmployeesDataTable($request);
+        }
 
-        return view('admin.employees.index', array_merge(['employees' => $employees], $lookups));
+        $lookups = $this->employeeService->getLookups();
+
+        return view('admin.employees.index', $lookups);
     }
 
     // ─── Store ────────────────────────────────────────────────────────────────
@@ -98,12 +102,15 @@ class EmployeeController extends Controller implements HasMiddleware
 
     // ─── List The Archive ────────────────────────────────────────────────
 
-    public function archive()
+    public function archive(Request $request)
     {
-        try {
-            $employees = $this->employeeService->archive();
+        if ($request->ajax()) {
+            return $this->employeeService->getArchivedDataTable($request);
+        }
 
-            return view('admin.employees.archived', compact('employees'));
+        try {
+            $archivedCount = \App\Models\Employee::onlyTrashed()->count();
+            return view('admin.employees.archived', compact('archivedCount'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',

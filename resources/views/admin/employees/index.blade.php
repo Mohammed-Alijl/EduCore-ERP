@@ -56,6 +56,57 @@
 @section('content')
     <div class="row row-sm">
         <div class="col-xl-12">
+
+            {{-- ─── Advanced Filter Section ─── --}}
+            <div class="filter-section shadow-sm mb-3">
+                <div class="row align-items-end">
+
+                    {{-- Department --}}
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
+                            <i class="las la-building mr-1"></i> {{ trans('admin.departments.title') }}
+                        </label>
+                        <select class="form-control form-control-modern" id="filter_department">
+                            <option value="">{{ trans('admin.global.all') }}</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- Designation --}}
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
+                            <i class="las la-id-badge mr-1"></i> {{ trans('admin.designations.title') }}
+                        </label>
+                        <select class="form-control form-control-modern" id="filter_designation" disabled>
+                            <option value="">{{ trans('admin.global.all') }}</option>
+                        </select>
+                    </div>
+
+                    {{-- Status --}}
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
+                            <i class="las la-toggle-on mr-1"></i> {{ trans('admin.employees.fields.status') }}
+                        </label>
+                        <select class="form-control form-control-modern" id="filter_status">
+                            <option value="">{{ trans('admin.global.all') }}</option>
+                            <option value="1">{{ trans('admin.global.active') }}</option>
+                            <option value="0">{{ trans('admin.global.disabled') }}</option>
+                        </select>
+                    </div>
+
+                    {{-- Reset Button --}}
+                    <div class="col-md-3 text-right mt-3 mt-md-0">
+                        <button class="btn btn-modern w-100" id="reset_filters">
+                            <i class="las la-sync-alt mr-1 ml-1"></i>
+                            {{ trans('admin.global.reset_filters') ?? 'Reset Filters' }}
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
             <div class="card teacher-glass-card">
                 <div class="card-header pb-0"></div>
                 <div class="card-body">
@@ -77,130 +128,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($employees as $employee)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        <img alt="avatar" class="avatar avatar-md brround bg-white" src="{{ $employee->image_url}}">
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-primary font-weight-bold emp-show-btn"
-                                           data-toggle="modal"
-                                           data-target="#showEmployeeModal"
-                                           data-employee_code="{{ $employee->employee_code }}"
-                                           data-designation="{{ optional($employee->designation)->name }}"
-                                           data-name_ar="{{ $employee->getTranslation('name', 'ar') }}"
-                                           data-name_en="{{ $employee->getTranslation('name', 'en') }}"
-                                           data-email="{{ $employee->email }}"
-                                           data-national_id="{{ $employee->national_id }}"
-                                           data-gender="{{ optional($employee->gender)->name }}"
-                                           data-blood_type="{{ optional($employee->bloodType)->name }}"
-                                           data-nationality="{{ optional($employee->nationality)->name }}"
-                                           data-religion="{{ optional($employee->religion)->name }}"
-                                           data-specialization="{{ optional($employee->specialization)->name ?? '-' }}"
-                                           data-joining_date="{{ $employee->joining_date->format('Y-m-d') }}"
-                                           data-address="{{ $employee->address }}"
-                                           data-phone="{{ $employee->phone }}"
-                                           data-status="{{ $employee->status ? trans('admin.global.active') : trans('admin.global.disabled') }}"
-                                           data-image="{{ $employee->imageUrl }}"
-                                           data-attachments='@json($employee->attachments->map(function($att) {
-                                               return [
-                                                   "url" => asset("storage/" . $att->attachment_path),
-                                                   "name" => basename($att->attachment_path)
-                                               ];
-                                           }))'>
-                                            {{ $employee->employee_code }}
-                                        </a>
-                                    </td>
-                                    <td><span class="badge badge-pill badge-primary-transparent">{{ optional($employee->designation)->name ?? '-' }}</span></td>
-                                    <td>{{ $employee->name }}</td>
-                                    <td>{{ $employee->email }}</td>
-                                    <td>{{ $employee->phone }}</td>
-                                    <td>
-                                        @if ($employee->status)
-                                            <span class="label text-success d-flex">{{ trans('admin.global.active') }}</span>
-                                        @else
-                                            <span class="label text-danger d-flex">{{ trans('admin.global.disabled') }}</span>
-                                        @endif
-                                    </td>
-                                    @canany(['edit_employees','delete_employees'])
-                                            <td>
-                                                <div class="teacher-actions-container">
-                                                    @can('edit_employees')
-                                                        @php
-                                                            $attachmentUrls = [];
-                                                            $attachmentConfigs = [];
-
-                                                            if($employee->attachments->count() > 0) {
-                                                                foreach($employee->attachments as $attachment) {
-                                                                    $filePath = $attachment->attachment_path;
-                                                                    $fullUrl = asset('storage/' . $filePath);
-                                                                    $attachmentUrls[] = $fullUrl;
-
-                                                                    $fileName = basename($filePath);
-                                                                    $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-
-                                                                    if(in_array($extension, ['jpg', 'jpeg', 'png', 'svg']))
-                                                                        $type = 'image';
-                                                                     elseif ($extension == 'pdf')
-                                                                        $type = 'pdf';
-                                                                     elseif (in_array($extension, ['doc', 'docx']))
-                                                                        $type = 'office';
-                                                                     else
-                                                                        $type = 'other';
-
-                                                                    $attachmentConfigs[] = [
-                                                                        'caption' => $fileName,
-                                                                        'type' => $type,
-                                                                        'url' => route('admin.employees.attachments.destroy', $attachment->id),
-                                                                        'key' => $attachment->id
-                                                                    ];
-                                                                }
-                                                            }
-                                                        @endphp
-                                                        <a class="btn btn-teacher-edit btn-sm edit-btn"
-                                                           href="#"
-                                                           data-toggle="modal"
-                                                           data-target="#editEmployeeModal"
-                                                           data-url="{{ route('admin.employees.update', $employee->id) }}"
-                                                           data-name_ar="{{ $employee->getTranslation('name', 'ar') }}"
-                                                           data-name_en="{{ $employee->getTranslation('name', 'en') }}"
-                                                           data-email="{{ $employee->email }}"
-                                                           data-national_id="{{ $employee->national_id }}"
-                                                           data-gender_id="{{ $employee->gender_id }}"
-                                                           data-blood_type_id="{{ $employee->blood_type_id }}"
-                                                           data-nationality_id="{{ $employee->nationality_id }}"
-                                                           data-religion_id="{{ $employee->religion_id }}"
-                                                           data-specialization_id="{{ $employee->specialization_id }}"
-                                                           data-department_id="{{ $employee->department_id }}"
-                                                           data-designation_id="{{ $employee->designation_id }}"
-                                                           data-contract_type="{{ $employee->contract_type }}"
-                                                           data-basic_salary="{{ $employee->basic_salary }}"
-                                                           data-bank_account_number="{{ $employee->bank_account_number }}"
-                                                           data-joining_date="{{ $employee->joining_date->format('Y-m-d') }}"
-                                                           data-address="{{ $employee->address }}"
-                                                           data-phone="{{ $employee->phone }}"
-                                                           data-status="{{ $employee->status }}"
-                                                           data-image="{{ $employee->image ? \Illuminate\Support\Facades\Storage::disk('public')->url($employee->image) : '' }}"
-                                                           data-attachments='@json($attachmentUrls)'
-                                                           data-configs='@json($attachmentConfigs)'>
-                                                            <i class="las la-pen"></i> {{trans('admin.global.edit')}}
-                                                        </a>
-                                                    @endcan
-                                                    @can('delete_employees')
-                                                        <a class="modal-effect btn btn-sm btn-teacher-archive delete-item"
-                                                           href="#"
-                                                           data-id="{{ $employee->id }}"
-                                                           data-url="{{ route('admin.employees.destroy', $employee->id) }}"
-                                                           data-name="{{ $employee->name }}">
-                                                            <i class="las la-trash"></i> {{trans('admin.global.archive')}}
-                                                        </a>
-                                                    @endcan
-                                                </div>
-                                            </td>
-                                    @endcanany
-                                </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -234,7 +161,64 @@
 
     <script>
         $(document).ready(function() {
-            $('#employees_table').DataTable(globalTableConfig);
+            var table = $('#employees_table').DataTable({
+                ...globalTableConfig,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.employees.index') }}",
+                    data: function(d) {
+                        d.filter_department = $('#filter_department').val();
+                        d.filter_designation = $('#filter_designation').val();
+                        d.filter_status = $('#filter_status').val();
+                    }
+                },
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'image', name: 'image', orderable: false, searchable: false, className: 'text-center' },
+                    { data: 'employee_code_link', name: 'employee_code' },
+                    { data: 'designation_name', name: 'designation_name' },
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'phone', name: 'phone' },
+                    { data: 'status_badge', name: 'status_badge', className: 'text-center' },
+                    @canany(['edit_employees', 'delete_employees'])
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false, className: 'text-center' },
+                    @endcanany
+                ]
+            });
+
+            /* ─── Filters ─── */
+            $('#filter_department').on('change', function() {
+                let departmentId = $(this).val();
+                let designationSelect = $('#filter_designation');
+                
+                designationSelect.empty().append('<option value="">{{ trans('admin.global.all') }}</option>').prop('disabled', true);
+                
+                if (departmentId) {
+                    $.ajax({
+                        url: "{{ route('admin.get_designations') }}",
+                        data: { department_id: departmentId },
+                        success: function(response) {
+                            if (response.length > 0) {
+                                $.each(response, function(index, item) {
+                                    designationSelect.append('<option value="' + item.id + '">' + item.name + '</option>');
+                                });
+                                designationSelect.prop('disabled', false);
+                            }
+                        }
+                    });
+                }
+                table.draw();
+            });
+
+            $('#filter_designation, #filter_status').on('change', function() { table.draw(); });
+
+            $('#reset_filters').on('click', function() {
+                $('#filter_department').val('').trigger('change');
+                $('#filter_status').val('');
+                table.draw();
+            });
 
             $('.select2').select2({
                 placeholder: '{{trans("admin.global.select")}}',

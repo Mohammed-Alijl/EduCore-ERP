@@ -55,7 +55,7 @@
                     <div class="archive-table-title">
                         <span class="title-dot"></span>
                         {{ __('admin.employees.archived') }}
-                        <span class="archive-count-badge" id="archive_count">{{ $employees->count() }}</span>
+                        <span class="archive-count-badge" id="archive_count">{{ $archivedCount }}</span>
                     </div>
                 </div>
                 <div class="card-body">
@@ -76,48 +76,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($employees as $employee)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $employee->employee_code }}</td>
-                                    <td><span class="badge badge-pill badge-primary-transparent">{{ $employee->type?->label() }}</span></td>
-                                    <td>{{ $employee->name }}</td>
-                                    <td>{{ $employee->email }}</td>
-                                    <td>{{ $employee->phone }}</td>
-                                    <td>
-                                        @if ($employee->status)
-                                            <span class="label text-success d-flex">{{ trans('admin.global.active') }}</span>
-                                        @else
-                                            <span class="label text-danger d-flex">{{ trans('admin.global.disabled') }}</span>
-                                        @endif
-                                    </td>
-                                    @canany(['restore_employees','force-delete_employees'])
-                                        <td>
-                                            <div class="teacher-actions-container">
-                                                @can('restore_employees')
-                                                    <a class="btn btn-sm btn-teacher-restore restore-item"
-                                                       href="#"
-                                                       data-url="{{ route('admin.employees.restore', $employee->id) }}"
-                                                       data-id="{{ $employee->id }}"
-                                                       data-name="{{ $employee->name }}"
-                                                    >
-                                                        <i class="las la-store"></i> {{__('admin.global.restore')}}
-                                                    </a>
-                                                @endcan
-                                                @can('force-delete_employees')
-                                                    <a class="btn btn-sm btn-teacher-delete delete-item"
-                                                       href="#"
-                                                       data-id="{{ $employee->id }}"
-                                                       data-url="{{ route('admin.employees.forceDelete', $employee->id) }}"
-                                                       data-name="{{ $employee->name }}">
-                                                        <i class="las la-trash"></i> {{trans('admin.global.delete')}}
-                                                    </a>
-                                                @endcan
-                                            </div>
-                                        </td>
-                                    @endcanany
-                                </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -139,7 +97,26 @@
 
     <script>
         $(document).ready(function() {
-            $('#employees_archive_table').DataTable(globalTableConfig);
+            var table = $('#employees_archive_table').DataTable({
+                ...globalTableConfig,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.employees.archived') }}",
+                },
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'employee_code', name: 'employee_code' },
+                    { data: 'type', name: 'type' },
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'phone', name: 'phone' },
+                    { data: 'status_badge', name: 'status_badge', className: 'text-center' },
+                    @canany(['restore_employees', 'force-delete_employees'])
+                    { data: 'actions', name: 'actions', orderable: false, searchable: false, className: 'text-center' },
+                    @endcanany
+                ]
+            });
         });
     </script>
     @stack('scripts')
