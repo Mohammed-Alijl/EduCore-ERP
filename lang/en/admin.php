@@ -69,6 +69,8 @@ return [
         'archive_warning_title' => 'Warning: Destructive Zone',
         'error_loading' => 'Error loading data. Please try again.',
         'error' => 'Error',
+        'yes' => 'Yes',
+        'no' => 'No',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',
@@ -936,6 +938,48 @@ return [
             ],
             'error' => [
                 'name_unique' => 'The department name already exists.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Designations CRUD
+    |--------------------------------------------------------------------------
+    */
+    'designations' => [
+        'title' => 'Designations',
+        'add' => 'Add Designation',
+        'edit' => 'Edit Designation',
+        'show' => 'Designation Details',
+        'delete' => 'Delete Designation',
+        'no_description' => 'No description provided.',
+        'no_salary' => 'Not set',
+        'select_department' => 'Select Department',
+        'can_teach_yes' => 'Can Teach',
+        'can_teach_no' => 'Non-Teaching',
+        'fields' => [
+            'name' => 'Designation Name',
+            'description' => 'Description',
+            'department' => 'Department',
+            'default_salary' => 'Default Salary',
+            'can_teach' => 'Can Teach',
+            'employees_count' => 'Employees',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Designation added successfully.',
+                'update' => 'Designation updated successfully.',
+                'delete' => 'Designation deleted successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add designation.',
+                'update' => 'Failed to update designation.',
+                'delete' => 'Failed to delete designation.',
+                'has_employees' => 'Cannot delete this designation because it has assigned employees.',
+            ],
+            'error' => [
+                'name_unique' => 'The designation name already exists.',
             ],
         ],
     ],
