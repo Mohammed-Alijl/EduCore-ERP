@@ -1698,6 +1698,7 @@ return [
                 'overall_avg' => 'المتوسط العام',
                 'passing_threshold' => 'النجاح ≥ ٥٠٪',
                 'exams_with_results' => 'اختبارات لها نتائج',
+                'average_percentage' => 'متوسط النسبة المئوية',
             ],
 
             'charts' => [

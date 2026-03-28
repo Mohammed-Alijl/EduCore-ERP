@@ -1711,6 +1711,7 @@ return [
                 'overall_avg' => 'Overall Average',
                 'passing_threshold' => 'Passing ≥ 50%',
                 'exams_with_results' => 'Exams with Results',
+                'average_percentage' => 'Average Percentage',
             ],
 
             'charts' => [
