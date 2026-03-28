@@ -101,6 +101,7 @@ return [
         'hr' => 'Human Resources',
         'employees' => 'Employees',
         'departments' => 'Departments',
+        'designations' => 'Designations',
         'guardians' => 'Guardians',
         'logs' => 'Activity Logs',
         'promotions' => 'Promotions',
