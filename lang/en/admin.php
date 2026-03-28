@@ -382,6 +382,11 @@ return [
             'attachments' => 'Attachments',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'department' => 'Department',
+            'designation' => 'Designation',
+            'contract_type' => 'Contract Type',
+            'basic_salary' => 'Basic Salary',
+            'bank_account_number' => 'Bank Account Number',
         ],
         'messages' => [
             'success' => [

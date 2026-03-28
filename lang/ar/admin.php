@@ -373,6 +373,11 @@ return [
             'attachments' => 'المرفقات',
             'created_at' => 'تاريخ الإنشاء',
             'updated_at' => 'آخر تعديل',
+            'department' => 'القسم',
+            'designation' => 'المسمى الوظيفي',
+            'contract_type' => 'نوع العقد',
+            'basic_salary' => 'الراتب الأساسي',
+            'bank_account_number' => 'رقم الحساب البنكي',
         ],
         'messages' => [
             'success' => [
