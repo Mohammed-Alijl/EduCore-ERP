@@ -422,6 +422,7 @@ return [
             'academic_year' => 'السنة الدراسية',
             'grade' => 'المرحلة',
             'classroom' => 'الصف',
+            'teacher_id' => 'اسم المعلم',
         ],
         'messages' => [
             'success' => [

@@ -431,6 +431,7 @@ return [
             'academic_year' => 'Academic Year',
             'grade' => 'Grade',
             'classroom' => 'Classroom',
+            'teacher_id' => 'Teacher Name'
         ],
         'messages' => [
             'success' => [
