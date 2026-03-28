@@ -25,7 +25,7 @@
         <div class="d-flex my-xl-auto right-content align-items-center">
             @can('create_department')
             <div class="mb-3 mb-xl-0 ml-2">
-                <a class="modal-effect btn btn-primary-gradient btn-with-icon btn-block"
+                <a class="modal-effect btn btn-primary btn-with-icon btn-block"
                    data-effect="effect-scale"
                    data-toggle="modal"
                    href="#createModal">

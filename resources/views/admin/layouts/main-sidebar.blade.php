@@ -106,8 +106,8 @@
 
             <!-- START USERS MANAGEMENT -->
             {{-- ─── HR ─── --}}
-            <li class="side-item side-item-category">{{ __('admin.sidebar.hr') }}</li>
-            @can('view_employees')
+    <li class="side-item side-item-category">{{ __('admin.sidebar.hr') }}</li>
+            @canany(['view_employees', 'view_department'])
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
@@ -118,11 +118,17 @@
                         <i class="angle fe fe-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
-                        <li><a class="slide-item"
-                                href="{{ route('admin.employees.index') }}">{{ __('admin.sidebar.employees') }}</a></li>
+                        @can('view_employees')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.employees.index') }}">{{ __('admin.sidebar.employees') }}</a></li>
+                        @endcan
+                        @can('view_department')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.departments.index') }}">{{ __('admin.sidebar.departments') }}</a></li>
+                        @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcanany
 
             <li class="side-item side-item-category">{{ __('admin.sidebar.users') }}</li>
             @canany(['view_teachers', 'view_specializations'])

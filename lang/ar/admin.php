@@ -106,6 +106,7 @@ return [
         'teacher_assignments' => 'إسناد المعلمين',
         'hr' => 'الموارد البشرية',
         'employees' => 'الموظفين',
+        'departments' => 'الأقسام',
         'students' => 'الطلاب',
         'guardians' => 'أولياء الأمور',
         'roles' => 'الصلاحيات والرتب',

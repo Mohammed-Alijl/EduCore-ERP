@@ -98,6 +98,7 @@ return [
         'teacher_assignments' => 'Teacher Assignments',
         'hr' => 'Human Resources',
         'employees' => 'Employees',
+        'departments' => 'Departments',
         'guardians' => 'Guardians',
         'logs' => 'Activity Logs',
         'promotions' => 'Promotions',
