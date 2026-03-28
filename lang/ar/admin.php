@@ -342,6 +342,11 @@ return [
         'employee_information' => 'بيانات الموظف',
         'contact_info' => 'معلومات التواصل',
         'details' => 'التفاصيل',
+        'contract_types' => [
+            'full_time' => 'دوام كامل',
+            'part_time' => 'دوام جزئي',
+            'contract' => 'عقد',
+        ],
         'types' => [
             'teacher' => 'معلم',
             'staff' => 'موظف إداري',

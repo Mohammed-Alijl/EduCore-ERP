@@ -61,12 +61,39 @@
                                 <label>{{ trans('admin.employees.fields.national_id') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control numeric-only" name="national_id"
-                                    id="edit_emp_national_id" required maxlength="50" autocomplete="off">
+                                    id="edit_emp_national_id" required minlength="10" maxlength="50" autocomplete="off">
                                 <span class="text-danger error-text national_id_error"></span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.phone') }}</label>
+                                <input type="text" class="form-control numeric-only" name="phone"
+                                    id="edit_emp_phone" maxlength="20">
+                                <span class="text-danger error-text phone_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.gender') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="gender_id" id="edit_emp_gender_id" class="form-control select2"
+                                    required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($genders as $gender)
+                                        <option value="{{ $gender->id }}">{{ $gender->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text gender_id_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.password') }}</label>
                                 <input type="password" class="form-control" name="password" id="edit_emp_password"
@@ -75,12 +102,62 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.password_confirmation') }}</label>
                                 <input type="password" name="password_confirmation" class="form-control" minlength="8"
                                     maxlength="30" data-parsley-equalto="#edit_emp_password">
                                 <span class="text-danger error-text password_confirmation_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.nationality') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="nationality_id" id="edit_emp_nationality_id"
+                                    class="form-control select2" required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($nationalities as $nationality)
+                                        <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text nationality_id_error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.religion') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="religion_id" id="edit_emp_religion_id" class="form-control select2"
+                                    required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($religions as $religion)
+                                        <option value="{{ $religion->id }}">{{ $religion->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text religion_id_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.blood_type') }} <span
+                                        class="text-danger">*</span></label>
+                                <select name="blood_type_id" id="edit_emp_blood_type_id" class="form-control select2"
+                                    required>
+                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
+                                    </option>
+                                    @foreach ($blood_types as $blood_type)
+                                        <option value="{{ $blood_type->id }}">{{ $blood_type->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-text blood_type_id_error"></span>
                             </div>
                         </div>
                     </div>
@@ -110,77 +187,9 @@
                                     class="form-control select2" required>
                                     <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
                                     </option>
-                                    @foreach ($designations as $designation)
-                                        <option value="{{ $designation->id }}">{{ $designation->name }}</option>
-                                    @endforeach
+                                    <!-- Options will be loaded via AJAX based on Department -->
                                 </select>
                                 <span class="text-danger error-text designation_id_error"></span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.gender') }} <span
-                                        class="text-danger">*</span></label>
-                                <select name="gender_id" id="edit_emp_gender_id" class="form-control select2"
-                                    required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
-                                    </option>
-                                    @foreach ($genders as $gender)
-                                        <option value="{{ $gender->id }}">{{ $gender->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text gender_id_error"></span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.blood_type') }} <span
-                                        class="text-danger">*</span></label>
-                                <select name="blood_type_id" id="edit_emp_blood_type_id" class="form-control select2"
-                                    required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
-                                    </option>
-                                    @foreach ($blood_types as $blood_type)
-                                        <option value="{{ $blood_type->id }}">{{ $blood_type->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text blood_type_id_error"></span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.nationality') }} <span
-                                        class="text-danger">*</span></label>
-                                <select name="nationality_id" id="edit_emp_nationality_id"
-                                    class="form-control select2" required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
-                                    </option>
-                                    @foreach ($nationalities as $nationality)
-                                        <option value="{{ $nationality->id }}">{{ $nationality->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text nationality_id_error"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.religion') }} <span
-                                        class="text-danger">*</span></label>
-                                <select name="religion_id" id="edit_emp_religion_id" class="form-control select2"
-                                    required>
-                                    <option value="" disabled selected>-- {{ trans('admin.global.select') }} --
-                                    </option>
-                                    @foreach ($religions as $religion)
-                                        <option value="{{ $religion->id }}">{{ $religion->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-text religion_id_error"></span>
                             </div>
                         </div>
 
@@ -209,19 +218,10 @@
                                 <span class="text-danger error-text joining_date_error"></span>
                             </div>
                         </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.phone') }}</label>
-                                <input type="text" class="form-control numeric-only" name="phone"
-                                    id="edit_emp_phone" maxlength="20">
-                                <span class="text-danger error-text phone_error"></span>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.contract_type') }} <span
                                         class="text-danger">*</span></label>
@@ -240,36 +240,26 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.basic_salary') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="number" name="basic_salary" id="edit_emp_basic_salary"
-                                    class="form-control" step="0.01" min="0" required>
+                                    class="form-control" step="0.01" min="0" max="999999" required>
                                 <span class="text-danger error-text basic_salary_error"></span>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.bank_account_number') }}</label>
                                 <input type="text" name="bank_account_number" id="edit_emp_bank_account_number"
-                                    class="form-control" maxlength="255">
+                                    class="form-control" maxlength="50">
                                 <span class="text-danger error-text bank_account_number_error"></span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label>{{ trans('admin.employees.fields.address') }}</label>
-                                <input type="text" name="address" id="edit_emp_address" class="form-control"
-                                    maxlength="500">
-                                <span class="text-danger error-text address_error"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('admin.employees.fields.status') }} <span
                                         class="text-danger">*</span></label>
@@ -278,6 +268,17 @@
                                     <option value="0">{{ trans('admin.global.disabled') }}</option>
                                 </select>
                                 <span class="text-danger error-text status_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>{{ trans('admin.employees.fields.address') }}</label>
+                                <input type="text" name="address" id="edit_emp_address" class="form-control"
+                                    maxlength="500">
+                                <span class="text-danger error-text address_error"></span>
                             </div>
                         </div>
                     </div>
@@ -408,6 +409,56 @@
             $('#editEmployeeModal').on('hidden.bs.modal', function() {
                 $(this).find('form').trigger('reset');
                 $('.error-text').text('');
+            });
+
+            /* ===============================
+            AJAX DEPENDENT DROPDOWNS
+            =============================== */
+            var initialDesignationId = null;
+
+            $('#editEmployeeModal').on('show.bs.modal', function(event) {
+                let button = $(event.relatedTarget);
+                initialDesignationId = button.data('designation_id');
+            });
+
+            $('#edit_emp_department_id').on('change', function() {
+                var department_id = $(this).val();
+                if (department_id) {
+                    $.ajax({
+                        url: "{{ route('admin.get_designations') }}",
+                        type: "GET",
+                        data: { department_id: department_id },
+                        success: function(data) {
+                            var designationSelect = $('#edit_emp_designation_id');
+                            designationSelect.empty();
+                            designationSelect.append('<option value="" disabled selected>-- {{ trans("admin.global.select") }} --</option>');
+                            $.each(data, function(key, value) {
+                                designationSelect.append('<option value="' + value.id + '" data-can-teach="' + value.can_teach + '">' + value.name + '</option>');
+                            });
+
+                            if (initialDesignationId) {
+                                designationSelect.val(initialDesignationId);
+                                initialDesignationId = null;
+                            }
+                            designationSelect.trigger('change');
+                        }
+                    });
+                } else {
+                    $('#edit_emp_designation_id').empty();
+                    $('#edit_emp_designation_id').trigger('change');
+                }
+            });
+
+            $('#edit_emp_designation_id').on('change', function() {
+                var selectedOption = $(this).find('option:selected');
+                var canTeach = selectedOption.data('can-teach');
+
+                if (canTeach == 0 || !canTeach) {
+                    $('#edit_emp_specialization_id').val('').trigger('change');
+                    $('#edit_emp_specialization_id').prop('disabled', true);
+                } else {
+                    $('#edit_emp_specialization_id').prop('disabled', false);
+                }
             });
 
             /* Datepicker */

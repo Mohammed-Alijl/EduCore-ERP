@@ -45,4 +45,9 @@ class DesignationService
 
         throw new \Exception(__('admin.designations.messages.failed.delete'));
     }
+
+    public function getByDepartment(int $departmentId): \Illuminate\Database\Eloquent\Collection
+    {
+        return Designation::where('department_id', $departmentId)->get(['id', 'name', 'can_teach']);
+    }
 }

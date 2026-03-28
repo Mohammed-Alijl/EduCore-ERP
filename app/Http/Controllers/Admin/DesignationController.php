@@ -86,4 +86,13 @@ class DesignationController extends Controller implements HasMiddleware
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
     }
+
+    /**
+     * Get designations for a specific department (AJAX)
+     */
+    public function getByDepartment(\Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse
+    {
+        $designations = $this->designationService->getByDepartment($request->department_id);
+        return response()->json($designations);
+    }
 }

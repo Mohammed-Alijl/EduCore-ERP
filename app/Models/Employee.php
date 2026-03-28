@@ -73,7 +73,15 @@ class Employee extends Authenticatable
     {
         static::creating(function (Employee $employee) {
             if (empty($employee->employee_code)) {
-                $prefix = 'EMP-' . date('Y') . '-';
+                $isTeacher = false;
+                if ($employee->designation_id) {
+                    $designation = Designation::find($employee->designation_id);
+                    if ($designation && $designation->can_teach) {
+                        $isTeacher = true;
+                    }
+                }
+                
+                $prefix = ($isTeacher ? 'TCH-' : 'EMP-') . date('Y') . '-';
                 $lastEmployee = self::withTrashed()
                     ->where('employee_code', 'like', $prefix . '%')
                     ->orderBy('id', 'desc')

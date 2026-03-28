@@ -351,6 +351,11 @@ return [
         'employee_information' => 'Employee Information',
         'contact_info' => 'Contact Info',
         'details' => 'Details',
+        'contract_types' => [
+            'full_time' => 'Full Time',
+            'part_time' => 'Part Time',
+            'contract' => 'Contract',
+        ],
         'types' => [
             'teacher' => 'Teacher',
             'staff' => 'Staff',

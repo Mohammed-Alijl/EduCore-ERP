@@ -297,6 +297,7 @@ Route::group(
                     Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
                     Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
                     Route::get('get-sections-by-grade', [SectionController::class, 'getByGrade'])->name('get_sections_by_grade');
+                    Route::get('get-designations', [DesignationController::class, 'getByDepartment'])->name('get_designations');
 
                     // ─── Academic Year ───────────────────────────────────────────────────────────────
                     Route::resource('academic_years', AcademicYearController::class)->except(['show', 'create', 'edit', 'destroy']);
