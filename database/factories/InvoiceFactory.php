@@ -24,6 +24,7 @@ class InvoiceFactory extends Factory
 
         return [
             'student_id'   => $student->id,
+            'academic_year_id' => \App\Models\AcademicYear::factory(),
             'grade_id'     => $student->grade_id,
             'classroom_id' => $student->classroom_id,
             'fee_id'       => $fee->id,

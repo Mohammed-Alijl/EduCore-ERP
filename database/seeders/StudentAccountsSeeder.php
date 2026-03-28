@@ -112,8 +112,5 @@ class StudentAccountsSeeder extends Seeder
         foreach ($chunks as $chunk) {
             DB::table('student_accounts')->insert($chunk);
         }
-
-        $this->command->info('✅ Successfully created '.count($transactions).' sample financial transactions!');
-        $this->command->info('📊 Charts should now display meaningful data across 12 months.');
     }
 }
