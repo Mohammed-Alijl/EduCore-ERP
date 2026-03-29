@@ -10,12 +10,13 @@ use Spatie\Translatable\HasTranslations;
 
 class Grade extends Model
 {
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, HasTranslations, SoftDeletes;
+
     protected $fillable = [
         'name',
         'notes',
         'status',
-        'sort_order'
+        'sort_order',
     ];
 
     public $translatable = ['name'];
@@ -25,12 +26,26 @@ class Grade extends Model
         return $query->where('status', 1)->orderBy('sort_order', 'asc');
     }
 
-
-    //===============================================================
-    //======================== RELATIONSHIPS ========================
-    //===============================================================
+    // ===============================================================
+    // ======================== RELATIONSHIPS ========================
+    // ===============================================================
     public function classrooms(): HasMany
     {
         return $this->hasMany(ClassRoom::class);
+    }
+
+    public function sections(): HasMany
+    {
+        return $this->hasMany(Section::class);
+    }
+
+    public function students(): HasMany
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    public function subjects(): HasMany
+    {
+        return $this->hasMany(Subject::class);
     }
 }

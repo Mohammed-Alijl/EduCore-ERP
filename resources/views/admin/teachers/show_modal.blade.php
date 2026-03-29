@@ -115,7 +115,7 @@
             let btn = $(this);
 
             $('#show_name').text(btn.data('name_ar') + ' / ' + btn.data('name_en'));
-            $('#show_teacher_code span').text(btn.data('teacher_code'));
+            $('#show_teacher_code span').text(btn.data('employee_code'));
             $('#show_email').text(btn.data('email'));
             $('#show_phone').text(btn.data('phone') || '-');
             $('#show_address').text(btn.data('address') || '-');

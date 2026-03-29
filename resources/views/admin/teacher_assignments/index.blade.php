@@ -50,7 +50,7 @@
                     {{-- Teacher --}}
                     <div class="col-md-3 mb-3 mb-md-0">
                         <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
-                            <i class="las la-user-tie mr-1"></i> {{ trans('admin.teacher_assignments.fileds.teacher_id') }}
+                            <i class="las la-user-tie mr-1"></i> {{ trans('admin.teacher_assignments.fields.teacher_id') }}
                         </label>
                         <select class="form-control form-control-modern" id="filter_teacher">
                             <option value="">{{ trans('admin.global.all') }}</option>
@@ -76,7 +76,7 @@
                     {{-- Classroom --}}
                     <div class="col-md-2 mb-3 mb-md-0">
                         <label class="form-label tx-11 font-weight-bold text-uppercase text-muted">
-                            <i class="las la-chalkboard mr-1"></i> {{ trans('admin.classes.title') }}
+                            <i class="las la-chalkboard mr-1"></i> {{ trans('admin.classrooms.title') }}
                         </label>
                         <select class="form-control form-control-modern" id="filter_classroom" disabled>
                             <option value="">{{ trans('admin.global.all') }}</option>

@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\Finance\CurrencyController;
 use App\Http\Controllers\Admin\Finance\FeeCategoryController;
@@ -151,6 +154,15 @@ Route::group(
                         Route::delete('force-delete/{id}', [TeacherController::class, 'forceDelete'])->name('forceDelete');
                     });
 
+                    // ─── HR Employees ─────────────────────────────────────────────────────────────
+                    Route::resource('employees', EmployeeController::class)->except(['show', 'create', 'edit']);
+                    Route::prefix('employees/')->name('employees.')->group(function () {
+                        Route::delete('attachments/{id}', [EmployeeController::class, 'deleteAttachment'])->name('attachments.destroy');
+                        Route::get('archive', [EmployeeController::class, 'archive'])->name('archived');
+                        Route::post('restore/{id}', [EmployeeController::class, 'restore'])->name('restore');
+                        Route::delete('force-delete/{id}', [EmployeeController::class, 'forceDelete'])->name('forceDelete');
+                    });
+
                     // ─── Teacher Assignments ───────────────────────────────────────────────────────────────
                     Route::resource('teacher_assignments', TeacherAssignmentController::class)->except(['show', 'create']);
 
@@ -229,6 +241,12 @@ Route::group(
                     // ─── Specializations ───────────────────────────────────────────────────────────────
                     Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);
 
+                    // ─── Departments ───────────────────────────────────────────────────────────────
+                    Route::resource('departments', DepartmentController::class)->except(['show', 'create', 'edit']);
+
+                    // ─── Designations ───────────────────────────────────────────────────────────────
+                    Route::resource('designations', DesignationController::class)->except(['show', 'create', 'edit']);
+
                     // ─── Profile ───────────────────────────────────────────────────────────────
                     Route::prefix('profile')->name('profile.')->group(function () {
                         Route::get('/', [ProfileController::class, 'index'])->name('index');
@@ -279,6 +297,7 @@ Route::group(
                     Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
                     Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
                     Route::get('get-sections-by-grade', [SectionController::class, 'getByGrade'])->name('get_sections_by_grade');
+                    Route::get('get-designations', [DesignationController::class, 'getByDepartment'])->name('get_designations');
 
                     // ─── Academic Year ───────────────────────────────────────────────────────────────
                     Route::resource('academic_years', AcademicYearController::class)->except(['show', 'create', 'edit', 'destroy']);

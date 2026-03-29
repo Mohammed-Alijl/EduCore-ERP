@@ -2,17 +2,18 @@
 
 namespace App\Services;
 
-use App\Models\Student;
-use App\Models\Nationality;
-use App\Models\Teacher;
-use App\Models\TeacherAttachment;
-use App\Models\TypeBlood;
-use App\Models\Religion;
+use App\Models\Department;
+use App\Models\Designation;
+use App\Models\EmployeeAttachment;
 use App\Models\Gender;
+use App\Models\Nationality;
+use App\Models\Religion;
 use App\Models\Specialization;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Teacher;
+use App\Models\TypeBlood;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherService
 {
@@ -25,10 +26,12 @@ class TeacherService
     {
         return [
             'nationalities' => Nationality::all(),
-            'blood_types'   => TypeBlood::all(),
-            'religions'     => Religion::all(),
-            'genders'       => Gender::all(),
+            'blood_types' => TypeBlood::all(),
+            'religions' => Religion::all(),
+            'genders' => Gender::all(),
             'specializations' => Specialization::all(),
+            'departments' => Department::all(),
+            'designations' => Designation::all(),
         ];
     }
 
@@ -44,7 +47,7 @@ class TeacherService
 
             $teacher = Teacher::create($data);
 
-            $folderName = $teacher->teacher_code;
+            $folderName = $teacher->employee_code;
 
             if ($image && $image->isValid()) {
                 $image_path = $image->store("teachers/{$folderName}/profile", 'public');
@@ -55,8 +58,8 @@ class TeacherService
                 foreach ($attachments as $file) {
                     if ($file->isValid()) {
                         $path = $file->store("teachers/{$folderName}/attachments", 'public');
-                        $attachment = new TeacherAttachment();
-                        $attachment->teacher_id = $teacher->id;
+                        $attachment = new EmployeeAttachment;
+                        $attachment->employee_id = $teacher->id;
                         $attachment->attachment_path = $path;
                         $attachment->save();
                     }
@@ -69,7 +72,7 @@ class TeacherService
 
     public function update($teacher, array $data)
     {
-        $folderName = $teacher->teacher_code;
+        $folderName = $teacher->employee_code;
 
         if (empty($data['password'])) {
             unset($data['password']);
@@ -83,12 +86,11 @@ class TeacherService
         }
 
         if (isset($data['attachments']) && is_array($data['attachments'])) {
-
             foreach ($data['attachments'] as $file) {
                 if ($file->isValid()) {
                     $path = $file->store("teachers/{$folderName}/attachments", 'public');
-                    $attachment = new TeacherAttachment();
-                    $attachment->teacher_id = $teacher->id;
+                    $attachment = new EmployeeAttachment;
+                    $attachment->employee_id = $teacher->id;
                     $attachment->attachment_path = $path;
                     $attachment->save();
                 }
@@ -97,6 +99,7 @@ class TeacherService
         }
 
         $teacher->update($data);
+
         return $teacher;
     }
 
@@ -117,11 +120,12 @@ class TeacherService
     {
         $teacher = Teacher::withTrashed()->find($id);
 
-        if (!$teacher) {
+        if (! $teacher) {
             throw new \Exception(__('admin.teachers.messages.failed.restore'));
         }
 
         $teacher->restore();
+
         return true;
     }
 
@@ -129,21 +133,24 @@ class TeacherService
     {
         $teacher = Teacher::withTrashed()->find($id);
 
-        if (!$teacher)
+        if (! $teacher) {
             throw new \Exception(__('admin.teachers.messages.failed.delete'));
-
-        if ($teacher->attachments()->count() > 0 ){
-            foreach ($teacher->attachments as $attachment)
-                $attachment->delete();
         }
 
-        $folderPath = "teachers/{$teacher->teacher_code}";
+        if ($teacher->attachments()->count() > 0) {
+            foreach ($teacher->attachments as $attachment) {
+                $attachment->delete();
+            }
+        }
+
+        $folderPath = "teachers/{$teacher->employee_code}";
         if (Storage::disk('public')->exists($folderPath)) {
             Storage::disk('public')->deleteDirectory($folderPath);
         }
 
-        if($teacher->forceDelete())
+        if ($teacher->forceDelete()) {
             return true;
+        }
 
         throw new \Exception(__('admin.teachers.messages.failed.delete'));
     }
@@ -152,13 +159,13 @@ class TeacherService
     {
         $prefix = 'TCH-' . date('Y') . '-';
         $lastTeacher = Teacher::withTrashed()
-            ->where('teacher_code', 'like', $prefix . '%')
+            ->where('employee_code', 'like', $prefix . '%')
             ->orderBy('id', 'desc')
             ->first();
 
         if ($lastTeacher) {
-            $lastNumber = str_replace($prefix, '', $lastTeacher->teacher_code);
-            $newSequence = str_pad((int)$lastNumber + 1, 4, '0', STR_PAD_LEFT);
+            $lastNumber = str_replace($prefix, '', $lastTeacher->employee_code);
+            $newSequence = str_pad((int) $lastNumber + 1, 4, '0', STR_PAD_LEFT);
         } else {
             $newSequence = '0001';
         }
@@ -168,7 +175,7 @@ class TeacherService
 
     public function deleteAttachment($id)
     {
-        $attachment = TeacherAttachment::findOrFail($id);
+        $attachment = EmployeeAttachment::findOrFail($id);
 
         if (Storage::disk('public')->exists($attachment->attachment_path)) {
             Storage::disk('public')->delete($attachment->attachment_path);

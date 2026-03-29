@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
             $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('employees')->cascadeOnDelete();
             $table->foreignId('subject_id')->constrained('subjects')->cascadeOnDelete();
             $table->string('topic');
             $table->dateTime('start_at');

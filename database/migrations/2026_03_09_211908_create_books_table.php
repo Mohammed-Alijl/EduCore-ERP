@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('classroom_id')->nullable()->constrained('class_rooms')->cascadeOnDelete();
             $table->foreignId('section_id')->nullable()->constrained('sections')->cascadeOnDelete();
 
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('employees')->cascadeOnDelete();
             $table->foreignId('subject_id')->constrained('subjects')->cascadeOnDelete();
 
             $table->timestamps();

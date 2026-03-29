@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'teacher_id' => [
                 'required',
-                'exists:teachers,id',
+                'exists:employees,id',
                 Rule::unique('teacher_assignments')->where(function ($query) {
                     return $query->where('subject_id', $this->subject_id)
                         ->where('section_id', $this->section_id)

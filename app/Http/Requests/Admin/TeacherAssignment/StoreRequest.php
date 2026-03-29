@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
         return [
             'teacher_id' => [
                 'required',
-                'exists:teachers,id',
+                'exists:employees,id',
                 Rule::unique('teacher_assignments')->where(function ($query) {
                     return $query->where('subject_id', $this->subject_id)
                         ->where('section_id', $this->section_id)
@@ -44,9 +44,9 @@ class StoreRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'teacher_id'    => trans('admin.assignments.teacher_id'),
-            'subject_id'    => trans('admin.assignments.subject_id'),
-            'section_id'    => trans('admin.assignments.section_id'),
+            'teacher_id' => trans('admin.assignments.teacher_id'),
+            'subject_id' => trans('admin.assignments.subject_id'),
+            'section_id' => trans('admin.assignments.section_id'),
             'academic_year' => trans('admin.assignments.academic_year'),
         ];
     }

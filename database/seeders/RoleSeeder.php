@@ -30,9 +30,14 @@ class RoleSeeder extends Seeder
             'receipts'          => ['view', 'create', 'delete', 'print'],
             'currencies'        => ['view', 'create', 'edit', 'delete'],
             'payment_gateways'  => ['view', 'create', 'edit', 'delete'],
-            'paymentVoucher'   => ['view', 'create', 'delete', 'print'],
-            'studentDiscounts' => ['view', 'create', 'delete'],
+            'paymentVoucher'    => ['view', 'create', 'delete', 'print'],
+            'studentDiscounts'  => ['view', 'create', 'delete'],
             'attendanceReports' => ['view', 'export'],
+            'grades-reports'    => ['view', 'export'],
+            'financial-reports' => ['view', 'export'],
+            'department'        => ['view','create','edit','delete'],
+            'designations'      => ['view','create','edit','delete'],
+            'employees'         => ['view','create','edit','delete'],
         ];
 
         foreach ($permissions as $module => $actions) {

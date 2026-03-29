@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OnlineClass extends Model
 {
@@ -36,32 +37,32 @@ class OnlineClass extends Model
     // Relationships
     // --------------------------------------------------------
 
-    public function academicYear()
+    public function academicYear(): BelongsTo
     {
         return $this->belongsTo(AcademicYear::class);
     }
 
-    public function grade()
+    public function grade(): BelongsTo
     {
         return $this->belongsTo(Grade::class);
     }
 
-    public function classroom()
+    public function classroom(): BelongsTo
     {
         return $this->belongsTo(ClassRoom::class);
     }
 
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class);
     }
 
-    public function teacher()
+    public function teacher(): BelongsTo
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Employee::class, 'teacher_id');
     }
 
-    public function subject()
+    public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class);
     }

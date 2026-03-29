@@ -2,18 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Specialization extends Model
 {
-    use HasTranslations;
+    use HasTranslations, HasFactory;
 
     public $translatable = ['name'];
+
     protected $fillable = ['name'];
 
-
     // ─── Relationships ────────────────────────────────────────────────────────
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'specialization_id');
+    }
+
     public function teachers()
     {
         return $this->hasMany(Teacher::class, 'specialization_id');
@@ -21,6 +27,6 @@ class Specialization extends Model
 
     public function subjects()
     {
-        return $this->hasMany(Specialization::class, 'specialization_id');
+        return $this->hasMany(Subject::class, 'specialization_id');
     }
 }

@@ -69,6 +69,8 @@ return [
         'archive_warning_title' => 'Warning: Destructive Zone',
         'error_loading' => 'Error loading data. Please try again.',
         'error' => 'Error',
+        'yes' => 'Yes',
+        'no' => 'No',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',
@@ -96,6 +98,10 @@ return [
         'students' => 'Students',
         'teachers' => 'Teachers',
         'teacher_assignments' => 'Teacher Assignments',
+        'hr' => 'Human Resources',
+        'employees' => 'Employees',
+        'departments' => 'Departments',
+        'designations' => 'Designations',
         'guardians' => 'Guardians',
         'logs' => 'Activity Logs',
         'promotions' => 'Promotions',
@@ -327,6 +333,89 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Employees CRUD (HR)
+    |--------------------------------------------------------------------------
+    */
+    'employees' => [
+        'warning_title' => 'Warning: Destructive Zone',
+        'warning_body' => 'Are you sure you want to archive this employee? They will be removed from the active list but can be restored later.',
+        'archived_list' => 'List of all soft-deleted employees',
+        'title' => 'Employees',
+        'add' => 'Add Employee',
+        'show' => 'Employee Profile',
+        'edit' => 'Edit Employee',
+        'delete' => 'Delete Employee',
+        'archived' => 'Archived Employees',
+        'actions' => 'Actions',
+        'search' => 'Search...',
+        'employee_information' => 'Employee Information',
+        'contact_info' => 'Contact Info',
+        'details' => 'Details',
+        'contract_types' => [
+            'full_time' => 'Full Time',
+            'part_time' => 'Part Time',
+            'contract' => 'Contract',
+        ],
+        'types' => [
+            'teacher' => 'Teacher',
+            'staff' => 'Staff',
+            'accountant' => 'Accountant',
+            'librarian' => 'Librarian',
+            'security_guard' => 'Security Guard',
+            'driver' => 'Driver',
+            'cleaner' => 'Cleaner',
+        ],
+        'fields' => [
+            'name' => 'Name',
+            'name_ar' => 'Name (Arabic)',
+            'name_en' => 'Name (English)',
+            'email' => 'Email',
+            'password' => 'Password',
+            'password_confirmation' => 'Password Confirmation',
+            'employee_code' => 'Employee Code',
+            'national_id' => 'National ID',
+            'blood_type' => 'Blood Type',
+            'nationality' => 'Nationality',
+            'religion' => 'Religion',
+            'gender' => 'Gender',
+            'joining_date' => 'Joining Date',
+            'address' => 'Address',
+            'phone' => 'Phone Number',
+            'image' => 'Personal Photo',
+            'status' => 'Status',
+            'type' => 'Employee Type',
+            'attachments' => 'Attachments',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'department' => 'Department',
+            'designation' => 'Designation',
+            'contract_type' => 'Contract Type',
+            'basic_salary' => 'Basic Salary',
+            'bank_account_number' => 'Bank Account Number',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Employee added successfully.',
+                'update' => 'Employee updated successfully.',
+                'delete' => 'Employee deleted successfully.',
+                'restore' => 'Employee restored successfully.',
+                'archive' => 'Employee archived successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add employee.',
+                'update' => 'Failed to update employee.',
+                'delete' => 'Failed to delete employee.',
+                'restore' => 'Failed to restore employee.',
+                'archive' => 'Failed to archive employee.',
+            ],
+            'error' => [
+                'email_unique' => 'Email is already registered.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Teachers Assignments
     |--------------------------------------------------------------------------
     */
@@ -342,6 +431,7 @@ return [
             'academic_year' => 'Academic Year',
             'grade' => 'Grade',
             'classroom' => 'Classroom',
+            'teacher_id' => 'Teacher Name'
         ],
         'messages' => [
             'success' => [
@@ -821,6 +911,87 @@ return [
             'error' => [
                 'name_ar_unique' => 'The specialization name in Arabic already exists.',
                 'name_en_unique' => 'The specialization name in English already exists.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Departments CRUD
+    |--------------------------------------------------------------------------
+    */
+    'departments' => [
+        'title' => 'Departments',
+        'add' => 'Add Department',
+        'edit' => 'Edit Department',
+        'show' => 'Department Details',
+        'delete' => 'Delete Department',
+        'no_description' => 'No description provided.',
+        'designations_list' => 'Designations',
+        'no_designations' => 'No designations in this department yet.',
+        'fields' => [
+            'name' => 'Department Name',
+            'description' => 'Description',
+            'employees_count' => 'Employees',
+            'designations_count' => 'Designations',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Department added successfully.',
+                'update' => 'Department updated successfully.',
+                'delete' => 'Department deleted successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add department.',
+                'update' => 'Failed to update department.',
+                'delete' => 'Failed to delete department.',
+                'has_employees' => 'Cannot delete this department because it has assigned employees.',
+                'has_designations' => 'Cannot delete this department because it has designations.',
+            ],
+            'error' => [
+                'name_unique' => 'The department name already exists.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Designations CRUD
+    |--------------------------------------------------------------------------
+    */
+    'designations' => [
+        'title' => 'Designations',
+        'add' => 'Add Designation',
+        'edit' => 'Edit Designation',
+        'show' => 'Designation Details',
+        'delete' => 'Delete Designation',
+        'no_description' => 'No description provided.',
+        'no_salary' => 'Not set',
+        'select_department' => 'Select Department',
+        'can_teach_yes' => 'Can Teach',
+        'can_teach_no' => 'Non-Teaching',
+        'fields' => [
+            'name' => 'Designation Name',
+            'description' => 'Description',
+            'department' => 'Department',
+            'default_salary' => 'Default Salary',
+            'can_teach' => 'Can Teach',
+            'employees_count' => 'Employees',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Designation added successfully.',
+                'update' => 'Designation updated successfully.',
+                'delete' => 'Designation deleted successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to add designation.',
+                'update' => 'Failed to update designation.',
+                'delete' => 'Failed to delete designation.',
+                'has_employees' => 'Cannot delete this designation because it has assigned employees.',
+            ],
+            'error' => [
+                'name_unique' => 'The designation name already exists.',
             ],
         ],
     ],
@@ -1540,6 +1711,7 @@ return [
                 'overall_avg' => 'Overall Average',
                 'passing_threshold' => 'Passing ≥ 50%',
                 'exams_with_results' => 'Exams with Results',
+                'average_percentage' => 'Average Percentage',
             ],
 
             'charts' => [

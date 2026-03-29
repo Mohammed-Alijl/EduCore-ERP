@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class TeacherAttachment extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class EmployeeAttachment extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
-      'teacher_id',
-      'attachment_path',
+        'employee_id',
+        'attachment_path',
     ];
 
     // ─── Relationships ─────────────────────────────────────────
-    public function teacher(): BelongsTo {
-        return $this->belongsTo(Teacher::class);
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
     }
-
 }

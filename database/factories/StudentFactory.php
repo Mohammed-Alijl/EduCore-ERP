@@ -39,6 +39,7 @@ class StudentFactory extends Factory
             'gender_id' => \App\Models\Gender::inRandomOrder()->value('id'),
             'status' => $this->faker->randomElement([0, 1]),
             'admin_id' => \App\Models\Admin::inRandomOrder()->value('id') ?? 1,
+            'student_code' => $this->faker->unique()->numerify(date('Y') . '####'),
         ];
     }
 }

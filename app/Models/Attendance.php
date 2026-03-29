@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Attendance extends Model
 {
@@ -28,33 +29,33 @@ class Attendance extends Model
     // Relationships
     // --------------------------------------------------------
 
-    public function student()
+    public function student(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class);
     }
 
-    public function academicYear()
+    public function academicYear(): BelongsTo
     {
-        return $this->belongsTo(AcademicYear::class, 'academic_year_id');
+        return $this->belongsTo(AcademicYear::class);
     }
 
-    public function grade()
+    public function grade(): BelongsTo
     {
-        return $this->belongsTo(Grade::class, 'grade_id');
+        return $this->belongsTo(Grade::class);
     }
 
-    public function classroom()
+    public function classroom(): BelongsTo
     {
-        return $this->belongsTo(ClassRoom::class, 'classroom_id');
+        return $this->belongsTo(ClassRoom::class);
     }
 
-    public function section()
+    public function section(): BelongsTo
     {
-        return $this->belongsTo(Section::class, 'section_id');
+        return $this->belongsTo(Section::class);
     }
 
-    public function teacher()
+    public function teacher(): BelongsTo
     {
-        return $this->belongsTo(Teacher::class, 'teacher_id');
+        return $this->belongsTo(Employee::class, 'teacher_id');
     }
 }
