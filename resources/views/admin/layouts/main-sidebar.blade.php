@@ -207,6 +207,11 @@
                                     href="{{ route('admin.students.promotions.index') }}">{{ __('admin.sidebar.promotions') }}</a>
                             </li>
                         @endcan
+                        @can('view_promotion_history')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.students.promotions.history') }}">{{ __('admin.sidebar.promotion_history') }}</a>
+                            </li>
+                        @endcan
                         @can('graduate_students')
                             <li><a class="slide-item" href="#">{{ __('admin.sidebar.graduations') }}</a></li>
                         @endcan

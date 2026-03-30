@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
+use App\Http\Controllers\Admin\PromotionHistoryController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherAssignmentController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -135,6 +136,13 @@ Route::group(
                     Route::prefix('students/')->name('students.')->group(function () {
                         Route::get('promotions', [StudentPromotionController::class, 'index'])->name('promotions.index');
                         Route::post('promotions', [StudentPromotionController::class, 'store'])->name('promotions.store');
+
+                        // ─── Promotion History ─────────────────────────────────────────────────────────
+                        Route::prefix('promotions')->name('promotions.')->group(function () {
+                            Route::get('history', [PromotionHistoryController::class, 'index'])->name('history');
+                            Route::post('rollback/{id}', [PromotionHistoryController::class, 'rollback'])->name('rollback');
+                        });
+
                         Route::get('archive', [StudentController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [StudentController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [StudentController::class, 'forceDelete'])->name('forceDelete');

@@ -46,7 +46,7 @@ class StudentPromotionController extends Controller implements HasMiddleware
         try {
             $payload = $request->validated();
 
-            if (!empty($payload['graduate_student_ids']) && !auth()->user()->can('graduate_students')) {
+            if (!empty($payload['graduate_student_ids']) && !auth('admin')->user()->can('graduate_students')) {
                 throw new \Exception(__('admin.promotions.messages.failed.unauthorized_graduate'));
             }
 
