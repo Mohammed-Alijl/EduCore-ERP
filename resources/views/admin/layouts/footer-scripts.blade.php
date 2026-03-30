@@ -70,4 +70,5 @@
         });
     });
 </script>
-@stack('scripts')
+<!-- Notifications -->
+<script src="{{ URL::asset('assets/admin/js/notifications.js') }}"></script>
