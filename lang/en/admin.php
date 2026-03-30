@@ -25,6 +25,7 @@ return [
         'deleted' => 'Deleted!',
         'restored' => 'Restored!',
         'all' => 'All',
+        'unknown' => 'Unknown',
         'success' => 'Success',
         'failed' => 'Failed',
         'warning_title' => 'Are you sure?',
@@ -109,6 +110,7 @@ return [
         'guardians' => 'Guardians',
         'logs' => 'Activity Logs',
         'promotions' => 'Promotions',
+        'promotion_history' => 'Promotion History',
         'graduations' => 'Graduations',
         'lms' => 'LMS & OPERATIONS',
         'attendance' => 'Attendance',
@@ -435,7 +437,7 @@ return [
             'academic_year' => 'Academic Year',
             'grade' => 'Grade',
             'classroom' => 'Classroom',
-            'teacher_id' => 'Teacher Name'
+            'teacher_id' => 'Teacher Name',
         ],
         'messages' => [
             'success' => [
@@ -1984,6 +1986,22 @@ return [
         'select_academic_year' => 'Please select the destination academic year.',
         'select_students' => 'Please select at least one student to promote or graduate.',
         'students' => 'Students',
+        'history_title' => 'Promotion History',
+        'back_to_promotions' => 'Back to Promotions',
+        'history_list' => 'History List',
+        'all_records' => 'All Records',
+        'from_details' => 'From Details',
+        'to_details' => 'To Details',
+        'status' => 'Status',
+        'admin' => 'Admin',
+        'date' => 'Date',
+        'status_promoted' => 'Promoted',
+        'status_graduated' => 'Graduated',
+        'status_repeating' => 'Repeating',
+        'rollback_btn' => 'Rollback',
+        'rollback_tooltip' => 'Rollback this promotion',
+        'rollback_confirm_title' => 'Confirm Rollback',
+        'rollback_confirm_message' => 'Are you sure you want to rollback this promotion record?',
         'confirm_title' => 'Confirm Promotion/Graduation',
         'fields' => [
             'from_grade' => 'From Grade',
@@ -2001,6 +2019,7 @@ return [
             'success' => [
                 'promote' => 'Successfully processed: :promoted promoted, :repeating repeating, and :graduated graduated.',
                 'graduate' => 'Students graduated successfully.',
+                'rollback' => 'Rollback successful.',
             ],
             'failed' => [
                 'promote' => 'Failed to promote students. Please try again.',
@@ -2012,6 +2031,7 @@ return [
                 'already_enrolled' => 'One or more students are already enrolled in the destination academic year.',
                 'not_found' => 'Promotion record not found.',
                 'unauthorized_graduate' => 'You do not have permission to graduate students.',
+                'rollback' => 'Failed to rollback promotion.',
             ],
         ],
     ],

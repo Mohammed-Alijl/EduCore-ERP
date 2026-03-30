@@ -204,7 +204,7 @@
                         // Disable button and show loading state
                         $button.prop('disabled', true);
                         $button.html(
-                            '<span class="spinner-border spinner-border-sm mr-1"></span>Processing...'
+                            '<span class="spinner-border spinner-border-sm mr-1"></span>{{ trans("admin.global.loading") }}'
                         );
 
                         // Send AJAX POST request
@@ -235,7 +235,7 @@
                                     showErrorAlert(response.message);
                                     $button.prop('disabled', false);
                                     $button.html(
-                                        '<i class="fas fa-undo mr-1"></i>Rollback');
+                                        '<i class="fas fa-undo mr-1"></i>{{ trans("admin.promotions.rollback_btn") }}');
                                 }
                             },
                             error: function(xhr) {
@@ -249,7 +249,7 @@
                                 // Re-enable button
                                 $button.prop('disabled', false);
                                 $button.html(
-                                    '<i class="fas fa-undo mr-1"></i>Rollback');
+                                    '<i class="fas fa-undo mr-1"></i>{{ trans("admin.promotions.rollback_btn") }}');
                             }
                         });
                     }
