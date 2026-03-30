@@ -102,6 +102,8 @@
             </div>
         </div>
     </div>
+   </div>
+  </div>
 @endsection
 
 @section('js')
@@ -209,7 +211,7 @@
 
                         // Send AJAX POST request
                         $.ajax({
-                            url: '/admin/promotions/rollback/' + enrollmentId,
+                            url: '/admin/students/promotions/rollback/' + enrollmentId,
                             type: 'POST',
                             data: {
                                 _token: '{{ csrf_token() }}'
