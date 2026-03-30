@@ -14,16 +14,23 @@ return new class extends Migration
         Schema::create('student_enrollments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('academic_year_id')->constrained('academic_years')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId('grade_id')->constrained('grades')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId('section_id')->constrained('sections')->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->foreignId('from_grade')->constrained('grades')->cascadeOnDelete();
+            $table->foreignId('from_classroom')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('from_section')->constrained('sections')->cascadeOnDelete();
+            $table->foreignId('from_academic_year')->constrained('academic_years')->cascadeOnDelete();
+
+            $table->foreignId('to_grade')->nullable()->constrained('grades')->cascadeOnDelete();
+            $table->foreignId('to_classroom')->nullable()->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('to_section')->nullable()->constrained('sections')->cascadeOnDelete();
+            $table->foreignId('to_academic_year')->constrained('academic_years')->cascadeOnDelete();
+
             $table->string('enrollment_status', 20);
             $table->foreignId('admin_id')->nullable()->constrained('admins')->nullOnDelete();
             $table->timestamps();
 
-            $table->unique(['student_id', 'academic_year_id']);
-            $table->index(['academic_year_id', 'grade_id', 'classroom_id', 'section_id'], 'student_enrollments_scope_idx');
+            $table->unique(['student_id', 'to_academic_year']);
+            $table->index(['to_academic_year', 'to_grade', 'to_classroom', 'to_section'], 'student_enrollments_scope_idx');
         });
     }
 

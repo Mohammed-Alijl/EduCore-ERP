@@ -2,10 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
+use App\Models\Admin;
+use App\Models\ClassRoom;
+use App\Models\Gender;
+use App\Models\Grade;
+use App\Models\Guardian;
+use App\Models\Nationality;
+use App\Models\Religion;
+use App\Models\Section;
+use App\Models\Student;
+use App\Models\TypeBlood;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
+ * @extends Factory<Student>
  */
 class StudentFactory extends Factory
 {
@@ -16,8 +27,8 @@ class StudentFactory extends Factory
      */
     public function definition(): array
     {
-        $section = \App\Models\Section::inRandomOrder()->first();
-        $academicYear = \App\Models\AcademicYear::inRandomOrder()->value('name') ?? '2024-2025';
+        $section = Section::inRandomOrder()->first();
+        $academicYear = AcademicYear::inRandomOrder()->value('name') ?? '2024-2025';
 
         return [
             'name' => [
@@ -25,21 +36,55 @@ class StudentFactory extends Factory
                 'ar' => $this->faker->name,
             ],
             'email' => $this->faker->unique()->safeEmail,
-            'password' => '123456789', 
+            'password' => '123456789',
             'national_id' => $this->faker->unique()->numerify('##########'),
             'date_of_birth' => $this->faker->date('Y-m-d', '-10 years'),
-            'grade_id' => $section ? $section->grade_id : \App\Models\Grade::inRandomOrder()->value('id'),
-            'classroom_id' => $section ? $section->classroom_id : \App\Models\ClassRoom::inRandomOrder()->value('id'),
-            'section_id' => $section ? $section->id : \App\Models\Section::inRandomOrder()->value('id'),
+            'grade_id' => $section?->grade_id ?? Grade::inRandomOrder()->value('id'),
+            'classroom_id' => $section?->classroom_id ?? ClassRoom::inRandomOrder()->value('id'),
+            'section_id' => $section?->id ?? Section::inRandomOrder()->value('id'),
             'academic_year' => $academicYear,
-            'guardian_id' => \App\Models\Guardian::inRandomOrder()->value('id'),
-            'blood_type_id' => \App\Models\TypeBlood::inRandomOrder()->value('id'),
-            'nationality_id' => \App\Models\Nationality::inRandomOrder()->value('id'),
-            'religion_id' => \App\Models\Religion::inRandomOrder()->value('id'),
-            'gender_id' => \App\Models\Gender::inRandomOrder()->value('id'),
-            'status' => $this->faker->randomElement([0, 1]),
-            'admin_id' => \App\Models\Admin::inRandomOrder()->value('id') ?? 1,
-            'student_code' => $this->faker->unique()->numerify(date('Y') . '####'),
+            'guardian_id' => Guardian::inRandomOrder()->value('id'),
+            'blood_type_id' => TypeBlood::inRandomOrder()->value('id'),
+            'nationality_id' => Nationality::inRandomOrder()->value('id'),
+            'religion_id' => Religion::inRandomOrder()->value('id'),
+            'gender_id' => Gender::inRandomOrder()->value('id'),
+            'status' => 1,
+            'is_graduated' => false,
+            'graduated_at' => null,
+            'graduation_academic_year_id' => null,
+            'admin_id' => Admin::inRandomOrder()->value('id') ?? 1,
+            'student_code' => $this->faker->unique()->numerify(date('Y').'####'),
         ];
+    }
+
+    public function active(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 1,
+            'is_graduated' => false,
+            'graduated_at' => null,
+            'graduation_academic_year_id' => null,
+        ]);
+    }
+
+    public function graduated(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'grade_id' => null,
+            'classroom_id' => null,
+            'section_id' => null,
+            'status' => 0,
+            'is_graduated' => true,
+            'graduated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'graduation_academic_year_id' => AcademicYear::inRandomOrder()->value('id'),
+        ]);
+    }
+
+    public function inactive(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 0,
+            'is_graduated' => false,
+        ]);
     }
 }
