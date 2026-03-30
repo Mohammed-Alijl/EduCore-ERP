@@ -22,9 +22,19 @@ class AcademicYear extends Model
         'is_current' => 'boolean',
     ];
 
-    public function enrollments()
+    public function enrollmentsTo()
     {
-        return $this->hasMany(StudentEnrollment::class);
+        return $this->hasMany(StudentEnrollment::class, 'to_academic_year');
+    }
+
+    public function enrollmentsFrom()
+    {
+        return $this->hasMany(StudentEnrollment::class, 'from_academic_year');
+    }
+
+    public function graduatedStudents()
+    {
+        return $this->hasMany(Student::class, 'graduation_academic_year_id');
     }
 
     public function invoices()

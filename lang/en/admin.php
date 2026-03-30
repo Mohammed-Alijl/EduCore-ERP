@@ -71,6 +71,10 @@ return [
         'error' => 'Error',
         'yes' => 'Yes',
         'no' => 'No',
+        'select_all' => 'Select All',
+        'validation_error' => 'Validation Error',
+        'fix_errors' => 'Please fix the errors below.',
+        'confirm' => 'Confirm',
         'dropify' => [
             'drag_drop' => 'Drag and drop a file here or click',
             'replace' => 'Drag and drop or click to replace',
@@ -1959,6 +1963,55 @@ return [
             ],
             'failed' => [
                 'cleanup' => 'Failed to cleanup activity logs.',
+            ],
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Promotions
+    |--------------------------------------------------------------------------
+    */
+    'promotions' => [
+        'title' => 'Students Promotions',
+        'filters' => 'Filter Students',
+        'load_students' => 'Load Students',
+        'promote' => 'Promote Students',
+        'graduation_mode' => 'Graduation Mode',
+        'graduation_mode_hint' => 'In graduation mode, students will be marked as graduated and no destination grade/classroom/section is required.',
+        'repeat_hint' => 'Wait/Repeat (Not Selected)',
+        'no_students' => 'No students found for the selected filters.',
+        'select_destination' => 'Please select the destination grade, classroom, and section.',
+        'select_academic_year' => 'Please select the destination academic year.',
+        'select_students' => 'Please select at least one student to promote or graduate.',
+        'students' => 'Students',
+        'confirm_title' => 'Confirm Promotion/Graduation',
+        'fields' => [
+            'from_grade' => 'From Grade',
+            'from_classroom' => 'From Classroom',
+            'from_section' => 'From Section',
+            'from_academic_year' => 'From Academic Year',
+            'to_grade' => 'To Grade',
+            'to_classroom' => 'To Classroom',
+            'to_section' => 'To Section',
+            'to_academic_year' => 'To Academic Year',
+            'promote' => 'Promote',
+            'graduate' => 'Graduate',
+        ],
+        'messages' => [
+            'success' => [
+                'promote' => 'Successfully processed: :promoted promoted, :repeating repeating, and :graduated graduated.',
+                'graduate' => 'Students graduated successfully.',
+            ],
+            'failed' => [
+                'promote' => 'Failed to promote students. Please try again.',
+                'same_year' => 'Destination academic year cannot be the same as the source academic year.',
+                'same_place' => 'Destination (Grade, Classroom, Section) cannot be the same as the source for promotions.',
+                'conflict' => 'A student cannot be promoted and graduated at the same time.',
+                'invalid_year' => 'The selected academic year is invalid.',
+                'mismatch' => 'Some selected students do not belong to the selected source (Grade, Classroom, Section).',
+                'already_enrolled' => 'One or more students are already enrolled in the destination academic year.',
+                'not_found' => 'Promotion record not found.',
+                'unauthorized_graduate' => 'You do not have permission to graduate students.',
             ],
         ],
     ],

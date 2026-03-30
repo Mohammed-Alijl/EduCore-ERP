@@ -31,6 +31,9 @@ class Student extends Authenticatable
         'religion_id',
         'gender_id',
         'status',
+        'is_graduated',
+        'graduated_at',
+        'graduation_academic_year_id',
         'image',
         'attachments',
         'admin_id',
@@ -45,6 +48,8 @@ class Student extends Authenticatable
         'attachments' => 'array',
         'date_of_birth' => 'date',
         'email_verified_at' => 'datetime',
+        'is_graduated' => 'boolean',
+        'graduated_at' => 'datetime',
     ];
 
     public function setPasswordAttribute($value)
@@ -55,7 +60,7 @@ class Student extends Authenticatable
     public function getImageUrlAttribute()
     {
         if (! empty($this->image)) {
-            return asset('storage/' . $this->image);
+            return asset('storage/'.$this->image);
         }
         $gender = $this->gender->getTranslation('name', 'en');
 
@@ -69,7 +74,7 @@ class Student extends Authenticatable
         parent::boot();
         static::creating(function ($student) {
             $currentYear = date('Y');
-            $lastStudent = self::withTrashed()->where('student_code', 'like', $currentYear . '%')
+            $lastStudent = self::withTrashed()->where('student_code', 'like', $currentYear.'%')
                 ->orderBy('student_code', 'desc')
                 ->first();
 
@@ -79,7 +84,7 @@ class Student extends Authenticatable
             } else {
                 $newSequence = '0001';
             }
-            $student->student_code = $currentYear . $newSequence;
+            $student->student_code = $currentYear.$newSequence;
         });
     }
 
@@ -134,6 +139,11 @@ class Student extends Authenticatable
         return $this->hasMany(StudentEnrollment::class);
     }
 
+    public function graduationAcademicYear()
+    {
+        return $this->belongsTo(AcademicYear::class, 'graduation_academic_year_id');
+    }
+
     public function attendances()
     {
         return $this->hasMany(Attendance::class);
@@ -162,5 +172,24 @@ class Student extends Authenticatable
     public function studentAccounts()
     {
         return $this->hasMany(StudentAccount::class);
+    }
+
+    // ======================== SCOPES ========================
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1)->where('is_graduated', false);
+    }
+
+    public function scopeGraduated($query)
+    {
+        return $query->where('is_graduated', true);
+    }
+
+    public function scopeCurrentlyEnrolled($query)
+    {
+        return $query->whereNotNull('grade_id')
+            ->whereNotNull('classroom_id')
+            ->whereNotNull('section_id');
     }
 }
