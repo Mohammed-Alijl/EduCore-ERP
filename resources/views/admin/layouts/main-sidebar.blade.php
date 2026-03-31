@@ -281,6 +281,24 @@
 
             <!-- START LMS & OPERATIONS -->
             <li class="side-item side-item-category">{{ __('admin.sidebar.lms') }}</li>
+
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="#"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                        width="24px" fill="#e3e3e3">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M5 22h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM5 8h14v12H5V8z"/>
+                    </svg><span class="side-menu__label">{{ __('admin.sidebar.schedule') }}</span><i
+                        class="angle fe fe-chevron-down"></i></a>
+                <ul class="slide-menu">
+                    @can('view_classPeriods')
+                        <li><a class="slide-item"
+                                href="{{ route('admin.schedule.class_periods.index') }}">{{ __('admin.sidebar.class_periods') }}</a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.attendances.index') }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"

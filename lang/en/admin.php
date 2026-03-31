@@ -141,6 +141,7 @@ return [
         'settings_days_of_week' => 'Days of Week',
         'schedule' => 'Schedule',
         'schedule_class_periods' => 'Class Periods',
+        'class_periods' => 'Class Periods',
         'schedule_timetable' => 'Timetable',
     ],
 

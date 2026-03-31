@@ -133,6 +133,10 @@ return [
         'financial_report' => 'التقرير المالي',
         'grades_report' => 'تقرير الدرجات',
         'logs' => 'سجلات النظام',
+        'schedule' => 'الجدول الدراسي',
+        'class_periods' => 'الحصص الدراسية',
+        'schedule_class_periods' => 'الحصص الدراسية',
+        'schedule_timetable' => 'الجدول المدرسي',
     ],
 
     /*

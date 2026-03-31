@@ -1,0 +1,265 @@
+/* Class Periods Styling */
+
+/* Light Mode Defaults */
+.class-period-page .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.class-period-page .glass-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.class-period-page .glass-card-body {
+    padding: 1.5rem;
+}
+
+.class-period-page .card-title-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-left: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.class-period-page .bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.class-period-page .bg-gradient-info {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.class-period-page .card-title-text h5 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+
+.class-period-page .card-title-text span {
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.class-period-page .filter-label {
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.class-period-page .filter-label i {
+    color: #667eea;
+}
+
+.class-period-page .filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.class-period-page .btn-filter-reset {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.class-period-page .btn-filter-reset:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.class-period-page .btn-filter-search {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.class-period-page .btn-filter-search:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.class-period-page .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: linear-gradient(135deg, #e6f2ff 0%, #e8f4f8 100%);
+    color: #3182ce;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.class-period-page .duration-badge {
+    background: #f0fff4;
+    color: #38a169;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.class-period-page .action-buttons {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: center;
+}
+
+.class-period-page .action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.class-period-page .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.class-period-page .badge-primary-light {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+}
+
+.class-period-page .badge-secondary-light {
+    background: rgba(113, 128, 150, 0.15);
+    color: #718096;
+}
+
+.class-period-page .badge-success-light {
+    background: rgba(56, 161, 105, 0.15);
+    color: #38a169;
+}
+
+.class-period-page .badge-warning-light {
+    background: rgba(237, 137, 54, 0.15);
+    color: #ed8936;
+}
+
+.class-period-page .avatar-initial {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Dark Mode Overrides */
+.dark-theme .class-period-page .glass-card {
+    background: rgba(30, 30, 45, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .class-period-page .glass-card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .class-period-page .card-title-text h5 {
+    color: #e2e8f0;
+}
+
+.dark-theme .class-period-page .card-title-text span {
+    color: #a0aec0;
+}
+
+.dark-theme .class-period-page .filter-label {
+    color: #cbd5e0;
+}
+
+.dark-theme .class-period-page .filter-actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .class-period-page .btn-filter-reset {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e0;
+}
+
+.dark-theme .class-period-page .btn-filter-reset:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .class-period-page .time-badge {
+    background: rgba(49, 130, 206, 0.2);
+    color: #63b3ed;
+}
+
+.dark-theme .class-period-page .duration-badge {
+    background: rgba(56, 161, 105, 0.2);
+    color: #68d391;
+}
+
+.dark-theme .class-period-page .badge-primary-light {
+    background: rgba(102, 126, 234, 0.2);
+    color: #90cdf4;
+}
+
+.dark-theme .class-period-page .badge-secondary-light {
+    background: rgba(113, 128, 150, 0.2);
+    color: #e2e8f0;
+}
+
+.dark-theme .class-period-page .badge-success-light {
+    background: rgba(56, 161, 105, 0.2);
+    color: #9ae6b4;
+}
+
+.dark-theme .class-period-page .badge-warning-light {
+    background: rgba(237, 137, 54, 0.2);
+    color: #fbd38d;
+}
+
+/* Make table text visible in dark mode within glass card */
+.dark-theme .class-period-page .table th,
+.dark-theme .class-period-page .table td {
+    color: #e2e8f0;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .class-period-page .dataTables_info,
+.dark-theme .class-period-page .dataTables_length label,
+.dark-theme .class-period-page .dataTables_filter label {
+    color: #a0aec0;
+}
+
+.dark-theme .class-period-page select.form-control {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
