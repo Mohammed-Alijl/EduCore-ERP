@@ -139,6 +139,9 @@ return [
         'settings' => 'Settings',
         'settings_payment_gateways' => 'Payment Gateways',
         'settings_days_of_week' => 'Days of Week',
+        'schedule' => 'Schedule',
+        'schedule_class_periods' => 'Class Periods',
+        'schedule_timetable' => 'Timetable',
     ],
 
     /*
@@ -2091,6 +2094,73 @@ return [
             'failed' => [
                 'update' => 'Failed to update day status.',
                 'toggle_all' => 'Failed to update all days.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Periods
+    |--------------------------------------------------------------------------
+    */
+    'class_periods' => [
+        'title' => 'Class Periods',
+        'subtitle' => 'Manage class periods and breaks for your schedule',
+        'add' => 'Add Class Period',
+        'edit' => 'Edit Class Period',
+        'delete' => 'Delete Class Period',
+        'class' => 'Class',
+        'break' => 'Break',
+        'minutes' => 'min',
+        'all_grades' => 'All Grades',
+        'grade_hint' => 'Leave empty to apply for all grades',
+        'end_time_hint' => 'Auto-calculated from start time and duration',
+        'sort_order_hint' => 'Lower numbers appear first',
+        'fields' => [
+            'name' => 'Name',
+            'name_en' => 'Name (English)',
+            'name_ar' => 'Name (Arabic)',
+            'grade' => 'Grade',
+            'time_range' => 'Time Range',
+            'start_time' => 'Start Time',
+            'end_time' => 'End Time',
+            'duration' => 'Duration',
+            'type' => 'Type',
+            'status' => 'Status',
+            'sort_order' => 'Sort Order',
+        ],
+        'filters' => [
+            'title' => 'Filters',
+            'subtitle' => 'Filter class periods by grade, type, or status',
+            'grade' => 'Grade',
+            'type' => 'Period Type',
+            'status' => 'Status',
+            'reset' => 'Reset',
+            'search' => 'Search',
+        ],
+        'table' => [
+            'title' => 'Class Periods List',
+            'subtitle' => 'View and manage all class periods',
+        ],
+        'validation' => [
+            'name_en_required' => 'The name (English) is required.',
+            'name_ar_required' => 'The name (Arabic) is required.',
+            'start_time_required' => 'The start time is required.',
+            'end_time_required' => 'The end time is required.',
+            'end_time_after_start' => 'The end time must be after the start time.',
+            'duration_required' => 'The duration is required.',
+            'duration_min' => 'The duration must be at least 1 minute.',
+        ],
+        'messages' => [
+            'success' => [
+                'add' => 'Class period created successfully.',
+                'update' => 'Class period updated successfully.',
+                'delete' => 'Class period deleted successfully.',
+            ],
+            'failed' => [
+                'add' => 'Failed to create class period.',
+                'update' => 'Failed to update class period.',
+                'delete' => 'Failed to delete class period.',
             ],
         ],
     ],

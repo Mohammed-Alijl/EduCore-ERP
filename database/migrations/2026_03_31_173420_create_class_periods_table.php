@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('class_periods', function (Blueprint $table) {
             $table->id();
             $table->json('name');
-            $table->integer('order')->default(0);
-            $table->integer('duration')->default('60');
+            $table->integer('sort_order')->default(0);
+            $table->integer('duration')->default(60)->comment('Duration in minutes');
             $table->time('start_time');
             $table->time('end_time');
-
-            $table->foreignId('grade_id')->nullable()->constrained('grades');
-
+            $table->foreignId('grade_id')->nullable()->constrained('grades')->nullOnDelete();
             $table->boolean('is_break')->default(false);
+            $table->boolean('status')->default(true);
             $table->timestamps();
+
+            $table->index(['grade_id', 'sort_order']);
         });
     }
 
