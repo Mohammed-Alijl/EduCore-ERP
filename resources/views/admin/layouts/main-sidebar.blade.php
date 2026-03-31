@@ -106,13 +106,15 @@
 
             <!-- START USERS MANAGEMENT -->
             {{-- ─── HR ─── --}}
-    <li class="side-item side-item-category">{{ __('admin.sidebar.hr') }}</li>
+            <li class="side-item side-item-category">{{ __('admin.sidebar.hr') }}</li>
             @can('view_department')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.departments.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
                         </svg>
                         <span class="side-menu__label">{{ __('admin.sidebar.departments') }}</span>
                     </a>
@@ -121,10 +123,12 @@
             @can('view_designation')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.designations.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
-                            <path d="M0 0h24v24H0V0z" fill="none"/>
-                            <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm14 9H6v-6h12v6z" opacity=".3"/>
-                            <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11zM6 11h12v6H6z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm14 9H6v-6h12v6z" opacity=".3" />
+                            <path
+                                d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11zM6 11h12v6H6z" />
                         </svg>
                         <span class="side-menu__label">{{ __('admin.sidebar.designations') }}</span>
                     </a>
@@ -133,9 +137,11 @@
             @can('view_employees')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.employees.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px" fill="#e3e3e3">
-                            <path d="M0 0h24v24H0V0z" fill="none"/>
-                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                         </svg>
                         <span class="side-menu__label">{{ __('admin.sidebar.employees') }}</span>
                     </a>
@@ -212,8 +218,10 @@
                                     href="{{ route('admin.students.promotions.history') }}">{{ __('admin.sidebar.promotion_history') }}</a>
                             </li>
                         @endcan
-                        @can('graduate_students')
-                            <li><a class="slide-item" href="#">{{ __('admin.sidebar.graduations') }}</a></li>
+                        @can('view_graduations')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.graduations.index') }}">{{ __('admin.sidebar.graduations') }}</a>
+                            </li>
                         @endcan
                     </ul>
                 </li>
