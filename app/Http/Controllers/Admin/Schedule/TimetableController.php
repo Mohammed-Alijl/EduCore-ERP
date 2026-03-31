@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Timetable\StoreRequest;
 use App\Http\Requests\Admin\Timetable\UpdateRequest;
 use App\Models\AcademicYear;
-use App\Models\Classroom;
+use App\Models\ClassRoom;
 use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Subject;
@@ -96,7 +96,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'slots' => $data['slots'],
             ]);
         } catch (\Exception $e) {
-            Log::error('Timetable matrix error: '.$e->getMessage());
+            Log::error('Timetable matrix error: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -125,7 +125,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
-            Log::error('Timetable store error: '.$e->getMessage());
+            Log::error('Timetable store error: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -162,7 +162,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
-            Log::error('Timetable update error: '.$e->getMessage());
+            Log::error('Timetable update error: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -184,55 +184,13 @@ class TimetableController extends Controller implements HasMiddleware
                 'message' => trans('admin.timetables.messages.success.deleted'),
             ]);
         } catch (\Exception $e) {
-            Log::error('Timetable delete error: '.$e->getMessage());
+            Log::error('Timetable delete error: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
                 'message' => trans('admin.timetables.errors.delete_failed'),
             ], 500);
         }
-    }
-
-    /**
-     * Get classrooms for a grade (AJAX endpoint).
-     */
-    public function getClassrooms(Request $request): JsonResponse
-    {
-        $request->validate([
-            'grade_id' => 'required|exists:grades,id',
-        ]);
-
-        $classrooms = Classroom::query()
-            ->where('grade_id', $request->integer('grade_id'))
-            ->where('status', true)
-            ->orderBy('sort_order')
-            ->get(['id', 'name']);
-
-        return response()->json([
-            'success' => true,
-            'data' => $classrooms,
-        ]);
-    }
-
-    /**
-     * Get sections for a classroom (AJAX endpoint).
-     */
-    public function getSections(Request $request): JsonResponse
-    {
-        $request->validate([
-            'classroom_id' => 'required|exists:class_rooms,id',
-        ]);
-
-        $sections = Section::query()
-            ->where('classroom_id', $request->integer('classroom_id'))
-            ->where('status', true)
-            ->orderBy('sort_order')
-            ->get(['id', 'name']);
-
-        return response()->json([
-            'success' => true,
-            'data' => $sections,
-        ]);
     }
 
     /**

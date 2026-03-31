@@ -377,8 +377,6 @@ Route::group(
                         Route::prefix('timetables')->name('timetables.')->group(function () {
                             Route::get('/', [TimetableController::class, 'index'])->name('index');
                             Route::get('/matrix', [TimetableController::class, 'matrix'])->name('matrix');
-                            Route::get('/classrooms', [TimetableController::class, 'getClassrooms'])->name('getClassrooms');
-                            Route::get('/sections', [TimetableController::class, 'getSections'])->name('getSections');
                             Route::get('/subjects', [TimetableController::class, 'getSubjects'])->name('getSubjects');
                             Route::get('/teachers', [TimetableController::class, 'getTeachers'])->name('getTeachers');
                             Route::post('/', [TimetableController::class, 'store'])->name('store');

@@ -14,7 +14,7 @@
 @endsection
 
 @section('page-header')
-    <div class="breadcrumb-header justify-content-between class-period-page">
+    <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex align-items-center">
                 <div class="mr-3 ml-3">
@@ -159,8 +159,6 @@
             </div>
         </div>
     </div>
- </div>
-</div>
     @include('admin.schedule.class_periods.create_modal')
     @include('admin.schedule.class_periods.edit_modal')
 

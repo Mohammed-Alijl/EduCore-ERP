@@ -9,7 +9,7 @@
 @endsection
 
 @section('page-header')
-    <div class="breadcrumb-header justify-content-between timetable-page">
+    <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex align-items-center">
                 <div class="mr-3 ml-3">
@@ -162,7 +162,9 @@
             $('#grade_filter').on('change', function() {
                 const gradeId = $(this).val();
                 $('#classroom_filter').prop('disabled', !gradeId).val('').trigger('change');
+                resetDropdown('#classroom_filter');
                 $('#section_filter').prop('disabled', true).val('').trigger('change');
+                resetDropdown('#section_filter');
                 $('#load_timetable').prop('disabled', true);
 
                 if (gradeId) {
@@ -174,6 +176,7 @@
             $('#classroom_filter').on('change', function() {
                 const classroomId = $(this).val();
                 $('#section_filter').prop('disabled', !classroomId).val('').trigger('change');
+                resetDropdown('#section_filter');
                 $('#load_timetable').prop('disabled', true);
 
                 if (classroomId) {
@@ -197,19 +200,17 @@
             // Load Classrooms
             function loadClassrooms(gradeId) {
                 $.ajax({
-                    url: '{{ route('admin.schedule.timetables.getClassrooms') }}',
+                    url: '{{ route('admin.classrooms.by-grade') }}',
                     data: {
                         grade_id: gradeId
                     },
                     success: function(response) {
-                        const $select = $('#classroom_filter');
-                        $select.html('<option value="">{{ __('admin.global.select') }}</option>');
-
-                        response.data.forEach(classroom => {
-                            $select.append(
-                                `<option value="${classroom.id}">${classroom.name}</option>`
-                                );
-                        });
+                        if (response.success) {
+                            $.each(response.data, function(key, classroom) {
+                                $('#classroom_filter').append(
+                                    `<option value="${key}">${classroom}</option>`);
+                            });
+                        }
                     }
                 });
             }
@@ -217,18 +218,17 @@
             // Load Sections
             function loadSections(classroomId) {
                 $.ajax({
-                    url: '{{ route('admin.schedule.timetables.getSections') }}',
+                    url: '{{ route('admin.sections.by-classroom') }}',
                     data: {
                         classroom_id: classroomId
                     },
                     success: function(response) {
-                        const $select = $('#section_filter');
-                        $select.html('<option value="">{{ __('admin.global.select') }}</option>');
-
-                        response.data.forEach(section => {
-                            $select.append(
-                                `<option value="${section.id}">${section.name}</option>`);
-                        });
+                        if (response.success) {
+                            $.each(response.data, function(key, section) {
+                                $('#section_filter').append(
+                                    `<option value="${key}">${section}</option>`);
+                            });
+                        }
                     }
                 });
             }
@@ -269,7 +269,7 @@
             function renderMatrix(data) {
                 // Update section title
                 $('#section_title').text(
-                `${data.section.grade} - ${data.section.classroom} - ${data.section.name}`);
+                    `${data.section.grade} - ${data.section.classroom} - ${data.section.name}`);
                 $('#section_subtitle').text('{{ __('admin.timetables.weekly_schedule') }}');
 
                 // Render day headers
@@ -425,6 +425,13 @@
                 $('#teacher_id').html('<option value="">{{ __('admin.global.select') }}</option>').prop(
                     'disabled', true);
             };
+
+
+            // Helpers
+            function resetDropdown(selector) {
+                $(selector).html(
+                    `<option value="" disabled selected>-- {{ trans('admin.global.select') }} --</option>`);
+            }
         });
     </script>
 @endsection

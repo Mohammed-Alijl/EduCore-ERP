@@ -497,6 +497,7 @@ return [
     */
     'grades' => [
         'title' => 'Grades',
+        'select' => 'Select Grade',
         'add' => 'Add Grade',
         'show' => 'Show Grade Details',
         'delete' => 'Delete Grade',
@@ -541,6 +542,7 @@ return [
     */
     'classrooms' => [
         'title' => 'Class Room',
+        'select' => 'Select Classroom',
         'add' => 'Add Class',
         'show' => 'Show Class Details',
         'delete' => 'Delete Class',
@@ -590,6 +592,7 @@ return [
     */
     'sections' => [
         'title' => 'Section',
+        'select' => 'Select Section',
         'add' => 'Add Section',
         'show' => 'Section Details',
         'delete' => 'Delete Section',
