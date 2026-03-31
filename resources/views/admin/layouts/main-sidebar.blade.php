@@ -490,7 +490,7 @@
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.logs') }}</span></a>
                 </li>
             @endcan
-            @canany(['view_payment_gateways'])
+            @canany(['view_payment_gateways', 'view_days_of_week'])
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="#"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
@@ -507,6 +507,11 @@
                         @can('view_payment_gateways')
                             <li><a class="slide-item"
                                     href="{{ route('admin.payment_gateways.index') }}">{{ __('admin.sidebar.settings_payment_gateways') }}</a>
+                            </li>
+                        @endcan
+                        @can('view_daysOfWeek')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.settings.days_of_week.index') }}">{{ __('admin.sidebar.settings_days_of_week') }}</a>
                             </li>
                         @endcan
                     </ul>

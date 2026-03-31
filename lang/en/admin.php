@@ -138,6 +138,7 @@ return [
         'logs' => 'Logs',
         'settings' => 'Settings',
         'settings_payment_gateways' => 'Payment Gateways',
+        'settings_days_of_week' => 'Days of Week',
     ],
 
     /*
@@ -2059,6 +2060,37 @@ return [
             'failed' => [
                 'restore' => 'Failed to restore student. Please try again.',
                 'no_enrollment' => 'Cannot restore: No graduation enrollment record found for this student.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Days of Week Settings
+    |--------------------------------------------------------------------------
+    */
+    'days_of_week' => [
+        'title' => 'Days of Week',
+        'subtitle' => 'Configure active school days and weekend settings',
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'weekend' => 'Weekend',
+        'toggle_status' => 'Toggle Status',
+        'activate_all' => 'Activate All',
+        'deactivate_all' => 'Deactivate All',
+        'stats' => [
+            'active' => 'Active Days',
+            'inactive' => 'Inactive Days',
+            'weekend' => 'Weekend',
+        ],
+        'messages' => [
+            'success' => [
+                'update' => 'Day status updated successfully.',
+                'toggle_all' => 'All days have been updated successfully.',
+            ],
+            'failed' => [
+                'update' => 'Failed to update day status.',
+                'toggle_all' => 'Failed to update all days.',
             ],
         ],
     ],
