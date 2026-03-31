@@ -296,6 +296,11 @@
                                 href="{{ route('admin.schedule.class_periods.index') }}">{{ __('admin.sidebar.class_periods') }}</a>
                         </li>
                     @endcan
+                    @can('view_timetables')
+                        <li><a class="slide-item"
+                                href="{{ route('admin.schedule.timetables.index') }}">{{ __('admin.sidebar.schedule_timetable') }}</a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
 

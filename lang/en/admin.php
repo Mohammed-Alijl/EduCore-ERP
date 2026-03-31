@@ -2165,4 +2165,41 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Timetables
+    |--------------------------------------------------------------------------
+    */
+    'timetables' => [
+        'title' => 'Timetable Management',
+        'subtitle' => 'Create and manage weekly schedules for sections',
+        'select_section' => 'Select Section',
+        'select_section_subtitle' => 'Choose a grade, classroom, and section to manage its timetable',
+        'load_timetable' => 'Load Timetable',
+        'weekly_schedule' => 'Weekly Schedule',
+        'period' => 'Period',
+        'assign' => 'Assign',
+        'create_assignment' => 'Create Assignment',
+        'edit_assignment' => 'Edit Assignment',
+        'assignment_details' => 'Assignment Details',
+        'break_time' => 'Break Time',
+        'no_timetable' => 'No Timetable Loaded',
+        'select_section_to_view' => 'Please select a section to view and manage its timetable',
+        'delete_confirm' => 'Are you sure you want to remove this assignment?',
+        'errors' => [
+            'fetch_failed' => 'Failed to load timetable data.',
+            'save_failed' => 'Failed to save assignment.',
+            'update_failed' => 'Failed to update assignment.',
+            'delete_failed' => 'Failed to delete assignment.',
+            'teacher_conflict' => 'Teacher is already assigned to :section (:grade) on :day during :period.',
+        ],
+        'messages' => [
+            'success' => [
+                'created' => 'Assignment created successfully.',
+                'updated' => 'Assignment updated successfully.',
+                'deleted' => 'Assignment deleted successfully.',
+            ],
+        ],
+    ],
 ];

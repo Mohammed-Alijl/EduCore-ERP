@@ -33,8 +33,9 @@ use App\Http\Controllers\Admin\Reports\AttendanceReportController;
 use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\Reports\GradesReportController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\Schedule\ClassPeriodController;
+use App\Http\Controllers\Admin\Schedule\TimetableController;
+use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\Settings\DayOfWeekController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
@@ -370,6 +371,19 @@ Route::group(
                             Route::post('/', [ClassPeriodController::class, 'store'])->name('store');
                             Route::put('/{classPeriod}', [ClassPeriodController::class, 'update'])->name('update');
                             Route::delete('/{classPeriod}', [ClassPeriodController::class, 'destroy'])->name('destroy');
+                        });
+
+                        // Timetables
+                        Route::prefix('timetables')->name('timetables.')->group(function () {
+                            Route::get('/', [TimetableController::class, 'index'])->name('index');
+                            Route::get('/matrix', [TimetableController::class, 'matrix'])->name('matrix');
+                            Route::get('/classrooms', [TimetableController::class, 'getClassrooms'])->name('getClassrooms');
+                            Route::get('/sections', [TimetableController::class, 'getSections'])->name('getSections');
+                            Route::get('/subjects', [TimetableController::class, 'getSubjects'])->name('getSubjects');
+                            Route::get('/teachers', [TimetableController::class, 'getTeachers'])->name('getTeachers');
+                            Route::post('/', [TimetableController::class, 'store'])->name('store');
+                            Route::put('/{timetable}', [TimetableController::class, 'update'])->name('update');
+                            Route::delete('/{timetable}', [TimetableController::class, 'destroy'])->name('destroy');
                         });
                     });
                 });
