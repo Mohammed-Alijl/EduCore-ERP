@@ -2035,4 +2035,31 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Graduations (Alumni Archive)
+    |--------------------------------------------------------------------------
+    */
+    'graduations' => [
+        'title' => 'Alumni Archive',
+        'list_title' => 'Graduated Students',
+        'fields' => [
+            'last_grade' => 'Last Grade/Class/Section',
+            'graduation_year' => 'Graduation Year',
+            'graduated_at' => 'Graduation Date',
+        ],
+        'restore_btn' => 'Restore to Active',
+        'restore_confirm_title' => 'Restore Student?',
+        'restore_confirm_message' => 'This will restore the student to active status and return them to their last enrolled grade, classroom, and section.',
+        'messages' => [
+            'success' => [
+                'restore' => 'Student restored to active status successfully.',
+            ],
+            'failed' => [
+                'restore' => 'Failed to restore student. Please try again.',
+                'no_enrollment' => 'Cannot restore: No graduation enrollment record found for this student.',
+            ],
+        ],
+    ],
 ];

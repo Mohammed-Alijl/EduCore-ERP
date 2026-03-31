@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
@@ -23,9 +24,11 @@ use App\Http\Controllers\Admin\Finance\PaymentVoucherController;
 use App\Http\Controllers\Admin\Finance\ReceiptController;
 use App\Http\Controllers\Admin\Finance\StudentDiscountController;
 use App\Http\Controllers\Admin\GradeController;
+use App\Http\Controllers\Admin\GraduationController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\OnlineClassController;
+use App\Http\Controllers\Admin\PromotionHistoryController;
 use App\Http\Controllers\Admin\Reports\AttendanceReportController;
 use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\Reports\GradesReportController;
@@ -34,7 +37,6 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
-use App\Http\Controllers\Admin\PromotionHistoryController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherAssignmentController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -134,11 +136,11 @@ Route::group(
                     // ─── Students ───────────────────────────────────────────────────────────────
                     Route::resource('students', StudentController::class)->except(['show', 'create']);
                     Route::prefix('students/')->name('students.')->group(function () {
-                        Route::get('promotions', [StudentPromotionController::class, 'index'])->name('promotions.index');
-                        Route::post('promotions', [StudentPromotionController::class, 'store'])->name('promotions.store');
 
-                        // ─── Promotion History ─────────────────────────────────────────────────────────
+                        // ─── Promotion  ─────────────────────────────────────────────────────────
                         Route::prefix('promotions')->name('promotions.')->group(function () {
+                            Route::get('/', [StudentPromotionController::class, 'index'])->name('index');
+                            Route::post('/', [StudentPromotionController::class, 'store'])->name('store');
                             Route::get('history', [PromotionHistoryController::class, 'index'])->name('history');
                             Route::post('rollback/{id}', [PromotionHistoryController::class, 'rollback'])->name('rollback');
                         });
@@ -151,6 +153,12 @@ Route::group(
                         Route::get('search', [StudentController::class, 'search'])->name('search');
                         Route::get('{student}/finance', [StudentController::class, 'finance'])->name('finance');
                         Route::get('{student}/grades', [StudentController::class, 'grades'])->name('grades');
+                    });
+
+                    // ─── Graduations (Alumni Archive) ───────────────────────────────────────────────
+                    Route::prefix('graduations')->name('graduations.')->group(function () {
+                        Route::get('/', [GraduationController::class, 'index'])->name('index');
+                        Route::post('restore/{id}', [GraduationController::class, 'restore'])->name('restore');
                     });
 
                     // ─── Teachers ───────────────────────────────────────────────────────────────
@@ -295,10 +303,10 @@ Route::group(
 
                     // ─── Library (Books) ───────────────────────────────────────────────────────────────
                     Route::prefix('library')->name('library.')->group(function () {
-                        Route::get('/', [\App\Http\Controllers\Admin\BookController::class, 'index'])->name('index');
-                        Route::get('/datatable', [\App\Http\Controllers\Admin\BookController::class, 'datatable'])->name('datatable');
-                        Route::get('/download/{book}', [\App\Http\Controllers\Admin\BookController::class, 'download'])->name('download');
-                        Route::delete('/destroy/{book}', [\App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('destroy');
+                        Route::get('/', [BookController::class, 'index'])->name('index');
+                        Route::get('/datatable', [BookController::class, 'datatable'])->name('datatable');
+                        Route::get('/download/{book}', [BookController::class, 'download'])->name('download');
+                        Route::delete('/destroy/{book}', [BookController::class, 'destroy'])->name('destroy');
                     });
 
                     // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
