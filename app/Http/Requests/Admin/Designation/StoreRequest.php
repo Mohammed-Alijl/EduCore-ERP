@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Designation;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -11,13 +12,13 @@ class StoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('admin')->user()->can('create_designation');
+        return auth('admin')->user()->can('create_designations');
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {

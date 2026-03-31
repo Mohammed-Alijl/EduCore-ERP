@@ -8,8 +8,11 @@ use App\Http\Requests\Admin\Designation\UpdateRequest;
 use App\Models\Department;
 use App\Models\Designation;
 use App\Services\DesignationService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\View\View;
 
 class DesignationController extends Controller implements HasMiddleware
 {
@@ -18,17 +21,17 @@ class DesignationController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_designation', only: ['index']),
-            new Middleware('permission:create_designation', only: ['store']),
-            new Middleware('permission:edit_designation', only: ['update']),
-            new Middleware('permission:delete_designation', only: ['destroy']),
+            new Middleware('permission:view_designations', only: ['index']),
+            new Middleware('permission:create_designations', only: ['store']),
+            new Middleware('permission:edit_designations', only: ['update']),
+            new Middleware('permission:delete_designations', only: ['destroy']),
         ];
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\View\View
+    public function index(): View
     {
         $designations = $this->designationService->getAll();
         $departments = Department::query()->orderBy('name')->get(['id', 'name']);
@@ -39,7 +42,7 @@ class DesignationController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request): \Illuminate\Http\JsonResponse
+    public function store(StoreRequest $request): JsonResponse
     {
         try {
             $this->designationService->store($request->validated());
@@ -56,7 +59,7 @@ class DesignationController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Designation $designation): \Illuminate\Http\JsonResponse
+    public function update(UpdateRequest $request, Designation $designation): JsonResponse
     {
         try {
             $this->designationService->update($designation, $request->validated());
@@ -73,7 +76,7 @@ class DesignationController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Designation $designation): \Illuminate\Http\JsonResponse
+    public function destroy(Designation $designation): JsonResponse
     {
         try {
             $this->designationService->delete($designation);
@@ -90,9 +93,10 @@ class DesignationController extends Controller implements HasMiddleware
     /**
      * Get designations for a specific department (AJAX)
      */
-    public function getByDepartment(\Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse
+    public function getByDepartment(Request $request): JsonResponse
     {
         $designations = $this->designationService->getByDepartment($request->department_id);
+
         return response()->json($designations);
     }
 }

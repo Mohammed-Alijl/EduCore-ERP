@@ -120,7 +120,7 @@
                     </a>
                 </li>
             @endcan
-            @can('view_designation')
+            @can('view_designations')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('admin.designations.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
