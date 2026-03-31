@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Independent / Lookups - Required Seeders
+        // 1. Independent / Lookups - Required Seeders / Settings
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(LookupsSeeder::class);
         $this->call(CurrencySeeder::class);
+        $this->call(DayOfWeekSeeder::class);
 
         $this->call(PaymentGatewaySeeder::class);
         $this->call(AcademicYearSeeder::class);

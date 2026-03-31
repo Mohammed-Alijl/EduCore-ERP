@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\Reports\FinancialReportController;
 use App\Http\Controllers\Admin\Reports\GradesReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\Settings\DayOfWeekController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
@@ -347,6 +348,16 @@ Route::group(
                         Route::get('/statistics/summary', [ActivityLogController::class, 'statistics'])->name('statistics');
                         Route::post('/cleanup', [ActivityLogController::class, 'cleanup'])->name('cleanup');
                         Route::get('/{id}', [ActivityLogController::class, 'show'])->name('show')->where('id', '[0-9]+');
+                    });
+
+                    // ─── Settings ───────────────────────────────────────────────────────────────
+                    Route::prefix('settings')->name('settings.')->group(function () {
+                        // Days of Week
+                        Route::prefix('days_of_week')->name('days_of_week.')->group(function () {
+                            Route::get('/', [DayOfWeekController::class, 'index'])->name('index');
+                            Route::put('/{dayOfWeek}', [DayOfWeekController::class, 'update'])->name('update');
+                            Route::post('/toggle-all', [DayOfWeekController::class, 'toggleAll'])->name('toggle_all');
+                        });
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

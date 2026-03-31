@@ -16,8 +16,8 @@ class DayOfWeekController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware('permission:view_days_of_week', only: ['index']),
-            new Middleware('permission:edit_days_of_week', only: ['update']),
+            new Middleware('permission:view_daysOfWeek', only: ['index']),
+            new Middleware('permission:edit_daysOfWeek', only: ['update']),
         ];
     }
 

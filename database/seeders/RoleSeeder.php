@@ -44,7 +44,7 @@ class RoleSeeder extends Seeder
             'graduations' => ['view', 'restore'],
             'promotion_history' => ['view'],
             'promotions' => ['rollback'],
-            'days_of_week' => ['view', 'edit'],
+            'daysOfWeek' => ['view', 'edit'],
         ];
 
         foreach ($permissions as $module => $actions) {
