@@ -206,7 +206,9 @@
                             // Reload the timetable matrix
                             const currentSectionId = $modal.data('section_id');
                             const currentAcademicYearId = $modal.data('academic_year_id');
-                            loadTimetableMatrix(currentSectionId, currentAcademicYearId);
+                            if (window.loadTimetableMatrix) {
+                                window.loadTimetableMatrix(currentSectionId, currentAcademicYearId);
+                            }
                         }
                     },
                     error: function(xhr) {

@@ -200,7 +200,7 @@
             $('#load_timetable').on('click', function() {
                 currentSectionId = $('#section_filter').val();
                 if (currentSectionId && currentAcademicYearId) {
-                    loadTimetableMatrix(currentSectionId, currentAcademicYearId);
+                    window.loadTimetableMatrix(currentSectionId, currentAcademicYearId);
                 }
             });
 
@@ -241,7 +241,7 @@
             }
 
             // Load Timetable Matrix
-            function loadTimetableMatrix(sectionId, academicYearId) {
+            window.loadTimetableMatrix = function(sectionId, academicYearId) {
                 $('#timetable_card').hide();
                 $('#empty_state').html(`
                     <div class="timetable-loading">
@@ -416,7 +416,7 @@
                         success: function(response) {
                             swal("{{ __('admin.global.deleted') }}", response.message,
                                 "success");
-                            loadTimetableMatrix(currentSectionId, currentAcademicYearId);
+                            window.loadTimetableMatrix(currentSectionId, currentAcademicYearId);
                         },
                         error: function() {
                             swal("{{ __('admin.global.error_title') }}",
