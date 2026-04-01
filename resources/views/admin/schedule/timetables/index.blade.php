@@ -433,6 +433,10 @@
                 $('#subject_id').val('').trigger('change');
                 $('#teacher_id').html('<option value="">{{ __('admin.global.select') }}</option>').prop(
                     'disabled', true);
+                // Re-enable the save button
+                $('.btn-save').prop('disabled', false).html(
+                    '<i class="las la-save mr-1"></i> {{ __('admin.global.save') }}'
+                );
             };
 
 

@@ -110,7 +110,8 @@
                         $select.html('<option value="">{{ __('admin.global.select') }}</option>');
 
                         $.each(response.data, function(key, subject) {
-                            const isSelected = (selectedSubjectId && selectedSubjectId == key) ? 'selected' : '';
+                            const isSelected = (selectedSubjectId && selectedSubjectId == key) ?
+                                'selected' : '';
                             $select.append(
                                 `<option value="${key}" ${isSelected}>${subject}</option>`);
                         });
@@ -134,9 +135,11 @@
                         $select.html('<option value="">{{ __('admin.global.select') }}</option>');
 
                         response.data.forEach(teacher => {
-                            const isSelected = (selectedTeacherId && selectedTeacherId == teacher.id) ? 'selected' : '';
+                            const isSelected = (selectedTeacherId && selectedTeacherId ==
+                                teacher.id) ? 'selected' : '';
                             $select.append(
-                                `<option value="${teacher.id}" ${isSelected}>${teacher.name}</option>`);
+                                `<option value="${teacher.id}" ${isSelected}>${teacher.name}</option>`
+                                );
                         });
 
                         $select.prop('disabled', false);
@@ -186,6 +189,10 @@
                     },
                     success: function(response) {
                         if (response.success) {
+                            $('.btn-save').prop('disabled', false).html(
+                                '<i class="las la-save mr-1"></i> {{ __('admin.global.save') }}'
+                            );
+
                             swal({
                                 title: "{{ __('admin.global.success') }}",
                                 text: response.message,

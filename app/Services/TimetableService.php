@@ -29,6 +29,7 @@ class TimetableService
 
         $days = DayOfWeek::query()
             ->active()
+            ->workingDays()
             ->orderBy('day_number')
             ->get();
 
@@ -179,6 +180,8 @@ class TimetableService
 
     /**
      * Get teachers who can teach a specific subject.
+     *
+     * @return \Illuminate\Support\Collection
      */
     public function getAvailableTeachers(int $subjectId)
     {
