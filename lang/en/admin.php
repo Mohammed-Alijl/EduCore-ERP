@@ -137,6 +137,7 @@ return [
         'library' => 'Library',
         'logs' => 'Logs',
         'settings' => 'Settings',
+        'settings_general' => 'General Settings',
         'settings_payment_gateways' => 'Payment Gateways',
         'settings_days_of_week' => 'Days of Week',
         'schedule' => 'Schedule',
@@ -2099,6 +2100,63 @@ return [
                 'update' => 'Failed to update day status.',
                 'toggle_all' => 'Failed to update all days.',
             ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | General Settings
+    |--------------------------------------------------------------------------
+    */
+    'general_settings' => [
+        'title' => 'General Settings',
+        'subtitle' => 'Configure your school basic information and preferences',
+        'sections' => [
+            'school_identity' => 'School Identity',
+            'contact_info' => 'Contact Information',
+            'address' => 'Address',
+            'academic_config' => 'Academic Configuration',
+            'social_media' => 'Social Media',
+        ],
+        'fields' => [
+            'school_name_en' => 'School Name (English)',
+            'school_name_ar' => 'School Name (Arabic)',
+            'email' => 'Email Address',
+            'phone' => 'Phone Number',
+            'fax' => 'Fax Number',
+            'website' => 'Website',
+            'address_en' => 'Address (English)',
+            'address_ar' => 'Address (Arabic)',
+            'logo' => 'School Logo',
+            'current_academic_year' => 'Current Academic Year',
+            'facebook' => 'Facebook',
+            'twitter' => 'Twitter / X',
+            'instagram' => 'Instagram',
+            'linkedin' => 'LinkedIn',
+        ],
+        'placeholders' => [
+            'school_name_en' => 'Enter school name in English',
+            'school_name_ar' => 'Enter school name in Arabic',
+            'email' => 'info@school.com',
+            'phone' => '+1234567890',
+            'website' => 'https://www.school.com',
+        ],
+        'messages' => [
+            'success' => [
+                'update' => 'Settings updated successfully.',
+            ],
+            'failed' => [
+                'update' => 'Failed to update settings.',
+            ],
+        ],
+        'validation' => [
+            'school_name_required' => 'School name is required.',
+            'school_name_ar_required' => 'School name in Arabic is required.',
+            'school_name_en_required' => 'School name in English is required.',
+            'email_invalid' => 'Please enter a valid email address.',
+            'logo_image' => 'Logo must be an image file.',
+            'logo_max' => 'Logo file size must not exceed 2MB.',
+            'website_url' => 'Please enter a valid website URL.',
         ],
     ],
 

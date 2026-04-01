@@ -45,6 +45,7 @@ class RoleSeeder extends Seeder
             'promotion_history' => ['view'],
             'promotions' => ['rollback'],
             'daysOfWeek' => ['view', 'edit'],
+            'generalSettings' => ['view', 'edit'],
             'classPeriods' => ['view', 'create', 'edit', 'delete'],
             'timetables' => ['view', 'create', 'edit', 'delete'],
         ];
