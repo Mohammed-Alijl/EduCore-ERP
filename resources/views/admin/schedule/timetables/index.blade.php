@@ -148,6 +148,13 @@
         $(document).ready(function() {
             'use strict';
 
+            // Setup AJAX to include CSRF token in all requests
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             // Initialize Select2
             $('.select2').select2({
                 width: '100%',
@@ -401,9 +408,6 @@
                     $.ajax({
                         url: `{{ route('admin.schedule.timetables.index') }}/${slotId}`,
                         type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
                         success: function(response) {
                             swal("{{ __('admin.global.deleted') }}", response.message,
                                 "success");
@@ -434,4 +438,5 @@
             }
         });
     </script>
+    @stack('scripts')
 @endsection

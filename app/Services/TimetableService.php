@@ -5,9 +5,9 @@ namespace App\Services;
 use App\Models\ClassPeriod;
 use App\Models\DayOfWeek;
 use App\Models\Section;
+use App\Models\Subject;
+use App\Models\TeacherAssignment;
 use App\Models\Timetable;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class TimetableService
@@ -131,10 +131,8 @@ class TimetableService
 
     /**
      * Get teacher's timetable.
-     *
-     * @return Collection<int, Timetable>
      */
-    public function getTeacherTimetable(int $teacherId, int $academicYearId): Collection
+    public function getTeacherTimetable(int $teacherId, int $academicYearId)
     {
         return Timetable::query()
             ->with(['section.grade', 'section.classroom', 'dayOfWeek', 'classPeriod', 'subject'])
@@ -145,10 +143,8 @@ class TimetableService
 
     /**
      * Get section's complete timetable.
-     *
-     * @return Collection<int, Timetable>
      */
-    public function getSectionTimetable(int $sectionId, int $academicYearId): Collection
+    public function getSectionTimetable(int $sectionId, int $academicYearId)
     {
         return Timetable::query()
             ->with(['subject', 'teacher', 'dayOfWeek', 'classPeriod'])
@@ -171,29 +167,37 @@ class TimetableService
     /**
      * Get subjects available for a section.
      */
-    public function getAvailableSubjects(int $sectionId): Collection
+    public function getAvailableSubjects(int $sectionId)
     {
-        $section = Section::with(['grade', 'classroom'])->findOrFail($sectionId);
+        $section = Section::findOrFail($sectionId);
 
-        return DB::table('subjects')
-            ->where('grade_id', $section->grade_id)
+        return Subject::where('grade_id', $section->grade_id)
             ->where('classroom_id', $section->classroom_id)
-            ->where('status', 1)
-            ->get();
+            ->active()
+            ->pluck('name', 'id');
     }
 
     /**
      * Get teachers who can teach a specific subject.
      */
-    public function getAvailableTeachers(int $subjectId): Collection
+    public function getAvailableTeachers(int $subjectId)
     {
-        return DB::table('teacher_assignments')
-            ->join('employees', 'teacher_assignments.teacher_id', '=', 'employees.id')
-            ->where('teacher_assignments.subject_id', $subjectId)
-            ->where('employees.status', 1)
-            ->select('employees.id', 'employees.name')
-            ->distinct()
-            ->get();
+        return TeacherAssignment::query()
+            ->where('subject_id', $subjectId)
+            ->with(['teacher' => function ($query) {
+                $query->where('status', 1);
+            }])
+            ->get()
+            ->pluck('teacher')
+            ->filter()
+            ->unique('id')
+            ->map(function ($teacher) {
+                return [
+                    'id' => $teacher->id,
+                    'name' => $teacher->name, // This will be auto-translated by Spatie
+                ];
+            })
+            ->values();
     }
 
     /**
