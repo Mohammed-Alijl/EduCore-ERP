@@ -320,7 +320,8 @@
                                     <small><i class="las la-user-tie"></i> ${slot.teacher_name}</small>
                                     <div class="slot-actions">
                                         @can('edit_timetables')
-                                            <button class="slot-action-btn edit-btn edit-slot" title="{{ __('admin.global.edit') }}">
+                                            <button class="slot-action-btn edit-btn edit-slot" title="{{ __('admin.global.edit') }}"
+                                                data-subject-id="${slot.subject_id}" data-teacher-id="${slot.teacher_id}">
                                                 <i class="las la-edit"></i>
                                             </button>
                                         @endcan
@@ -358,8 +359,10 @@
                 const dayId = $cell.data('day');
                 const periodId = $cell.data('period');
                 const slotId = $cell.data('slot-id');
+                const subjectId = $(this).data('subject-id');
+                const teacherId = $(this).data('teacher-id');
 
-                openAssignModal(dayId, periodId, slotId);
+                openAssignModal(dayId, periodId, slotId, subjectId, teacherId);
             });
 
             // Handle Remove Slot Click
@@ -373,11 +376,13 @@
             });
 
             // Open Assign Modal - will be implemented in assign_modal.blade.php
-            window.openAssignModal = function(dayId, periodId, slotId) {
+            window.openAssignModal = function(dayId, periodId, slotId, subjectId, teacherId) {
                 $('#assign_modal').data({
                     day_id: dayId,
                     period_id: periodId,
                     slot_id: slotId,
+                    subject_id: subjectId,
+                    teacher_id: teacherId,
                     section_id: currentSectionId,
                     academic_year_id: currentAcademicYearId
                 });

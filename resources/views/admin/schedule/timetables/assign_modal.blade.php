@@ -13,7 +13,7 @@
                     {{-- Subject Selection --}}
                     <div class="form-group">
                         <label class="filter-label">
-                            <i class="las la-book"></i> {{ __('admin.subjects.select') }}
+                            <i class="las la-book"></i> {{ __('admin.global.select') }}
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-select select2" id="subject_id" name="subject_id" required>
@@ -25,7 +25,7 @@
                     {{-- Teacher Selection --}}
                     <div class="form-group">
                         <label class="filter-label">
-                            <i class="las la-user-tie"></i> {{ __('admin.teachers.select') }}
+                            <i class="las la-user-tie"></i> {{ __('admin.global.select') }}
                             <span class="text-danger">*</span>
                         </label>
                         <select class="form-select select2" id="teacher_id" name="teacher_id" required disabled>
@@ -66,13 +66,15 @@
             $('#assign_modal').on('shown.bs.modal', function() {
                 const sectionId = $(this).data('section_id');
                 const slotId = $(this).data('slot_id');
+                const subjectId = $(this).data('subject_id');
+                const teacherId = $(this).data('teacher_id');
 
                 // Load subjects for this section
-                loadSubjectsForSection(sectionId);
+                loadSubjectsForSection(sectionId, subjectId);
 
-                // If editing, load existing data
-                if (slotId) {
-                    loadSlotData(slotId);
+                // If editing, load teachers
+                if (slotId && subjectId) {
+                    loadTeachersForSubject(subjectId, teacherId);
                 }
             });
 
@@ -95,7 +97,7 @@
             });
 
             // Load Subjects for Section
-            function loadSubjectsForSection(sectionId) {
+            function loadSubjectsForSection(sectionId, selectedSubjectId = null) {
                 if (!sectionId) return;
 
                 $.ajax({
@@ -108,8 +110,9 @@
                         $select.html('<option value="">{{ __('admin.global.select') }}</option>');
 
                         $.each(response.data, function(key, subject) {
+                            const isSelected = (selectedSubjectId && selectedSubjectId == key) ? 'selected' : '';
                             $select.append(
-                                `<option value="${key}">${subject}</option>`);
+                                `<option value="${key}" ${isSelected}>${subject}</option>`);
                         });
 
                         $select.prop('disabled', false);
@@ -118,7 +121,7 @@
             }
 
             // Load Teachers for Subject
-            function loadTeachersForSubject(subjectId) {
+            function loadTeachersForSubject(subjectId, selectedTeacherId = null) {
                 if (!subjectId) return;
 
                 $.ajax({
@@ -131,8 +134,9 @@
                         $select.html('<option value="">{{ __('admin.global.select') }}</option>');
 
                         response.data.forEach(teacher => {
+                            const isSelected = (selectedTeacherId && selectedTeacherId == teacher.id) ? 'selected' : '';
                             $select.append(
-                                `<option value="${teacher.id}">${teacher.name}</option>`);
+                                `<option value="${teacher.id}" ${isSelected}>${teacher.name}</option>`);
                         });
 
                         $select.prop('disabled', false);
@@ -142,9 +146,7 @@
 
             // Load Slot Data for Editing
             window.loadSlotData = function(slotId) {
-                // In a full implementation, you would fetch the slot data
-                // For now, we'll rely on the matrix data that was already loaded
-                // This is a placeholder for the edit functionality
+                // Relies on data loading passed directly in shown.bs.modal now
             };
 
             // Form Submit

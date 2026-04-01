@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Admin\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Timetable\StoreRequest;
 use App\Http\Requests\Admin\Timetable\UpdateRequest;
-use App\Models\AcademicYear;
-use App\Models\ClassRoom;
 use App\Models\Grade;
-use App\Models\Section;
-use App\Models\Subject;
 use App\Models\Timetable;
+use App\Services\AcademicYearService;
+use App\Services\GradeService;
 use App\Services\TimetableService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,7 +20,12 @@ use Illuminate\View\View;
 
 class TimetableController extends Controller implements HasMiddleware
 {
-    public function __construct(protected TimetableService $timetableService) {}
+    public function __construct(
+        protected TimetableService $timetableService,
+        protected AcademicYearService $academicYearService,
+        protected GradeService $gradeService,
+
+    ) {}
 
     public static function middleware(): array
     {
@@ -40,7 +43,7 @@ class TimetableController extends Controller implements HasMiddleware
     public function index(): View
     {
         $grades = Grade::query()->active()->orderBy('sort_order')->get(['id', 'name']);
-        $currentAcademicYear = AcademicYear::query()->where('is_current', true)->first();
+        $currentAcademicYear = $this->academicYearService->getCurrent();
 
         return view('admin.schedule.timetables.index', compact('grades', 'currentAcademicYear'));
     }
@@ -96,7 +99,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'slots' => $data['slots'],
             ]);
         } catch (\Exception $e) {
-            Log::error('Timetable matrix error: ' . $e->getMessage());
+            Log::error('Timetable matrix error: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -125,7 +128,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
-            Log::error('Timetable store error: ' . $e->getMessage());
+            Log::error('Timetable store error: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -162,7 +165,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
-            Log::error('Timetable update error: ' . $e->getMessage());
+            Log::error('Timetable update error: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -184,7 +187,7 @@ class TimetableController extends Controller implements HasMiddleware
                 'message' => trans('admin.timetables.messages.success.deleted'),
             ]);
         } catch (\Exception $e) {
-            Log::error('Timetable delete error: ' . $e->getMessage());
+            Log::error('Timetable delete error: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,

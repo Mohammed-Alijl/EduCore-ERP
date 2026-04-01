@@ -194,7 +194,7 @@ class TimetableService
             ->map(function ($teacher) {
                 return [
                     'id' => $teacher->id,
-                    'name' => $teacher->name, // This will be auto-translated by Spatie
+                    'name' => $teacher->name,
                 ];
             })
             ->values();
