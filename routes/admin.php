@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\Schedule\ClassPeriodController;
 use App\Http\Controllers\Admin\Schedule\TimetableController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\Settings\DayOfWeekController;
+use App\Http\Controllers\Admin\Settings\GeneralSettingController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\StudentPromotionController;
@@ -354,6 +355,12 @@ Route::group(
 
                     // ─── Settings ───────────────────────────────────────────────────────────────
                     Route::prefix('settings')->name('settings.')->group(function () {
+                        // General Settings
+                        Route::prefix('general')->name('general.')->group(function () {
+                            Route::get('/', [GeneralSettingController::class, 'index'])->name('index');
+                            Route::put('/', [GeneralSettingController::class, 'update'])->name('update');
+                        });
+
                         // Days of Week
                         Route::prefix('days_of_week')->name('days_of_week.')->group(function () {
                             Route::get('/', [DayOfWeekController::class, 'index'])->name('index');
