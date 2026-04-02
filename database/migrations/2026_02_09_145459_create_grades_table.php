@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->boolean('status')->default(1);
             $table->integer('sort_order')->default(0);
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
