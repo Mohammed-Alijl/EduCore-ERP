@@ -3,33 +3,46 @@
     {{-- Navigation --}}
     <x-landing.nav />
 
-    {{-- Hero Section --}}
-    <x-landing.hero :stats="$stats" />
+    {{-- CMS-powered sections, rendered in database order --}}
+    @php
+        $sectionOrder = array_keys($cmsSections ?? []);
+        if (empty($sectionOrder)) {
+            $sectionOrder = ['hero', 'features', 'about', 'stats', 'programs', 'testimonials', 'faq', 'newsletter', 'contact', 'footer'];
+        }
+    @endphp
 
-    {{-- Features Section --}}
-    <x-landing.features />
-
-    {{-- About Section --}}
-    <x-landing.about />
-
-    {{-- Statistics Section --}}
-    <x-landing.stats :stats="$stats" />
-
-    {{-- Programs/Gallery Section --}}
-    <x-landing.programs :grades="$grades" />
-
-    {{-- Testimonials Section --}}
-    <x-landing.testimonials />
-
-    {{-- FAQ Section --}}
-    <x-landing.faq />
-
-    {{-- Newsletter Section --}}
-    <x-landing.newsletter />
-
-    {{-- Contact Section --}}
-    <x-landing.contact />
-
-    {{-- Footer --}}
-    <x-landing.footer :grades="$grades" />
+    @foreach($sectionOrder as $key)
+        @switch($key)
+            @case('hero')
+                <x-landing.hero :stats="$stats" :cms="$cmsSections['hero'] ?? null" />
+                @break
+            @case('features')
+                <x-landing.features :cms="$cmsSections['features'] ?? null" />
+                @break
+            @case('about')
+                <x-landing.about :cms="$cmsSections['about'] ?? null" />
+                @break
+            @case('stats')
+                <x-landing.stats :stats="$stats" :cms="$cmsSections['stats'] ?? null" />
+                @break
+            @case('programs')
+                <x-landing.programs :grades="$grades" :cms="$cmsSections['programs'] ?? null" />
+                @break
+            @case('testimonials')
+                <x-landing.testimonials :cms="$cmsSections['testimonials'] ?? null" />
+                @break
+            @case('faq')
+                <x-landing.faq :cms="$cmsSections['faq'] ?? null" />
+                @break
+            @case('newsletter')
+                <x-landing.newsletter :cms="$cmsSections['newsletter'] ?? null" />
+                @break
+            @case('contact')
+                <x-landing.contact :cms="$cmsSections['contact'] ?? null" />
+                @break
+            @case('footer')
+                <x-landing.footer :grades="$grades" :cms="$cmsSections['footer'] ?? null" />
+                @break
+        @endswitch
+    @endforeach
 </x-landing.layout>

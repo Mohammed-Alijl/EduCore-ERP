@@ -462,6 +462,31 @@
                 </li>
             @endcan
 
+            <!-- START WEBSITE CMS -->
+            @canany(['view_cms', 'edit_cms'])
+                <li class="side-item side-item-category">{{ __('admin.sidebar.website') }}</li>
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="#"><svg
+                            xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
+                            width="24px" fill="#e3e3e3">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" />
+                        </svg><span class="side-menu__label">{{ __('admin.sidebar.website') }}</span><i
+                            class="angle fe fe-chevron-down"></i></a>
+                    <ul class="slide-menu">
+                        @can('view_cms')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.cms.index') }}">{{ __('admin.sidebar.cms_sections') }}</a>
+                            </li>
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.cms.legal.index') }}">{{ __('admin.sidebar.cms_legal') }}</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcanany
+
             <li class="side-item side-item-category">{{ __('admin.sidebar.reports_settings') }}</li>
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="#"><svg

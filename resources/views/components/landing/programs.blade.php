@@ -1,7 +1,11 @@
 {{-- CMS_SECTION: programs | Editable: title, subtitle, items[] --}}
-@props(['grades' => null])
+@props(['grades' => null, 'cms' => null])
 
 @php
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.programs.academic');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.programs.description');
+
     // Default fallback images if grades don't have images
 $defaultImages = [
     asset('assets/site/img/grades/grade-1.jpg'),
@@ -37,12 +41,12 @@ $gradientColors = [
                 {{ __('site.programs.title') }}
             </span>
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                {{ __('site.programs.academic') }}
+                {{ $sectionTitle }}
                 <span class="text-gradient">{{ __('site.features.excellence') }}</span>
                 {{ __('site.programs.for_every_student') }}
             </h2>
             <p class="text-xl text-gray-600 leading-relaxed">
-                {{ __('site.programs.description') }}
+                {{ $sectionSubtitle }}
             </p>
         </div>
 

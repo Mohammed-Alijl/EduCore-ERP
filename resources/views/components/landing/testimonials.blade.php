@@ -1,65 +1,89 @@
 {{-- CMS_SECTION: testimonials | Editable: title, subtitle, items[] --}}
-@props(['testimonials' => null])
+@props(['testimonials' => null, 'cms' => null])
 
 @php
-    $defaultTestimonials = [
-        [
-            'name' => 'Sarah Johnson',
-            'role' => __('site.testimonials.role1'),
-            'image' => 'https://randomuser.me/api/portraits/women/44.jpg',
-            'content' => __(
-                'site.testimonials.content1',
-            ),
-            'rating' => 5,
-        ],
-        [
-            'name' => 'Michael Chen',
-            'role' => __('site.testimonials.role2'),
-            'image' => 'https://randomuser.me/api/portraits/men/32.jpg',
-            'content' => __(
-                'site.testimonials.content2',
-            ),
-            'rating' => 5,
-        ],
-        [
-            'name' => 'Emily Rodriguez',
-            'role' => __('site.testimonials.role3'),
-            'image' => 'https://randomuser.me/api/portraits/women/68.jpg',
-            'content' => __(
-                'site.testimonials.content3',
-            ),
-            'rating' => 5,
-        ],
-        [
-            'name' => 'David Thompson',
-            'role' => __('site.testimonials.role4'),
-            'image' => 'https://randomuser.me/api/portraits/men/75.jpg',
-            'content' => __(
-                'site.testimonials.content4',
-            ),
-            'rating' => 5,
-        ],
-        [
-            'name' => 'Aisha Patel',
-            'role' => __('site.testimonials.role5'),
-            'image' => 'https://randomuser.me/api/portraits/women/89.jpg',
-            'content' => __(
-                'site.testimonials.content5',
-            ),
-            'rating' => 5,
-        ],
-        [
-            'name' => 'James Wilson',
-            'role' => __('site.testimonials.role3'),
-            'image' => 'https://randomuser.me/api/portraits/men/52.jpg',
-            'content' => __(
-                'site.testimonials.content6',
-            ),
-            'rating' => 5,
-        ],
+    $locale = app()->getLocale();
+
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.testimonials.heading');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.testimonials.description');
+
+    // Default placeholder images
+    $defaultImages = [
+        'https://randomuser.me/api/portraits/women/44.jpg',
+        'https://randomuser.me/api/portraits/men/32.jpg',
+        'https://randomuser.me/api/portraits/women/68.jpg',
+        'https://randomuser.me/api/portraits/men/75.jpg',
+        'https://randomuser.me/api/portraits/women/89.jpg',
+        'https://randomuser.me/api/portraits/men/52.jpg',
     ];
 
-    $testimonials = $testimonials ?? $defaultTestimonials;
+    // Check if CMS has items
+    $cmsItems = $cms?->content['items'] ?? null;
+
+    if (!empty($cmsItems)) {
+        // Build testimonials from CMS data
+        $testimonials = collect($cmsItems)
+            ->map(function ($item, $index) use ($locale, $defaultImages) {
+                $contentKey = "content_{$locale}";
+                $roleKey = "role_{$locale}";
+                return [
+                    'name' => $item['name'] ?? '',
+                    'role' => $item[$roleKey] ?? ($item['role_en'] ?? ''),
+                    'image' => $item['image'] ?? ($defaultImages[$index % count($defaultImages)] ?? $defaultImages[0]),
+                    'content' => $item[$contentKey] ?? ($item['content_en'] ?? ''),
+                    'rating' => (int) ($item['rating'] ?? 5),
+                ];
+            })
+            ->toArray();
+    } else {
+        // Use default testimonials
+        $defaultTestimonials = [
+            [
+                'name' => 'Sarah Johnson',
+                'role' => __('site.testimonials.role1'),
+                'image' => $defaultImages[0],
+                'content' => __('site.testimonials.content1'),
+                'rating' => 5,
+            ],
+            [
+                'name' => 'Michael Chen',
+                'role' => __('site.testimonials.role2'),
+                'image' => $defaultImages[1],
+                'content' => __('site.testimonials.content2'),
+                'rating' => 5,
+            ],
+            [
+                'name' => 'Emily Rodriguez',
+                'role' => __('site.testimonials.role3'),
+                'image' => $defaultImages[2],
+                'content' => __('site.testimonials.content3'),
+                'rating' => 5,
+            ],
+            [
+                'name' => 'David Thompson',
+                'role' => __('site.testimonials.role4'),
+                'image' => $defaultImages[3],
+                'content' => __('site.testimonials.content4'),
+                'rating' => 5,
+            ],
+            [
+                'name' => 'Aisha Patel',
+                'role' => __('site.testimonials.role5'),
+                'image' => $defaultImages[4],
+                'content' => __('site.testimonials.content5'),
+                'rating' => 5,
+            ],
+            [
+                'name' => 'James Wilson',
+                'role' => __('site.testimonials.role3'),
+                'image' => $defaultImages[5],
+                'content' => __('site.testimonials.content6'),
+                'rating' => 5,
+            ],
+        ];
+        $testimonials = $testimonials ?? $defaultTestimonials;
+    }
 @endphp
 
 <section id="testimonials" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
@@ -85,11 +109,11 @@
                 {{ __('site.testimonials.title') }}
             </span>
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                {{ __('site.testimonials.heading') }}
+                {{ $sectionTitle }}
                 <span class="text-gradient">{{ __('site.testimonials.subheading') }}</span>
             </h2>
             <p class="text-xl text-gray-600 leading-relaxed">
-                {{ __('site.testimonials.description') }}
+                {{ $sectionSubtitle }}
             </p>
         </div>
 

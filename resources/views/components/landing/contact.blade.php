@@ -1,4 +1,12 @@
 {{-- CMS_SECTION: contact | Editable: title, subtitle, address, phone, email, map_url --}}
+@props(['cms' => null])
+
+@php
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.contact.get_in');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.contact.description');
+@endphp
+
 <section id="contact" class="py-24 bg-white relative overflow-hidden">
     <!-- Background Decorations -->
     <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
@@ -17,11 +25,11 @@
                 {{ __('site.contact.title') }}
             </span>
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                {{ __('site.contact.get_in') }}
+                {{ $sectionTitle }}
                 <span class="text-gradient">{{ __('site.contact.touch') }}</span>
             </h2>
             <p class="text-xl text-gray-600 leading-relaxed">
-                {{ __('site.contact.description') }}
+                {{ $sectionSubtitle }}
             </p>
         </div>
 

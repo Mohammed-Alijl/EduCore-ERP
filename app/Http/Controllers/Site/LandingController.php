@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\ClassRoom;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Services\CmsService;
 use App\Services\GradeService;
 use Illuminate\Contracts\View\View;
 
 class LandingController extends Controller
 {
-    public function __construct(private readonly GradeService $gradeService) {}
+    public function __construct(
+        private readonly GradeService $gradeService,
+        private readonly CmsService $cmsService,
+    ) {}
 
     public function index(): View
     {
@@ -25,6 +29,16 @@ class LandingController extends Controller
 
         $grades = $this->gradeService->getActive();
 
-        return view('site.welcome', compact('stats', 'grades'));
+        // Load CMS data for the landing page
+        $cmsPage = $this->cmsService->getLandingPage();
+        $cmsSections = [];
+
+        if ($cmsPage) {
+            foreach ($cmsPage->sections as $section) {
+                $cmsSections[$section->section_key] = $section;
+            }
+        }
+
+        return view('site.welcome', compact('stats', 'grades', 'cmsSections'));
     }
 }

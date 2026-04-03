@@ -1,7 +1,11 @@
 {{-- CMS_SECTION: about | Editable: title, subtitle, description, values[] --}}
-@props(['values' => null])
+@props(['values' => null, 'cms' => null])
 
 @php
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.about.heading');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.about.description');
+
     $defaultValues = [
         [
             'icon' =>
@@ -48,12 +52,12 @@
                 </span>
 
                 <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    {{ __('site.about.heading') }}
+                    {{ $sectionTitle }}
                     <span class="text-gradient">{{ __('site.about.subheading') }}</span>
                 </h2>
 
                 <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                    {{ __('site.about.description') }}
+                    {{ $sectionSubtitle }}
                 </p>
 
                 <div class="grid grid-cols-2 gap-6 mb-10">
@@ -104,7 +108,7 @@
                     <!-- Smaller Images -->
                     <div class="relative group overflow-hidden rounded-2xl">
                         <div class="aspect-square bg-gradient-to-br from-purple-200 to-pink-200">
-                        <img src="{{ asset('assets/site/img/feature-2.jpg') }}"
+                            <img src="{{ asset('assets/site/img/feature-2.jpg') }}"
                                 alt="{{ __('site.about.students_studying') }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         </div>

@@ -1,5 +1,10 @@
 {{-- CMS_SECTION: hero | Editable: title, subtitle, background, cta_buttons --}}
-@props(['stats' => []])
+@props(['stats' => [], 'cms' => null])
+
+@php
+    // Use CMS data if available, otherwise fall back to translations
+    $heroSubtitle = $cms?->subtitle ?: __('site.hero.tagline');
+@endphp
 
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <!-- Animated Gradient Background -->
@@ -60,7 +65,7 @@
         <!-- Tagline with Typewriter Effect -->
         <div class="mb-10 animate-fade-up animation-delay-400">
             <p class="text-xl sm:text-2xl md:text-3xl text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
-                {{ __('site.hero.tagline') }}
+                {{ $heroSubtitle }}
             </p>
             <div class="mt-4 flex items-center justify-center gap-2 text-white/70">
                 <span class="w-12 h-px bg-white/50"></span>

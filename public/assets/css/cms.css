@@ -1,0 +1,565 @@
+/* ============================================
+   CMS MODULE - Custom Styles
+   Premium Valex-Compatible Styling
+   Supports: RTL (Arabic) + Dark Mode
+   ============================================ */
+
+/* ──────── Glass Card ──────── */
+.cms-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* ──────── Header ──────── */
+.cms-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cms-header-content {
+    flex: 1;
+}
+
+.cms-header-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
+
+.cms-header-title i {
+    font-size: 2rem;
+}
+
+.cms-header-subtitle {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.cms-body {
+    padding: 2rem;
+}
+
+/* ──────── Section Cards Grid ──────── */
+.cms-sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cms-section-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cms-section-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cms-section-card:hover {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.cms-section-card:hover::before {
+    opacity: 1;
+}
+
+.cms-section-card.cms-section-hidden {
+    opacity: 0.5;
+    border-style: dashed;
+}
+
+.cms-section-card.cms-section-hidden::before {
+    background: #94a3b8;
+}
+
+/* ──────── Drag Handle ──────── */
+.cms-section-drag-handle {
+    cursor: grab;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    padding: 0.25rem;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.cms-section-drag-handle:hover {
+    color: #667eea;
+}
+
+.cms-section-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* ──────── Section Icon ──────── */
+.cms-section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.cms-section-hidden .cms-section-icon {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    box-shadow: 0 4px 12px rgba(148, 163, 184, 0.3);
+}
+
+/* ──────── Section Info ──────── */
+.cms-section-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cms-section-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.25rem 0;
+}
+
+.cms-section-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ──────── Section Actions ──────── */
+.cms-section-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.cms-edit-btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-primary-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.25);
+}
+
+.btn-primary-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(102, 126, 234, 0.35);
+    color: white;
+}
+
+/* ──────── Order Badge ──────── */
+.cms-section-order-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(148, 163, 184, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+}
+
+/* ──────── Toggle Switch ──────── */
+.cms-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.cms-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.cms-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #cbd5e1;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.cms-switch-slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.cms-switch input:checked + .cms-switch-slider {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.cms-switch input:checked + .cms-switch-slider::before {
+    transform: translateX(22px);
+}
+
+/* ──────── Sortable States ──────── */
+.cms-sortable-ghost {
+    opacity: 0.3;
+    background: #eef2ff;
+}
+
+.cms-sortable-chosen {
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+}
+
+/* ──────── Legal Cards Grid ──────── */
+.cms-legal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.cms-legal-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cms-legal-card:hover {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.cms-legal-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.cms-legal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cms-legal-info h5 {
+    font-weight: 600;
+    margin: 0 0 0.35rem 0;
+    color: #1e293b;
+}
+
+.cms-legal-actions {
+    flex-shrink: 0;
+}
+
+/* ──────── Image Preview ──────── */
+.cms-image-preview {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+}
+
+.cms-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ──────── Repeater Items ──────── */
+.repeater-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    transition: all 0.2s;
+}
+
+.repeater-item:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* ──────── Form Sections ──────── */
+.form-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+}
+
+.form-section:hover {
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: #667eea;
+    font-size: 1.25rem;
+}
+
+/* ──────── Form Labels ──────── */
+.form-label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.9rem;
+}
+
+/* ──────── Save Button ──────── */
+.btn-save-settings {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
+    cursor: pointer;
+}
+
+.btn-save-settings:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.45);
+    color: white;
+}
+
+.btn-save-settings:active {
+    transform: translateY(0);
+}
+
+.btn-save-settings:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-save-settings i {
+    font-size: 1.15rem;
+}
+
+/* ========================================
+   DARK MODE SUPPORT
+   ======================================== */
+.dark-theme .cms-glass-card {
+    background: rgba(26, 28, 46, 0.95);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .cms-header {
+    background: linear-gradient(135deg, #4454b6 0%, #56337a 100%);
+}
+
+.dark-theme .cms-section-card {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .cms-section-card:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .cms-section-name {
+    color: #e2e8f0;
+}
+
+.dark-theme .cms-section-desc {
+    color: #94a3b8;
+}
+
+.dark-theme .cms-section-drag-handle {
+    color: #64748b;
+}
+
+.dark-theme .cms-section-drag-handle:hover {
+    color: #818cf8;
+}
+
+.dark-theme .cms-section-order-badge {
+    color: #64748b;
+    background: rgba(100, 116, 139, 0.15);
+}
+
+.dark-theme .cms-switch-slider {
+    background: #475569;
+}
+
+.dark-theme .cms-legal-card {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .cms-legal-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .cms-legal-info h5 {
+    color: #e2e8f0;
+}
+
+.dark-theme .repeater-item {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .repeater-item:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.dark-theme .form-section {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .form-section:hover {
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.dark-theme .section-title {
+    color: #e2e8f0;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .section-title i {
+    color: #818cf8;
+}
+
+.dark-theme .form-label {
+    color: #cbd5e1;
+}
+
+.dark-theme .btn-save-settings {
+    background: linear-gradient(135deg, #4454b6 0%, #56337a 100%);
+}
+
+.dark-theme .cms-image-preview {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .cms-sortable-ghost {
+    background: rgba(68, 84, 182, 0.15);
+}
+
+/* ========================================
+   RTL SUPPORT
+   ======================================== */
+[dir="rtl"] .cms-section-card::before {
+    left: auto;
+    right: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+[dir="rtl"] .cms-section-order-badge {
+    right: auto;
+    left: 0.75rem;
+}
+
+/* ──────── Responsive ──────── */
+@media (max-width: 768px) {
+    .cms-section-card {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .cms-section-info {
+        flex-basis: 60%;
+    }
+
+    .cms-section-desc {
+        white-space: normal;
+    }
+
+    .cms-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cms-legal-grid {
+        grid-template-columns: 1fr;
+    }
+}
