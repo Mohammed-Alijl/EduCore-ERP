@@ -1,47 +1,40 @@
 {{-- CMS_SECTION: faq | Editable: title, subtitle, items[] --}}
-@props(['faqs' => null])
+@props(['faqs' => null, 'cms' => null])
 
 @php
-    $defaultFaqs = [
-        [
-            'question' => __('site.faq.q1'),
-            'answer' => __(
-                'site.faq.a1',
-            ),
-        ],
-        [
-            'question' => __('site.faq.q2'),
-            'answer' => __(
-                'site.faq.a2',
-            ),
-        ],
-        [
-            'question' => __('site.faq.q3'),
-            'answer' => __(
-                'site.faq.a3',
-            ),
-        ],
-        [
-            'question' => __('site.faq.q4'),
-            'answer' => __(
-                'site.faq.a4',
-            ),
-        ],
-        [
-            'question' => __('site.faq.q5'),
-            'answer' => __(
-                'site.faq.a5',
-            ),
-        ],
-        [
-            'question' => __('site.faq.q6'),
-            'answer' => __(
-                'site.faq.a6',
-            ),
-        ],
-    ];
+    $locale = app()->getLocale();
 
-    $faqs = $faqs ?? $defaultFaqs;
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.faq.heading');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.faq.description');
+
+    // Check if CMS has items
+    $cmsItems = $cms?->content['items'] ?? null;
+
+    if (!empty($cmsItems)) {
+        // Build FAQs from CMS data
+        $faqs = collect($cmsItems)
+            ->map(function ($item) use ($locale) {
+                $questionKey = "question_{$locale}";
+                $answerKey = "answer_{$locale}";
+                return [
+                    'question' => $item[$questionKey] ?? ($item['question_en'] ?? ''),
+                    'answer' => $item[$answerKey] ?? ($item['answer_en'] ?? ''),
+                ];
+            })
+            ->toArray();
+    } else {
+        // Use default FAQs
+        $defaultFaqs = [
+            ['question' => __('site.faq.q1'), 'answer' => __('site.faq.a1')],
+            ['question' => __('site.faq.q2'), 'answer' => __('site.faq.a2')],
+            ['question' => __('site.faq.q3'), 'answer' => __('site.faq.a3')],
+            ['question' => __('site.faq.q4'), 'answer' => __('site.faq.a4')],
+            ['question' => __('site.faq.q5'), 'answer' => __('site.faq.a5')],
+            ['question' => __('site.faq.q6'), 'answer' => __('site.faq.a6')],
+        ];
+        $faqs = $faqs ?? $defaultFaqs;
+    }
 @endphp
 
 <section id="faq" class="py-24 bg-gray-50 relative overflow-hidden">
@@ -62,11 +55,11 @@
                 {{ __('site.faq.title') }}
             </span>
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                {{ __('site.faq.heading') }}
+                {{ $sectionTitle }}
                 <span class="text-gradient">{{ __('site.faq.subheading') }}</span>
             </h2>
             <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                {{ __('site.faq.description') }}
+                {{ $sectionSubtitle }}
             </p>
         </div>
 

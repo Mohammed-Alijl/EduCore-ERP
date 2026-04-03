@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -390,6 +391,18 @@ Route::group(
                             Route::put('/{timetable}', [TimetableController::class, 'update'])->name('update');
                             Route::delete('/{timetable}', [TimetableController::class, 'destroy'])->name('destroy');
                         });
+                    });
+
+                    // ─── CMS (Website Management) ───────────────────────────────────────────────
+                    Route::prefix('cms')->name('cms.')->group(function () {
+                        Route::get('/', [CmsController::class, 'index'])->name('index');
+                        Route::post('/reorder', [CmsController::class, 'reorder'])->name('reorder');
+                        Route::get('/sections/{section}/edit', [CmsController::class, 'editSection'])->name('sections.edit');
+                        Route::put('/sections/{section}', [CmsController::class, 'updateSection'])->name('sections.update');
+                        Route::patch('/sections/{section}/toggle', [CmsController::class, 'toggleVisibility'])->name('sections.toggle');
+                        Route::get('/legal', [CmsController::class, 'legalPages'])->name('legal.index');
+                        Route::get('/legal/{page}/edit', [CmsController::class, 'editLegalPage'])->name('legal.edit');
+                        Route::put('/legal/{page}', [CmsController::class, 'updateLegalPage'])->name('legal.update');
                     });
                 });
                 Route::post('logout', [AdminAuthController::class, 'destroy'])->name('logout');

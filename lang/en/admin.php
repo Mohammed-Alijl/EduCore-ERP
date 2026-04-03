@@ -47,6 +47,7 @@ return [
         'saving' => 'Saving...',
         'required_hint' => 'Required fields',
         'statistics' => 'Statistics',
+        'preview' => 'Preview',
         'overview' => 'Overview',
         'sections' => 'Sections',
         'back' => 'Back',
@@ -144,6 +145,9 @@ return [
         'schedule_class_periods' => 'Class Periods',
         'class_periods' => 'Class Periods',
         'schedule_timetable' => 'Timetable',
+        'website' => 'Website',
+        'cms_sections' => 'Landing Sections',
+        'cms_legal' => 'Legal Pages',
     ],
 
     /*
@@ -2260,6 +2264,92 @@ return [
                 'created' => 'Assignment created successfully.',
                 'updated' => 'Assignment updated successfully.',
                 'deleted' => 'Assignment deleted successfully.',
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | CMS (Website Management)
+    |--------------------------------------------------------------------------
+    */
+    'cms' => [
+        'title' => 'Website Management',
+        'sections_title' => 'Landing Page Sections',
+        'sections_subtitle' => 'Manage your landing page sections, their content, and ordering.',
+        'legal_title' => 'Legal Pages',
+        'legal_subtitle' => 'Manage your legal pages content.',
+        'edit_section' => 'Edit Section',
+        'edit_page' => 'Edit Page',
+        'back_to_sections' => 'Back to Sections',
+        'back_to_legal' => 'Back to Legal Pages',
+        'visible' => 'Visible',
+        'hidden' => 'Hidden',
+        'drag_to_reorder' => 'Drag to reorder',
+        'section_settings' => 'Section Settings',
+        'content' => 'Content',
+        'images' => 'Images',
+        'no_sections' => 'No sections found.',
+        'no_legal_pages' => 'No legal pages found.',
+        'published' => 'Published',
+        'draft' => 'Draft',
+        'info' => 'Info',
+        'legal_edit_desc' => 'Customize the content of this legal page.',
+        'legal_content_info' => 'Leave the content empty to display the default styled content. Add custom content to override the default design.',
+        'legal_content_hint' => 'Use the editor to format your content with headings, lists, and links.',
+        'meta_desc_hint' => 'A brief description for search engines (150-160 characters recommended).',
+
+        'fields' => [
+            'title_en' => 'Title (English)',
+            'title_ar' => 'Title (Arabic)',
+            'subtitle_en' => 'Subtitle (English)',
+            'subtitle_ar' => 'Subtitle (Arabic)',
+            'content_en' => 'Content (English)',
+            'content_ar' => 'Content (Arabic)',
+            'meta_description' => 'Meta Description',
+            'is_visible' => 'Visibility',
+            'is_published' => 'Published',
+            'sort_order' => 'Sort Order',
+        ],
+
+        'sections' => [
+            'hero' => 'Hero Section',
+            'features' => 'Features',
+            'about' => 'About Us',
+            'stats' => 'Statistics',
+            'programs' => 'Programs',
+            'testimonials' => 'Testimonials',
+            'faq' => 'FAQ',
+            'newsletter' => 'Newsletter',
+            'contact' => 'Contact',
+            'footer' => 'Footer',
+        ],
+
+        'section_descriptions' => [
+            'hero' => 'The main hero banner with tagline and call-to-action buttons',
+            'features' => 'Showcase your school\'s key features and capabilities',
+            'about' => 'Tell your school\'s story, mission, and values',
+            'stats' => 'Display key statistics and achievements',
+            'programs' => 'Show available educational programs and grades',
+            'testimonials' => 'Student and parent testimonials',
+            'faq' => 'Frequently asked questions and answers',
+            'newsletter' => 'Newsletter subscription section',
+            'contact' => 'Contact form and information',
+            'footer' => 'Footer links and copyright information',
+        ],
+
+        'messages' => [
+            'success' => [
+                'update' => 'Section updated successfully.',
+                'reorder' => 'Sections reordered successfully.',
+                'toggle' => 'Section visibility toggled successfully.',
+                'update_page' => 'Legal page updated successfully.',
+            ],
+            'failed' => [
+                'update' => 'Failed to update section.',
+                'reorder' => 'Failed to reorder sections.',
+                'toggle' => 'Failed to toggle section visibility.',
+                'update_page' => 'Failed to update legal page.',
             ],
         ],
     ],

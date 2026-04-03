@@ -48,12 +48,13 @@ class RoleSeeder extends Seeder
             'generalSettings' => ['view', 'edit'],
             'classPeriods' => ['view', 'create', 'edit', 'delete'],
             'timetables' => ['view', 'create', 'edit', 'delete'],
+            'cms' => ['view', 'edit'],
         ];
 
         foreach ($permissions as $module => $actions) {
             foreach ($actions as $action) {
                 Permission::create([
-                    'name' => $action . '_' . $module,
+                    'name' => $action.'_'.$module,
                     'guard_name' => 'admin',
                 ]);
             }

@@ -1,4 +1,4 @@
-<x-landing.legal-layout :title="__('site.legal.cookie.title')" :subtitle="__('site.legal.cookie.subtitle')" :last-updated="__('site.legal.cookie.last_updated')">
+<x-landing.legal-layout :title="__('site.legal.cookie.title')" :subtitle="__('site.legal.cookie.subtitle')" :last-updated="__('site.legal.cookie.last_updated')" :page="$page ?? null">
 
     <!-- What Are Cookies -->
     <div class="mb-12">

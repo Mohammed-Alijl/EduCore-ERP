@@ -1,4 +1,12 @@
 {{-- CMS_SECTION: newsletter | Editable: title, subtitle, button_text --}}
+@props(['cms' => null])
+
+@php
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.newsletter.title');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.newsletter.description');
+@endphp
+
 <section id="newsletter" class="py-16 relative overflow-hidden">
     <!-- Gradient Background -->
     <div class="absolute inset-0 bg-gradient-to-r from-school-600 via-indigo-600 to-purple-600"></div>
@@ -34,10 +42,10 @@
             </div>
 
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-                {{ __('site.newsletter.title') }}
+                {{ $sectionTitle }}
             </h2>
             <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                {{ __('site.newsletter.description') }}
+                {{ $sectionSubtitle }}
             </p>
 
             <!-- Newsletter Form -->
@@ -45,7 +53,8 @@
                 @submit.prevent="loading = true; setTimeout(() => { submitted = true; loading = false; }, 1500)">
                 <div class="relative flex flex-col sm:flex-row gap-3">
                     <div class="relative flex-1">
-                        <input type="email" x-model="email" required placeholder="{{ __('site.newsletter.email_placeholder') }}"
+                        <input type="email" x-model="email" required
+                            placeholder="{{ __('site.newsletter.email_placeholder') }}"
                             class="w-full px-6 py-4 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white focus:bg-white/20 transition-all duration-300">
                         <!-- Success checkmark -->
                         <div x-show="submitted" x-transition

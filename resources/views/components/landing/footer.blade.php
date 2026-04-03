@@ -1,4 +1,11 @@
 {{-- CMS_SECTION: footer | Editable: description, quick_links[], programs[], contact_info, copyright_text --}}
+@props(['grades' => null, 'cms' => null])
+
+@php
+    // Use CMS subtitle for description if available
+    $footerDescription = $cms?->subtitle ?: __('site.footer.description');
+@endphp
+
 <footer class="relative overflow-hidden">
     <!-- Main Footer -->
     <div class="bg-gray-900 pt-20 pb-10">
@@ -27,7 +34,7 @@
                         </span>
                     </a>
                     <p class="text-gray-400 leading-relaxed mb-6">
-                        {{ __('site.footer.description') }}
+                        {{ $footerDescription }}
                     </p>
 
                     <!-- Social Links -->

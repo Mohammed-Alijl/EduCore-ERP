@@ -1,7 +1,11 @@
 {{-- CMS_SECTION: statistics | Editable: stats[] --}}
-@props(['stats' => []])
+@props(['stats' => [], 'cms' => null])
 
 @php
+    // Use CMS title/subtitle if available
+    $sectionTitle = $cms?->title ?: __('site.stats.our');
+    $sectionSubtitle = $cms?->subtitle ?: __('site.stats.description');
+
     $defaultStats = [
         [
             'value' => $stats['students'] ?? 100,
@@ -63,11 +67,11 @@
                 {{ __('site.stats.by_the_numbers') }}
             </span>
             <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-                {{ __('site.stats.our') }}
+                {{ $sectionTitle }}
                 <span class="text-gradient-gold">{{ __('site.stats.achievements') }}</span>
             </h2>
             <p class="text-xl text-gray-300 leading-relaxed">
-                {{ __('site.stats.description') }}
+                {{ $sectionSubtitle }}
             </p>
         </div>
 
