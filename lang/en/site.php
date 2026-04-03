@@ -2,6 +2,7 @@
 
 return [
     'nav' => [
+        'home' => 'Home',
         'features' => 'Features',
         'statistics' => 'Statistics',
         'contact' => 'Contact',
@@ -183,5 +184,189 @@ return [
         'cookie' => 'Cookie Policy',
         'student_portal' => 'Student Portal',
         'parent_portal' => 'Parent Portal',
+    ],
+    'legal' => [
+        'last_updated' => 'Last Updated',
+        'back_to_home' => 'Back to Homepage',
+        'contact_us' => 'Email Us',
+        'visit_contact_page' => 'Visit Contact Page',
+        'privacy' => [
+            'title' => 'Privacy Policy',
+            'subtitle' => 'Your privacy is important to us',
+            'last_updated' => 'March 2026',
+            'introduction' => [
+                'title' => 'Introduction',
+                'content' => 'At our school, we are committed to protecting the privacy and security of our students, parents, staff, and visitors. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit our website or use our services. Please read this policy carefully to understand our practices regarding your personal data.',
+            ],
+            'information_collection' => [
+                'title' => 'Information We Collect',
+                'content' => 'We collect various types of information to provide and improve our educational services:',
+                'items' => [
+                    'Student Information: Name, date of birth, grade level, academic records, attendance data, and medical information necessary for student care',
+                    'Parent/Guardian Information: Contact details, emergency contacts, employment information, and communication preferences',
+                    'Technical Data: IP address, browser type, device information, and website usage statistics through cookies and analytics tools',
+                    'Communication Records: Emails, messages, phone calls, and correspondence with school staff',
+                    'Financial Information: Payment details for tuition fees, school meals, and other services (processed securely through our payment providers)',
+                ],
+            ],
+            'information_use' => [
+                'title' => 'How We Use Your Information',
+                'content' => 'We use the collected information for the following purposes:',
+                'items' => [
+                    'Providing educational services and managing student enrollment, attendance, and academic progress',
+                    'Communicating with parents and guardians about student performance, school events, and important updates',
+                    'Ensuring student safety and well-being through emergency contact procedures and health records',
+                    'Processing payments for tuition, fees, and other school-related services',
+                    'Improving our website, services, and educational programs based on user feedback and analytics',
+                    'Complying with legal obligations, including reporting requirements and child protection regulations',
+                ],
+            ],
+            'data_security' => [
+                'title' => 'Data Security',
+                'content' => 'We implement robust security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. These measures include encrypted data transmission, secure servers, regular security audits, access controls, and staff training on data protection. While we strive to use commercially acceptable means to protect your personal information, no method of electronic storage or transmission is 100% secure.',
+            ],
+            'your_rights' => [
+                'title' => 'Your Rights',
+                'content' => 'Under applicable data protection laws, you have the following rights:',
+                'items' => [
+                    'Access: Request copies of your personal data held by the school',
+                    'Correction: Request correction of inaccurate or incomplete personal information',
+                    'Deletion: Request deletion of your personal data in certain circumstances',
+                    'Restriction: Request restriction of processing your personal data under specific conditions',
+                    'Objection: Object to the processing of your personal data in certain situations',
+                    'Data Portability: Request transfer of your personal data to another organization or directly to you',
+                ],
+            ],
+            'contact' => [
+                'title' => 'Contact Information',
+                'content' => 'If you have any questions about this Privacy Policy or wish to exercise your rights regarding your personal data, please contact us:',
+            ],
+        ],
+        'terms' => [
+            'title' => 'Terms of Service',
+            'subtitle' => 'Please read these terms carefully before using our services',
+            'last_updated' => 'March 2026',
+            'acceptance' => [
+                'title' => 'Acceptance of Terms',
+                'content' => 'By accessing and using our school\'s website and services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services. We reserve the right to modify these terms at any time, and continued use of our services constitutes acceptance of any changes.',
+            ],
+            'user_accounts' => [
+                'title' => 'User Accounts',
+                'content' => 'Access to certain features of our services requires creating a user account. When creating an account, you agree to:',
+                'items' => [
+                    'Provide accurate, current, and complete information during registration',
+                    'Maintain the security of your password and account credentials',
+                    'Accept responsibility for all activities that occur under your account',
+                    'Notify us immediately of any unauthorized use of your account',
+                    'Not share your account credentials with others or allow others to access your account',
+                ],
+            ],
+            'educational_services' => [
+                'title' => 'Educational Services',
+                'content' => 'Our school provides educational services subject to applicable regulations and our institutional policies. We strive to deliver high-quality education but cannot guarantee specific academic outcomes. All academic requirements, attendance policies, code of conduct, and curriculum standards are established by the school and may be updated periodically. Parents and students are expected to comply with school policies and participate actively in the educational process.',
+            ],
+            'user_conduct' => [
+                'title' => 'Prohibited Conduct',
+                'content' => 'When using our services, you agree not to:',
+                'items' => [
+                    'Violate any applicable laws, regulations, or school policies',
+                    'Harass, threaten, or harm other users or staff members',
+                    'Upload or transmit viruses, malware, or any harmful code',
+                    'Attempt to gain unauthorized access to our systems or other user accounts',
+                    'Impersonate another person or misrepresent your affiliation with the school',
+                    'Use our services for any commercial purpose without written permission',
+                    'Collect or harvest personal information of other users',
+                ],
+            ],
+            'intellectual_property' => [
+                'title' => 'Intellectual Property',
+                'content' => 'All content on our website, including text, graphics, logos, images, videos, software, and other materials, is the property of our school or its licensors and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from our content without explicit written permission. Student work and materials created as part of educational activities may have separate ownership rights as defined in our student handbook.',
+            ],
+            'limitation_liability' => [
+                'title' => 'Limitation of Liability',
+                'content' => 'To the fullest extent permitted by law, our school shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. This includes damages for loss of profits, data, or other intangible losses, even if we have been advised of the possibility of such damages. Our total liability to you for any claims arising from these terms shall not exceed the amount of tuition fees paid by you in the twelve months preceding the claim.',
+            ],
+            'termination' => [
+                'title' => 'Termination',
+                'content' => 'We reserve the right to terminate or suspend your access to our services immediately, without prior notice or liability, for any reason, including breach of these Terms of Service. Upon termination, your right to use the services will cease immediately. All provisions of these terms which by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, and limitations of liability.',
+            ],
+            'questions' => [
+                'title' => 'Questions About Terms',
+                'content' => 'If you have any questions or concerns about these Terms of Service, please contact us:',
+            ],
+        ],
+        'cookie' => [
+            'title' => 'Cookie Policy',
+            'subtitle' => 'Understanding how we use cookies',
+            'last_updated' => 'March 2026',
+            'what_are_cookies' => [
+                'title' => 'What Are Cookies',
+                'content' => 'Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners. Cookies help us understand how visitors use our website, remember your preferences, and improve your browsing experience.',
+            ],
+            'types_of_cookies' => [
+                'title' => 'Types of Cookies We Use',
+                'categories' => [
+                    [
+                        'name' => 'Essential Cookies',
+                        'description' => 'These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility. You cannot opt out of these cookies as they are essential for the operation of our website.',
+                    ],
+                    [
+                        'name' => 'Performance Cookies',
+                        'description' => 'These cookies collect information about how visitors use our website, such as which pages are visited most often and if error messages are received. This data helps us improve how our website works and optimize user experience.',
+                    ],
+                    [
+                        'name' => 'Functionality Cookies',
+                        'description' => 'These cookies allow our website to remember choices you make (such as your language preference or the region you are in) and provide enhanced, more personalized features.',
+                    ],
+                    [
+                        'name' => 'Targeting/Advertising Cookies',
+                        'description' => 'These cookies are used to deliver advertisements more relevant to you and your interests. They may be set by our advertising partners through our website and help measure the effectiveness of advertising campaigns.',
+                    ],
+                ],
+            ],
+            'how_we_use' => [
+                'title' => 'How We Use Cookies',
+                'content' => 'We use cookies for the following purposes:',
+                'items' => [
+                    'Authenticating users and preventing fraudulent use of user accounts',
+                    'Remembering your preferences and settings',
+                    'Analyzing website traffic and usage patterns to improve our services',
+                    'Personalizing content and features based on your interests',
+                    'Measuring the effectiveness of our marketing campaigns',
+                    'Providing social media features and analyzing social media traffic',
+                ],
+            ],
+            'managing' => [
+                'title' => 'Managing Cookies',
+                'content' => 'Most web browsers allow you to control cookies through their settings. You can set your browser to refuse cookies or delete certain cookies. However, please note that if you delete or refuse cookies, some features of our website may not function properly. Here are links to cookie management guides for popular browsers:',
+                'learn_more' => 'Learn how to manage cookies',
+                'browsers' => [
+                    [
+                        'name' => 'Google Chrome',
+                        'url' => 'https://support.google.com/chrome/answer/95647',
+                    ],
+                    [
+                        'name' => 'Mozilla Firefox',
+                        'url' => 'https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer',
+                    ],
+                    [
+                        'name' => 'Safari',
+                        'url' => 'https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac',
+                    ],
+                    [
+                        'name' => 'Microsoft Edge',
+                        'url' => 'https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09',
+                    ],
+                ],
+            ],
+            'third_party' => [
+                'title' => 'Third-Party Cookies',
+                'content' => 'In addition to our own cookies, we may use third-party cookies from trusted partners to provide analytics services, social media features, and advertising. These third parties may use cookies to collect information about your online activities across different websites. We do not control these third-party cookies and recommend reviewing the privacy policies of these third parties for more information.',
+            ],
+            'questions' => [
+                'title' => 'Questions About Cookies',
+                'content' => 'If you have questions about our use of cookies or other tracking technologies, please contact us:',
+            ],
+        ],
     ],
 ];

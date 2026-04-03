@@ -242,13 +242,16 @@
                 </p>
 
                 <div class="flex flex-wrap items-center justify-center gap-6">
-                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
+                    <a href="{{ route('privacy-policy') }}"
+                        class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
                         {{ __('site.footer.privacy') }}
                     </a>
-                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
+                    <a href="{{ route('terms-of-service') }}"
+                        class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
                         {{ __('site.footer.terms') }}
                     </a>
-                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
+                    <a href="{{ route('cookie-policy') }}"
+                        class="text-gray-500 hover:text-white text-sm transition-colors duration-300">
                         {{ __('site.footer.cookie') }}
                     </a>
                 </div>
