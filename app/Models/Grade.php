@@ -17,6 +17,7 @@ class Grade extends Model
         'notes',
         'status',
         'sort_order',
+        'image',
     ];
 
     public $translatable = ['name'];
