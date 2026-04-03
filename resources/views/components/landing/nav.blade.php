@@ -119,15 +119,15 @@
         <div class="px-4 py-6 space-y-4">
             <a href="#features" @click="closeMobileMenu"
                 class="block px-4 py-3 text-gray-700 hover:text-school-600 hover:bg-school-50 rounded-xl font-medium transition-colors">
-                {{ __('Features') }}
+                {{ __('site.nav.features') }}
             </a>
             <a href="#stats" @click="closeMobileMenu"
                 class="block px-4 py-3 text-gray-700 hover:text-school-600 hover:bg-school-50 rounded-xl font-medium transition-colors">
-                {{ __('Statistics') }}
+                {{ __('site.nav.statistics') }}
             </a>
             <a href="#contact" @click="closeMobileMenu"
                 class="block px-4 py-3 text-gray-700 hover:text-school-600 hover:bg-school-50 rounded-xl font-medium transition-colors">
-                {{ __('Contact') }}
+                {{ __('site.nav.contact') }}
             </a>
             <hr class="border-gray-200">
 

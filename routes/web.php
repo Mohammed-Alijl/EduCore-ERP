@@ -1,17 +1,25 @@
 <?php
 
+use App\Http\Controllers\Site\LandingController;
 use App\Http\Controllers\Site\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    ],
+    function () {
+        Route::middleware('throttle:web')->group(function () {
 
-Route::middleware('throttle:web')->group(function () {
+            Route::get('/', [LandingController::class, 'index'])->name('landing-page');
 
-    Route::get('/', function () { return view('site.welcome'); })->name('landing-page');
-
-    Route::middleware('auth')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+            Route::middleware('auth')->group(function () {
+                Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+                Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+                Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+            });
+        });
     });
-    require __DIR__.'/auth.php';
-});
+require __DIR__.'/auth.php';
