@@ -47,6 +47,7 @@ return [
         'saving' => 'Saving...',
         'required_hint' => 'Required fields',
         'statistics' => 'Statistics',
+        'preview' => 'Preview',
         'overview' => 'Overview',
         'sections' => 'Sections',
         'back' => 'Back',
@@ -2292,6 +2293,11 @@ return [
         'no_legal_pages' => 'No legal pages found.',
         'published' => 'Published',
         'draft' => 'Draft',
+        'info' => 'Info',
+        'legal_edit_desc' => 'Customize the content of this legal page.',
+        'legal_content_info' => 'Leave the content empty to display the default styled content. Add custom content to override the default design.',
+        'legal_content_hint' => 'Use the editor to format your content with headings, lists, and links.',
+        'meta_desc_hint' => 'A brief description for search engines (150-160 characters recommended).',
 
         'fields' => [
             'title_en' => 'Title (English)',

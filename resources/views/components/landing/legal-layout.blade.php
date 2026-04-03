@@ -1,5 +1,14 @@
-{{-- CMS_SECTION: legal_page | Editable: title, subtitle, last_updated, sections[] --}}
-@props(['title', 'subtitle', 'lastUpdated'])
+{{-- CMS_SECTION: legal_page | Editable: title, subtitle, content --}}
+@props(['title', 'subtitle', 'lastUpdated', 'page' => null])
+
+@php
+    // Use CMS data if page is provided
+    $pageTitle = $page?->title ?: $title;
+    $pageSubtitle = $page?->meta_description ?: $subtitle;
+    $pageContent = $page?->content;
+    $hasCustomContent = !empty($pageContent) && trim($pageContent) !== '';
+    $pageLastUpdated = $page?->updated_at ? $page->updated_at->format('F d, Y') : $lastUpdated;
+@endphp
 
 <x-landing.layout>
     <!-- Hero Section -->
@@ -33,20 +42,20 @@
                 <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <span class="text-school-400">{{ $title }}</span>
+                <span class="text-school-400">{{ $pageTitle }}</span>
             </nav>
 
             <!-- Title -->
             <div x-data="scrollReveal(100)" x-intersect.once="reveal()" :class="shown ? 'animate-fade-up' : 'opacity-0'">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                    {{ $title }}
+                    {{ $pageTitle }}
                 </h1>
                 <p class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-8">
-                    {{ $subtitle }}
+                    {{ $pageSubtitle }}
                 </p>
 
                 <!-- Last Updated Badge -->
-                @if ($lastUpdated)
+                @if ($pageLastUpdated)
                     <div
                         class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
                         <svg class="w-4 h-4 text-school-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,7 +64,7 @@
                         </svg>
                         <span class="text-sm text-gray-300">
                             {{ __('site.legal.last_updated') }}: <span
-                                class="text-white font-medium">{{ $lastUpdated }}</span>
+                                class="text-white font-medium">{{ $pageLastUpdated }}</span>
                         </span>
                     </div>
                 @endif
@@ -79,7 +88,18 @@
             <!-- Content Card -->
             <div x-data="scrollReveal()" x-intersect.once="reveal()" :class="shown ? 'animate-fade-up' : 'opacity-0'"
                 class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 lg:p-12 border border-gray-200 dark:border-gray-700">
-                {{ $slot }}
+
+                @if ($hasCustomContent)
+                    {{-- CMS Custom Content (HTML) --}}
+                    <div
+                        class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-a:text-school-600 prose-a:no-underline hover:prose-a:underline prose-li:text-gray-600 dark:prose-li:text-gray-300 prose-strong:text-gray-900 dark:prose-strong:text-white">
+                        {!! $pageContent !!}
+                    </div>
+                @else
+                    {{-- Default Slot Content (Translation-based) --}}
+                    {{ $slot }}
+                @endif
+
             </div>
 
             <!-- Back to Home CTA -->

@@ -1,4 +1,4 @@
-<x-landing.legal-layout :title="__('site.legal.privacy.title')" :subtitle="__('site.legal.privacy.subtitle')" :last-updated="__('site.legal.privacy.last_updated')">
+<x-landing.legal-layout :title="__('site.legal.privacy.title')" :subtitle="__('site.legal.privacy.subtitle')" :last-updated="__('site.legal.privacy.last_updated')" :page="$page ?? null">
 
     <!-- Introduction -->
     <div class="mb-12">

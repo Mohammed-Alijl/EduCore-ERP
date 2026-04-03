@@ -1,4 +1,4 @@
-<x-landing.legal-layout :title="__('site.legal.terms.title')" :subtitle="__('site.legal.terms.subtitle')" :last-updated="__('site.legal.terms.last_updated')">
+<x-landing.legal-layout :title="__('site.legal.terms.title')" :subtitle="__('site.legal.terms.subtitle')" :last-updated="__('site.legal.terms.last_updated')" :page="$page ?? null">
 
     <!-- Acceptance of Terms -->
     <div class="mb-12">
