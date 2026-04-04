@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ExternalApiSettingRequest;
+use App\Http\Requests\Admin\Settings\ExternalApiSettingRequest;
 use App\Models\ExternalApiSetting;
 use App\Services\ExternalApiSettingService;
 use Illuminate\View\View;
