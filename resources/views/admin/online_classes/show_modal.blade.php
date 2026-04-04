@@ -1,5 +1,5 @@
 @push('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/admin/css/online_class/show.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/admin/css/LMS/online_class/show.css') }}">
 @endpush
 
 <div class="modal fade" id="onlineClassShowModal" tabindex="-1" role="dialog" aria-hidden="true">

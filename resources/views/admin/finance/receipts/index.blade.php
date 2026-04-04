@@ -10,7 +10,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/receipts/receipt-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Finance/receipts/receipt-crud.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

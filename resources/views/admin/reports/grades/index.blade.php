@@ -9,7 +9,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/reports/grades-report.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Reports/grades-report.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

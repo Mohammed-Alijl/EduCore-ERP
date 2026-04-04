@@ -5,7 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/cms.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/CMS/cms.css') }}" rel="stylesheet">
     <style>
         .ql-editor {
             min-height: 300px;

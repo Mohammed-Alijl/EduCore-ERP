@@ -4,7 +4,7 @@
 
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/student/grades.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/grades.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

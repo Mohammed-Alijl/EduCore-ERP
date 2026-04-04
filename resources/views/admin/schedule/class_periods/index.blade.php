@@ -10,7 +10,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/schedule/class-periods.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Schedule/class-periods.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

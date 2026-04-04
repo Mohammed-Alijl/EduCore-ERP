@@ -18,11 +18,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
 
     {{-- Student CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/student/student-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/student-crud.css') }}" rel="stylesheet">
     {{-- Student Show Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/student/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/show.css') }}" rel="stylesheet">
     {{-- Student Finance Modal Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/student/finance.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/finance.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

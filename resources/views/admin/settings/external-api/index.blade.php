@@ -4,20 +4,7 @@
 
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/external-api-settings.css') }}" rel="stylesheet">
-    <style>
-        .ajax-loader {
-            display: none;
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        [dir="rtl"] .ajax-loader {
-            right: auto;
-            left: 1.5rem;
-        }
-    </style>
+    <link href="{{ URL::asset('assets/admin/css/Settings/external-api-settings.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

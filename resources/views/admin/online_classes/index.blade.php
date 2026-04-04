@@ -7,6 +7,9 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/LMS/online_class/crud-online-class.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/LMS/online_class/show.css') }}" rel="stylesheet">
+
 
 @endsection
 

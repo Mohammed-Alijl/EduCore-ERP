@@ -3,7 +3,7 @@
 @section('title', __('admin.cms.legal_title'))
 
 @section('css')
-    <link href="{{ URL::asset('assets/css/cms.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/CMS/cms.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

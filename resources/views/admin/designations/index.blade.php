@@ -10,8 +10,8 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     {{-- Designation CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/designation/designation-crud.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/designation/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/HR/designation/designation-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/HR/designation/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

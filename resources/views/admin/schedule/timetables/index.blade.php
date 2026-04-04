@@ -5,7 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/schedule/timetable.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Schedule/timetable.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

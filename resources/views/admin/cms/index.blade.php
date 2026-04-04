@@ -4,7 +4,7 @@
 
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/cms.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/CMS/cms.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

@@ -14,7 +14,7 @@
     <link href="{{URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
 
     {{-- Admins Dedicated CSS --}}
-    <link href="{{ URL::asset('assets/admin/css/admin/admin-crud.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/admin/css/Users/admin/admin-crud.css') }}" rel="stylesheet" />
 @endsection
 
 @section('page-header')

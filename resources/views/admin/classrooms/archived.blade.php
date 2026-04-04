@@ -11,8 +11,8 @@
 
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     {{-- Classroom Archive Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/classroom/archive.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/classroom/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/classroom/archive.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/classroom/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

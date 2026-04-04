@@ -9,8 +9,8 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/grade/grade-crud.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/finance/finance-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/grade/grade-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Finance/finance-crud.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

@@ -1,5 +1,5 @@
 @push('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/admin/css/finance/show.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/admin/css/Finance/show.css') }}">
 @endpush
 
 <div class="modal fade" id="showFeeModal" tabindex="-1" role="dialog" aria-hidden="true">

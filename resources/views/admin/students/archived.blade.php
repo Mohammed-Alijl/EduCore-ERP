@@ -9,9 +9,9 @@
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
 
     {{-- Archive Student Page --}}
-    <link href="{{ URL::asset('assets/admin/css/student/archive.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/archive.css') }}" rel="stylesheet">
     {{-- Student Show Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/student/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

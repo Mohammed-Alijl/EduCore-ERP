@@ -5,7 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     {{-- Attendance CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/attendance/attendance-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/HR/attendance/attendance-crud.css') }}" rel="stylesheet">
     <!-- Sweet Alert 2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
 @endsection

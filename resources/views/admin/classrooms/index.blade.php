@@ -13,8 +13,8 @@
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
     {{-- Classroom CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/classroom/classroom-crud.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/classroom/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/classroom/classroom-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/classroom/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

@@ -3,7 +3,7 @@
 @section('title', __('admin.days_of_week.title'))
 
 @section('css')
-    <link href="{{ URL::asset('assets/admin/css/settings/days-of-week.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Settings/days-of-week.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

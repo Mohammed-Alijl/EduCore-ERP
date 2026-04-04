@@ -9,8 +9,8 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     {{-- Guardian Dedicated CSS --}}
-    <link href="{{ URL::asset('assets/admin/css/guardian/guardian-crud.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('assets/admin/css/guardian/show.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/admin/css/Users/guardian/guardian-crud.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/admin/css/Users/guardian/show.css') }}" rel="stylesheet" />
     
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     {{--  File uploader css --}}

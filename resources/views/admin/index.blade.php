@@ -3,7 +3,7 @@
 @section('title', trans('admin.sidebar.dashboard'))
 
 @section('css')
-    <link href="{{ URL::asset('assets/admin/css/dashboard/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Dashboard/dashboard.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

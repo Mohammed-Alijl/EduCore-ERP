@@ -19,8 +19,8 @@
     <!--Internal telephoneInput css-->
     <link rel="stylesheet" href="{{URL::asset('assets/admin/plugins/telephoneinput/telephoneinput.css')}}">
     {{-- Teacher CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/teacher/teacher-crud.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/teacher/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/teacher/teacher-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/teacher/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

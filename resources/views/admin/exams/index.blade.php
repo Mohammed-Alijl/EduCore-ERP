@@ -12,7 +12,7 @@
     {{-- Select2 --}}
     <link href="{{ URL::asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     {{-- Exam CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/exam/crud-exam.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Exams/exam/crud-exam.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

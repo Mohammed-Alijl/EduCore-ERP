@@ -9,8 +9,8 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/reports/financial-report.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/student/finance.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Reports/financial-report.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Users/student/finance.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

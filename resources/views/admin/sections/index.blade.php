@@ -12,8 +12,8 @@
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css"/>
     {{-- Section CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/section/section-crud.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/section/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/section/section-crud.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/section/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

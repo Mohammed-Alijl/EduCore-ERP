@@ -23,7 +23,7 @@
 {{-- Header Icons Fix for ApexCharts/Vite conflicts --}}
 <link href="{{ URL::asset('assets/admin/css/header-icons-fix.css') }}" rel="stylesheet">
 {{-- Notifications --}}
-<link href="{{ URL::asset('assets/admin/css/notifications.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/admin/css/System/notifications/notifications.css') }}" rel="stylesheet">
 
 @yield('css')
 <!--- Style css -->

@@ -11,8 +11,8 @@
 
     <link href="{{URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     {{-- Grade CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/grade/archive.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/grade/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/grade/archive.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/grade/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

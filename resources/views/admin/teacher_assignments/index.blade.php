@@ -14,7 +14,7 @@
     <link href="{{ URL::asset('assets/admin/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 
     {{-- Teacher Assignments Dedicated CSS --}}
-    <link href="{{ URL::asset('assets/admin/css/teacher_assignment/teacher-assignment-crud.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/admin/css/LMS/teacher_assignment/teacher-assignment-crud.css') }}" rel="stylesheet" />
 @endsection
 
 @section('page-header')

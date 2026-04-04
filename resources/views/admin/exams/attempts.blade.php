@@ -10,7 +10,7 @@
     {{-- SweetAlert2 CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
     {{-- Exam CRUD Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/exam/crud-exam.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Exams/exam/crud-exam.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')

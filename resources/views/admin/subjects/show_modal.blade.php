@@ -207,34 +207,4 @@ $(function () {
 </script>
 @endpush
 
-<style>
-    /* ─── DARK THEME OVERRIDES FOR SHOW MODAL ─── */
-    .dark-theme #showModal .modal-content {
-        background-color: #1e212b !important;
-    }
-    .dark-theme #showModal .card {
-        background-color: #14161f !important;
-    }
-    .dark-theme #showModal .text-dark {
-        color: #f1f5f9 !important;
-    }
-    .dark-theme #showModal .modal-footer.bg-light {
-        background-color: #14161f !important;
-        border-top: 1px solid rgba(255,255,255,0.05) !important;
-    }
-    .dark-theme #showModal hr {
-        border-color: rgba(255,255,255,0.1) !important;
-    }
-    .dark-theme #showModal .btn-light {
-        background-color: rgba(255,255,255,0.05) !important;
-        border-color: transparent !important;
-        color: #e2e8f0;
-    }
-    .dark-theme #showModal .text-muted {
-        color: #94a3b8 !important;
-    }
-    .dark-theme #showModal .close {
-        color: #f1f5f9 !important;
-        opacity: 0.8;
-    }
-</style>
+<link href="{{ URL::asset('assets/admin/css/LMS/subject/modals.css') }}" rel="stylesheet">

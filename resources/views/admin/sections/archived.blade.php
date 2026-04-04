@@ -8,8 +8,8 @@
     <link href="{{ URL::asset('assets/admin/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/admin/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
     {{-- Section Archive Styles --}}
-    <link href="{{ URL::asset('assets/admin/css/section/archive.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/admin/css/section/show.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/section/archive.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/admin/css/Academic/section/show.css') }}" rel="stylesheet">
 @endsection
 
 @section('page-header')
