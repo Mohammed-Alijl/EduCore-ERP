@@ -53,7 +53,8 @@
                             </span>
                             {{-- Growth Progress Bar --}}
                             <div class="stat-growth-bar">
-                                <div class="stat-growth-bar-fill" style="width: {{ min(abs($statCards['students']['growth']), 100) }}%"></div>
+                                <div class="stat-growth-bar-fill"
+                                    style="width: {{ min(abs($statCards['students']['growth']), 100) }}%"></div>
                             </div>
                             {{-- Sparkline Placeholder --}}
                             <div class="stat-sparkline" id="sparkline-students"></div>
@@ -80,14 +81,16 @@
                         <div style="flex: 1;">
                             <p class="stat-label mb-1">{{ trans('admin.dashboard.total_teachers') }}</p>
                             <h3 class="stat-value">{{ number_format($statCards['teachers']['total']) }}</h3>
-                            <span class="stat-growth {{ $statCards['teachers']['growth'] >= 0 ? 'positive' : 'negative' }}">
+                            <span
+                                class="stat-growth {{ $statCards['teachers']['growth'] >= 0 ? 'positive' : 'negative' }}">
                                 <i class="fas fa-arrow-{{ $statCards['teachers']['growth'] >= 0 ? 'up' : 'down' }}"></i>
                                 {{ abs($statCards['teachers']['growth']) }}%
                                 <small class="ml-1">{{ trans('admin.dashboard.vs_last_month') }}</small>
                             </span>
                             {{-- Growth Progress Bar --}}
                             <div class="stat-growth-bar">
-                                <div class="stat-growth-bar-fill" style="width: {{ min(abs($statCards['teachers']['growth']), 100) }}%"></div>
+                                <div class="stat-growth-bar-fill"
+                                    style="width: {{ min(abs($statCards['teachers']['growth']), 100) }}%"></div>
                             </div>
                             {{-- Sparkline Placeholder --}}
                             <div class="stat-sparkline" id="sparkline-teachers"></div>
@@ -121,7 +124,8 @@
                             </span>
                             {{-- Growth Progress Bar --}}
                             <div class="stat-growth-bar">
-                                <div class="stat-growth-bar-fill" style="width: {{ min(abs($statCards['revenue']['growth']), 100) }}%"></div>
+                                <div class="stat-growth-bar-fill"
+                                    style="width: {{ min(abs($statCards['revenue']['growth']), 100) }}%"></div>
                             </div>
                             {{-- Sparkline Placeholder --}}
                             <div class="stat-sparkline" id="sparkline-revenue"></div>
@@ -154,7 +158,8 @@
                             </span>
                             {{-- Growth Progress Bar --}}
                             <div class="stat-growth-bar">
-                                <div class="stat-growth-bar-fill" style="width: {{ $statCards['attendance']['rate'] }}%"></div>
+                                <div class="stat-growth-bar-fill" style="width: {{ $statCards['attendance']['rate'] }}%">
+                                </div>
                             </div>
                             {{-- Sparkline Placeholder --}}
                             <div class="stat-sparkline" id="sparkline-attendance"></div>
@@ -187,10 +192,8 @@
                         <h4 class="card-title mb-1">{{ trans('admin.dashboard.monthly_enrollment') }}</h4>
                         <p class="card-subtitle mb-0">{{ trans('admin.dashboard.enrollment_subtitle') }}</p>
                     </div>
-                    <button
-                        @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
-                        class="chart-refresh-btn"
-                        :class="{ 'refreshing': refreshing }">
+                    <button @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
+                        class="chart-refresh-btn" :class="{ 'refreshing': refreshing }">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -208,10 +211,8 @@
                         <h4 class="card-title mb-1">{{ trans('admin.dashboard.attendance_overview') }}</h4>
                         <p class="card-subtitle mb-0">{{ trans('admin.dashboard.attendance_subtitle') }}</p>
                     </div>
-                    <button
-                        @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
-                        class="chart-refresh-btn"
-                        :class="{ 'refreshing': refreshing }">
+                    <button @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
+                        class="chart-refresh-btn" :class="{ 'refreshing': refreshing }">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -236,10 +237,8 @@
                         <h4 class="card-title mb-1">{{ trans('admin.dashboard.revenue_vs_invoices') }}</h4>
                         <p class="card-subtitle mb-0">{{ trans('admin.dashboard.revenue_subtitle') }}</p>
                     </div>
-                    <button
-                        @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
-                        class="chart-refresh-btn"
-                        :class="{ 'refreshing': refreshing }">
+                    <button @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
+                        class="chart-refresh-btn" :class="{ 'refreshing': refreshing }">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -257,10 +256,8 @@
                         <h4 class="card-title mb-1">{{ trans('admin.dashboard.students_per_grade') }}</h4>
                         <p class="card-subtitle mb-0">{{ trans('admin.dashboard.grade_subtitle') }}</p>
                     </div>
-                    <button
-                        @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
-                        class="chart-refresh-btn"
-                        :class="{ 'refreshing': refreshing }">
+                    <button @click="refreshing = true; setTimeout(() => refreshing = false, 1500)"
+                        class="chart-refresh-btn" :class="{ 'refreshing': refreshing }">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -300,10 +297,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($recentInvoices as $invoice)
-                                        <tr class="table-row-actions" x-data="{ showActions: false }" @mouseenter="showActions = true" @mouseleave="showActions = false">
+                                        <tr class="table-row-actions" x-data="{ showActions: false }"
+                                            @mouseenter="showActions = true" @mouseleave="showActions = false">
                                             <td>{{ $invoice->student?->name ?? '—' }}</td>
                                             <td>
-                                                <span class="badge badge-soft-primary">{{ $invoice->fee?->title ?? '—' }}</span>
+                                                <span
+                                                    class="badge badge-soft-primary">{{ $invoice->fee?->title ?? '—' }}</span>
                                             </td>
                                             <td class="text-right font-weight-bold">
                                                 ${{ number_format($invoice->amount, 2) }}
@@ -311,10 +310,12 @@
                                             <td>{{ $invoice->invoice_date?->format('d M Y') ?? '—' }}</td>
                                             <td class="text-center">
                                                 <div class="table-actions" x-show="showActions" x-transition>
-                                                    <a href="#" class="table-action-btn table-action-view" title="View">
+                                                    <a href="#" class="table-action-btn table-action-view"
+                                                        title="View">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a href="#" class="table-action-btn table-action-edit" title="Edit">
+                                                    <a href="#" class="table-action-btn table-action-edit"
+                                                        title="Edit">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </div>
@@ -347,8 +348,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="75, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="75, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-book"></i>
@@ -361,8 +361,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="60, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="60, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-door-open"></i>
@@ -375,8 +374,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="85, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="85, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-users"></i>
@@ -389,8 +387,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="70, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="70, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-file-alt"></i>
@@ -403,8 +400,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="55, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="55, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-book-open"></i>
@@ -417,8 +413,7 @@
                                 <svg class="quick-stat-progress" viewBox="0 0 36 36">
                                     <path class="quick-stat-progress-bg"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="quick-stat-progress-fill"
-                                        stroke-dasharray="65, 100"
+                                    <path class="quick-stat-progress-fill" stroke-dasharray="65, 100"
                                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
                                 <i class="fas fa-id-badge"></i>
@@ -454,7 +449,10 @@
                                 <div class="upcoming-class-avatar">
                                     @php
                                         $teacherName = $class->teacher?->name ?? 'Unknown';
-                                        $initials = collect(explode(' ', $teacherName))->map(fn($word) => strtoupper(substr($word, 0, 1)))->take(2)->join('');
+                                        $initials = collect(explode(' ', $teacherName))
+                                            ->map(fn($word) => strtoupper(substr($word, 0, 1)))
+                                            ->take(2)
+                                            ->join('');
                                     @endphp
                                     <span class="avatar-text">{{ $initials }}</span>
                                 </div>
@@ -508,8 +506,18 @@
                                 <div class="gauge-label">{{ trans('admin.dashboard.' . $gauge['label']) }}</div>
                                 {{-- Performance Tier Badge --}}
                                 @php
-                                    $tier = $gauge['value'] >= 80 ? 'excellent' : ($gauge['value'] >= 60 ? 'good' : 'improve');
-                                    $tierLabel = $tier === 'excellent' ? 'Excellent' : ($tier === 'good' ? 'Good' : 'Needs Work');
+                                    $tier =
+                                        $gauge['value'] >= 80
+                                            ? 'excellent'
+                                            : ($gauge['value'] >= 60
+                                                ? 'good'
+                                                : 'improve');
+                                    $tierLabel =
+                                        $tier === 'excellent'
+                                            ? 'Excellent'
+                                            : ($tier === 'good'
+                                                ? 'Good'
+                                                : 'Needs Work');
                                 @endphp
                                 <span class="gauge-tier-badge gauge-tier-{{ $tier }}">{{ $tierLabel }}</span>
                             </div>
@@ -534,9 +542,12 @@
                         <p class="card-subtitle mb-0">{{ trans('admin.dashboard.activity_subtitle') }}</p>
                     </div>
                     <div class="activity-filter-btns" x-data="{ filter: 'all' }">
-                        <button @click="filter = 'all'" :class="{ 'active': filter === 'all' }" class="activity-filter-btn">All</button>
-                        <button @click="filter = 'student'" :class="{ 'active': filter === 'student' }" class="activity-filter-btn">Students</button>
-                        <button @click="filter = 'invoice'" :class="{ 'active': filter === 'invoice' }" class="activity-filter-btn">Invoices</button>
+                        <button @click="filter = 'all'" :class="{ 'active': filter === 'all' }"
+                            class="activity-filter-btn">All</button>
+                        <button @click="filter = 'student'" :class="{ 'active': filter === 'student' }"
+                            class="activity-filter-btn">Students</button>
+                        <button @click="filter = 'invoice'" :class="{ 'active': filter === 'invoice' }"
+                            class="activity-filter-btn">Invoices</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -548,7 +559,10 @@
                                     <div class="activity-avatar activity-avatar-{{ $activity['color'] }}">
                                         @php
                                             $name = $activity['title'] ?? 'Unknown';
-                                            $initials = collect(explode(' ', $name))->map(fn($word) => strtoupper(substr($word, 0, 1)))->take(2)->join('');
+                                            $initials = collect(explode(' ', $name))
+                                                ->map(fn($word) => strtoupper(substr($word, 0, 1)))
+                                                ->take(2)
+                                                ->join('');
                                         @endphp
                                         <span class="avatar-text">{{ $initials }}</span>
                                     </div>
