@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\System;
 
 use App\DTOs\ActivityLogFilterDTO;
 use App\Http\Controllers\Controller;
