@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\CmsController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -94,9 +95,7 @@ Route::group(
                 Route::middleware(['admin.verified'])->group(function () {
 
                     // ─── Dashboard ───────────────────────────────────────────────────────────────
-                    Route::get('/', function () {
-                        return view('admin.index');
-                    })->name('dashboard');
+                    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
                     // ─── Admins ───────────────────────────────────────────────────────────────
                     Route::resource('admins', AdminController::class)->except(['show', 'create', 'edit']);
