@@ -568,6 +568,11 @@
                                     href="{{ route('admin.settings.days_of_week.index') }}">{{ __('admin.sidebar.settings_days_of_week') }}</a>
                             </li>
                         @endcan
+                        @can('view_external_api_settings')
+                            <li><a class="slide-item"
+                                    href="{{ route('admin.settings.external-api.index') }}">{{ __('admin.sidebar.settings_external_api') }}</a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcanany

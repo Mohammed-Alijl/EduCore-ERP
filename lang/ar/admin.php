@@ -107,6 +107,7 @@ return [
         'settings_general' => 'الإعدادات العامة',
         'settings_payment_gateways' => 'بوابات الدفع',
         'settings_days_of_week' => 'أيام الأسبوع',
+        'settings_external_api' => 'الواجهات الخارجية (APIs)',
         'grades' => 'المراحل الدراسية',
         'academic_years' => 'السنوات الدراسية',
         'classes' => 'الصفوف الدراسية',
@@ -2270,6 +2271,40 @@ return [
                 'reorder' => 'فشل إعادة ترتيب الأقسام.',
                 'toggle' => 'فشل تغيير ظهور القسم.',
                 'update_page' => 'فشل تحديث الصفحة القانونية.',
+            ],
+        ],
+    ],
+    'external_api' => [
+        'title' => 'الواجهات الخارجية (APIs)',
+        'subtitle' => 'إدارة الخدمات الخارجية ومفاتيح الربط البرمجية',
+        'fields' => [
+            'name' => 'اسم الخدمة',
+            'slug' => 'الرمز المرجعي',
+            'status' => 'الحالة',
+            'is_active' => 'نشط',
+            'credentials' => 'بيانات الاعتماد',
+            'description' => 'الوصف',
+        ],
+        'mailgun' => [
+            'domain' => 'نطاق ميل جن (Domain)',
+            'secret' => 'المفتاح السري (Secret)',
+            'endpoint' => 'نقطة النهاية (Endpoint)',
+        ],
+        'zoom' => [
+            'client_id' => 'معرف العميل (Client ID)',
+            'client_secret' => 'سر العميل (Client Secret)',
+            'account_id' => 'معرف الحساب (Account ID)',
+        ],
+        'firebase' => [
+            'api_key' => 'مفتاح API فايربيس',
+            'project_id' => 'معرف المشروع',
+            'messaging_sender_id' => 'معرف مرسل الرسائل',
+            'app_id' => 'معرف التطبيق',
+        ],
+        'messages' => [
+            'success' => [
+                'update' => 'تم تحديث إعدادات API بنجاح.',
+                'toggle' => 'تم تغيير حالة API بنجاح.',
             ],
         ],
     ],

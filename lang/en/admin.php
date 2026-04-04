@@ -141,6 +141,7 @@ return [
         'settings_general' => 'General Settings',
         'settings_payment_gateways' => 'Payment Gateways',
         'settings_days_of_week' => 'Days of Week',
+        'settings_external_api' => 'External APIs',
         'schedule' => 'Schedule',
         'schedule_class_periods' => 'Class Periods',
         'class_periods' => 'Class Periods',
@@ -2161,6 +2162,40 @@ return [
             'logo_image' => 'Logo must be an image file.',
             'logo_max' => 'Logo file size must not exceed 2MB.',
             'website_url' => 'Please enter a valid website URL.',
+        ],
+    ],
+    'external_api' => [
+        'title' => 'External APIs',
+        'subtitle' => 'Manage external third-party services and API keys',
+        'fields' => [
+            'name' => 'Service Name',
+            'slug' => 'Slug',
+            'status' => 'Status',
+            'is_active' => 'Is Active',
+            'credentials' => 'Credentials',
+            'description' => 'Description',
+        ],
+        'mailgun' => [
+            'domain' => 'Mailgun Domain',
+            'secret' => 'Mailgun Secret',
+            'endpoint' => 'Mailgun Endpoint',
+        ],
+        'zoom' => [
+            'client_id' => 'Zoom Client ID',
+            'client_secret' => 'Zoom Client Secret',
+            'account_id' => 'Zoom Account ID',
+        ],
+        'firebase' => [
+            'api_key' => 'Firebase API Key',
+            'project_id' => 'Firebase Project ID',
+            'messaging_sender_id' => 'Messaging Sender ID',
+            'app_id' => 'App ID',
+        ],
+        'messages' => [
+            'success' => [
+                'update' => 'API settings updated successfully.',
+                'toggle' => 'API status toggled successfully.',
+            ],
         ],
     ],
 

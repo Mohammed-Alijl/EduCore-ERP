@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\Schedule\ClassPeriodController;
 use App\Http\Controllers\Admin\Schedule\TimetableController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\Settings\DayOfWeekController;
+use App\Http\Controllers\Admin\Settings\ExternalApiSettingController;
 use App\Http\Controllers\Admin\Settings\GeneralSettingController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\StudentController;
@@ -367,6 +368,13 @@ Route::group(
                             Route::get('/', [DayOfWeekController::class, 'index'])->name('index');
                             Route::put('/{dayOfWeek}', [DayOfWeekController::class, 'update'])->name('update');
                             Route::post('/toggle-all', [DayOfWeekController::class, 'toggleAll'])->name('toggle_all');
+                        });
+
+                        // External API Settings
+                        Route::prefix('external-api')->name('external-api.')->group(function () {
+                            Route::get('/', [ExternalApiSettingController::class, 'index'])->name('index');
+                            Route::put('/{external_api_setting}', [ExternalApiSettingController::class, 'update'])->name('update');
+                            Route::post('/{external_api_setting}/toggle-status', [ExternalApiSettingController::class, 'toggleStatus'])->name('toggle_status');
                         });
                     });
 

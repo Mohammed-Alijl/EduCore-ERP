@@ -49,6 +49,7 @@ class RoleSeeder extends Seeder
             'classPeriods' => ['view', 'create', 'edit', 'delete'],
             'timetables' => ['view', 'create', 'edit', 'delete'],
             'cms' => ['view', 'edit'],
+            'external_api_settings' => ['view', 'edit'],
         ];
 
         foreach ($permissions as $module => $actions) {
