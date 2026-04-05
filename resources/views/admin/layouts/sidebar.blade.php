@@ -4,15 +4,15 @@
 				<div class="tab-menu-heading border-0 p-3">
 					<div class="card-title mb-0">{{__('admin.header.notifications')}}</div>
 					<div class="card-options mr-auto">
-						<a href="#" class="sidebar-remove"><i class="fe fe-x"></i></a>
+						<a href="#" class="sidebar-remove"><i class="las la-times"></i></a>
 					</div>
 				</div>
 				<div class="panel-body tabs-menu-body latest-tasks p-0 border-0">
 					<div class="tabs-menu ">
 						<!-- Tabs -->
 						<ul class="nav panel-tabs">
-							<li class=""><a href="#messages" class="active" data-toggle="tab"><i class="ion ion-md-chatboxes tx-18 ml-2"></i>{{__('admin.header.messages')}}</a></li>
-							<li><a href="#notifications" data-toggle="tab"><i class="ion ion-md-notifications tx-18  ml-2"></i> {{__('admin.header.notifications')}}</a></li>
+							<li class=""><a href="#messages" class="active" data-toggle="tab"><i class="las la-comments tx-18 ml-2"></i>{{__('admin.header.messages')}}</a></li>
+							<li><a href="#notifications" data-toggle="tab"><i class="las la-bell tx-18  ml-2"></i> {{__('admin.header.notifications')}}</a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
@@ -27,7 +27,7 @@
 									</p>
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="d-flex align-items-center">
-											<i class="mdi mdi-clock text-muted ml-1"></i>
+											<i class="las la-clock text-muted ml-1"></i>
 											<small class="text-muted ml-auto">30 mins ago</small>
 											<p class="mb-0"></p>
 										</div>

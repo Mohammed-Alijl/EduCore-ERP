@@ -174,7 +174,7 @@
                                 </g>
                             </g>
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.teachers') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_teachers')
                             <li><a class="slide-item"
@@ -204,7 +204,7 @@
                             <path
                                 d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm5 12.99-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72zm-5-3.27L5.18 9 12 5.28 18.82 9 12 12.72z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.students') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         <li><a class="slide-item"
                                 href="{{ route('admin.Users.students.index') }}">{{ __('admin.sidebar.students') }}</a></li>
@@ -290,7 +290,7 @@
                         <path
                             d="M5 22h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM5 8h14v12H5V8z" />
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.schedule') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_classPeriods')
                         <li><a class="slide-item"
@@ -385,7 +385,7 @@
                         <path
                             d="M11.5 17.1c-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79z" />
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.fees_parent') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_fee_categories')
                         <li><a class="slide-item"
@@ -473,7 +473,7 @@
                             <path
                                 d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.website') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_cms')
                             <li><a class="slide-item"
@@ -507,7 +507,7 @@
                             </g>
                         </g>
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.reports') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_attendanceReports')
                         <li><a class="slide-item"
@@ -551,7 +551,7 @@
                             <path
                                 d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.settings') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_generalSettings')
                             <li><a class="slide-item"
