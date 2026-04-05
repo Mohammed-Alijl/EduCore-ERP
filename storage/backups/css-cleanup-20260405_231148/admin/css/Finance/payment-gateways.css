@@ -1,0 +1,548 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   PAYMENT GATEWAYS — Cards Layout Stylesheet
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   1. PAGE HEADER
+───────────────────────────────────────────── */
+.pg-page-header {
+    margin-bottom: 2rem;
+}
+
+.pg-page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+}
+
+.pg-page-subtitle {
+    font-size: 0.9rem;
+    color: #718096;
+    font-weight: 400;
+}
+
+.pg-gateway-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(78, 115, 223, 0.1);
+    color: #4e73df;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────
+   2. CARD GRID
+───────────────────────────────────────────── */
+.pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .pg-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   3. GATEWAY CARD
+───────────────────────────────────────────── */
+.pg-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.pg-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+.pg-card.pg-card--inactive {
+    opacity: 0.7;
+}
+
+.pg-card.pg-card--inactive:hover {
+    opacity: 1;
+}
+
+.pg-card.pg-card--not-activated {
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #fafbff 0%, #f7f8fc 100%);
+}
+
+/* ─── Card Header ─── */
+.pg-card__header {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.pg-card__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    background: linear-gradient(135deg, var(--pg-color-from, #8b5cf6) 0%, var(--pg-color-to, #7c3aed) 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pg-card:hover .pg-card__icon {
+    transform: scale(1.08);
+}
+
+.pg-card__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.pg-card__name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pg-card__code {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'SFMono-Regular', 'Consolas', monospace;
+}
+
+.pg-card__type-badge {
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pg-card__type-badge--online {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+}
+
+.pg-card__type-badge--offline {
+    background: rgba(100, 116, 139, 0.1);
+    color: #64748b;
+}
+
+/* ─── Card Body ─── */
+.pg-card__body {
+    padding: 1.25rem 1.5rem;
+}
+
+.pg-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pg-card__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.pg-card__meta-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pg-card__meta-value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.pg-card__meta-value--accent {
+    color: #f59e0b;
+}
+
+/* ─── Card Footer ─── */
+.pg-card__footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    gap: 0.75rem;
+}
+
+/* ─── Status Toggle ─── */
+.pg-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.pg-toggle__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.pg-toggle__slider {
+    width: 44px;
+    height: 24px;
+    background: #cbd5e1;
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pg-toggle__slider::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.pg-toggle__input:checked + .pg-toggle__slider {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.pg-toggle__input:checked + .pg-toggle__slider::after {
+    transform: translateX(20px);
+}
+
+.pg-toggle__label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* ─── Action Buttons ─── */
+.pg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.pg-btn--configure {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(78, 115, 223, 0.25);
+}
+
+.pg-btn--configure:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(78, 115, 223, 0.35);
+    color: #fff;
+}
+
+.pg-btn--activate {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.25);
+}
+
+.pg-btn--activate:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.35);
+    color: #fff;
+}
+
+.pg-btn i {
+    font-size: 1rem;
+}
+
+/* ─── Not Activated Overlay ─── */
+.pg-card__not-activated {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.pg-card__not-activated-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* ─── Settings Indicator ─── */
+.pg-card__settings-hint {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.pg-card__settings-hint i {
+    font-size: 0.85rem;
+}
+
+/* ─── Status Badge ─── */
+.pg-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.pg-status-badge--active {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.pg-status-badge--inactive {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.pg-status-badge__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.pg-status-badge--active .pg-status-badge__dot {
+    background: #10b981;
+}
+
+.pg-status-badge--inactive .pg-status-badge__dot {
+    background: #ef4444;
+}
+
+/* ════════════════════════════════════════════════
+   EDIT MODAL — Enhanced for Payment Gateways
+════════════════════════════════════════════════ */
+#editPaymentGatewayModal {
+    --modal-accent: #4e73df;
+    --modal-accent-dark: #224abe;
+    --modal-accent-glow: rgba(78, 115, 223, 0.3);
+    --modal-accent-focus: rgba(78, 115, 223, 0.18);
+}
+
+#editPaymentGatewayModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#editPaymentGatewayModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.75rem;
+    border-bottom: none;
+}
+
+#editPaymentGatewayModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+#editPaymentGatewayModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+#editPaymentGatewayModal .modal-header .close:hover {
+    color: #fff;
+}
+
+#editPaymentGatewayModal .form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+/* ─── Activate Modal ─── */
+#activateGatewayModal {
+    --modal-accent: #10b981;
+    --modal-accent-dark: #059669;
+    --modal-accent-glow: rgba(16, 185, 129, 0.3);
+    --modal-accent-focus: rgba(16, 185, 129, 0.18);
+}
+
+#activateGatewayModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#activateGatewayModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.75rem;
+    border-bottom: none;
+}
+
+#activateGatewayModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+#activateGatewayModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+#activateGatewayModal .modal-header .close:hover {
+    color: #fff;
+}
+
+#activateGatewayModal .form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+/* ════════════════════════════════════════════════
+   DARK THEME OVERRIDES
+════════════════════════════════════════════════ */
+.dark-theme .pg-page-title {
+    color: #e2e8f0;
+}
+
+.dark-theme .pg-page-subtitle {
+    color: #8896b3;
+}
+
+.dark-theme .pg-gateway-count {
+    background: rgba(78, 115, 223, 0.15);
+    color: #7b96f0;
+}
+
+.dark-theme .pg-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .pg-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .pg-card.pg-card--not-activated {
+    background: linear-gradient(135deg, #1a1d27 0%, #1e212b 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .pg-card__header {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.dark-theme .pg-card__name {
+    color: #e2e8f0;
+}
+
+.dark-theme .pg-card__code {
+    color: #64748b;
+}
+
+.dark-theme .pg-card__meta-label {
+    color: #64748b;
+}
+
+.dark-theme .pg-card__meta-value {
+    color: #cbd5e1;
+}
+
+.dark-theme .pg-card__footer {
+    border-top-color: rgba(255, 255, 255, 0.04);
+}
+
+.dark-theme .pg-toggle__slider {
+    background: #334155;
+}
+
+.dark-theme .pg-toggle__label {
+    color: #8896b3;
+}
+
+.dark-theme .pg-card__not-activated-text {
+    color: #64748b;
+}
+
+.dark-theme .pg-card__settings-hint {
+    color: #64748b;
+}
+
+/* Dark theme modals */
+.dark-theme #editPaymentGatewayModal .modal-content,
+.dark-theme #activateGatewayModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #editPaymentGatewayModal .modal-header {
+    background: linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+}
+
+.dark-theme #activateGatewayModal .modal-header {
+    background: linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+}
+
+.dark-theme #editPaymentGatewayModal .form-control-modern,
+.dark-theme #activateGatewayModal .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #editPaymentGatewayModal .form-control-modern:focus,
+.dark-theme #activateGatewayModal .form-control-modern:focus {
+    background: #14161f;
+    color: #fff;
+}
+
+.dark-theme .finance-form-label {
+    color: #cbd5e1;
+}

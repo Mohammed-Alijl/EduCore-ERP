@@ -1,0 +1,199 @@
+/* ══════════════════════════════════════════════════════════
+   TEACHER SHOW MODAL
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Modal Shell ─── */
+#showModal .modal-content {
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#showModal .modal-header {
+    background: #fff;
+    border-bottom: 1px solid #f0f2f8;
+    padding: 1.25rem 1.5rem;
+}
+
+#showModal .modal-footer {
+    background: #f8f9fc;
+    border-top: 1px solid #f0f2f8;
+    padding: 1rem 1.5rem;
+}
+
+/* ─── Avatar Section ─── */
+.user-info-card {
+    background: linear-gradient(135deg, #f8f9fc, #eef1fa);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Icon Circle Badges ─── */
+.icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.bg-primary-transparent {
+    background-color: rgba(61, 80, 255, 0.10);
+}
+
+.bg-info-transparent {
+    background-color: rgba(0, 204, 255, 0.10);
+}
+
+.bg-secondary-transparent {
+    background-color: rgba(246, 38, 130, 0.10);
+}
+
+.bg-warning-transparent {
+    background-color: rgba(255, 171, 0, 0.10);
+}
+
+.bg-success-transparent {
+    background-color: rgba(0, 204, 115, 0.10);
+}
+
+.bg-danger-transparent {
+    background-color: rgba(255, 71, 61, 0.10);
+}
+
+/* ─── Avatar Size ─── */
+.avatar-xxl {
+    width: 80px;
+    height: 80px;
+}
+
+/* ─── List spacing ─── */
+.list-item-spacing li {
+    margin-bottom: 12px;
+}
+
+/* ─── Badge ─── */
+.badge {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ─── Flex gap utility ─── */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* ─── Demographics grid ─── */
+.teacher-details-grid {
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Section headings ─── */
+.teacher-section-heading {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #4e73df;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid rgba(78, 115, 223, 0.12);
+    margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────────
+   DARK THEME OVERRIDES
+─────────────────────────────────────────────── */
+.dark-theme #showModal .modal-content {
+    background: #1e212b;
+}
+
+.dark-theme #showModal .modal-header {
+    background: #1e212b;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme #showModal .modal-header h6 {
+    color: #f1f5f9;
+}
+
+.dark-theme #showModal .modal-header .close {
+    color: #94a3b8;
+}
+
+.dark-theme #showModal .modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .user-info-card {
+    background: linear-gradient(135deg, #14161f, #1a1d28);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme #show_name {
+    color: #f1f5f9;
+}
+
+.dark-theme .teacher-details-grid {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .teacher-section-heading {
+    color: #7b96f0;
+    border-bottom-color: rgba(78, 115, 223, 0.12);
+}
+
+.dark-theme .icon-circle {
+    opacity: 0.85;
+}
+
+.dark-theme .bg-primary-transparent {
+    background-color: rgba(61, 80, 255, 0.15);
+}
+
+.dark-theme .bg-info-transparent {
+    background-color: rgba(0, 204, 255, 0.12);
+}
+
+.dark-theme .bg-secondary-transparent {
+    background-color: rgba(246, 38, 130, 0.12);
+}
+
+.dark-theme .bg-warning-transparent {
+    background-color: rgba(255, 171, 0, 0.12);
+}
+
+.dark-theme .bg-success-transparent {
+    background-color: rgba(0, 204, 115, 0.12);
+}
+
+.dark-theme .bg-danger-transparent {
+    background-color: rgba(255, 71, 61, 0.12);
+}
+
+.dark-theme #showModal .text-dark {
+    color: #e2e8f0 !important;
+}
+
+.dark-theme #showModal .text-muted {
+    color: #64748b !important;
+}
+
+.dark-theme #showModal .font-weight-semibold {
+    color: #e2e8f0;
+}
+
+.dark-theme #showModal .bg-light {
+    background: #14161f !important;
+}
+
+.dark-theme #showModal small.text-muted {
+    color: #4e5970 !important;
+}

@@ -1,0 +1,422 @@
+/* ══════════════════════════════════════════════════════════
+   ROLES MODULE — Shared CSS
+   Loaded by: index.blade.php, create.blade.php, edit.blade.php, show.blade.php
+   ══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. GLASS CARD
+─────────────────────────────────────────────── */
+.role-glass-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.role-glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────
+   2. INDEX TABLE
+─────────────────────────────────────────────── */
+#roles_table thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid #f0f2f8 !important;
+    border-top: none !important;
+    background: #fafbff;
+    white-space: nowrap;
+}
+
+#roles_table tbody tr {
+    transition: background 0.15s;
+}
+
+#roles_table tbody tr:hover {
+    background: #f6f8fd;
+}
+
+#roles_table tbody td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    padding: 0.8rem 1rem;
+    color: #374151;
+    border-bottom: 1px solid #f8f9fb !important;
+}
+
+.role-name-link {
+    font-weight: 600;
+    color: #4361ee;
+}
+
+.role-name-link:hover {
+    color: #2c41d4;
+    text-decoration: none;
+}
+
+/* ─────────────────────────────────────────────
+   3. PERMISSIONS COUNT BADGE
+─────────────────────────────────────────────── */
+.badge-permissions {
+    background: rgba(67, 97, 238, 0.1);
+    color: #4361ee;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* ─────────────────────────────────────────────
+   4. ACTION BUTTONS (Index Table)
+─────────────────────────────────────────────── */
+.btn-role-edit {
+    background: linear-gradient(135deg, #0ea573, #057a52);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(14, 165, 115, 0.25);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+}
+
+.btn-role-edit:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(14, 165, 115, 0.35);
+}
+
+.btn-role-delete {
+    background: linear-gradient(135deg, #e11d48, #9f1239);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(225, 29, 72, 0.25);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+}
+
+.btn-role-delete:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(225, 29, 72, 0.4);
+}
+
+.btn-role-view {
+    background: linear-gradient(135deg, #4361ee, #2c41d4);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(67, 97, 238, 0.25);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+}
+
+.btn-role-view:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(67, 97, 238, 0.4);
+}
+
+.role-actions-container {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.super-admin-lock {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 0.35rem 0.85rem;
+}
+
+/* ─────────────────────────────────────────────
+   5. PERMISSIONS GRID (Create / Edit / Show)
+─────────────────────────────────────────────── */
+.permission-group-card {
+    border-radius: 12px;
+    border: 1.5px solid #e9ecef;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    height: 100%;
+}
+
+.permission-group-card:hover {
+    border-color: #4361ee;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.1);
+}
+
+.permission-group-header {
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #e9ecef;
+}
+
+.permission-group-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #3d4a70;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.permission-group-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #4361ee;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.permission-item label.ckbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.3rem 0.2rem;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.permission-item label.ckbox:hover {
+    background: #f6f8fd;
+}
+
+.permission-item label.ckbox span {
+    font-size: 0.82rem;
+    color: #475569;
+    text-transform: capitalize;
+}
+
+/* ─────────────────────────────────────────────
+   6. FORM — Create / Edit
+─────────────────────────────────────────────── */
+.role-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #f0f2f8;
+    border-radius: 16px 16px 0 0;
+}
+
+.role-form-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.role-form-title i {
+    color: #4361ee;
+}
+
+.role-form-body {
+    padding: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   7. SELECT ALL GLOBAL BAR
+─────────────────────────────────────────────── */
+.select-all-bar {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.06) 0%, rgba(67, 97, 238, 0.12) 100%);
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1.5px dashed rgba(67, 97, 238, 0.25);
+    margin-bottom: 1.5rem;
+}
+
+.select-all-bar label.ckbox {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.select-all-bar label.ckbox span {
+    font-weight: 600;
+    color: #4361ee;
+}
+
+/* ─────────────────────────────────────────────
+   8. DARK THEME OVERRIDES
+─────────────────────────────────────────────── */
+.dark-theme .role-glass-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme #roles_table thead th {
+    background: #14161f;
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme #roles_table tbody tr:hover {
+    background: #242836;
+}
+
+.dark-theme #roles_table tbody td {
+    color: #cbd5e1;
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_info,
+.dark-theme .dataTables_wrapper .dataTables_length label,
+.dark-theme .dataTables_wrapper .dataTables_filter label {
+    color: #8896b3;
+}
+
+.dark-theme .dataTables_wrapper input,
+.dark-theme .dataTables_wrapper select {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #8896b3 !important;
+}
+
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: rgba(67, 97, 238, 0.15) !important;
+    color: #4361ee !important;
+    border-color: transparent !important;
+}
+
+.dark-theme .permission-group-card {
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .permission-group-card:hover {
+    border-color: #4361ee;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.2);
+}
+
+.dark-theme .permission-group-header {
+    background: linear-gradient(135deg, #1a1e2e 0%, #14161f 100%);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .permission-group-title {
+    color: #94a3b8;
+}
+
+.dark-theme .permission-item label.ckbox:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.dark-theme .permission-item label.ckbox span {
+    color: #94a3b8;
+}
+
+.dark-theme .select-all-bar {
+    background: rgba(67, 97, 238, 0.08);
+    border-color: rgba(67, 97, 238, 0.2);
+}
+
+.dark-theme .role-form-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .role-form-header {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .super-admin-lock {
+    background: rgba(255, 255, 255, 0.05);
+    color: #64748b;
+}
+
+.dark-theme .role-name-link {
+    color: #7b96f0;
+}
+
+.dark-theme .badge-permissions {
+    background: rgba(67, 97, 238, 0.15);
+    color: #7b96f0;
+}
+
+.dark-theme .form-control {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .form-control:focus {
+    background: #14161f;
+    border-color: #4361ee;
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.18);
+}
+
+.dark-theme label {
+    color: #94a3b8;
+}
+
+.dark-theme .role-hero-card {
+    background: linear-gradient(135deg, #1e212b 0%, #14161f 100%) !important;
+}
+
+.dark-theme .role-hero-card .icon-circle {
+    background: #1a1e2e !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme #rshow_name {
+    color: #f1f5f9 !important;
+}
+
+.dark-theme .modal-content-demo {
+    background: #1e212b;
+}
+
+.dark-theme .modal-header {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .modal-footer {
+    border-top-color: rgba(255, 255, 255, 0.05);
+}

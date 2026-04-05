@@ -1,0 +1,403 @@
+/* ══════════════════════════════════════════════════════════
+   TEACHER ASSIGNMENT CRUD — Shared CSS
+   Loaded by: index.blade.php (and modals via @include)
+   ══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. GLASS CARD
+─────────────────────────────────────────────── */
+.assignment-glass-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.assignment-glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────
+   2. FILTER SECTION
+─────────────────────────────────────────────── */
+.assignment-filter-section {
+    background: #f8f9fc;
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.75rem;
+    border: 1px dashed #e3e6f0;
+}
+
+.assignment-filter-section .form-label {
+    margin-bottom: 0.4rem;
+}
+
+.assignment-filter-section .form-control-modern {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.875rem;
+    box-shadow: none;
+    height: auto;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.assignment-filter-section .form-control-modern:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.15);
+}
+
+.assignment-filter-section .form-control-modern:disabled {
+    background-color: #f1f3f9;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.assignment-filter-section .btn-modern {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    background: #fff;
+    color: #6c7a9c;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.55rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.assignment-filter-section .btn-modern:hover {
+    background: #f0f3fb;
+    border-color: #4e73df;
+    color: #4e73df;
+}
+
+/* ─────────────────────────────────────────────
+   3. INDEX TABLE
+─────────────────────────────────────────────── */
+#assignments_table thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid #f0f2f8 !important;
+    border-top: none !important;
+    background: #fafbff;
+    white-space: nowrap;
+}
+
+#assignments_table tbody tr {
+    transition: background 0.15s;
+}
+
+#assignments_table tbody tr:hover {
+    background: #f6f8fd;
+}
+
+#assignments_table tbody td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    padding: 0.8rem 1rem;
+    color: #374151;
+    border-bottom: 1px solid #f8f9fb !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. MODAL — Accent Color Tokens (per modal)
+─────────────────────────────────────────────── */
+#addModal {
+    --modal-accent: #4e73df;
+    --modal-accent-dark: #224abe;
+    --modal-accent-glow: rgba(78, 115, 223, 0.3);
+    --modal-accent-focus: rgba(78, 115, 223, 0.18);
+    --modal-accent-soft: rgba(78, 115, 223, 0.08);
+    --modal-header-dark: linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+    --modal-dark-accent: #7b96f0;
+}
+
+#editModal {
+    --modal-accent: #0ea573;
+    --modal-accent-dark: #057a52;
+    --modal-accent-glow: rgba(14, 165, 115, 0.3);
+    --modal-accent-focus: rgba(14, 165, 115, 0.18);
+    --modal-accent-soft: rgba(14, 165, 115, 0.08);
+    --modal-header-dark: linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+    --modal-dark-accent: #3ecf8e;
+}
+
+/* ─────────────────────────────────────────────
+   4. MODAL — Unified Shell Structure
+─────────────────────────────────────────────── */
+#addModal .modal-content,
+#editModal .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+#addModal .modal-header,
+#editModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: none;
+}
+
+#addModal .modal-header .modal-title,
+#editModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#addModal .modal-header .close,
+#editModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: none;
+    opacity: 1;
+    font-size: 1.4rem;
+    transition: color 0.15s;
+}
+
+#addModal .modal-header .close:hover,
+#editModal .modal-header .close:hover {
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   5. MODAL — Form Controls
+─────────────────────────────────────────────── */
+#addModal .form-control,
+#editModal .form-control {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    font-size: 0.875rem;
+    box-shadow: none;
+    padding: 0.5rem 0.85rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#addModal .form-control:focus,
+#editModal .form-control:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+#addModal label,
+#editModal label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #475569;
+    margin-bottom: 0.3rem;
+}
+
+.error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+}
+
+/* ─────────────────────────────────────────────
+   6. MODAL — Save/Cancel Buttons
+─────────────────────────────────────────────── */
+#addModal .btn-primary,
+#editModal .btn-primary {
+    background: linear-gradient(135deg, var(--modal-accent), var(--modal-accent-dark));
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.55rem 1.5rem;
+    box-shadow: 0 4px 12px var(--modal-accent-glow);
+    transition: all 0.2s ease;
+}
+
+#addModal .btn-primary:hover,
+#editModal .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--modal-accent-glow);
+}
+
+#addModal .btn-secondary,
+#editModal .btn-secondary {
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1.5px solid #e3e6f0;
+    color: #6c7a9c;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+#addModal .btn-secondary:hover,
+#editModal .btn-secondary:hover {
+    background: #f8f9fc;
+    border-color: var(--modal-accent);
+    color: var(--modal-accent);
+}
+
+/* ─────────────────────────────────────────────
+   7. DARK THEME OVERRIDES — Global
+─────────────────────────────────────────────── */
+.dark-theme .assignment-filter-section {
+    background: #1a1d27;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .assignment-filter-section .form-label {
+    color: #8896b3;
+}
+
+.dark-theme .assignment-filter-section .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .assignment-filter-section .form-control-modern:focus {
+    border-color: #7b96f0;
+    box-shadow: 0 0 0 0.2rem rgba(123, 150, 240, 0.15);
+}
+
+.dark-theme .assignment-filter-section .form-control-modern:disabled {
+    background: #12141b;
+    opacity: 0.5;
+}
+
+.dark-theme .assignment-filter-section .btn-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #8896b3;
+}
+
+.dark-theme .assignment-filter-section .btn-modern:hover {
+    background: #242836;
+    border-color: #7b96f0;
+    color: #7b96f0;
+}
+
+.dark-theme .assignment-glass-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme #assignments_table thead th {
+    background: #14161f;
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme #assignments_table tbody tr:hover {
+    background: #242836;
+}
+
+.dark-theme #assignments_table tbody td {
+    color: #cbd5e1;
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* DataTable dark */
+.dark-theme .dataTables_wrapper .dataTables_info,
+.dark-theme .dataTables_wrapper .dataTables_length label,
+.dark-theme .dataTables_wrapper .dataTables_filter label {
+    color: #8896b3;
+}
+
+.dark-theme .dataTables_wrapper input,
+.dark-theme .dataTables_wrapper select {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+/* ─────────────────────────────────────────────
+   8. DARK THEME OVERRIDES — Modal
+─────────────────────────────────────────────── */
+.dark-theme #addModal .modal-content,
+.dark-theme #editModal .modal-content {
+    background: #1e212b;
+}
+
+.dark-theme #addModal .modal-header,
+.dark-theme #editModal .modal-header {
+    background: var(--modal-header-dark);
+}
+
+.dark-theme #addModal .modal-body,
+.dark-theme #editModal .modal-body {
+    background: #1e212b;
+}
+
+.dark-theme #addModal .form-control,
+.dark-theme #editModal .form-control {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addModal .form-control:focus,
+.dark-theme #editModal .form-control:focus {
+    background: #14161f;
+    border-color: var(--modal-dark-accent);
+}
+
+.dark-theme #addModal label,
+.dark-theme #editModal label {
+    color: #94a3b8;
+}
+
+.dark-theme #addModal .modal-footer,
+.dark-theme #editModal .modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ─────────────────────────────────────────────
+   9. ACTION BUTTONS
+─────────────────────────────────────────────── */
+.btn-assignment-edit {
+    background: linear-gradient(135deg, #0ea573, #057a52);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(14, 165, 115, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-assignment-edit:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(14, 165, 115, 0.35);
+}
+
+.btn-assignment-delete {
+    background: linear-gradient(135deg, #e11d48, #9f1239);
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(225, 29, 72, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-assignment-delete:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(225, 29, 72, 0.4);
+}
+
+.assignment-actions-container {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}

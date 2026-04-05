@@ -1,0 +1,611 @@
+/* =====================================================
+   DAYS OF WEEK SETTINGS - PREMIUM STYLES
+   ===================================================== */
+
+/* ─── Glass Card Effect ─── */
+.days-glass-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.08),
+        0 2px 8px rgba(0,0,0,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    overflow: hidden;
+    position: relative;
+}
+
+.days-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7, #d946ef);
+    background-size: 300% 100%;
+    animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ─── Page Header ─── */
+.days-header {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(249,250,251,0.5) 100%);
+}
+
+.days-header-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.days-header-title i {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.days-header-subtitle {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ─── Days Grid Container ─── */
+.days-grid-wrapper {
+    padding: 2rem;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ─── Day Card ─── */
+.day-card {
+    position: relative;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 1.75rem;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.day-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 18px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(139,92,246,0.2) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.day-card:hover::before {
+    opacity: 1;
+}
+
+.day-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 40px rgba(99,102,241,0.15),
+        0 8px 16px rgba(0,0,0,0.06);
+}
+
+/* ─── Active State ─── */
+.day-card.is-active {
+    background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%);
+    border-color: #22c55e;
+}
+
+.day-card.is-active::before {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    opacity: 0.3;
+}
+
+.day-card.is-active:hover {
+    box-shadow:
+        0 20px 40px rgba(34,197,94,0.2),
+        0 8px 16px rgba(0,0,0,0.06);
+}
+
+/* ─── Inactive State ─── */
+.day-card.is-inactive {
+    background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+    border-color: #ef4444;
+}
+
+.day-card.is-inactive::before {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    opacity: 0.3;
+}
+
+.day-card.is-inactive:hover {
+    box-shadow:
+        0 20px 40px rgba(239,68,68,0.2),
+        0 8px 16px rgba(0,0,0,0.06);
+}
+
+/* ─── Weekend State ─── */
+.day-card.is-weekend {
+    background: linear-gradient(145deg, #fefce8 0%, #fef3c7 100%);
+}
+
+.day-card.is-weekend.is-inactive {
+    background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 100%);
+    border-color: #f97316;
+}
+
+/* ─── Day Icon Container ─── */
+.day-icon-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card.is-active .day-icon-container {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 8px 24px rgba(34,197,94,0.3);
+}
+
+.day-card.is-inactive .day-icon-container {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 8px 24px rgba(239,68,68,0.3);
+}
+
+.day-card.is-weekend .day-icon-container {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 8px 24px rgba(245,158,11,0.3);
+}
+
+.day-icon-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255,255,255,0.3) 50%,
+        transparent 70%
+    );
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.day-icon-container i {
+    font-size: 1.75rem;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Day Name ─── */
+.day-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.day-name-en {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+/* ─── Status Badge ─── */
+.day-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.day-card.is-active .day-status-badge {
+    background: rgba(34,197,94,0.15);
+    color: #15803d;
+}
+
+.day-card.is-inactive .day-status-badge {
+    background: rgba(239,68,68,0.15);
+    color: #b91c1c;
+}
+
+.day-status-badge i {
+    font-size: 0.9rem;
+}
+
+/* ─── Weekend Badge ─── */
+.weekend-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+}
+
+/* ─── Toggle Switch ─── */
+.day-toggle-wrapper {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 32px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 3px;
+    bottom: 3px;
+    background: #ffffff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 4px 12px rgba(34,197,94,0.3);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(28px);
+}
+
+.toggle-switch input:focus + .toggle-slider {
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 0 0 4px rgba(99,102,241,0.2);
+}
+
+.toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-right: 0.75rem;
+}
+
+/* ─── Day Number Circle ─── */
+.day-number {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #9ca3af;
+}
+
+/* ─── Quick Actions Bar ─── */
+.days-actions-bar {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(180deg, rgba(249,250,251,0.8) 0%, rgba(243,244,246,0.5) 100%);
+    border-top: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.days-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.stat-icon.active {
+    background: rgba(34,197,94,0.15);
+    color: #22c55e;
+}
+
+.stat-icon.inactive {
+    background: rgba(239,68,68,0.15);
+    color: #ef4444;
+}
+
+.stat-icon.weekend {
+    background: rgba(245,158,11,0.15);
+    color: #f59e0b;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 0.25rem;
+}
+
+/* ─── Action Buttons ─── */
+.days-quick-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-action.btn-activate-all {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+}
+
+.btn-action.btn-activate-all:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34,197,94,0.4);
+}
+
+.btn-action.btn-deactivate-all {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+
+.btn-action.btn-deactivate-all:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239,68,68,0.4);
+}
+
+/* ─── Loading State ─── */
+.day-card.is-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.day-card.is-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid rgba(99,102,241,0.2);
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
+/* ─── RTL Support ─── */
+[dir="rtl"] .weekend-badge {
+    right: auto;
+    left: 1rem;
+}
+
+[dir="rtl"] .day-number {
+    right: auto;
+    left: 1rem;
+}
+
+[dir="rtl"] .toggle-label {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+[dir="rtl"] .toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(-28px);
+}
+
+/* ─── Responsive Design ─── */
+@media (max-width: 768px) {
+    .days-header {
+        padding: 1.5rem;
+    }
+
+    .days-grid-wrapper {
+        padding: 1.5rem;
+    }
+
+    .days-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .days-actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .days-stats {
+        justify-content: center;
+    }
+
+    .days-quick-actions {
+        justify-content: center;
+    }
+}
+
+/* ─── Dark Mode Support ─── */
+.dark-theme .days-glass-card {
+    background: linear-gradient(135deg, rgba(30,41,59,0.95) 0%, rgba(15,23,42,0.85) 100%);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark-theme .days-header {
+    background: linear-gradient(180deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.5) 100%);
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-theme .days-header-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .days-header-subtitle {
+    color: #94a3b8;
+}
+
+.dark-theme .day-card {
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark-theme .day-card.is-active {
+    background: linear-gradient(145deg, rgba(34,197,94,0.15) 0%, rgba(21,128,61,0.1) 100%);
+}
+
+.dark-theme .day-card.is-inactive {
+    background: linear-gradient(145deg, rgba(239,68,68,0.15) 0%, rgba(185,28,28,0.1) 100%);
+}
+
+.dark-theme .day-name {
+    color: #f1f5f9;
+}
+
+.dark-theme .day-name-en {
+    color: #64748b;
+}
+
+.dark-theme .days-actions-bar {
+    background: linear-gradient(180deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.5) 100%);
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-theme .stat-value {
+    color: #f1f5f9;
+}
+
+.dark-theme .stat-label {
+    color: #94a3b8;
+}
+
+.dark-theme .day-number {
+    background: rgba(255,255,255,0.05);
+    color: #64748b;
+}
+
+.dark-theme .toggle-label {
+    color: #94a3b8;
+}
+
+.dark-theme .day-toggle-wrapper {
+    border-color: rgba(255,255,255,0.06);
+}

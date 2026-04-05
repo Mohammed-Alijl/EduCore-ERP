@@ -1,0 +1,911 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   EXAM MODULE — Premium Glassmorphism Stylesheet
+ *   Supports: RTL, Dark Mode, Responsive
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   1. CSS Custom Properties
+───────────────────────────────────────────── */
+:root {
+    --exam-glass-bg: rgba(255, 255, 255, 0.82);
+    --exam-glass-border: rgba(255, 255, 255, 0.38);
+    --exam-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+    --exam-shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.11);
+    --exam-radius: 18px;
+    --exam-radius-sm: 12px;
+    --exam-muted: #64748b;
+    --exam-heading: #0f172a;
+    --exam-accent-1: #6366f1;
+    --exam-accent-2: #8b5cf6;
+    --exam-accent-shadow: rgba(99, 102, 241, 0.28);
+    --exam-success: #10b981;
+    --exam-warning: #f59e0b;
+    --exam-danger: #ef4444;
+    --exam-info: #3b82f6;
+}
+
+/* ─────────────────────────────────────────────
+   2. Glass Card — Base
+───────────────────────────────────────────── */
+.exam-page .glass-card {
+    position: relative;
+    background: var(--exam-glass-bg);
+    border: 1px solid var(--exam-glass-border);
+    border-radius: var(--exam-radius);
+    box-shadow: var(--exam-shadow);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.exam-page .glass-card:hover {
+    box-shadow: var(--exam-shadow-hover);
+}
+
+.exam-page .glass-card-header {
+    padding: 1.25rem 1.5rem 0.75rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exam-page .glass-card-header .card-title-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.exam-page .glass-card-header .card-title-icon.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2));
+    box-shadow: 0 6px 16px var(--exam-accent-shadow);
+}
+
+.exam-page .glass-card-header .card-title-icon.bg-gradient-info {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.28);
+}
+
+.exam-page .glass-card-header .card-title-text {
+    margin-inline-start: 0.85rem;
+}
+
+.exam-page .glass-card-header .card-title-text h5 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--exam-heading);
+    letter-spacing: -0.2px;
+}
+
+.exam-page .glass-card-header .card-title-text span {
+    font-size: 0.78rem;
+    color: var(--exam-muted);
+    font-weight: 500;
+}
+
+.exam-page .glass-card-body {
+    padding: 1.35rem 1.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   3. Filter Card — Labels & Controls
+───────────────────────────────────────────── */
+.exam-page .filter-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--exam-muted);
+}
+
+.exam-page .filter-label i {
+    font-size: 1rem;
+    vertical-align: -2px;
+    margin-inline-end: 0.25rem;
+    color: var(--exam-accent-1);
+}
+
+.exam-page .form-control-modern {
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    min-height: 44px;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 0.88rem;
+}
+
+.exam-page .form-control-modern:focus {
+    border-color: var(--exam-accent-1);
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.14);
+    transform: translateY(-1px);
+}
+
+.exam-page .form-control-modern:disabled {
+    background: #f1f5f9;
+    cursor: not-allowed;
+    opacity: 0.72;
+}
+
+/* ─────────────────────────────────────────────
+   4. Select2 — Premium Styling
+───────────────────────────────────────────── */
+.exam-page .select2-container--default .select2-selection--single {
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exam-page .select2-container--default .select2-selection--single:hover {
+    border-color: #cbd5e1;
+}
+
+.exam-page .select2-container--default.select2-container--focus .select2-selection--single,
+.exam-page .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: var(--exam-accent-1);
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.14);
+}
+
+.exam-page .select2-container .select2-selection--single .select2-selection__rendered {
+    line-height: 42px;
+    padding-inline: 0.85rem 2rem;
+    color: var(--exam-heading);
+    font-size: 0.88rem;
+}
+
+.exam-page .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 42px;
+    right: 0.5rem;
+}
+
+.exam-page .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #94a3b8;
+}
+
+.exam-page .select2-container--default.select2-container--disabled .select2-selection--single {
+    background: #f1f5f9;
+    cursor: not-allowed;
+    opacity: 0.72;
+}
+
+/* Select2 dropdown panel */
+.select2-dropdown {
+    border-radius: 10px !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12) !important;
+    overflow: hidden;
+}
+
+.select2-results__option--highlighted[aria-selected] {
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2)) !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. Filter Footer — Action Buttons
+───────────────────────────────────────────── */
+.exam-page .filter-actions {
+    padding-top: 1rem;
+    margin-top: 0.75rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem;
+}
+
+.exam-page .btn-filter-search {
+    border: 0;
+    border-radius: var(--exam-radius-sm);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-height: 44px;
+    padding: 0.6rem 1.75rem;
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2));
+    box-shadow: 0 8px 22px var(--exam-accent-shadow);
+    transition: all 0.2s ease;
+}
+
+.exam-page .btn-filter-search:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px var(--exam-accent-shadow);
+    color: #fff;
+}
+
+.exam-page .btn-filter-search:active {
+    transform: translateY(0);
+}
+
+.exam-page .btn-filter-reset {
+    border: 1.5px solid #e2e8f0;
+    border-radius: var(--exam-radius-sm);
+    color: var(--exam-muted);
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-height: 44px;
+    padding: 0.6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.75);
+    transition: all 0.2s ease;
+}
+
+.exam-page .btn-filter-reset:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--exam-heading);
+    transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   6. DataTable — Premium Table
+───────────────────────────────────────────── */
+.exam-page .table-responsive {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.exam-page .table thead th {
+    border: 0 !important;
+    background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+    color: #475569;
+    font-size: 0.77rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    padding: 0.95rem 0.85rem;
+    white-space: nowrap;
+}
+
+.exam-page .table tbody td {
+    vertical-align: middle;
+    border-top: 1px solid rgba(148, 163, 184, 0.14);
+    padding: 0.85rem;
+    font-size: 0.88rem;
+    color: var(--exam-heading);
+}
+
+.exam-page .table tbody tr {
+    transition: background-color 0.18s ease;
+}
+
+.exam-page .table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.04);
+}
+
+/* ─────────────────────────────────────────────
+   7. Status Badges — Glow Effects
+───────────────────────────────────────────── */
+.exam-page .badge-exam {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    border: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exam-page .badge-exam:hover {
+    transform: translateY(-1px);
+}
+
+/* Published */
+.exam-page .badge-published {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    animation: glow-green 2.5s ease-in-out infinite;
+}
+
+/* Draft */
+.exam-page .badge-draft {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    animation: glow-amber 2.5s ease-in-out infinite;
+}
+
+/* Attempt Status Badges */
+.exam-page .badge-in-progress {
+    background: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    animation: glow-blue 2.5s ease-in-out infinite;
+}
+
+.exam-page .badge-completed {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    animation: glow-green 2.5s ease-in-out infinite;
+}
+
+.exam-page .badge-timeout {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    animation: glow-amber 2.5s ease-in-out infinite;
+}
+
+/* Glow Keyframes */
+@keyframes glow-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    50%      { box-shadow: 0 0 12px 2px rgba(16, 185, 129, 0.2); }
+}
+
+@keyframes glow-amber {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    50%      { box-shadow: 0 0 12px 2px rgba(245, 158, 11, 0.2); }
+}
+
+@keyframes glow-blue {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    50%      { box-shadow: 0 0 12px 2px rgba(59, 130, 246, 0.2); }
+}
+
+@keyframes glow-red {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    50%      { box-shadow: 0 0 12px 2px rgba(239, 68, 68, 0.2); }
+}
+
+/* ─────────────────────────────────────────────
+   8. Action Buttons
+───────────────────────────────────────────── */
+.exam-page .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.exam-page .btn-action.btn-view {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.exam-page .btn-action.btn-view:hover {
+    background: #3b82f6;
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Reset Attempt Button */
+.exam-page .btn-reset-attempt {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(239, 68, 68, 0.25);
+    background: rgba(239, 68, 68, 0.08);
+    color: #dc2626;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.exam-page .btn-reset-attempt:hover {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+}
+
+.exam-page .btn-reset-attempt:active {
+    transform: translateY(0);
+}
+
+.exam-page .btn-reset-attempt i {
+    font-size: 1.05rem;
+}
+
+/* ─────────────────────────────────────────────
+   9. Exam Info Banner (Attempts Page)
+───────────────────────────────────────────── */
+.exam-page .exam-info-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2));
+    border-radius: var(--exam-radius);
+    padding: 1.75rem 2rem;
+    color: #fff;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.exam-page .exam-info-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.exam-page .exam-info-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.exam-page .exam-info-banner h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.exam-page .exam-info-banner .exam-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.exam-page .exam-info-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    position: relative;
+    z-index: 1;
+}
+
+.exam-page .exam-stat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.2s ease;
+}
+
+.exam-page .exam-stat-chip:hover {
+    background: rgba(255, 255, 255, 0.26);
+}
+
+.exam-page .exam-stat-chip i {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.exam-page .btn-back-exams {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--exam-radius-sm);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+.exam-page .btn-back-exams:hover {
+    background: rgba(255, 255, 255, 0.32);
+    color: #fff;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+/* ─────────────────────────────────────────────
+   10. Score Display
+───────────────────────────────────────────── */
+.exam-page .score-display {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 32px;
+    padding: 0 0.6rem;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+    color: var(--exam-accent-1);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   11. Breadcrumb Header — Avatar Initial
+───────────────────────────────────────────── */
+.exam-page .avatar-initial {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.exam-page .avatar-initial.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2));
+    box-shadow: 0 8px 18px var(--exam-accent-shadow);
+}
+
+/* ─────────────────────────────────────────────
+   12. Empty State
+───────────────────────────────────────────── */
+.exam-page .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.exam-page .empty-state i {
+    font-size: 3rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.exam-page .empty-state p {
+    color: var(--exam-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────
+   13. RTL Support
+───────────────────────────────────────────── */
+[dir="rtl"] .exam-page .filter-label,
+[dir="rtl"] .exam-page .table {
+    text-align: right;
+}
+
+[dir="rtl"] .exam-page .select2-container--default .select2-selection--single .select2-selection__arrow {
+    left: 0.5rem;
+    right: auto;
+}
+
+[dir="rtl"] .exam-page .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-right: 0.85rem;
+    padding-left: 2rem;
+}
+
+[dir="rtl"] .exam-page .filter-actions {
+    justify-content: flex-start;
+}
+
+[dir="rtl"] .exam-page .exam-info-banner::before {
+    right: auto;
+    left: -20%;
+}
+
+[dir="rtl"] .exam-page .exam-info-banner::after {
+    left: auto;
+    right: -10%;
+}
+
+/* ─────────────────────────────────────────────
+   14. Dark Theme
+───────────────────────────────────────────── */
+.dark-theme .exam-page .glass-card {
+    background: rgba(22, 28, 39, 0.85);
+    border-color: rgba(148, 163, 184, 0.16);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.dark-theme .exam-page .glass-card:hover {
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .exam-page .glass-card-header {
+    border-bottom-color: rgba(148, 163, 184, 0.12);
+}
+
+.dark-theme .exam-page .glass-card-header .card-title-text h5 {
+    color: #f1f5f9;
+}
+
+.dark-theme .exam-page .glass-card-header .card-title-text span {
+    color: #94a3b8;
+}
+
+.dark-theme .exam-page .filter-label {
+    color: #94a3b8;
+}
+
+.dark-theme .exam-page .filter-label i {
+    color: #818cf8;
+}
+
+.dark-theme .exam-page .form-control-modern,
+.dark-theme .exam-page .select2-container--default .select2-selection--single {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.25);
+    color: #e2e8f0;
+}
+
+.dark-theme .exam-page .form-control-modern:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.18);
+}
+
+.dark-theme .exam-page .form-control-modern:disabled,
+.dark-theme .exam-page .select2-container--default.select2-container--disabled .select2-selection--single {
+    background: #0b1220;
+    opacity: 0.55;
+}
+
+.dark-theme .exam-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+.dark-theme .exam-page .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #e2e8f0;
+}
+
+.dark-theme .exam-page .select2-container--default.select2-container--focus .select2-selection--single,
+.dark-theme .exam-page .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.18);
+}
+
+.dark-theme .exam-page .filter-actions {
+    border-top-color: rgba(148, 163, 184, 0.12);
+}
+
+.dark-theme .exam-page .btn-filter-reset {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(148, 163, 184, 0.2);
+    color: #94a3b8;
+}
+
+.dark-theme .exam-page .btn-filter-reset:hover {
+    background: rgba(51, 65, 85, 0.9);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #e2e8f0;
+}
+
+/* Dark Table */
+.dark-theme .exam-page .table thead th {
+    background: linear-gradient(180deg, #0f172a, #111827);
+    color: #93a5c2;
+}
+
+.dark-theme .exam-page .table tbody td {
+    border-top-color: rgba(148, 163, 184, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .exam-page .table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Dark Badges */
+.dark-theme .exam-page .badge-published {
+    background: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+}
+
+.dark-theme .exam-page .badge-draft {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fcd34d;
+}
+
+.dark-theme .exam-page .badge-in-progress {
+    background: rgba(59, 130, 246, 0.18);
+    color: #93c5fd;
+}
+
+.dark-theme .exam-page .badge-completed {
+    background: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+}
+
+.dark-theme .exam-page .badge-timeout {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fcd34d;
+}
+
+/* Dark Reset Button */
+.dark-theme .exam-page .btn-reset-attempt {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.dark-theme .exam-page .btn-reset-attempt:hover {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+}
+
+/* Dark Score */
+.dark-theme .exam-page .score-display {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+    color: #a5b4fc;
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+/* Dark Banner */
+.dark-theme .exam-page .exam-info-banner {
+    background: linear-gradient(135deg, #4338ca, #6d28d9);
+}
+
+/* Dark Select2 Dropdown */
+.dark-theme .select2-dropdown {
+    background: #1e293b !important;
+    border-color: rgba(148, 163, 184, 0.2) !important;
+}
+
+.dark-theme .select2-results__option {
+    color: #e2e8f0;
+}
+
+.dark-theme .select2-search--dropdown .select2-search__field {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.25);
+    color: #e2e8f0;
+}
+
+/* ─────────────────────────────────────────────
+   15. Responsive
+───────────────────────────────────────────── */
+@media (max-width: 991.98px) {
+    .exam-page .glass-card-body {
+        padding: 1rem 1.15rem;
+    }
+
+    .exam-page .filter-actions {
+        flex-direction: column;
+    }
+
+    .exam-page .btn-filter-search,
+    .exam-page .btn-filter-reset {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .exam-page .exam-info-banner {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .exam-page .exam-info-banner h3 {
+        font-size: 1.1rem;
+    }
+
+    .exam-page .exam-info-stats {
+        gap: 0.45rem;
+    }
+
+    .exam-page .exam-stat-chip {
+        font-size: 0.76rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .exam-page .glass-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+    }
+
+    .exam-page .exam-info-stats {
+        flex-direction: column;
+    }
+
+    .exam-page .btn-back-exams {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   16. SweetAlert2 — Dark Theme Override
+───────────────────────────────────────────── */
+.dark-theme .swal2-popup {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+.dark-theme .swal2-title {
+    color: #f1f5f9 !important;
+}
+
+.dark-theme .swal2-html-container {
+    color: #94a3b8 !important;
+}
+
+/* ─────────────────────────────────────────────
+   17. DataTables Override for Exam Page
+───────────────────────────────────────────── */
+.exam-page .dataTables_wrapper .dataTables_length,
+.exam-page .dataTables_wrapper .dataTables_filter,
+.exam-page .dataTables_wrapper .dataTables_info,
+.exam-page .dataTables_wrapper .dataTables_paginate {
+    padding: 0.65rem 0;
+}
+
+.exam-page .dataTables_wrapper .dataTables_filter input {
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    padding: 0.35rem 0.75rem;
+    transition: border-color 0.2s ease;
+}
+
+.exam-page .dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--exam-accent-1);
+    box-shadow: 0 0 0 0.15rem rgba(99, 102, 241, 0.12);
+    outline: none;
+}
+
+.dark-theme .exam-page .dataTables_wrapper .dataTables_filter input {
+    background: #0f172a;
+    border-color: rgba(148, 163, 184, 0.25);
+    color: #e2e8f0;
+}
+
+.dark-theme .exam-page .dataTables_wrapper .dataTables_length,
+.dark-theme .exam-page .dataTables_wrapper .dataTables_filter,
+.dark-theme .exam-page .dataTables_wrapper .dataTables_info,
+.dark-theme .exam-page .dataTables_wrapper .dataTables_paginate {
+    color: #94a3b8;
+}
+
+.exam-page .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, var(--exam-accent-1), var(--exam-accent-2)) !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--exam-accent-shadow);
+}
+
+.exam-page .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgba(99, 102, 241, 0.08) !important;
+    color: var(--exam-accent-1) !important;
+    border: 0 !important;
+    border-radius: 8px;
+}
+
+.dark-theme .exam-page .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #a5b4fc !important;
+}

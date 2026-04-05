@@ -1,0 +1,168 @@
+/* ══════════════════════════════════════════════════════════
+   DEPARTMENT SHOW MODAL
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Modal Shell ─── */
+.dept-show-modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.dept-show-modal-header {
+    background: #fff;
+    padding: 1.5rem 1.5rem 0.75rem;
+    border-bottom: 1px solid #f0f2f8;
+}
+
+.dept-show-modal-footer {
+    background: #f8f9fc;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #f0f2f8;
+}
+
+/* ─── Info Banner ─── */
+.dept-info-banner {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.25rem;
+}
+
+.dept-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ─── Description Box ─── */
+.dept-description-box {
+    background: #f8f9fc;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    min-height: 50px;
+    padding: 0.85rem 1rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* ─── Stats Row ─── */
+.dept-stat-card {
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.dept-stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.dept-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.dept-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-top: 0.35rem;
+}
+
+/* ─── Designations Table ─── */
+#dept-designations-table thead th {
+    background: #f8f9fc;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    border-top: none !important;
+    border-bottom: 2px solid #f0f2f8 !important;
+}
+
+/* ─── Empty State ─── */
+.dept-show-empty-state {
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ─────────────────────────────────────────────
+   DARK THEME OVERRIDES
+─────────────────────────────────────────────── */
+.dark-theme .dept-show-modal-content {
+    background: #1e212b;
+}
+
+.dark-theme .dept-show-modal-header {
+    background: #1e212b;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .dept-show-modal-header .modal-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .dept-show-modal-header .close {
+    color: #94a3b8;
+}
+
+.dark-theme .dept-show-modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .dept-info-banner {
+    background: linear-gradient(135deg, #14161f, #1a1d28);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .dept-description-box {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.dark-theme .dept-stat-card {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .dept-stat-value {
+    opacity: 0.9;
+}
+
+.dark-theme .dept-stat-label {
+    color: #64748b;
+}
+
+.dark-theme .dept-show-empty-state {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme #dept-designations-table thead th {
+    background: #14161f;
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme #dept-designations-table tbody tr:hover {
+    background: #242836;
+}
+
+.dark-theme #dept-designations-table tbody td {
+    color: #cbd5e1;
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+}

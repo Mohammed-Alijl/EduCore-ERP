@@ -1,0 +1,746 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   STUDENT CRUD — Shared Stylesheet
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   1. LAYOUT — Glass Card
+───────────────────────────────────────────── */
+.glass-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. LAYOUT — Filter Section (index page)
+───────────────────────────────────────────── */
+.filter-section {
+    background: #f8f9fc;
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.75rem;
+    border: 1px dashed #e3e6f0;
+}
+
+.filter-section .form-label {
+    margin-bottom: 0.4rem;
+}
+
+/* ─────────────────────────────────────────────
+   3. FORM — Modern Controls (shared across modals + index)
+───────────────────────────────────────────── */
+.form-control-modern {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.875rem;
+    box-shadow: none;
+    height: auto;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control-modern:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.15);
+}
+
+.form-control-modern:disabled {
+    background-color: #f1f3f9;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ─────────────────────────────────────────────
+   4. FORM — Labels
+───────────────────────────────────────────── */
+.student-form-label {
+    font-size: 0.815rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.35rem;
+}
+
+/* ─────────────────────────────────────────────
+   5. FORM — Input Group Addon
+───────────────────────────────────────────── */
+.student-input-group-text {
+    background: #f0f3fb;
+    border: 1.5px solid #e3e6f0;
+    border-radius: 8px 0 0 8px;
+    color: #4e73df;
+    font-size: 0.9rem;
+}
+
+[dir="rtl"] .student-input-group-text {
+    border-radius: 0 8px 8px 0;
+}
+
+/* ─────────────────────────────────────────────
+   6. FORM — Error text ordering fix
+───────────────────────────────────────────── */
+.student-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-form-group .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+}
+
+/* ─────────────────────────────────────────────
+   7. BUTTONS — Primary actions
+───────────────────────────────────────────── */
+.btn-modern {
+    border-radius: 9px;
+    font-weight: 600;
+    padding: 0.55rem 1.4rem;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Save / Cancel inside modals */
+.btn-save-student {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(78, 115, 223, 0.3);
+}
+
+.btn-save-student:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(78, 115, 223, 0.4);
+}
+
+.btn-cancel-student {
+    border-radius: 9px;
+    font-weight: 600;
+    border: 1.5px solid #e3e6f0;
+    color: #6c7a9c;
+    background: #fff;
+}
+
+/* Reset Filters */
+#reset_filters {
+    border: 1.5px solid #dce1ef;
+    color: #6c7a9c;
+    background: #fff;
+}
+
+#reset_filters:hover {
+    background: #f1f3f9;
+    border-color: #c4cbdc;
+}
+
+/* ─────────────────────────────────────────────
+   8. INDEX TABLE — Headers & Rows
+───────────────────────────────────────────── */
+table.dataTable thead th,
+table.dataTable thead td {
+    border-bottom: 2px solid #edf2f7 !important;
+    color: #4a5568;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+
+/* ─────────────────────────────────────────────
+   9. BADGES — Status
+───────────────────────────────────────────── */
+.badge-modern {
+    padding: 0.45em 0.95em;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 82%;
+    letter-spacing: 0.4px;
+}
+
+.badge-active {
+    background-color: #e3fcef;
+    color: #0d965e;
+    border: 1px solid #c9f5e1;
+}
+
+.badge-inactive {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+/* ─────────────────────────────────────────────
+   10. ACTION ICON BUTTONS (index table)
+───────────────────────────────────────────── */
+.action-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.action-icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ─────────────────────────────────────────────
+   11. PAGE HEADER — Avatar Icon
+───────────────────────────────────────────── */
+.avatar-initial {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f6a935 0%, #e07b00 100%);
+}
+
+/* ─────────────────────────────────────────────
+   12. MODAL — Accent Color Tokens
+───────────────────────────────────────────── */
+#addModal {
+    --modal-accent: #4e73df;
+    --modal-accent-dark: #224abe;
+    --modal-accent-glow: rgba(78, 115, 223, 0.3);
+    --modal-accent-focus: rgba(78, 115, 223, 0.18);
+    --modal-accent-soft: rgba(78, 115, 223, 0.08);
+    --modal-accent-dim: rgba(78, 115, 223, 0.15);
+    --modal-header-dark: linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+    --modal-input-icon: #f0f3fb;
+    --modal-dark-accent: #7b96f0;
+}
+
+#editModal {
+    --modal-accent: #0ea573;
+    --modal-accent-dark: #057a52;
+    --modal-accent-glow: rgba(14, 165, 115, 0.3);
+    --modal-accent-focus: rgba(14, 165, 115, 0.18);
+    --modal-accent-soft: rgba(14, 165, 115, 0.08);
+    --modal-accent-dim: rgba(14, 165, 115, 0.15);
+    --modal-header-dark: linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+    --modal-input-icon: #f0fbf7;
+    --modal-dark-accent: #3ecf8e;
+}
+
+/* ─────────────────────────────────────────────
+   13. MODAL — Unified Shell Structure
+───────────────────────────────────────────── */
+#addModal .modal-content,
+#editModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#addModal .modal-header,
+#editModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.75rem;
+    border-bottom: none;
+}
+
+#addModal .modal-header .modal-title,
+#editModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+#addModal .modal-header .close,
+#editModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+#addModal .modal-header .close:hover,
+#editModal .modal-header .close:hover {
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   14. MODAL — Nav Tabs (unified class: .nav-tabs-modal)
+───────────────────────────────────────────── */
+.nav-tabs-modal {
+    border-bottom: 2px solid #e8ecf4;
+    padding: 0 1rem;
+    background: #f8f9fc;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.nav-tabs-modal .nav-item {
+    white-space: nowrap;
+}
+
+.nav-tabs-modal .nav-link {
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    color: #6c7a9c;
+    font-weight: 600;
+    font-size: 0.835rem;
+    padding: 0.85rem 1.1rem;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-tabs-modal .nav-link:hover {
+    color: var(--modal-accent);
+    background: transparent;
+}
+
+.nav-tabs-modal .nav-link.active {
+    color: var(--modal-accent);
+    border-bottom-color: var(--modal-accent);
+    background: transparent;
+    font-weight: 700;
+}
+
+.nav-tabs-modal .nav-link .tab-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: background 0.2s;
+}
+
+.nav-tabs-modal .nav-link.active .tab-icon {
+    background: var(--modal-accent-dim);
+    color: var(--modal-accent);
+}
+
+.nav-tabs-modal .nav-link:not(.active) .tab-icon {
+    background: rgba(0, 0, 0, 0.04);
+    color: #6c7a9c;
+}
+
+/* ─────────────────────────────────────────────
+   15. MODAL — Section Labels
+───────────────────────────────────────────── */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f2f8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-label i {
+    color: var(--modal-accent, #4e73df);
+    font-size: 0.95rem;
+}
+
+/* ─────────────────────────────────────────────
+   16. MODAL — Student Code Banner
+───────────────────────────────────────────── */
+.student-code-banner {
+    background: var(--modal-accent-soft, rgba(78, 115, 223, 0.07));
+    border: 1px dashed var(--modal-accent-focus, rgba(78, 115, 223, 0.3));
+    border-radius: 10px;
+    padding: 0.75rem 1.1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.student-code-banner i {
+    color: var(--modal-accent, #4e73df);
+    font-size: 1.1rem;
+}
+
+.student-code-banner .code-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--modal-accent, #4e73df);
+    letter-spacing: 1px;
+}
+
+.student-code-banner small {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* ─────────────────────────────────────────────
+   17. MODAL — Form Controls (scoped)
+───────────────────────────────────────────── */
+#addModal .form-group,
+#editModal .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#addModal .error-text,
+#editModal .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+}
+
+#addModal .form-control-modern,
+#editModal .form-control-modern {
+    height: auto;
+}
+
+#addModal .form-control-modern:focus,
+#editModal .form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+#addModal .form-label,
+#editModal .form-label {
+    font-size: 0.815rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.35rem;
+}
+
+#addModal .input-group-text,
+#editModal .input-group-text {
+    background: var(--modal-input-icon, #f0f3fb);
+    border: 1.5px solid #e3e6f0;
+    border-radius: 8px 0 0 8px;
+    color: var(--modal-accent);
+    font-size: 0.9rem;
+}
+
+[dir="rtl"] #addModal .input-group-text,
+[dir="rtl"] #editModal .input-group-text {
+    border-radius: 0 8px 8px 0;
+}
+
+/* ─────────────────────────────────────────────
+   18. MODAL — Tab Content & Footer
+───────────────────────────────────────────── */
+#addModal .tab-content,
+#editModal .tab-content {
+    padding: 1.5rem 1.75rem;
+    min-height: 340px;
+}
+
+#addModal .modal-footer,
+#editModal .modal-footer {
+    border-top: 1px solid #edf2f7;
+    padding: 1rem 1.75rem;
+    background: #f8f9fc;
+}
+
+#addModal .btn-save-student,
+#editModal .btn-save-student {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px var(--modal-accent-glow);
+}
+
+#addModal .btn-save-student:hover,
+#editModal .btn-save-student:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--modal-accent-glow);
+}
+
+/* ─────────────────────────────────────────────
+   19. MODAL — Tab Dot Indicator
+───────────────────────────────────────────── */
+.tab-steps-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0 0;
+}
+
+.tab-steps-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    display: block;
+    transition: background 0.2s, width 0.2s;
+}
+
+.tab-steps-indicator span.active {
+    background: var(--modal-accent, #4e73df);
+    width: 18px;
+    border-radius: 3px;
+}
+
+/* ════════════════════════════════════════════════
+   DARK THEME OVERRIDES
+════════════════════════════════════════════════ */
+
+/* Glass card */
+.dark-theme .glass-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+.dark-theme .glass-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Filter section */
+.dark-theme .filter-section {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .filter-section .form-label {
+    color: #94a3b8 !important;
+}
+
+/* Form controls */
+.dark-theme .form-control-modern {
+    background-color: #1e212b;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme .form-control-modern:focus {
+    border-color: #4e73df;
+    background-color: #1e212b;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.2);
+}
+
+.dark-theme .form-control-modern:disabled {
+    background-color: #12141c;
+    color: #64748b;
+}
+
+/* Buttons */
+.dark-theme .btn-cancel-student {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #8896b3;
+}
+
+.dark-theme .btn-cancel-student:hover {
+    background: #242836;
+}
+
+.dark-theme #reset_filters {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+}
+
+.dark-theme #reset_filters:hover {
+    background: #242836;
+}
+
+/* Table */
+.dark-theme table.dataTable thead th,
+.dark-theme table.dataTable thead td {
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1;
+}
+
+.dark-theme .table-hover tbody tr:hover {
+    background-color: #242836;
+}
+
+/* Misc text */
+.dark-theme .text-muted {
+    color: #94a3b8 !important;
+}
+
+.dark-theme h6,
+.dark-theme .font-weight-bold {
+    color: #f1f5f9 !important;
+}
+
+/* Action icons */
+.dark-theme .action-icon-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Badges */
+.dark-theme .badge-active {
+    background-color: rgba(13, 150, 94, 0.15);
+    border-color: rgba(13, 150, 94, 0.25);
+}
+
+.dark-theme .badge-inactive {
+    background-color: rgba(220, 38, 38, 0.12);
+    border-color: rgba(220, 38, 38, 0.2);
+}
+
+/* Modal — unified dark overrides */
+.dark-theme #addModal .modal-content,
+.dark-theme #editModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #addModal .modal-header,
+.dark-theme #editModal .modal-header {
+    background: var(--modal-header-dark);
+}
+
+.dark-theme #addModal .tab-content,
+.dark-theme #editModal .tab-content {
+    background: #1e212b;
+}
+
+.dark-theme #addModal .modal-footer,
+.dark-theme #editModal .modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255, 255, 255, 0.07);
+}
+
+.dark-theme #addModal .form-label,
+.dark-theme #editModal .form-label {
+    color: #cbd5e1;
+}
+
+.dark-theme #addModal .form-control-modern,
+.dark-theme #editModal .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addModal .form-control-modern:focus,
+.dark-theme #editModal .form-control-modern:focus {
+    background: #14161f;
+    border-color: var(--modal-accent);
+    color: #fff;
+}
+
+.dark-theme #addModal .input-group-text,
+.dark-theme #editModal .input-group-text {
+    background: #1a1d28;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--modal-dark-accent);
+}
+
+/* Modal tabs — dark */
+.dark-theme .nav-tabs-modal {
+    background: #14161f;
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+.dark-theme .nav-tabs-modal .nav-link {
+    color: #8896b3;
+}
+
+.dark-theme .nav-tabs-modal .nav-link:hover {
+    color: var(--modal-dark-accent);
+}
+
+.dark-theme .nav-tabs-modal .nav-link.active {
+    color: var(--modal-dark-accent);
+    border-bottom-color: var(--modal-dark-accent);
+}
+
+.dark-theme .nav-tabs-modal .nav-link.active .tab-icon {
+    background: var(--modal-accent-soft);
+    color: var(--modal-dark-accent);
+}
+
+/* Section labels — dark */
+.dark-theme .section-label {
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Student code banner — dark */
+.dark-theme .student-code-banner {
+    background: var(--modal-accent-soft);
+    border-color: var(--modal-accent-dim);
+}
+
+.dark-theme .student-code-banner strong {
+    color: #e2e8f0;
+}
+
+.dark-theme .student-code-banner .code-value {
+    color: var(--modal-dark-accent);
+}
+
+/* Form labels / input addons */
+.dark-theme .student-form-label {
+    color: #cbd5e1;
+}
+
+.dark-theme .student-input-group-text {
+    background: #1a1d28;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #7b96f0;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   20. MODAL — Edit Modal Loader
+───────────────────────────────────────────── */
+#edit_modal_loader .spinner-border { color: var(--modal-accent); width: 2.5rem; height: 2.5rem; }
+#edit_modal_loader p { color: #6c7a9c; font-size: 0.9rem; margin-top: 0.75rem; }
+.dark-theme #edit_modal_loader p { color: #8896b3; }

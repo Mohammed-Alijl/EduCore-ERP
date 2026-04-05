@@ -1,0 +1,836 @@
+/**
+ * Student Finance Modal Styles
+ *
+ * A modern, responsive design for the student financial overview modal.
+ */
+
+/* ─── Modal Header ─── */
+.finance-modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    color: #fff;
+}
+
+.finance-modal-header .close {
+    color: #fff;
+    opacity: 0.8;
+    text-shadow: none;
+}
+
+.finance-modal-header .close:hover {
+    opacity: 1;
+}
+
+.finance-avatar-wrapper {
+    position: relative;
+}
+
+.finance-avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.finance-status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.finance-status-dot.success {
+    background: #10b981;
+}
+
+.finance-status-dot.danger {
+    background: #ef4444;
+}
+
+.finance-status-dot.warning {
+    background: #f59e0b;
+}
+
+.finance-code-badge {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+}
+
+/* ─── Modal Body ─── */
+.finance-modal-body {
+    background: #f8fafc;
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+/* ─── Summary Cards Grid ─── */
+.finance-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.finance-summary-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.finance-summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.finance-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.finance-card-invoiced .finance-card-icon {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #dc2626;
+}
+
+.finance-card-paid .finance-card-icon {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #059669;
+}
+
+.finance-card-discounts .finance-card-icon {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #2563eb;
+}
+
+.finance-card-balance .finance-card-icon {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    color: #4f46e5;
+}
+
+.finance-card-balance.outstanding .finance-card-icon {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #dc2626;
+}
+
+.finance-card-balance.settled .finance-card-icon {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #059669;
+}
+
+.finance-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.finance-card-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+}
+
+.finance-card-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.finance-card-count {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.finance-card-status {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* ─── Nav Tabs ─── */
+.finance-nav-tabs {
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 0;
+    padding: 0;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.finance-nav-tabs .nav-item {
+    margin-bottom: -2px;
+}
+
+.finance-nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #64748b;
+    font-weight: 500;
+    padding: 0.875rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    border-radius: 0;
+    transition: all 0.2s ease;
+}
+
+.finance-nav-tabs .nav-link:hover {
+    color: #4f46e5;
+    border-bottom-color: #c7d2fe;
+    background: transparent;
+}
+
+.finance-nav-tabs .nav-link.active {
+    color: #4f46e5;
+    border-bottom-color: #4f46e5;
+    background: transparent;
+}
+
+.finance-nav-tabs .nav-link .badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.45rem;
+    font-weight: 600;
+}
+
+/* ─── Tab Content ─── */
+.finance-tab-content {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    padding: 1.25rem;
+    min-height: 200px;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+}
+
+/* ─── Ledger Table ─── */
+.finance-table-wrapper {
+    overflow-x: auto;
+}
+
+.finance-table {
+    width: 100%;
+    font-size: 0.875rem;
+}
+
+.finance-table thead th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    padding: 0.875rem 1rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.finance-table tbody td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.finance-ledger-row:hover {
+    background: #f8fafc;
+}
+
+.finance-date {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.finance-description {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: #475569;
+}
+
+.finance-amount {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-weight: 600;
+}
+
+.finance-amount.debit {
+    color: #dc2626;
+}
+
+.finance-amount.credit {
+    color: #059669;
+}
+
+/* ─── Item Cards Grid ─── */
+.finance-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.finance-item-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.finance-item-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.finance-item-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #f8fafc;
+    gap: 0.75rem;
+}
+
+.finance-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.bg-danger-soft {
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.bg-success-soft {
+    background: rgba(5, 150, 105, 0.1);
+}
+
+.bg-info-soft {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.bg-warning-soft {
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.finance-item-meta {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.finance-item-title {
+    display: block;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.finance-item-date {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.finance-item-amount {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Monaco', 'Consolas', monospace;
+    flex-shrink: 0;
+}
+
+.finance-item-body {
+    padding: 0.875rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.finance-item-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.finance-item-detail i {
+    width: 16px;
+    color: #94a3b8;
+}
+
+/* ─── Empty State ─── */
+.finance-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.finance-empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.finance-empty-icon i {
+    font-size: 2.5rem;
+    color: #94a3b8;
+}
+
+.finance-empty-message {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ─── Modal Footer ─── */
+.finance-modal-footer {
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+}
+
+/* ─── Badge Variants ─── */
+.badge-light-danger {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+}
+
+.badge-light-success {
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
+}
+
+.badge-light-info {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+.badge-light-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.badge-light-secondary {
+    background: rgba(100, 116, 139, 0.1);
+    color: #475569;
+}
+
+.badge-light-primary {
+    background: rgba(79, 70, 229, 0.1);
+    color: #4f46e5;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+    .finance-summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .finance-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .finance-nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .finance-nav-tabs .nav-link {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .finance-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .finance-modal-header {
+        padding: 1rem;
+    }
+
+    .finance-avatar-img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* ─── RTL Support ─── */
+[dir="rtl"] .finance-item-detail i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .finance-nav-tabs .nav-link .badge {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK THEME STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Modal Header Dark ─── */
+.dark-theme .finance-modal-header {
+    background: linear-gradient(135deg, #3730a3 0%, #581c87 100%);
+}
+
+.dark-theme .finance-code-badge {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ─── Modal Body Dark ─── */
+.dark-theme .finance-modal-body {
+    background: #12141c;
+}
+
+/* ─── Summary Cards Dark ─── */
+.dark-theme .finance-summary-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .finance-summary-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.dark-theme .finance-card-label {
+    color: #94a3b8;
+}
+
+.dark-theme .finance-card-value {
+    color: #f1f5f9;
+}
+
+.dark-theme .finance-card-count {
+    color: #64748b;
+}
+
+/* Card Icon backgrounds for dark mode */
+.dark-theme .finance-card-invoiced .finance-card-icon {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(220, 38, 38, 0.15) 100%);
+    color: #f87171;
+}
+
+.dark-theme .finance-card-paid .finance-card-icon {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
+    color: #34d399;
+}
+
+.dark-theme .finance-card-discounts .finance-card-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.15) 100%);
+    color: #60a5fa;
+}
+
+.dark-theme .finance-card-balance .finance-card-icon {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.15) 100%);
+    color: #a78bfa;
+}
+
+.dark-theme .finance-card-balance.outstanding .finance-card-icon {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.15) 100%);
+    color: #f87171;
+}
+
+.dark-theme .finance-card-balance.settled .finance-card-icon {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
+    color: #34d399;
+}
+
+/* ─── Nav Tabs Dark ─── */
+.dark-theme .finance-nav-tabs {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .finance-nav-tabs .nav-link {
+    color: #94a3b8;
+}
+
+.dark-theme .finance-nav-tabs .nav-link:hover {
+    color: #a78bfa;
+    border-bottom-color: rgba(139, 92, 246, 0.4);
+}
+
+.dark-theme .finance-nav-tabs .nav-link.active {
+    color: #a78bfa;
+    border-bottom-color: #a78bfa;
+}
+
+.dark-theme .finance-nav-tabs .nav-link .badge {
+    opacity: 0.9;
+}
+
+/* ─── Tab Content Dark ─── */
+.dark-theme .finance-tab-content {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Ledger Table Dark ─── */
+.dark-theme .finance-table thead th {
+    background: #14161f;
+    color: #94a3b8;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .finance-table tbody td {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.dark-theme .finance-ledger-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.dark-theme .finance-date {
+    color: #94a3b8;
+}
+
+.dark-theme .finance-description {
+    color: #cbd5e1;
+}
+
+.dark-theme .finance-amount.debit {
+    color: #f87171;
+}
+
+.dark-theme .finance-amount.credit {
+    color: #34d399;
+}
+
+/* ─── Item Cards Dark ─── */
+.dark-theme .finance-item-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .finance-item-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-theme .finance-item-header {
+    background: #14161f;
+}
+
+.dark-theme .finance-item-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .finance-item-date {
+    color: #64748b;
+}
+
+.dark-theme .finance-item-detail {
+    color: #94a3b8;
+}
+
+.dark-theme .finance-item-detail i {
+    color: #64748b;
+}
+
+/* Soft backgrounds for dark mode */
+.dark-theme .bg-danger-soft {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.dark-theme .bg-success-soft {
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.dark-theme .bg-info-soft {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.dark-theme .bg-warning-soft {
+    background: rgba(245, 158, 11, 0.15);
+}
+
+/* Text colors for dark mode */
+.dark-theme .text-danger {
+    color: #f87171 !important;
+}
+
+.dark-theme .text-success {
+    color: #34d399 !important;
+}
+
+.dark-theme .text-info {
+    color: #60a5fa !important;
+}
+
+.dark-theme .text-warning {
+    color: #fbbf24 !important;
+}
+
+.dark-theme .text-muted {
+    color: #64748b !important;
+}
+
+/* ─── Badge Variants Dark ─── */
+.dark-theme .badge-light-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.dark-theme .badge-light-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+}
+
+.dark-theme .badge-light-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.dark-theme .badge-light-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+.dark-theme .badge-light-secondary {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+}
+
+.dark-theme .badge-light-primary {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+}
+
+/* ─── Empty State Dark ─── */
+.dark-theme .finance-empty-state {
+    padding: 3rem 1rem;
+}
+
+.dark-theme .finance-empty-icon {
+    background: linear-gradient(135deg, #1e212b 0%, #14161f 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .finance-empty-icon i {
+    color: #64748b;
+}
+
+.dark-theme .finance-empty-message {
+    color: #94a3b8;
+}
+
+/* ─── Modal Footer Dark ─── */
+.dark-theme .finance-modal-footer {
+    background: #14161f;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark-theme .finance-modal-footer .btn-secondary {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+}
+
+.dark-theme .finance-modal-footer .btn-secondary:hover {
+    background: #2a2d3a;
+    color: #e2e8f0;
+}
+
+/* ─── Status Badge Dark ─── */
+.dark-theme .finance-card-status.badge-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+}
+
+.dark-theme .finance-card-status.badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.dark-theme .finance-card-status.badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+/* ─── Scrollbar Dark ─── */
+.dark-theme .finance-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark-theme .finance-modal-body::-webkit-scrollbar-track {
+    background: #14161f;
+}
+
+.dark-theme .finance-modal-body::-webkit-scrollbar-thumb {
+    background: #3a3f50;
+    border-radius: 4px;
+}
+
+.dark-theme .finance-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #4a5068;
+}
+
+/* ─── Table Scrollbar Dark ─── */
+.dark-theme .finance-table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.dark-theme .finance-table-wrapper::-webkit-scrollbar-track {
+    background: #14161f;
+}
+
+.dark-theme .finance-table-wrapper::-webkit-scrollbar-thumb {
+    background: #3a3f50;
+    border-radius: 3px;
+}
+
+/* ─── Nav Tabs Scrollbar Dark ─── */
+.dark-theme .finance-nav-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.dark-theme .finance-nav-tabs::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dark-theme .finance-nav-tabs::-webkit-scrollbar-thumb {
+    background: #3a3f50;
+    border-radius: 2px;
+}

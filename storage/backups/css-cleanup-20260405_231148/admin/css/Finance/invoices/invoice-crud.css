@@ -1,0 +1,759 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   INVOICES CRUD — Enterprise Stylesheet
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   1. LAYOUT — Glass Card
+───────────────────────────────────────────── */
+.glass-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .glass-card {
+    background: #1e1e2e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─────────────────────────────────────────────
+   2. FORM — Modern Controls (shared across modals)
+───────────────────────────────────────────── */
+.form-control-modern {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.875rem;
+    box-shadow: none;
+    height: auto;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    background: #ffffff;
+    color: #4a5568;
+}
+
+.form-control-modern:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.15);
+    background: #ffffff;
+}
+
+.form-control-modern:disabled {
+    background-color: #f1f3f9;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Dark Mode Form Controls */
+[data-theme="dark"] .form-control-modern {
+    background: #2a2a3e;
+    border-color: #3a3a4e;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .form-control-modern:focus {
+    background: #2a2a3e;
+    border-color: #6366f1;
+}
+
+/* ─────────────────────────────────────────────
+   3. FORM — Labels
+───────────────────────────────────────────── */
+.invoice-form-label {
+    font-size: 0.815rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+}
+
+[data-theme="dark"] .invoice-form-label {
+    color: #e0e0e0;
+}
+
+.invoice-form-label .text-danger {
+    margin-left: 0.3rem;
+}
+
+[dir="rtl"] .invoice-form-label .text-danger {
+    margin-left: 0;
+    margin-right: 0.3rem;
+}
+
+/* ─────────────────────────────────────────────
+   4. FORM — Group Structure
+───────────────────────────────────────────── */
+.invoice-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+}
+
+.invoice-form-group .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+    color: #e74c3c;
+}
+
+/* ─────────────────────────────────────────────
+   5. SELECT2 — Modal Dropdown Fix
+───────────────────────────────────────────── */
+.select2-modal {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1.5px solid #e3e6f0;
+    border-radius: 8px;
+    height: 42px;
+    padding-left: 0.3rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    padding-left: 0.6rem;
+    font-size: 0.875rem;
+}
+
+/* ─────────────────────────────────────────────
+   6. BUTTONS — Primary Actions
+───────────────────────────────────────────── */
+.btn-modern {
+    border-radius: 9px;
+    font-weight: 600;
+    padding: 0.55rem 1.4rem;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Save Button */
+.btn-save-invoice {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-save-invoice:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    color: #fff;
+}
+
+.btn-save-invoice:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary-invoice {
+    border-radius: 9px;
+    font-weight: 600;
+    border: 1.5px solid #e3e6f0;
+    color: #6c7a9c;
+    background: #fff;
+    transition: all 0.25s ease;
+}
+
+.btn-secondary-invoice:hover {
+    background: #f8f9fc;
+    border-color: #d0d5e8;
+}
+
+/* ─────────────────────────────────────────────
+   7. MODALS — Enhanced Styling
+───────────────────────────────────────────── */
+.modal-content {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .modal-content {
+    background: #1e1e2e;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
+    border-radius: 12px 12px 0 0;
+    padding: 1.2rem 1.5rem;
+}
+
+[data-theme="dark"] .modal-header {
+    background: linear-gradient(135deg, #2a2a3e 0%, #1e1e2e 100%);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.modal-title {
+    font-weight: 700;
+    color: #2a2d45;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .modal-title {
+    color: #e0e0e0;
+}
+
+.modal-body {
+    padding: 1.8rem;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: #f8f9fc;
+    border-radius: 0 0 12px 12px;
+    padding: 1.2rem 1.5rem;
+}
+
+[data-theme="dark"] .modal-footer {
+    background: #2a2a3e;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ─────────────────────────────────────────────
+   8. SHOW MODAL — Card-Based Display
+───────────────────────────────────────────── */
+.invoice-show-modal-header {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #fff;
+}
+
+.invoice-info-banner {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(79, 70, 229, 0.05) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .invoice-info-banner {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.invoice-detail-card {
+    background: #f8f9fc;
+    border: 1px solid #e3e6f0;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .invoice-detail-card {
+    background: #2a2a3e;
+    border-color: #3a3a4e;
+}
+
+.invoice-detail-card:hover {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+    border-color: #6366f1;
+}
+
+.invoice-detail-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #6c7a9c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+}
+
+[data-theme="dark"] .invoice-detail-label {
+    color: #a0a0b0;
+}
+
+.invoice-detail-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2a2d45;
+}
+
+[data-theme="dark"] .invoice-detail-value {
+    color: #e0e0e0;
+}
+
+/* Icon Badge for Show Modal */
+.invoice-icon-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.invoice-icon-badge.primary {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #fff;
+}
+
+/* Section Headers */
+.invoice-section-header {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: #2a2d45;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .invoice-section-header {
+    color: #e0e0e0;
+}
+
+.invoice-section-header i {
+    margin-right: 0.5rem;
+    color: #6366f1;
+}
+
+[dir="rtl"] .invoice-section-header i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* Badge Styling */
+.badge-primary-light {
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    font-size: 0.78rem;
+}
+
+/* ─────────────────────────────────────────────
+   9. TABLE — Invoice Details
+───────────────────────────────────────────── */
+.table-hover tbody tr:hover {
+    background-color: #f8f9fc;
+}
+
+[data-theme="dark"] .table-hover tbody tr:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.table.table-bordered {
+    border-color: #e3e6f0;
+}
+
+[data-theme="dark"] .table.table-bordered {
+    border-color: #3a3a4e;
+}
+
+/* ─────────────────────────────────────────────
+   10. SPINNER — Loading State
+───────────────────────────────────────────── */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.25em;
+}
+
+button .spinner-border-sm {
+    margin-right: 0.5rem;
+}
+
+[dir="rtl"] button .spinner-border-sm {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   11. RTL Support
+───────────────────────────────────────────── */
+[dir="rtl"] .invoice-form-label {
+    text-align: right;
+}
+
+[dir="rtl"] .btn-modern {
+    letter-spacing: -0.3px;
+}
+
+[dir="rtl"] .invoice-section-header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .invoice-detail-card {
+    text-align: right;
+}
+
+/* ─────────────────────────────────────────────
+   12. Animation & Transitions
+───────────────────────────────────────────── */
+@keyframes slideInModal {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    animation: slideInModal 0.3s ease-out;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.invoice-detail-card {
+    animation: fadeInCard 0.4s ease-out;
+}
+
+/* ─────────────────────────────────────────────
+   13. Responsive Design
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .invoice-detail-card {
+        padding: 0.8rem;
+    }
+
+    .invoice-icon-badge {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .btn-save-invoice,
+    .btn-secondary-invoice {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   14. Status Indicators
+───────────────────────────────────────────── */
+.status-active {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.status-pending {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.status-cancelled {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────
+   15. Error & Validation States
+───────────────────────────────────────────── */
+.is-invalid {
+    border-color: #e74c3c !important;
+    background-color: rgba(231, 76, 60, 0.03);
+}
+
+.is-invalid:focus {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.15) !important;
+}
+
+.error-text {
+    color: #e74c3c;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   16. Button Aliases & Add-Modal Classes
+   (align class names used in blade templates)
+══════════════════════════════════════════════════════════════════════════ */
+.invoice-btn-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.6rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border: none;
+    border-radius: 10px;
+    letter-spacing: 0.03em;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.45);
+}
+.invoice-btn-save:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.55);
+    color: #fff;
+}
+.invoice-btn-save:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.invoice-btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.4rem;
+    background: transparent;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border: 1.5px solid #dee2e6;
+    border-radius: 10px;
+    transition: all 0.22s ease;
+}
+.invoice-btn-cancel:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+    color: #343a40;
+}
+
+/* ─── Add Modal Header ──────────────────────────────────────────────────── */
+.invoice-modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+.invoice-modal-header .modal-title { color: #fff; font-weight: 700; }
+.invoice-modal-header .close { color: #fff; opacity: 0.85; }
+.invoice-modal-header .close:hover { opacity: 1; }
+
+.invoice-modal-footer {
+    background: transparent;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+}
+
+/* ─── Amount auto-preview (add modal) ───────────────────────────────────── */
+.invoice-amount-preview {
+    background: linear-gradient(135deg, rgba(102,126,234,0.08) 0%, rgba(118,75,162,0.08) 100%);
+    border: 1.5px dashed rgba(102, 126, 234, 0.4);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+.invoice-amount-preview .preview-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.1rem; flex-shrink: 0;
+}
+.invoice-amount-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+.invoice-amount-currency {
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   17. Show Modal — Premium Card Layout
+══════════════════════════════════════════════════════════════════════════ */
+.invoice-show-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 1.5rem 1.75rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.invoice-show-header::after {
+    content: '';
+    position: absolute;
+    top: -30%; right: -5%;
+    width: 200px; height: 200px;
+    background: rgba(102,126,234,0.15);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.invoice-show-icon {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    backdrop-filter: blur(6px);
+    flex-shrink: 0;
+}
+
+/* ─── Amount Hero ───────────────────────────────────────────────────────── */
+.invoice-amount-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(102,126,234,0.35);
+    position: relative;
+    overflow: hidden;
+}
+.invoice-amount-hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -5%;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.invoice-hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+.invoice-hero-amount {
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.invoice-hero-date {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+/* ─── Section Title ─────────────────────────────────────────────────────── */
+.invoice-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid #667eea;
+}
+
+/* ─── Info Card ─────────────────────────────────────────────────────────── */
+.invoice-info-card {
+    background: #f8f9ff;
+    border: 1px solid rgba(102,126,234,0.12);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+.invoice-field { padding: 0.35rem 0; }
+.invoice-field-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9ca3af;
+    margin-bottom: 0.2rem;
+}
+.invoice-field-value {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ─── Show Modal Footer ─────────────────────────────────────────────────── */
+.invoice-show-footer {
+    background: transparent;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ─── Dark Mode overrides ───────────────────────────────────────────────── */
+[data-theme="dark"] .invoice-info-card {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(102,126,234,0.18);
+}
+[data-theme="dark"] .invoice-field-value { color: #e2e8f0; }
+[data-theme="dark"] .invoice-field-label { color: #64748b; }
+[data-theme="dark"] .invoice-amount-preview {
+    background: rgba(102,126,234,0.1);
+}
+[data-theme="dark"] .invoice-btn-cancel {
+    border-color: rgba(255,255,255,0.12);
+    color: #94a3b8;
+}
+[data-theme="dark"] .invoice-btn-cancel:hover {
+    background: rgba(255,255,255,0.06);
+    color: #e2e8f0;
+}
+
+/* ─── RTL overrides ─────────────────────────────────────────────────────── */
+[dir="rtl"] .invoice-section-title {
+    padding-left: 0;
+    padding-right: 0.5rem;
+    border-left: none;
+    border-right: 3px solid #667eea;
+}
+[dir="rtl"] .invoice-modal-footer,
+[dir="rtl"] .invoice-show-footer {
+    justify-content: flex-start;
+}
+[dir="rtl"] .invoice-btn-save,
+[dir="rtl"] .invoice-btn-cancel { flex-direction: row-reverse; }
