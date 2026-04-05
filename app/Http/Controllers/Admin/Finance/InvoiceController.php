@@ -8,7 +8,7 @@ use App\Models\AcademicYear;
 use App\Models\Fee;
 use App\Models\Grade;
 use App\Models\Invoice;
-use App\Services\InvoiceService;
+use App\Services\Finance\InvoiceService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

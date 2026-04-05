@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Subject\StoreRequest;
 use App\Http\Requests\Admin\Subject\UpdateRequest;
 use App\Models\Subject;
-use App\Services\SubjectService;
+use App\Services\LMS\SubjectService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

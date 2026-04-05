@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Employee\StoreRequest;
 use App\Http\Requests\Admin\Employee\UpdateRequest;
 use App\Models\Employee;
-use App\Services\EmployeeService;
+use App\Services\Users\EmployeeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

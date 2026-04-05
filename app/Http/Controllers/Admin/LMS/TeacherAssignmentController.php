@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TeacherAssignment\StoreRequest;
 use App\Http\Requests\Admin\TeacherAssignment\UpdateRequest;
 use App\Models\TeacherAssignment;
-use App\Services\TeacherAssignmentService;
+use App\Services\LMS\TeacherAssignmentService;
 use Illuminate\Http\Request;
 
 class TeacherAssignmentController extends Controller

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Students;
 
 use App\Http\Controllers\Controller;
-use App\Services\GraduationService;
+use App\Services\Students\GraduationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

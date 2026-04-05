@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\StudentDiscountRequest;
 use App\Models\StudentDiscount;
-use App\Services\StudentDiscountService;
+use App\Services\Finance\StudentDiscountService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

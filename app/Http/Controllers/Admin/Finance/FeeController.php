@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\FeeRequest;
 use App\Models\Fee;
-use App\Services\FeeService;
+use App\Services\Finance\FeeService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

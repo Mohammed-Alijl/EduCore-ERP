@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Designation\StoreRequest;
 use App\Http\Requests\Admin\Designation\UpdateRequest;
 use App\Models\Department;
 use App\Models\Designation;
-use App\Services\DesignationService;
+use App\Services\HR\DesignationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

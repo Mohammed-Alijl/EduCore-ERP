@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\System;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Role\StoreRequest;
 use App\Http\Requests\Admin\Role\UpdateRequest;
-use App\Services\RoleService;
+use App\Services\System\RoleService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Role;

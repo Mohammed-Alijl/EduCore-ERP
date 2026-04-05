@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\LMS;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OnlineClass\DatatableRequest;
 use App\Models\OnlineClass;
-use App\Services\OnlineClassService;
+use App\Services\LMS\OnlineClassService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Yajra\DataTables\Facades\DataTables;

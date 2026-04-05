@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\HR;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Attendance\ShowRequest;
 use App\Http\Requests\Admin\Attendance\StoreRequest;
-use App\Services\AttendanceService;
-use App\Services\StudentService;
+use App\Services\HR\AttendanceService;
+use App\Services\Users\StudentService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 

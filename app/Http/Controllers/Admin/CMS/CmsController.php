@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Cms\UpdateCmsPageRequest;
 use App\Http\Requests\Admin\Cms\UpdateCmsSectionRequest;
 use App\Models\CmsPage;
 use App\Models\CmsSection;
-use App\Services\CmsService;
+use App\Services\CMS\CmsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

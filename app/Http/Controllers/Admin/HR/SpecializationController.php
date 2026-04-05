@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Specialization\StoreRequest;
 use App\Http\Requests\Admin\Specialization\UpdateRequest;
 use App\Models\Specialization;
-use App\Services\SpecializationService;
+use App\Services\HR\SpecializationService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 

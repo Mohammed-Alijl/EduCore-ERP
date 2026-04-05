@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\PaymentGatewayRequest;
 use App\Models\PaymentGateway;
-use App\Services\PaymentGatewayService;
+use App\Services\Finance\PaymentGatewayService;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

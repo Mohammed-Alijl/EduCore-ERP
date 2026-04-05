@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\ClassPeriod\StoreRequest;
 use App\Http\Requests\Admin\ClassPeriod\UpdateRequest;
 use App\Models\ClassPeriod;
 use App\Models\Grade;
-use App\Services\ClassPeriodService;
+use App\Services\Schedule\ClassPeriodService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

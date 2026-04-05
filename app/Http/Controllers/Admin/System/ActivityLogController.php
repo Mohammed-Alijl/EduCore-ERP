@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\System;
 
 use App\DTOs\ActivityLogFilterDTO;
 use App\Http\Controllers\Controller;
-use App\Services\ActivityLogService;
+use App\Services\System\ActivityLogService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

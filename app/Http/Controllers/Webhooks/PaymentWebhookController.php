@@ -8,7 +8,7 @@ use App\Models\PaymentGateway;
 use App\Models\Receipt;
 use App\Models\Student;
 use App\Services\Payments\PaymentGatewayManager;
-use App\Services\ReceiptService;
+use App\Services\Finance\ReceiptService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

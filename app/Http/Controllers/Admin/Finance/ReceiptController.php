@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\ReceiptRequest;
 use App\DTOs\PaymentResult;
 use App\Models\Receipt;
-use App\Services\ReceiptService;
+use App\Services\Finance\ReceiptService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

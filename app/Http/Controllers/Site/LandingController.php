@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ClassRoom;
 use App\Models\Student;
 use App\Models\Teacher;
-use App\Services\CmsService;
-use App\Services\GradeService;
+use App\Services\CMS\CmsService;
+use App\Services\Academic\GradeService;
 use Illuminate\Contracts\View\View;
 
 class LandingController extends Controller

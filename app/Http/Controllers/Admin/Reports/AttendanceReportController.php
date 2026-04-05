@@ -7,7 +7,7 @@ use App\Http\Requests\Export\AttendanceReportRequest;
 use App\Jobs\GenerateAttendanceExportJob;
 use App\Jobs\GenerateAttendancePdfJob;
 use App\Models\AcademicYear;
-use App\Services\GradeService;
+use App\Services\Academic\GradeService;
 use App\Services\Reports\AttendanceReportService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

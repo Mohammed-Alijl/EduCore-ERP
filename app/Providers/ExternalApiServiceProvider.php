@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\ExternalApiSettingService;
+use App\Services\Settings\ExternalApiSettingService;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

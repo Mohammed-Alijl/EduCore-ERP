@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\CurrencyRequest;
 use App\Models\Currency;
-use App\Services\CurrencyService;
+use App\Services\Finance\CurrencyService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

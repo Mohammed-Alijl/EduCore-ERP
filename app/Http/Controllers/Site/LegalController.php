@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Services\CmsService;
+use App\Services\CMS\CmsService;
 use Illuminate\Contracts\View\View;
 
 class LegalController extends Controller

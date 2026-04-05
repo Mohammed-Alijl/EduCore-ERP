@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Department\StoreRequest;
 use App\Http\Requests\Admin\Department\UpdateRequest;
 use App\Models\Department;
-use App\Services\DepartmentService;
+use App\Services\HR\DepartmentService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 

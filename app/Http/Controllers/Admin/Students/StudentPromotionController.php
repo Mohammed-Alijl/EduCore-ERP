@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Promotion\StoreRequest;
-use App\Services\StudentPromotionService;
+use App\Services\Students\StudentPromotionService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
