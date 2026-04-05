@@ -31,7 +31,7 @@ class FeeController extends Controller implements HasMiddleware
     {
         $lookups = $this->feeService->getLookups();
 
-        return view('admin.finance.fees.index', compact('lookups'));
+        return view('admin.Finance.fees.index', compact('lookups'));
     }
 
     public function datatable(Request $request)
@@ -51,13 +51,13 @@ class FeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.store'),
+                'message' => trans('admin.Finance.messages.success.store'),
             ], 201);
         } catch (\Exception $e) {
             Log::error('Fee creation failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.store')
+                'message' => trans('admin.Finance.messages.failed.store')
             ], 500);
         }
     }
@@ -69,13 +69,13 @@ class FeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.update')
+                'message' => trans('admin.Finance.messages.success.update')
             ], 200);
         } catch (\Exception $e) {
             Log::error('Fee update failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.update')
+                'message' => trans('admin.Finance.messages.failed.update')
             ], 500);
         }
     }
@@ -88,19 +88,19 @@ class FeeController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status' => 'success',
-                    'message' => trans('admin.finance.messages.success.delete')
+                    'message' => trans('admin.Finance.messages.success.delete')
                 ], 200);
             }
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.delete')
+                'message' => trans('admin.Finance.messages.failed.delete')
             ], 400);
         } catch (\Exception $e) {
             Log::error('Fee deletion failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.delete')
+                'message' => trans('admin.Finance.messages.failed.delete')
             ], 500);
         }
     }

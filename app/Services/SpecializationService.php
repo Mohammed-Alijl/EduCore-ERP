@@ -24,13 +24,13 @@ class SpecializationService
     public function delete(Specialization $specialization)
     {
         if ($specialization->teachers()->count() > 0) {
-            throw new \Exception(__('admin.specializations.messages.failed.has_teachers'));
+            throw new \Exception(__('admin.HR.specializations.messages.failed.has_teachers'));
         }
 
         if ($specialization->delete()) {
             return true;
         }
 
-        throw new \Exception(__('admin.specializations.messages.failed.delete'));
+        throw new \Exception(__('admin.HR.specializations.messages.failed.delete'));
     }
 }

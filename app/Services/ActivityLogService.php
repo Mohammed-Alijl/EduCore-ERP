@@ -203,7 +203,7 @@ class ActivityLogService
      */
     protected function renderActionsColumn(Activity $activity): string
     {
-        return view('admin.activity_logs.partials.actions', ['log' => $activity])->render();
+        return view('admin.System.activity_logs.partials.actions', ['log' => $activity])->render();
     }
 
     /**

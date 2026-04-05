@@ -55,13 +55,13 @@ class FinancialReportService
             ->addIndexColumn()
             ->editColumn('last_payment_date', function ($row) {
                 if (! $row->last_payment_date) {
-                    return '<span class="badge bg-danger">'.trans('admin.reports.financial.last_payment_not_found').'</span>';
+                    return '<span class="badge bg-danger">'.trans('admin.Reports.reports.financial.last_payment_not_found').'</span>';
                 }
 
                 return '<span class="badge bg-secondary">'.\Carbon\Carbon::parse($row->last_payment_date)->diffForHumans().'</span><br><small class="text-muted">'.$row->last_payment_date.'</small>';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.reports.finance.partials._actions', compact('row'))->render();
+                return view('admin.Reports.finance.partials._actions', compact('row'))->render();
             })
             ->rawColumns(['last_payment_date', 'actions'])
             ->make(true);

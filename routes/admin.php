@@ -98,22 +98,22 @@ Route::group(
                     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
                     // ─── Admins ───────────────────────────────────────────────────────────────
-                    Route::resource('admins', AdminController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('admins', AdminController::class)->names('Users.admins')->except(['show', 'create', 'edit']);
 
                     // ─── Roles ───────────────────────────────────────────────────────────────
-                    Route::resource('roles', RoleController::class);
+                    Route::resource('roles', RoleController::class)->names('System.roles')->except(['show']);
 
                     // ─── Grades ───────────────────────────────────────────────────────────────
-                    Route::resource('grades', GradeController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('grades')->name('grades.')->group(function () {
+                    Route::resource('grades', GradeController::class)->names('Academic.grades')->except(['show', 'create', 'edit']);
+                    Route::prefix('grades')->name('Academic.grades.')->group(function () {
                         Route::get('archive', [GradeController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [GradeController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [GradeController::class, 'forceDelete'])->name('forceDelete');
                     });
 
                     // ─── Classrooms ───────────────────────────────────────────────────────────────
-                    Route::resource('classrooms', ClassroomController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('classrooms')->name('classrooms.')->group(function () {
+                    Route::resource('classrooms', ClassroomController::class)->names('Academic.classrooms')->except(['show', 'create', 'edit']);
+                    Route::prefix('classrooms')->name('Academic.classrooms.')->group(function () {
                         Route::get('archive', [ClassroomController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [ClassroomController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [ClassroomController::class, 'forceDelete'])->name('forceDelete');
@@ -121,8 +121,8 @@ Route::group(
                     });
 
                     // ─── Sections ───────────────────────────────────────────────────────────────
-                    Route::resource('sections', SectionController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('sections/')->name('sections.')->group(function () {
+                    Route::resource('sections', SectionController::class)->names('Academic.sections')->except(['show', 'create', 'edit']);
+                    Route::prefix('sections/')->name('Academic.sections.')->group(function () {
                         Route::get('archive', [SectionController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [SectionController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [SectionController::class, 'forceDelete'])->name('forceDelete');
@@ -131,16 +131,16 @@ Route::group(
                     });
 
                     // ─── Guardians ───────────────────────────────────────────────────────────────
-                    Route::resource('guardians', GuardianController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('guardians/')->name('guardians.')->group(function () {
+                    Route::resource('guardians', GuardianController::class)->names('Users.guardians')->except(['show', 'create', 'edit']);
+                    Route::prefix('guardians/')->name('Users.guardians.')->group(function () {
                         Route::get('archive', [GuardianController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [GuardianController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [GuardianController::class, 'forceDelete'])->name('forceDelete');
                     });
 
                     // ─── Students ───────────────────────────────────────────────────────────────
-                    Route::resource('students', StudentController::class)->except(['show', 'create']);
-                    Route::prefix('students/')->name('students.')->group(function () {
+                    Route::resource('students', StudentController::class)->names('Users.students')->except(['show', 'create']);
+                    Route::prefix('students/')->name('Users.students.')->group(function () {
 
                         // ─── Promotion  ─────────────────────────────────────────────────────────
                         Route::prefix('promotions')->name('promotions.')->group(function () {
@@ -161,14 +161,14 @@ Route::group(
                     });
 
                     // ─── Graduations (Alumni Archive) ───────────────────────────────────────────────
-                    Route::prefix('graduations')->name('graduations.')->group(function () {
+                    Route::prefix('graduations')->name('Students.graduations.')->group(function () {
                         Route::get('/', [GraduationController::class, 'index'])->name('index');
                         Route::post('restore/{id}', [GraduationController::class, 'restore'])->name('restore');
                     });
 
                     // ─── Teachers ───────────────────────────────────────────────────────────────
-                    Route::resource('teachers', TeacherController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('teachers/')->name('teachers.')->group(function () {
+                    Route::resource('teachers', TeacherController::class)->names('Users.teachers')->except(['show', 'create', 'edit']);
+                    Route::prefix('teachers/')->name('Users.teachers.')->group(function () {
                         Route::delete('attachments/{id}', [TeacherController::class, 'deleteAttachment'])->name('attachments.destroy');
                         Route::get('archive', [TeacherController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [TeacherController::class, 'restore'])->name('restore');
@@ -176,8 +176,8 @@ Route::group(
                     });
 
                     // ─── HR Employees ─────────────────────────────────────────────────────────────
-                    Route::resource('employees', EmployeeController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('employees/')->name('employees.')->group(function () {
+                    Route::resource('employees', EmployeeController::class)->names('Users.employees')->except(['show', 'create', 'edit']);
+                    Route::prefix('employees/')->name('Users.employees.')->group(function () {
                         Route::delete('attachments/{id}', [EmployeeController::class, 'deleteAttachment'])->name('attachments.destroy');
                         Route::get('archive', [EmployeeController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [EmployeeController::class, 'restore'])->name('restore');
@@ -185,62 +185,62 @@ Route::group(
                     });
 
                     // ─── Teacher Assignments ───────────────────────────────────────────────────────────────
-                    Route::resource('teacher_assignments', TeacherAssignmentController::class)->except(['show', 'create']);
+                    Route::resource('teacher_assignments', TeacherAssignmentController::class)->names('LMS.teacher_assignments')->except(['show', 'create']);
 
                     // ─── Finance (Fees & Fee Categories) ─────────────────────────────────────────────────
-                    Route::prefix('fee_categories')->name('fee_categories.')->group(function () {
+                    Route::prefix('fee_categories')->name('Finance.fee_categories.')->group(function () {
                         Route::get('/datatable', [FeeCategoryController::class, 'datatable'])->name('datatable');
                     });
-                    Route::resource('fee_categories', FeeCategoryController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('fee_categories', FeeCategoryController::class)->names('Finance.fee_categories')->except(['show', 'create', 'edit']);
 
-                    Route::prefix('fees')->name('fees.')->group(function () {
+                    Route::prefix('fees')->name('Finance.fees.')->group(function () {
                         Route::get('/datatable', [FeeController::class, 'datatable'])->name('datatable');
                     });
-                    Route::resource('fees', FeeController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('fees', FeeController::class)->names('Finance.fees')->except(['show', 'create', 'edit']);
 
                     // ─── Invoices ───────────────────────────────────────────────────────────────
-                    Route::prefix('invoices')->name('invoices.')->group(function () {
+                    Route::prefix('invoices')->name('Finance.invoices.')->group(function () {
                         Route::get('/datatable', [InvoiceController::class, 'datatable'])->name('datatable');
                         Route::get('/{invoice}/print', [InvoiceController::class, 'print'])->name('print');
                     });
-                    Route::resource('invoices', InvoiceController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('invoices', InvoiceController::class)->names('Finance.invoices')->except(['show', 'create', 'edit']);
 
                     // ─── Receipts ───────────────────────────────────────────────────────────────
-                    Route::prefix('receipts')->name('receipts.')->group(function () {
+                    Route::prefix('receipts')->name('Finance.receipts.')->group(function () {
                         Route::get('/datatable', [ReceiptController::class, 'datatable'])->name('datatable');
                         Route::get('/{receipt}/print', [ReceiptController::class, 'print'])->name('print');
                     });
-                    Route::resource('receipts', ReceiptController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('receipts', ReceiptController::class)->names('Finance.receipts')->except(['show', 'create', 'edit']);
 
                     // ─── Payment Vouchers ──────────────────────────────────────────────────────────
-                    Route::prefix('payment_vouchers')->name('payment_vouchers.')->group(function () {
+                    Route::prefix('payment_vouchers')->name('Finance.payment_vouchers.')->group(function () {
                         Route::get('/datatable', [PaymentVoucherController::class, 'datatable'])->name('datatable');
                         Route::get('/{payment_voucher}/print', [PaymentVoucherController::class, 'print'])->name('print');
                     });
-                    Route::resource('payment_vouchers', PaymentVoucherController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('payment_vouchers', PaymentVoucherController::class)->names('Finance.payment_vouchers')->except(['show', 'create', 'edit']);
 
                     // ─── Student Discounts ─────────────────────────────────────────────────────────
-                    Route::prefix('student_discounts')->name('student_discounts.')->group(function () {
+                    Route::prefix('student_discounts')->name('Finance.student_discounts.')->group(function () {
                         Route::get('/datatable', [StudentDiscountController::class, 'datatable'])->name('datatable');
                     });
-                    Route::resource('student_discounts', StudentDiscountController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('student_discounts', StudentDiscountController::class)->names('Finance.student_discounts')->except(['show', 'create', 'edit']);
 
                     // ─── Currencies ─────────────────────────────────────────────────────────────────
-                    Route::prefix('currencies')->name('currencies.')->group(function () {
+                    Route::prefix('currencies')->name('Finance.currencies.')->group(function () {
                         Route::get('/datatable', [CurrencyController::class, 'datatable'])->name('datatable');
                     });
-                    Route::resource('currencies', CurrencyController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('currencies', CurrencyController::class)->names('Finance.currencies')->except(['show', 'create', 'edit']);
 
                     // ─── Payment Gateways ──────────────────────────────────────────────────────────
-                    Route::prefix('payment_gateways')->name('payment_gateways.')->group(function () {
+                    Route::prefix('payment_gateways')->name('Finance.payment_gateways.')->group(function () {
                         Route::get('/settings-schema', [PaymentGatewayController::class, 'settingsSchema'])->name('settings-schema');
                         Route::post('/activate', [PaymentGatewayController::class, 'activate'])->name('activate');
                         Route::patch('/{payment_gateway}/toggle-status', [PaymentGatewayController::class, 'toggleStatus'])->name('toggle-status');
                     });
-                    Route::resource('payment_gateways', PaymentGatewayController::class)->only(['index', 'update']);
+                    Route::resource('payment_gateways', PaymentGatewayController::class)->only(['index', 'update'])->names('Finance.payment_gateways');
 
                     // ─── Reports ───────────────────────────────────────────────────────────────
-                    Route::prefix('reports')->name('reports.')->group(function () {
+                    Route::prefix('reports')->name('Reports.reports.')->group(function () {
                         // Financial Reports
                         Route::prefix('financial')->name('financial.')->group(function () {
                             Route::get('/outstanding-balances', [FinancialReportController::class, 'outstandingBalances'])->name('outstanding-balances');
@@ -260,13 +260,13 @@ Route::group(
                     });
 
                     // ─── Specializations ───────────────────────────────────────────────────────────────
-                    Route::resource('specializations', SpecializationController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('specializations', SpecializationController::class)->names('HR.specializations')->except(['show', 'create', 'edit']);
 
                     // ─── Departments ───────────────────────────────────────────────────────────────
-                    Route::resource('departments', DepartmentController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('departments', DepartmentController::class)->names('HR.departments')->except(['show', 'create', 'edit']);
 
                     // ─── Designations ───────────────────────────────────────────────────────────────
-                    Route::resource('designations', DesignationController::class)->except(['show', 'create', 'edit']);
+                    Route::resource('designations', DesignationController::class)->names('HR.designations')->except(['show', 'create', 'edit']);
 
                     // ─── Profile ───────────────────────────────────────────────────────────────
                     Route::prefix('profile')->name('profile.')->group(function () {
@@ -277,15 +277,15 @@ Route::group(
                     });
 
                     // ─── Subject ───────────────────────────────────────────────────────────────
-                    Route::resource('subjects', SubjectController::class)->except(['show', 'create', 'edit']);
-                    Route::prefix('subjects/')->name('subjects.')->group(function () {
+                    Route::resource('subjects', SubjectController::class)->names('Academic.subjects')->except(['show', 'create', 'edit']);
+                    Route::prefix('subjects/')->name('Academic.subjects.')->group(function () {
                         Route::get('archive', [SubjectController::class, 'archive'])->name('archived');
                         Route::post('restore/{id}', [SubjectController::class, 'restore'])->name('restore');
                         Route::delete('force-delete/{id}', [SubjectController::class, 'forceDelete'])->name('forceDelete');
                     });
 
                     // ─── Attendance ───────────────────────────────────────────────────────────────
-                    Route::prefix('attendances')->name('attendances.')->group(function () {
+                    Route::prefix('attendances')->name('HR.attendances.')->group(function () {
                         Route::get('/', [AttendanceController::class, 'index'])->name('index');
                         Route::get('/students', [AttendanceController::class, 'getStudents'])->name('students');
                         Route::post('/', [AttendanceController::class, 'store'])->name('store');
@@ -293,7 +293,7 @@ Route::group(
                     });
 
                     // ─── Exams ───────────────────────────────────────────────────────────────
-                    Route::prefix('exams')->name('exams.')->group(function () {
+                    Route::prefix('exams')->name('Exams.exams.')->group(function () {
                         Route::get('/', [ExamController::class, 'index'])->name('index');
                         Route::get('/datatable', [ExamController::class, 'datatable'])->name('datatable');
                         Route::get('/{exam}/attempts', [ExamController::class, 'showAttempts'])->name('attempts');
@@ -301,10 +301,10 @@ Route::group(
                     });
 
                     // ─── Online Classes ───────────────────────────────────────────────────────────────
-                    Route::prefix('online_classes')->name('online_classes.')->group(function () {
+                    Route::prefix('online_classes')->name('LMS.online_classes.')->group(function () {
                         Route::get('/datatable', [OnlineClassController::class, 'datatable'])->name('datatable');
                     });
-                    Route::resource('online_classes', OnlineClassController::class)->except(['create', 'edit']);
+                    Route::resource('online_classes', OnlineClassController::class)->names('LMS.online_classes')->except(['create', 'edit']);
 
                     // ─── Library (Books) ───────────────────────────────────────────────────────────────
                     Route::prefix('library')->name('library.')->group(function () {
@@ -315,16 +315,16 @@ Route::group(
                     });
 
                     // ─── Helper Routes for Dependent Dropdowns ──────────────────────────────────────────
-                    Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('get_classrooms');
-                    Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('get_sections');
-                    Route::get('get-sections-by-grade', [SectionController::class, 'getByGrade'])->name('get_sections_by_grade');
-                    Route::get('get-designations', [DesignationController::class, 'getByDepartment'])->name('get_designations');
+                    Route::get('get-classrooms', [ClassroomController::class, 'getByGrade'])->name('Academic.classrooms.get_classrooms');
+                    Route::get('get-sections', [SectionController::class, 'getByClassroom'])->name('Academic.sections.get_sections');
+                    Route::get('get-sections-by-grade', [SectionController::class, 'getByGrade'])->name('Academic.sections.get_sections_by_grade');
+                    Route::get('get-designations', [DesignationController::class, 'getByDepartment'])->name('HR.designations.get_designations');
 
                     // ─── Academic Year ───────────────────────────────────────────────────────────────
-                    Route::resource('academic_years', AcademicYearController::class)->except(['show', 'create', 'edit', 'destroy']);
+                    Route::resource('academic_years', AcademicYearController::class)->names('Academic.academic_years')->except(['show', 'create', 'edit', 'destroy']);
 
                     // ─── Notifications ───────────────────────────────────────────────────────────────
-                    Route::prefix('notifications')->name('notifications.')->group(function () {
+                    Route::prefix('notifications')->name('System.notifications.')->group(function () {
                         Route::get('/', [NotificationController::class, 'index'])->name('index');
                         Route::get('/unread-count', [NotificationController::class, 'unreadCount'])->name('unread-count');
                         Route::post('/{id}/mark-read', [NotificationController::class, 'markAsRead'])->name('mark-read');
@@ -344,7 +344,7 @@ Route::group(
                     });
 
                     // ─── Activity Logs ───────────────────────────────────────────────────────────────
-                    Route::prefix('activity_logs')->name('activity_logs.')->group(function () {
+                    Route::prefix('activity_logs')->name('System.activity_logs.')->group(function () {
                         Route::get('/', [ActivityLogController::class, 'index'])->name('index');
                         Route::get('/datatable', [ActivityLogController::class, 'datatable'])->name('datatable');
                         Route::get('/subject/logs', [ActivityLogController::class, 'forSubject'])->name('for-subject');
@@ -401,7 +401,7 @@ Route::group(
                     });
 
                     // ─── CMS (Website Management) ───────────────────────────────────────────────
-                    Route::prefix('cms')->name('cms.')->group(function () {
+                    Route::prefix('cms')->name('CMS.cms.')->group(function () {
                         Route::get('/', [CmsController::class, 'index'])->name('index');
                         Route::post('/reorder', [CmsController::class, 'reorder'])->name('reorder');
                         Route::get('/sections/{section}/edit', [CmsController::class, 'editSection'])->name('sections.edit');

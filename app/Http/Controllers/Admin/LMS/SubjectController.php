@@ -37,7 +37,7 @@ class SubjectController extends Controller implements HasMiddleware
         $subjects  = $this->subjectService->getAll();
         $lookups   = $this->subjectService->getLookups();
 
-        return view('admin.subjects.index', compact('subjects', 'lookups'));
+        return view('admin.Academic.subjects.index', compact('subjects', 'lookups'));
     }
 
     // ─── Store ────────────────────────────────────────────────────────────────
@@ -49,13 +49,13 @@ class SubjectController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.subjects.messages.success.add'),
+                'message' => __('admin.Academic.subjects.messages.success.add'),
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => __('admin.subjects.messages.failed.add'),
+                'message' => __('admin.Academic.subjects.messages.failed.add'),
             ], 500);
         }
     }
@@ -69,13 +69,13 @@ class SubjectController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.subjects.messages.success.update'),
+                'message' => __('admin.Academic.subjects.messages.success.update'),
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => __('admin.subjects.messages.failed.update'),
+                'message' => __('admin.Academic.subjects.messages.failed.update'),
             ], 500);
         }
     }
@@ -89,13 +89,13 @@ class SubjectController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.subjects.messages.success.delete'),
+                'message' => __('admin.Academic.subjects.messages.success.delete'),
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => __('admin.subjects.messages.failed.delete'),
+                'message' => __('admin.Academic.subjects.messages.failed.delete'),
             ], 500);
         }
     }
@@ -106,11 +106,11 @@ class SubjectController extends Controller implements HasMiddleware
     {
         try {
             $subjects= $this->subjectService->archive();
-            return view('admin.subjects.archived', compact('subjects'));
+            return view('admin.Academic.subjects.archived', compact('subjects'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.archive')
+                'message' => $ex->getMessage() ?: trans('admin.Academic.subjects.messages.failed.archive')
             ], 500);
         }
     }
@@ -123,12 +123,12 @@ class SubjectController extends Controller implements HasMiddleware
             $this->subjectService->restore($id);
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.subjects.messages.success.restore')
+                'message' => trans('admin.Academic.subjects.messages.success.restore')
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.restore')
+                'message' => $ex->getMessage() ?: trans('admin.Academic.subjects.messages.failed.restore')
             ], 404);
         }
     }
@@ -142,12 +142,12 @@ class SubjectController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.subjects.messages.success.delete')
+                'message' => trans('admin.Academic.subjects.messages.success.delete')
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.subjects.messages.failed.delete')
+                'message' => $ex->getMessage() ?: trans('admin.Academic.subjects.messages.failed.delete')
             ], 500);
         }
     }

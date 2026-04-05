@@ -27,7 +27,7 @@ class OnlineClassController extends Controller implements HasMiddleware
     {
         $lookups = $this->onlineClassService->getLookups();
 
-        return view('admin.online_classes.index', $lookups);
+        return view('admin.LMS.online_classes.index', $lookups);
     }
 
 
@@ -42,7 +42,7 @@ class OnlineClassController extends Controller implements HasMiddleware
                 ->addColumn('grade_info', fn($row) => $row->grade->name . ' - ' . $row->classroom->name . ' - ' . $row->section->name)
                 ->addColumn('teacher', fn($row) => $row->teacher->name)
                 ->addColumn('subject', fn($row) => $row->subject->name)
-                ->addColumn('timing', fn($row) => $row->start_at->format('Y-m-d h:i A') . ' (' . $row->duration . trans('admin.online_classes.minutes') . ')')
+                ->addColumn('timing', fn($row) => $row->start_at->format('Y-m-d h:i A') . ' (' . $row->duration . trans('admin.LMS.online_classes.minutes') . ')')
                 ->addColumn('integration', function ($row) {
                     return $row->integration_type == OnlineClass::INTEGRATION_ZOOM
                         ? '<span class="badge badge-primary"><i class="las la-video"></i> Zoom</span>'
@@ -52,7 +52,7 @@ class OnlineClassController extends Controller implements HasMiddleware
                     return '<a href="' . $row->join_url . '" target="_blank" class="btn btn-sm btn-success" title="Join"><i class="las la-sign-in-alt"></i></a>';
                 })
                 ->addColumn('actions', function ($row) {
-                    return view('admin.online_classes.partials.index_actions', compact('row'))->render();
+                    return view('admin.LMS.online_classes.partials.index_actions', compact('row'))->render();
                 })
                 ->rawColumns(['integration', 'join_link', 'actions'])
                 ->make(true);
@@ -90,13 +90,13 @@ class OnlineClassController extends Controller implements HasMiddleware
         if ($success) {
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.online_classes.message.success.delete')
+                'message' => trans('admin.LMS.online_classes.message.success.delete')
             ]);
         }
 
         return response()->json([
             'status' => 'error',
-            'message' => trans('admin.online_classes.message.failed.delete')
+            'message' => trans('admin.LMS.online_classes.message.failed.delete')
         ], 500);
     }
 }

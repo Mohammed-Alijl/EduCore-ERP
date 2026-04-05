@@ -35,7 +35,7 @@ class TeacherController extends Controller implements HasMiddleware
     {
         $lookups = $this->teacherService->getLookups();
         $teachers = $this->teacherService->getAll();
-        return view('admin.teachers.index', array_merge(['teachers' => $teachers], $lookups));
+        return view('admin.Users.teachers.index', array_merge(['teachers' => $teachers], $lookups));
     }
 
     // ─── Store ────────────────────────────────────────────────────────────────
@@ -46,13 +46,13 @@ class TeacherController extends Controller implements HasMiddleware
             $this->teacherService->store($request->validated());
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.teachers.messages.success.add'),
+                'message' => __('admin.Users.teachers.messages.success.add'),
             ]);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => $e->getMessage() ?: __('admin.teachers.messages.failed'),
+                'message' => $e->getMessage() ?: __('admin.Users.teachers.messages.failed'),
             ], 500);
         }
     }
@@ -65,13 +65,13 @@ class TeacherController extends Controller implements HasMiddleware
             $this->teacherService->update($teacher, $request->validated());
             return response()->json([
                 'status'  => 'success',
-                'message' => __('admin.teachers.messages.success.update'),
+                'message' => __('admin.Users.teachers.messages.success.update'),
             ]);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => $e->getMessage() ?: __('admin.teachers.messages.failed.update'),
+                'message' => $e->getMessage() ?: __('admin.Users.teachers.messages.failed.update'),
             ], 500);
         }
     }
@@ -85,12 +85,12 @@ class TeacherController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.delete')
+                'message' => trans('admin.Users.teachers.messages.success.delete')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.teachers.messages.failed.delete')
+                'message' => trans('admin.Users.teachers.messages.failed.delete')
             ], 500);
         }
     }
@@ -101,11 +101,11 @@ class TeacherController extends Controller implements HasMiddleware
     {
         try {
             $teachers= $this->teacherService->archive();
-            return view('admin.teachers.archived', compact('teachers'));
+            return view('admin.Users.teachers.archived', compact('teachers'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.teachers.messages.failed.archive')
+                'message' => $ex->getMessage() ?: trans('admin.Users.teachers.messages.failed.archive')
             ], 500);
         }
     }
@@ -118,12 +118,12 @@ class TeacherController extends Controller implements HasMiddleware
             $this->teacherService->restore($id);
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.restore')
+                'message' => trans('admin.Users.teachers.messages.success.restore')
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.teachers.messages.failed.restore')
+                'message' => $ex->getMessage() ?: trans('admin.Users.teachers.messages.failed.restore')
             ], 404);
         }
     }
@@ -137,12 +137,12 @@ class TeacherController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.delete')
+                'message' => trans('admin.Users.teachers.messages.success.delete')
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.teachers.messages.failed.delete')
+                'message' => $ex->getMessage() ?: trans('admin.Users.teachers.messages.failed.delete')
             ], 500);
         }
     }
@@ -169,7 +169,7 @@ class TeacherController extends Controller implements HasMiddleware
             $this->teacherService->deleteAttachment($id);
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.delete')
+                'message' => trans('admin.Users.teachers.messages.success.delete')
             ]);
         } catch (\Exception $e) {
             return response()->json([

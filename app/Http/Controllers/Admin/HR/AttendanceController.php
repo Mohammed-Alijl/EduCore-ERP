@@ -38,7 +38,7 @@ class AttendanceController extends Controller implements HasMiddleware
     {
         $lookups = $this->studentService->getLookups();
 
-        return view('admin.attendances.index', $lookups);
+        return view('admin.HR.attendances.index', $lookups);
     }
 
     /**
@@ -53,7 +53,7 @@ class AttendanceController extends Controller implements HasMiddleware
             $request->academic_year_id
         );
 
-        $html = view('admin.attendances.partials._students_grid', compact('students'))->render();
+        $html = view('admin.HR.attendances.partials._students_grid', compact('students'))->render();
 
         return response()->json(['status' => 'success', 'html' => $html]);
     }
@@ -70,12 +70,12 @@ class AttendanceController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.attendances.messages.success.add'),
+                'message' => trans('admin.HR.attendances.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? trans('admin.attendances.messages.failed.add'),
+                'message' => $e->getMessage() ?? trans('admin.HR.attendances.messages.failed.add'),
             ], 500);
         }
     }
@@ -92,7 +92,7 @@ class AttendanceController extends Controller implements HasMiddleware
                 $request->academic_year_id
             );
 
-            $html = view('admin.attendances.partials._print_attendance', compact('students'))->render();
+            $html = view('admin.HR.attendances.partials._print_attendance', compact('students'))->render();
 
             return response()->json([
                 'status' => 'success',
@@ -101,7 +101,7 @@ class AttendanceController extends Controller implements HasMiddleware
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? trans('admin.attendances.messages.error_print') ?? 'Error generating print document',
+                'message' => $e->getMessage() ?? trans('admin.HR.attendances.messages.error_print') ?? 'Error generating print document',
             ], 500);
         }
     }

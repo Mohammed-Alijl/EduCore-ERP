@@ -38,7 +38,7 @@ class GuardianController extends Controller implements HasMiddleware
         try {
             $guardians = $this->guardianService->getAll();
             $lookups = $this->guardianService->getLookups();
-            return view('admin.guardians.index', array_merge(
+            return view('admin.Users.guardians.index', array_merge(
                 compact('guardians'),
                 $lookups
             ));
@@ -67,7 +67,7 @@ class GuardianController extends Controller implements HasMiddleware
             $this->guardianService->store($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.guardians.messages.success.add')
+                'message' => __('admin.Users.guardians.messages.success.add')
             ], 200);
 
         } catch (\Exception $ex) {
@@ -104,13 +104,13 @@ class GuardianController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.guardians.messages.success.update')
+                'message' => __('admin.Users.guardians.messages.success.update')
             ], 200);
 
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.guardians.messages.failed.update')
+                'message' => __('admin.Users.guardians.messages.failed.update')
             ], 500);
         }
     }
@@ -125,7 +125,7 @@ class GuardianController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.guardians.messages.success.archive')
+                'message' => __('admin.Users.guardians.messages.success.archive')
             ], 200);
 
         } catch (\Exception $ex) {
@@ -140,12 +140,12 @@ class GuardianController extends Controller implements HasMiddleware
     {
         try {
             $guardians = $this->guardianService->archive();
-            return view('admin.guardians.archived', compact('guardians'));
+            return view('admin.Users.guardians.archived', compact('guardians'));
 
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.guardians.messages.failed.archive')
+                'message' => __('admin.Users.guardians.messages.failed.archive')
             ], 500);
         }
     }
@@ -156,12 +156,12 @@ class GuardianController extends Controller implements HasMiddleware
             $this->guardianService->restore($id);
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.guardians.messages.success.restore')
+                'message' => __('admin.Users.guardians.messages.success.restore')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.guardians.messages.failed.restore')
+                'message' => __('admin.Users.guardians.messages.failed.restore')
             ], 404);
         }
     }
@@ -174,7 +174,7 @@ class GuardianController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.guardians.messages.success.delete')
+                'message' => __('admin.Users.guardians.messages.success.delete')
             ]);
         } catch (\Exception $ex) {
             return response()->json([

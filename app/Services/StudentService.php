@@ -55,7 +55,7 @@ class StudentService
                 return '<span class="badge badge-modern badge-inactive"><i class="las la-times-circle mr-1 ml-1"></i>' . trans('admin.global.disabled') . '</span>';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.students.partials.index_actions', compact('row'))->render();
+                return view('admin.Users.students.partials.index_actions', compact('row'))->render();
             })
             ->rawColumns(['status', 'actions'])
             ->make(true);
@@ -149,7 +149,7 @@ class StudentService
         if ($student->delete()) {
             return true;
         }
-        throw new \Exception(__('admin.students.messages.failed.delete'));
+        throw new \Exception(__('admin.Users.students.messages.failed.delete'));
     }
 
     public function archive()
@@ -173,7 +173,7 @@ class StudentService
             ->addColumn('classroom_name',   fn($row) => $row->classroom ? $row->classroom->getTranslation('name', app()->getLocale()) : '—')
             ->addColumn('deleted_at',       fn($row) => $row->deleted_at ? $row->deleted_at->format('d-m-Y') : '—')
             ->addColumn('actions', function ($row) {
-                return view('admin.students.partials.archived_actions', compact('row'))->render();
+                return view('admin.Users.students.partials.archived_actions', compact('row'))->render();
             })
             ->rawColumns(['actions'])
             ->make(true);
@@ -184,7 +184,7 @@ class StudentService
         $student = Student::withTrashed()->find($id);
 
         if (!$student) {
-            throw new \Exception(__('admin.students.messages.failed.restore'));
+            throw new \Exception(__('admin.Users.students.messages.failed.restore'));
         }
 
         $student->restore();
@@ -196,7 +196,7 @@ class StudentService
         $student = Student::withTrashed()->find($id);
 
         if (!$student) {
-            throw new \Exception(__('admin.students.messages.failed.delete'));
+            throw new \Exception(__('admin.Users.students.messages.failed.delete'));
         }
 
         $folderPath = "students/{$student->student_code}";
@@ -211,7 +211,7 @@ class StudentService
     {
         $student = Student::whereJsonContains('attachments', $attachmentPath)->first();
         if (!$student) {
-            throw new \Exception(__('admin.students.messages.failed.delete'));
+            throw new \Exception(__('admin.Users.students.messages.failed.delete'));
         }
         if (Storage::disk('public')->exists($attachmentPath)) {
             Storage::disk('public')->delete($attachmentPath);

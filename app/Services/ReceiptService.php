@@ -39,10 +39,10 @@ class ReceiptService
             ->addColumn('payment_method', fn ($row) => '<span class="badge badge-info">'.e($row->paymentGateway->name).'</span>')
             ->addColumn('amount', function ($row) {
                 $html = '<span class="text-success fw-bold">'.number_format($row->paid_amount, 2).' '.$row->currency_code.'</span><br>'
-                    .'<small class="text-muted">'.__('admin.finance.receipts.fields.base_amount').': $'.number_format($row->base_amount, 2).'</small>';
+                    .'<small class="text-muted">'.__('admin.Finance.receipts.fields.base_amount').': $'.number_format($row->base_amount, 2).'</small>';
 
                 if ($row->surcharge_amount > 0) {
-                    $html .= '<br><small class="text-warning">'.__('admin.finance.receipts.fields.surcharge').': '.number_format($row->surcharge_amount, 2).' '.$row->currency_code.'</small>';
+                    $html .= '<br><small class="text-warning">'.__('admin.Finance.receipts.fields.surcharge').': '.number_format($row->surcharge_amount, 2).' '.$row->currency_code.'</small>';
                 }
 
                 return $html;
@@ -191,6 +191,6 @@ class ReceiptService
      */
     private function renderActionsColumn(Receipt $receipt): string
     {
-        return view('admin.finance.receipts.partials.actions', ['receipt' => $receipt])->render();
+        return view('admin.Finance.receipts.partials.actions', ['receipt' => $receipt])->render();
     }
 }

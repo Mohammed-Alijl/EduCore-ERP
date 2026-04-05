@@ -34,7 +34,7 @@ class CmsController extends Controller implements HasMiddleware
     {
         $sections = $this->cmsService->getAllSections();
 
-        return view('admin.cms.index', compact('sections'));
+        return view('admin.CMS.index', compact('sections'));
     }
 
     /**
@@ -42,7 +42,7 @@ class CmsController extends Controller implements HasMiddleware
      */
     public function editSection(CmsSection $section): View
     {
-        return view('admin.cms.sections.edit', compact('section'));
+        return view('admin.CMS.sections.edit', compact('section'));
     }
 
     /**
@@ -70,14 +70,14 @@ class CmsController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.cms.messages.success.update'),
+                'message' => __('admin.CMS.cms.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             Log::error('CMS section update failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.cms.messages.failed.update'),
+                'message' => __('admin.CMS.cms.messages.failed.update'),
             ], 500);
         }
     }
@@ -97,14 +97,14 @@ class CmsController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.cms.messages.success.reorder'),
+                'message' => __('admin.CMS.cms.messages.success.reorder'),
             ]);
         } catch (\Exception $e) {
             Log::error('CMS reorder failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.cms.messages.failed.reorder'),
+                'message' => __('admin.CMS.cms.messages.failed.reorder'),
             ], 500);
         }
     }
@@ -119,7 +119,7 @@ class CmsController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.cms.messages.success.toggle'),
+                'message' => __('admin.CMS.cms.messages.success.toggle'),
                 'is_visible' => $section->is_visible,
             ]);
         } catch (\Exception $e) {
@@ -127,7 +127,7 @@ class CmsController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.cms.messages.failed.toggle'),
+                'message' => __('admin.CMS.cms.messages.failed.toggle'),
             ], 500);
         }
     }
@@ -139,7 +139,7 @@ class CmsController extends Controller implements HasMiddleware
     {
         $pages = $this->cmsService->getLegalPages();
 
-        return view('admin.cms.legal.index', compact('pages'));
+        return view('admin.CMS.legal.index', compact('pages'));
     }
 
     /**
@@ -147,7 +147,7 @@ class CmsController extends Controller implements HasMiddleware
      */
     public function editLegalPage(CmsPage $page): View
     {
-        return view('admin.cms.legal.edit', compact('page'));
+        return view('admin.CMS.legal.edit', compact('page'));
     }
 
     /**
@@ -160,14 +160,14 @@ class CmsController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.cms.messages.success.update_page'),
+                'message' => __('admin.CMS.cms.messages.success.update_page'),
             ]);
         } catch (\Exception $e) {
             Log::error('CMS legal page update failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.cms.messages.failed.update_page'),
+                'message' => __('admin.CMS.cms.messages.failed.update_page'),
             ], 500);
         }
     }

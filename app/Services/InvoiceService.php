@@ -75,7 +75,7 @@ class InvoiceService
 
     private function renderActionsColumn(Invoice $invoice): string
     {
-        return view('admin.finance.invoices.partials.actions', ['invoice' => $invoice])->render();
+        return view('admin.Finance.invoices.partials.actions', ['invoice' => $invoice])->render();
     }
 
     private function resolveDescription(array $data, Fee $fee): string
@@ -88,7 +88,7 @@ class InvoiceService
         $currentAcademicYear = $this->academicYearService->getCurrent();
 
         if (!$currentAcademicYear) {
-            throw new \RuntimeException(trans('admin.finance.messages.failed.no_current_academic_year'));
+            throw new \RuntimeException(trans('admin.Finance.messages.failed.no_current_academic_year'));
         }
 
         return [

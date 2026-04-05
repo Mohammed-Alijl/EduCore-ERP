@@ -45,7 +45,7 @@ class CurrencyService
     public function update(Currency $currency, array $data): Currency
     {
         if ($currency->is_default) {
-            throw new \Exception(trans('admin.finance.messages.failed.cannot_edit_default_currency'));
+            throw new \Exception(trans('admin.Finance.messages.failed.cannot_edit_default_currency'));
         }
 
         $currency->update($data);
@@ -56,14 +56,14 @@ class CurrencyService
     public function deleteCurrency(Currency $currency): bool
     {
         if ($currency->is_default) {
-            throw new \Exception(trans('admin.finance.messages.failed.cannot_delete_default_currency'));
+            throw new \Exception(trans('admin.Finance.messages.failed.cannot_delete_default_currency'));
         }
 
         try {
             return $currency->delete();
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == "23000") {
-                throw new \Exception(trans('admin.finance.messages.failed.currency_in_use'));
+                throw new \Exception(trans('admin.Finance.messages.failed.currency_in_use'));
             }
             throw $e;
         }
@@ -71,6 +71,6 @@ class CurrencyService
 
     private function renderActionsColumn(Currency $currency): string
     {
-        return view('admin.finance.currencies.partials.actions', ['currency' => $currency])->render();
+        return view('admin.Finance.currencies.partials.actions', ['currency' => $currency])->render();
     }
 }

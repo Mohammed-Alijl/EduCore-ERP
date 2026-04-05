@@ -34,7 +34,7 @@ class BankTransferProcessor extends AbstractPaymentProcessor
         Validator::make($paymentData, [
             'transaction_id' => 'required|string|max:255',
         ], [
-            'transaction_id.required' => trans('admin.finance.messages.failed.bank_transfer_ref_required'),
+            'transaction_id.required' => trans('admin.Finance.messages.failed.bank_transfer_ref_required'),
         ])->validate();
 
         return true;

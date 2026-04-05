@@ -62,7 +62,7 @@ class TeacherAssignmentService
                 return $assignment->academic_year;
             })
             ->addColumn('actions', function ($assignment) {
-                return view('admin.teacher_assignments.partials._actions', compact('assignment'))->render();
+                return view('admin.LMS.teacher_assignments.partials._actions', compact('assignment'))->render();
             })
             ->rawColumns(['actions'])
             ->make(true);

@@ -30,7 +30,7 @@ class ActivityLogController extends Controller implements HasMiddleware
         $logNames = $this->activityLogService->getAvailableLogNames();
         $events = $this->activityLogService->getAvailableEvents();
 
-        return view('admin.activity_logs.index', compact('logNames', 'events'));
+        return view('admin.System.activity_logs.index', compact('logNames', 'events'));
     }
 
     /**
@@ -59,10 +59,10 @@ class ActivityLogController extends Controller implements HasMiddleware
         }
 
         if ($request->ajax()) {
-            return view('admin.activity_logs.partials.ajax_details', compact('log'));
+            return view('admin.System.activity_logs.partials.ajax_details', compact('log'));
         }
 
-        return view('admin.activity_logs.show', compact('log'));
+        return view('admin.System.activity_logs.show', compact('log'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ActivityLogController extends Controller implements HasMiddleware
             ]);
         }
 
-        return view('admin.activity_logs.subject_logs', compact('logs'));
+        return view('admin.System.activity_logs.subject_logs', compact('logs'));
     }
 
     /**
@@ -112,7 +112,7 @@ class ActivityLogController extends Controller implements HasMiddleware
             ]);
         }
 
-        return view('admin.activity_logs.causer_logs', compact('logs'));
+        return view('admin.System.activity_logs.causer_logs', compact('logs'));
     }
 
     /**
@@ -145,13 +145,13 @@ class ActivityLogController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.activity_logs.messages.success.cleanup', ['count' => $deletedCount]),
+                'message' => trans('admin.System.activity_logs.messages.success.cleanup', ['count' => $deletedCount]),
                 'deleted_count' => $deletedCount,
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.activity_logs.messages.failed.cleanup'),
+                'message' => trans('admin.System.activity_logs.messages.failed.cleanup'),
             ], 500);
         }
     }

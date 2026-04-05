@@ -45,7 +45,7 @@ class TimetableController extends Controller implements HasMiddleware
         $grades = Grade::query()->active()->orderBy('sort_order')->get(['id', 'name']);
         $currentAcademicYear = $this->academicYearService->getCurrent();
 
-        return view('admin.schedule.timetables.index', compact('grades', 'currentAcademicYear'));
+        return view('admin.Schedule.timetables.index', compact('grades', 'currentAcademicYear'));
     }
 
     /**
@@ -103,7 +103,7 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => false,
-                'message' => trans('admin.timetables.errors.fetch_failed'),
+                'message' => trans('admin.Schedule.timetables.errors.fetch_failed'),
             ], 500);
         }
     }
@@ -118,7 +118,7 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => true,
-                'message' => trans('admin.timetables.messages.success.created'),
+                'message' => trans('admin.Schedule.timetables.messages.success.created'),
                 'data' => $timetable->load(['subject', 'teacher']),
             ]);
         } catch (ValidationException $e) {
@@ -132,7 +132,7 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => false,
-                'message' => trans('admin.timetables.errors.save_failed'),
+                'message' => trans('admin.Schedule.timetables.errors.save_failed'),
             ], 500);
         }
     }
@@ -155,7 +155,7 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => true,
-                'message' => trans('admin.timetables.messages.success.updated'),
+                'message' => trans('admin.Schedule.timetables.messages.success.updated'),
                 'data' => $timetable->load(['subject', 'teacher']),
             ]);
         } catch (ValidationException $e) {
@@ -169,7 +169,7 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => false,
-                'message' => trans('admin.timetables.errors.update_failed'),
+                'message' => trans('admin.Schedule.timetables.errors.update_failed'),
             ], 500);
         }
     }
@@ -184,14 +184,14 @@ class TimetableController extends Controller implements HasMiddleware
 
             return response()->json([
                 'success' => true,
-                'message' => trans('admin.timetables.messages.success.deleted'),
+                'message' => trans('admin.Schedule.timetables.messages.success.deleted'),
             ]);
         } catch (\Exception $e) {
             Log::error('Timetable delete error: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,
-                'message' => trans('admin.timetables.errors.delete_failed'),
+                'message' => trans('admin.Schedule.timetables.errors.delete_failed'),
             ], 500);
         }
     }

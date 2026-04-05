@@ -29,7 +29,7 @@ class TeacherAssignmentController extends Controller
 
         $lookups = $this->assignmentService->getLookups();
 
-        return view('admin.teacher_assignments.index', compact('lookups'));
+        return view('admin.LMS.teacher_assignments.index', compact('lookups'));
     }
 
     /**
@@ -42,7 +42,7 @@ class TeacherAssignmentController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.add')
+                'message' => trans('admin.Users.teachers.messages.success.add')
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -83,7 +83,7 @@ class TeacherAssignmentController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.update')
+                'message' => trans('admin.Users.teachers.messages.success.update')
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -103,7 +103,7 @@ class TeacherAssignmentController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.teachers.messages.success.delete')
+                'message' => trans('admin.Users.teachers.messages.success.delete')
             ]);
         } catch (\Exception $e) {
             return response()->json([

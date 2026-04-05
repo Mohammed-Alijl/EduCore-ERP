@@ -28,7 +28,7 @@ class DayOfWeekController extends Controller implements HasMiddleware
     {
         $days = DayOfWeek::ordered()->get();
 
-        return view('admin.settings.days_of_week.index', compact('days'));
+        return view('admin.Settings.days_of_week.index', compact('days'));
     }
 
     /**
@@ -47,7 +47,7 @@ class DayOfWeekController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.days_of_week.messages.success.update'),
+                'message' => trans('admin.Settings.days_of_week.messages.success.update'),
                 'day' => [
                     'id' => $dayOfWeek->id,
                     'name' => $dayOfWeek->name,
@@ -60,7 +60,7 @@ class DayOfWeekController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.days_of_week.messages.failed.update'),
+                'message' => trans('admin.Settings.days_of_week.messages.failed.update'),
             ], 500);
         }
     }
@@ -81,14 +81,14 @@ class DayOfWeekController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.days_of_week.messages.success.toggle_all'),
+                'message' => trans('admin.Settings.days_of_week.messages.success.toggle_all'),
             ]);
         } catch (\Exception $e) {
             Log::error('Days of week toggle all failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.days_of_week.messages.failed.toggle_all'),
+                'message' => trans('admin.Settings.days_of_week.messages.failed.toggle_all'),
             ], 500);
         }
     }

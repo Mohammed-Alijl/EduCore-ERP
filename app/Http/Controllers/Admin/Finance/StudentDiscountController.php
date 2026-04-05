@@ -30,7 +30,7 @@ class StudentDiscountController extends Controller implements HasMiddleware
     {
         $lookups = $this->discountService->getLookups();
 
-        return view('admin.finance.student_discounts.index', $lookups);
+        return view('admin.Finance.student_discounts.index', $lookups);
     }
 
     public function datatable(Request $request)
@@ -51,14 +51,14 @@ class StudentDiscountController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.finance.messages.success.student_discount_created'),
+                'message' => __('admin.Finance.messages.success.student_discount_created'),
             ]);
         } catch (\Exception $e) {
             Log::error('Student Discount creation failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.student_discount_created'),
+                'message' => __('admin.Finance.messages.failed.student_discount_created'),
             ], 500);
         }
     }
@@ -71,20 +71,20 @@ class StudentDiscountController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status' => 'success',
-                    'message' => __('admin.finance.messages.success.student_discount_deleted'),
+                    'message' => __('admin.Finance.messages.success.student_discount_deleted'),
                 ]);
             }
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.student_discount_delete'),
+                'message' => __('admin.Finance.messages.failed.student_discount_delete'),
             ], 400);
         } catch (\Exception $e) {
             Log::error('Student Discount deletion failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.student_discount_delete'),
+                'message' => __('admin.Finance.messages.failed.student_discount_delete'),
             ], 500);
         }
     }

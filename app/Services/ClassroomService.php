@@ -34,7 +34,7 @@ class ClassroomService
     public function update($classroom, array $data)
     {
         if (! $classroom->grade->status) {
-            throw new \Exception(__('admin.classrooms.messages.failed.update'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.update'));
         }
         $classroom->update($data);
 
@@ -44,10 +44,10 @@ class ClassroomService
     public function delete($classroom)
     {
         if (! $classroom->grade->status) {
-            throw new \Exception(__('admin.classrooms.messages.failed.archive'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.archive'));
         }
         if ($classroom->sections()->count() > 0) {
-            throw new \Exception(__('admin.classrooms.messages.failed.has_sections'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.has_sections'));
         }
 
         $classroom->status = 0;
@@ -69,7 +69,7 @@ class ClassroomService
         $classroom = ClassRoom::withTrashed()->find($id);
 
         if (! $classroom) {
-            throw new \Exception(__('admin.classrooms.messages.failed.restore'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.restore'));
         }
         $classroom->restore();
 
@@ -81,7 +81,7 @@ class ClassroomService
         $classroom = ClassRoom::withTrashed()->find($id);
 
         if (! $classroom) {
-            throw new \Exception(__('admin.classrooms.messages.failed.delete'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.delete'));
         }
 
         $classroom->forceDelete();

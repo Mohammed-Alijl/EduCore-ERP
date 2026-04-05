@@ -36,14 +36,14 @@ class DesignationService
     public function delete(Designation $designation): bool
     {
         if ($designation->employees()->count() > 0) {
-            throw new \Exception(__('admin.designations.messages.failed.has_employees'));
+            throw new \Exception(__('admin.HR.designations.messages.failed.has_employees'));
         }
 
         if ($designation->delete()) {
             return true;
         }
 
-        throw new \Exception(__('admin.designations.messages.failed.delete'));
+        throw new \Exception(__('admin.HR.designations.messages.failed.delete'));
     }
 
     public function getByDepartment(int $departmentId): \Illuminate\Database\Eloquent\Collection

@@ -30,7 +30,7 @@ class GraduationController extends Controller implements HasMiddleware
 
         $lookups = $this->graduationService->getLookups();
 
-        return view('admin.graduations.index', $lookups);
+        return view('admin.Students.graduations.index', $lookups);
     }
 
     public function restore(int $id): JsonResponse
@@ -40,12 +40,12 @@ class GraduationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.graduations.messages.success.restore'),
+                'message' => __('admin.Students.graduations.messages.success.restore'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: __('admin.graduations.messages.failed.restore'),
+                'message' => $ex->getMessage() ?: __('admin.Students.graduations.messages.failed.restore'),
             ], 500);
         }
     }

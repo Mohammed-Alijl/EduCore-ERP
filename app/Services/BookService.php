@@ -35,7 +35,7 @@ class BookService
             ->addColumn('teacher', fn($row) => $row->teacher->name)
             ->addColumn('subject', fn($row) => '<span class="badge badge-warning">' . e($row->subject->name) . '</span>')
             ->addColumn('actions', function ($row) {
-                return view('admin.library.partials.actions', ['book' => $row])->render();
+                return view('admin.LMS.library.partials.actions', ['book' => $row])->render();
             })
             ->rawColumns(['title', 'academic_target', 'subject', 'actions'])
             ->make(true);

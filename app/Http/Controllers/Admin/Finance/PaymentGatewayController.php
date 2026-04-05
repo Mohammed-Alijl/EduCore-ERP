@@ -32,7 +32,7 @@ class PaymentGatewayController extends Controller implements HasMiddleware
     {
         $gateways = $this->paymentGatewayService->getGatewaysForManagement();
 
-        return view('admin.finance.payment_gateways.index', compact('gateways'));
+        return view('admin.Finance.payment_gateways.index', compact('gateways'));
     }
 
     public function activate(Request $request)
@@ -53,13 +53,13 @@ class PaymentGatewayController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.payment_gateway_activated'),
+                'message' => trans('admin.Finance.messages.success.payment_gateway_activated'),
             ]);
         } catch (\Exception $e) {
             Log::error('Payment gateway activation failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => $e->getMessage() ?? trans('admin.finance.messages.failed.payment_gateway_created'),
+                'message' => $e->getMessage() ?? trans('admin.Finance.messages.failed.payment_gateway_created'),
             ], 500);
         }
     }
@@ -71,13 +71,13 @@ class PaymentGatewayController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.payment_gateway_updated'),
+                'message' => trans('admin.Finance.messages.success.payment_gateway_updated'),
             ]);
         } catch (\Exception $e) {
             Log::error('Payment gateway update failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.payment_gateway_updated'),
+                'message' => trans('admin.Finance.messages.failed.payment_gateway_updated'),
             ], 500);
         }
     }
@@ -90,8 +90,8 @@ class PaymentGatewayController extends Controller implements HasMiddleware
             return response()->json([
                 'status'  => 'success',
                 'message' => $gateway->status
-                    ? trans('admin.finance.messages.success.payment_gateway_enabled')
-                    : trans('admin.finance.messages.success.payment_gateway_disabled'),
+                    ? trans('admin.Finance.messages.success.payment_gateway_enabled')
+                    : trans('admin.Finance.messages.success.payment_gateway_disabled'),
                 'new_status' => $gateway->status,
             ]);
         } catch (\Exception $e) {

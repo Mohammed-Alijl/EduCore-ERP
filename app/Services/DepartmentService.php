@@ -38,17 +38,17 @@ class DepartmentService
     public function delete(Department $department): bool
     {
         if ($department->employees()->count() > 0) {
-            throw new \Exception(__('admin.departments.messages.failed.has_employees'));
+            throw new \Exception(__('admin.HR.departments.messages.failed.has_employees'));
         }
 
         if ($department->designations()->count() > 0) {
-            throw new \Exception(__('admin.departments.messages.failed.has_designations'));
+            throw new \Exception(__('admin.HR.departments.messages.failed.has_designations'));
         }
 
         if ($department->delete()) {
             return true;
         }
 
-        throw new \Exception(__('admin.departments.messages.failed.delete'));
+        throw new \Exception(__('admin.HR.departments.messages.failed.delete'));
     }
 }

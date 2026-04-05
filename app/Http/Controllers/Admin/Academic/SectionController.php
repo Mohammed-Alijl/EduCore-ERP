@@ -45,7 +45,7 @@ class SectionController extends Controller implements HasMiddleware
             $lookups = $this->sectionService->getLookups();
             $grades = $this->gradeService->getAllWithClassrooms();
 
-            return view('admin.sections.index', array_merge($lookups, compact('grades')));
+            return view('admin.Academic.sections.index', array_merge($lookups, compact('grades')));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
@@ -64,12 +64,12 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.add'),
+                'message' => __('admin.Academic.sections.messages.success.add'),
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.add'),
+                'message' => $ex->getMessage() ?? __('admin.Academic.sections.messages.failed.add'),
             ], 500);
         }
     }
@@ -84,12 +84,12 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.update'),
+                'message' => __('admin.Academic.sections.messages.success.update'),
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.update'),
+                'message' => $ex->getMessage() ?? __('admin.Academic.sections.messages.failed.update'),
             ], 500);
         }
     }
@@ -104,13 +104,13 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.archive'),
+                'message' => __('admin.Academic.sections.messages.success.archive'),
             ], 200);
 
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive'),
+                'message' => $ex->getMessage() ?? __('admin.Academic.sections.messages.failed.archive'),
             ], 500);
         }
     }
@@ -123,11 +123,11 @@ class SectionController extends Controller implements HasMiddleware
         try {
             $grades = $this->gradeService->getAllWithClassrooms();
 
-            return view('admin.sections.archived', compact('grades'));
+            return view('admin.Academic.sections.archived', compact('grades'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.sections.messages.failed.archive'),
+                'message' => $ex->getMessage() ?? __('admin.Academic.sections.messages.failed.archive'),
             ], 500);
         }
     }
@@ -139,12 +139,12 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.restore'),
+                'message' => __('admin.Academic.sections.messages.success.restore'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.restore'),
+                'message' => $e->getMessage() ?? __('admin.Academic.sections.messages.failed.restore'),
             ], 404);
         }
     }
@@ -156,12 +156,12 @@ class SectionController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.sections.messages.success.delete'),
+                'message' => __('admin.Academic.sections.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.sections.messages.failed.delete'),
+                'message' => $e->getMessage() ?? __('admin.Academic.sections.messages.failed.delete'),
             ], 500);
         }
     }

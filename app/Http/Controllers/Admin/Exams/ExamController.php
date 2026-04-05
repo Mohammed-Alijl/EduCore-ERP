@@ -39,7 +39,7 @@ class ExamController extends Controller implements HasMiddleware
     {
         $lookups = $this->studentService->getLookups();
 
-        return view('admin.exams.index', $lookups);
+        return view('admin.Exams.exams.index', $lookups);
     }
 
 
@@ -64,11 +64,11 @@ class ExamController extends Controller implements HasMiddleware
                 })
                 ->addColumn('status', function ($row) {
                     return $row->is_published
-                        ? '<span class="badge badge-success">' . trans('admin.exams.published') . '</span>'
-                        : '<span class="badge badge-warning">' . trans('admin.exams.draft') . '</span>';
+                        ? '<span class="badge badge-success">' . trans('admin.Exams.exams.published') . '</span>'
+                        : '<span class="badge badge-warning">' . trans('admin.Exams.exams.draft') . '</span>';
                 })
                 ->addColumn('actions', function ($row) {
-                    $btn = '<a href="' . route('admin.exams.attempts', $row->id) . '" class="btn btn-sm btn-info" title="Show Attemptes"><i class="las la-users"></i></a>';
+                    $btn = '<a href="' . route('admin.Exams.exams.attempts', $row->id) . '" class="btn btn-sm btn-info" title="Show Attemptes"><i class="las la-users"></i></a>';
                     return $btn;
                 })
                 ->rawColumns(['time_window', 'status', 'actions'])
@@ -84,7 +84,7 @@ class ExamController extends Controller implements HasMiddleware
         $exam->load('subject', 'academicYear');
         $attempts = $exam->attempts()->with('student')->get();
 
-        return view('admin.exams.attempts', compact('exam', 'attempts'));
+        return view('admin.Exams.exams.attempts', compact('exam', 'attempts'));
     }
 
 
@@ -99,13 +99,13 @@ class ExamController extends Controller implements HasMiddleware
         if ($success) {
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.exams.messages.success.attempt_reset')
+                'message' => trans('admin.Exams.exams.messages.success.attempt_reset')
             ]);
         }
 
         return response()->json([
             'status' => 'error',
-            'message' => trans('admin.exams.messages.failed.attempt_reset')
+            'message' => trans('admin.Exams.exams.messages.failed.attempt_reset')
         ], 500);
     }
 }

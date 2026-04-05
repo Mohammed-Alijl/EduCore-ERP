@@ -67,7 +67,7 @@ class SubjectService
         if ($subject->delete())
             return true;
 
-        throw new \Exception(__('admin.subjects.messages.failed.delete'));
+        throw new \Exception(__('admin.Academic.subjects.messages.failed.delete'));
     }
 
     public function archive()
@@ -80,7 +80,7 @@ class SubjectService
         $subject = Subject::withTrashed()->find($id);
 
         if (!$subject) {
-            throw new \Exception(__('admin.subjects.messages.failed.restore'));
+            throw new \Exception(__('admin.Academic.subjects.messages.failed.restore'));
         }
 
         $subject->restore();
@@ -92,11 +92,11 @@ class SubjectService
         $subject = Subject::withTrashed()->find($id);
 
         if (!$subject)
-            throw new \Exception(__('admin.subjects.messages.failed.delete'));
+            throw new \Exception(__('admin.Academic.subjects.messages.failed.delete'));
 
         if($subject->forceDelete())
             return true;
 
-        throw new \Exception(__('admin.subjects.messages.failed.delete'));
+        throw new \Exception(__('admin.Academic.subjects.messages.failed.delete'));
     }
 }

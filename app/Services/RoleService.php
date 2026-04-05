@@ -50,7 +50,7 @@ class RoleService
     public function store(array $data)
     {
         if (strtolower($data['name']) === strtolower(self::SUPER_ADMIN_NAME)) {
-            throw new Exception(__('admin.roles.messages.failed.reserved_name'));
+            throw new Exception(__('admin.System.roles.messages.failed.reserved_name'));
         }
 
         $role = Role::create(['name' => $data['name']]);
@@ -63,7 +63,7 @@ class RoleService
     public function update($role, array $data)
     {
         if ($role->name === self::SUPER_ADMIN_NAME) {
-            throw new Exception( __('admin.roles.messages.failed.update'));
+            throw new Exception( __('admin.System.roles.messages.failed.update'));
         }
         $role->update(['name' => $data['name']]);
         $role->syncPermissions($data['permissions'] ?? []);
@@ -74,7 +74,7 @@ class RoleService
     public function delete($role)
     {
         if ($role->name === self::SUPER_ADMIN_NAME) {
-            throw new Exception(__('admin.roles.messages.failed.delete'));
+            throw new Exception(__('admin.System.roles.messages.failed.delete'));
         }
 
         if ($role->users()->count() > 0)

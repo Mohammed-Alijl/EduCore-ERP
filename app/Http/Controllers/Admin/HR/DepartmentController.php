@@ -31,7 +31,7 @@ class DepartmentController extends Controller implements HasMiddleware
     {
         $departments = $this->departmentService->getAll();
 
-        return view('admin.departments.index', compact('departments'));
+        return view('admin.HR.departments.index', compact('departments'));
     }
 
     /**
@@ -44,7 +44,7 @@ class DepartmentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.departments.messages.success.add'),
+                'message' => trans('admin.HR.departments.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -61,7 +61,7 @@ class DepartmentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.departments.messages.success.update'),
+                'message' => trans('admin.HR.departments.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -78,7 +78,7 @@ class DepartmentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.departments.messages.success.delete'),
+                'message' => trans('admin.HR.departments.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);

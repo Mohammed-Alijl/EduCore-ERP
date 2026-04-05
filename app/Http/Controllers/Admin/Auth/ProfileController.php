@@ -14,7 +14,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('admin.auth.profile');
+        return view('admin.Auth.profile');
     }
 
     public function updateProfile(Request $request)

@@ -253,14 +253,14 @@ class StudentFinanceService
     {
         if ($balance <= 0) {
             return [
-                'label' => trans('admin.students.finance.status.paid'),
+                'label' => trans('admin.Users.students.finance.status.paid'),
                 'class' => 'success',
                 'icon' => 'la-check-circle',
             ];
         }
 
         return [
-            'label' => trans('admin.students.finance.status.outstanding'),
+            'label' => trans('admin.Users.students.finance.status.outstanding'),
             'class' => 'danger',
             'icon' => 'la-exclamation-circle',
         ];
@@ -272,11 +272,11 @@ class StudentFinanceService
     private function getTransactionType(StudentAccount $entry): string
     {
         return match ($entry->transactionable_type) {
-            Invoice::class => trans('admin.students.finance.types.invoice'),
-            Receipt::class => trans('admin.students.finance.types.receipt'),
-            StudentDiscount::class => trans('admin.students.finance.types.discount'),
-            PaymentVoucher::class => trans('admin.students.finance.types.voucher'),
-            default => trans('admin.students.finance.types.other'),
+            Invoice::class => trans('admin.Users.students.finance.types.invoice'),
+            Receipt::class => trans('admin.Users.students.finance.types.receipt'),
+            StudentDiscount::class => trans('admin.Users.students.finance.types.discount'),
+            PaymentVoucher::class => trans('admin.Users.students.finance.types.voucher'),
+            default => trans('admin.Users.students.finance.types.other'),
         };
     }
 

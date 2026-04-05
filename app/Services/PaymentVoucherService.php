@@ -39,7 +39,7 @@ class PaymentVoucherService
             ->addColumn('payment_method', fn ($row) => '<span class="badge badge-info">'.e($row->paymentGateway->name).'</span>')
             ->addColumn('amount', function ($row) {
                 return '<span class="text-danger fw-bold">'.number_format($row->amount, 2).' '.$row->currency_code.'</span><br>'
-                    .'<small class="text-muted">'.__('admin.finance.vouchers.fields.base_amount').': $'.number_format($row->base_amount, 2).'</small>';
+                    .'<small class="text-muted">'.__('admin.Finance.payment_vouchers.fields.base_amount').': $'.number_format($row->base_amount, 2).'</small>';
             })
             ->addColumn('date', fn ($row) => '<small class="text-muted">'.$row->date->format('Y-m-d').'</small>')
             ->addColumn('actions', fn ($row) => $this->renderActionsColumn($row))
@@ -148,6 +148,6 @@ class PaymentVoucherService
      */
     private function renderActionsColumn(PaymentVoucher $voucher): string
     {
-        return view('admin.finance.payment_vouchers.partials.actions', ['voucher' => $voucher])->render();
+        return view('admin.Finance.payment_vouchers.partials.actions', ['voucher' => $voucher])->render();
     }
 }

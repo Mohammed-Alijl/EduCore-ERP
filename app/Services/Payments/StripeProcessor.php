@@ -70,8 +70,8 @@ class StripeProcessor extends AbstractPaymentProcessor
                         'original_amount' => $paymentData['paid_amount'],
                     ],
                 ],
-                'success_url' => route('admin.receipts.index').'?status=success',
-                'cancel_url' => route('admin.receipts.index').'?status=cancelled',
+                'success_url' => route('admin.Finance.receipts.index').'?status=success',
+                'cancel_url' => route('admin.Finance.receipts.index').'?status=cancelled',
             ]);
 
             return PaymentResult::pending(

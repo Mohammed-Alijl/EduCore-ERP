@@ -69,7 +69,7 @@ class PaymentGatewayService
     public function toggleStatus(PaymentGateway $paymentGateway): PaymentGateway
     {
         if ($paymentGateway->status && $paymentGateway->receipts()->exists()) {
-            throw new \Exception(trans('admin.finance.messages.failed.payment_gateway_in_use'));
+            throw new \Exception(trans('admin.Finance.messages.failed.payment_gateway_in_use'));
         }
 
         $paymentGateway->update(['status' => !$paymentGateway->status]);

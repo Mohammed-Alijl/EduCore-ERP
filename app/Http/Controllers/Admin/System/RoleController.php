@@ -34,7 +34,7 @@ class RoleController extends Controller implements HasMiddleware
     {
         $roles = $this->roleService->getAll();
         $groupedPermissions = $this->roleService->getGroupedPermissions();
-        return view('admin.roles.index', compact('roles', 'groupedPermissions'));
+        return view('admin.System.roles.index', compact('roles', 'groupedPermissions'));
     }
 
     /**
@@ -43,7 +43,7 @@ class RoleController extends Controller implements HasMiddleware
     public function create()
     {
         $groupedPermissions = $this->roleService->getGroupedPermissions();
-        return view('admin.roles.create', compact('groupedPermissions'));
+        return view('admin.System.roles.create', compact('groupedPermissions'));
     }
 
     /**
@@ -55,24 +55,14 @@ class RoleController extends Controller implements HasMiddleware
             $this->roleService->store($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.roles.messages.success.add')
+                'message' => __('admin.System.roles.messages.success.add')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'failed',
-                'message' => __('admin.roles.messages.failed.add')
+                'message' => __('admin.System.roles.messages.failed.add')
             ]);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Role $role)
-    {
-        $groupedPermissions = $this->roleService->getGroupedPermissions();
-        $rolePermissions = $role->permissions->pluck('name')->toArray();
-        return view('admin.roles.show', compact('role', 'groupedPermissions','rolePermissions'));
     }
 
     /**
@@ -81,11 +71,11 @@ class RoleController extends Controller implements HasMiddleware
     public function edit(Role $role)
     {
         if ($role->name === $this->roleService::SUPER_ADMIN_NAME) {
-            return redirect()->route('admin.roles.index');
+            return redirect()->route('admin.System.roles.index');
         }
         $groupedPermissions = $this->roleService->getGroupedPermissions();
         $rolePermissions = $role->permissions->pluck('name')->toArray();
-        return view('admin.roles.edit', compact('role', 'groupedPermissions','rolePermissions'));
+        return view('admin.System.roles.edit', compact('role', 'groupedPermissions','rolePermissions'));
     }
 
     /**
@@ -95,9 +85,9 @@ class RoleController extends Controller implements HasMiddleware
     {
         try {
             $this->roleService->update($role,$request->validated());
-            return redirect()->route('admin.roles.index')->with(['status' => 'success', 'message' => __('admin.roles.messages.success.update')]);
+            return redirect()->route('admin.System.roles.index')->with(['status' => 'success', 'message' => __('admin.System.roles.messages.success.update')]);
         } catch (\Exception $e) {
-            return redirect()->route('admin.roles.index')->withErrors(['status' => 'failed', 'message' => __('admin.roles.messages.failed.update')]);
+            return redirect()->route('admin.System.roles.index')->withErrors(['status' => 'failed', 'message' => __('admin.System.roles.messages.failed.update')]);
         }
     }
 
@@ -110,17 +100,17 @@ class RoleController extends Controller implements HasMiddleware
             if($this->roleService->delete($role))
                     return response()->json([
                         'status' => 'success',
-                        'message' => __('admin.roles.messages.success.delete')
+                        'message' => __('admin.System.roles.messages.success.delete')
                     ], 200);
             else
                 return response()->json([
                     'status' => 'error',
-                    'message' => __('admin.roles.messages.failed.used')
+                    'message' => __('admin.System.roles.messages.failed.used')
                 ], 422);
         }catch (\Exception $e){
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.roles.messages.failed.delete')
+                'message' => __('admin.System.roles.messages.failed.delete')
             ], 403);
         }
     }

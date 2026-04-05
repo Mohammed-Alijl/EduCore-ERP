@@ -27,7 +27,7 @@ class AcademicYearService
     public function store(array $data)
     {
         if (($data['is_current'] ?? false) && $this->getCurrent()) {
-            throw new Exception(__('admin.academic_years.messages.failed.is_current'));
+            throw new Exception(__('admin.Academic.academic_years.messages.failed.is_current'));
         }
 
         return AcademicYear::create($data);
@@ -36,7 +36,7 @@ class AcademicYearService
     public function update($academicYear, array $data)
     {
         if (!$academicYear->is_current && ($data['is_current'] ?? false) && $this->getCurrent()) {
-            throw new Exception(__('admin.academic_years.messages.failed.is_current'));
+            throw new Exception(__('admin.Academic.academic_years.messages.failed.is_current'));
         }
 
         $academicYear->update($data);

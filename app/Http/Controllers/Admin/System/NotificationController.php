@@ -52,7 +52,7 @@ class NotificationController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => trans('admin.notifications.marked_as_read'),
+            'message' => trans('admin.System.notifications.marked_as_read'),
         ]);
     }
 
@@ -66,7 +66,7 @@ class NotificationController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => trans('admin.notifications.all_marked_as_read'),
+            'message' => trans('admin.System.notifications.all_marked_as_read'),
         ]);
     }
 
@@ -82,7 +82,7 @@ class NotificationController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => trans('admin.notifications.deleted'),
+            'message' => trans('admin.System.notifications.deleted'),
         ]);
     }
 

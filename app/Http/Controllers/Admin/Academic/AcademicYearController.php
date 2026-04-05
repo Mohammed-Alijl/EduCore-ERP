@@ -30,7 +30,7 @@ class AcademicYearController extends Controller implements HasMiddleware
     public function index()
     {
         $academicYears = $this->academic_year->getAll();
-        return view('admin.academic_years.index', compact('academicYears'));
+        return view('admin.Academic.academic_years.index', compact('academicYears'));
     }
 
     /**
@@ -42,12 +42,12 @@ class AcademicYearController extends Controller implements HasMiddleware
             $this->academic_year->store($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.academic_years.messages.success.add')
+                'message' => __('admin.Academic.academic_years.messages.success.add')
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.academic_years.messages.failed.add')
+                'message' => $ex->getMessage() ?? __('admin.Academic.academic_years.messages.failed.add')
             ], 500);
         }
     }
@@ -61,12 +61,12 @@ class AcademicYearController extends Controller implements HasMiddleware
             $this->academic_year->update($academicYear, $request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.academic_years.messages.success.update')
+                'message' => __('admin.Academic.academic_years.messages.success.update')
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.academic_years.messages.failed.update')
+                'message' => $ex->getMessage() ?? __('admin.Academic.academic_years.messages.failed.update')
             ], 500);
         }
     }

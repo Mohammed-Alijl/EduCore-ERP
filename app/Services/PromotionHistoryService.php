@@ -55,9 +55,9 @@ class PromotionHistoryService
             })
             ->addColumn('enrollment_status', function ($enrollment) {
                 $statusBadges = [
-                    'promoted' => '<span class="badge badge-success"><i class="fas fa-arrow-up mr-1"></i>'.trans('admin.promotions.status_promoted').'</span>',
-                    'graduated' => '<span class="badge badge-danger"><i class="fas fa-graduation-cap mr-1"></i>'.trans('admin.promotions.status_graduated').'</span>',
-                    'repeating' => '<span class="badge badge-warning"><i class="fas fa-redo mr-1"></i>'.trans('admin.promotions.status_repeating').'</span>',
+                    'promoted' => '<span class="badge badge-success"><i class="fas fa-arrow-up mr-1"></i>'.trans('admin.Students.promotions.status_promoted').'</span>',
+                    'graduated' => '<span class="badge badge-danger"><i class="fas fa-graduation-cap mr-1"></i>'.trans('admin.Students.promotions.status_graduated').'</span>',
+                    'repeating' => '<span class="badge badge-warning"><i class="fas fa-redo mr-1"></i>'.trans('admin.Students.promotions.status_repeating').'</span>',
                 ];
 
                 return $statusBadges[$enrollment->enrollment_status->value] ?? '<span class="badge badge-secondary">'.trans('admin.global.unknown').'</span>';
@@ -69,8 +69,8 @@ class PromotionHistoryService
                 return $enrollment->created_at?->format('Y-m-d H:i') ?? '-';
             })
             ->addColumn('actions', function ($enrollment) {
-                return '<button class="btn btn-sm btn-danger btn-rollback" data-id="'.$enrollment->id.'" title="'.trans('admin.promotions.rollback_tooltip').'">
-                            <i class="fas fa-undo mr-1"></i>'.trans('admin.promotions.rollback_btn').'
+                return '<button class="btn btn-sm btn-danger btn-rollback" data-id="'.$enrollment->id.'" title="'.trans('admin.Students.promotions.rollback_tooltip').'">
+                            <i class="fas fa-undo mr-1"></i>'.trans('admin.Students.promotions.rollback_btn').'
                         </button>';
             })
             ->rawColumns(['from_details', 'to_details', 'enrollment_status', 'actions'])

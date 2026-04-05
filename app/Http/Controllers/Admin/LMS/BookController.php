@@ -30,7 +30,7 @@ class BookController extends Controller implements HasMiddleware
     {
         $lookups = $this->bookService->getLookups();
 
-        return view('admin.library.index', $lookups);
+        return view('admin.LMS.library.index', $lookups);
     }
 
     public function datatable(BookDatatableRequest $request)
@@ -48,7 +48,7 @@ class BookController extends Controller implements HasMiddleware
         $download = $this->bookService->downloadBook($book);
 
         if (!$download) {
-            abort(404, trans('admin.books.messages.failed.download'));
+            abort(404, trans('admin.LMS.books.messages.failed.download'));
         }
 
         return $download;
@@ -63,20 +63,20 @@ class BookController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status' => 'success',
-                    'message' => trans('admin.books.messages.success.delete')
+                    'message' => trans('admin.LMS.books.messages.success.delete')
                 ], 200);
             }
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.books.messages.failed.delete')
+                'message' => trans('admin.LMS.books.messages.failed.delete')
             ], 400);
         } catch (\Exception $e) {
             Log::error('Book deletion failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.books.messages.failed.delete')
+                'message' => trans('admin.LMS.books.messages.failed.delete')
             ], 500);
         }
     }

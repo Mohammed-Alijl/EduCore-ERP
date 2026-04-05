@@ -42,7 +42,7 @@ class SectionService
 
                 return '<span class="badge badge-modern badge-inactive"><i class="las la-times-circle mr-1 ml-1"></i>'.trans('admin.global.disabled').'</span>';
             })
-            ->addColumn('actions', fn ($row) => view('admin.sections.partials.index_actions', compact('row'))->render())
+            ->addColumn('actions', fn ($row) => view('admin.Academic.sections.partials.index_actions', compact('row'))->render())
             ->rawColumns(['status', 'actions'])
             ->make(true);
     }
@@ -50,7 +50,7 @@ class SectionService
     public function store(array $data)
     {
         if (! Classroom::find($data['classroom_id'])->status) {
-            throw new \Exception(__('admin.sections.messages.failed.add'));
+            throw new \Exception(__('admin.Academic.sections.messages.failed.add'));
         }
         $section = Section::create($data);
 
@@ -60,7 +60,7 @@ class SectionService
     public function update($section, array $data)
     {
         if (! $section->grade->status || ! $section->classroom->status) {
-            throw new \Exception(__('admin.classrooms.messages.failed.update'));
+            throw new \Exception(__('admin.Academic.classrooms.messages.failed.update'));
         }
         $section->update($data);
 
@@ -70,10 +70,10 @@ class SectionService
     public function delete($section)
     {
         if (! $section->grade->status || ! $section->classroom->status) {
-            throw new \Exception(__('admin.sections.messages.failed.archive'));
+            throw new \Exception(__('admin.Academic.sections.messages.failed.archive'));
         }
         if ($section->students->count() > 0) {
-            throw new \Exception(__('admin.sections.messages.failed.has_students'));
+            throw new \Exception(__('admin.Academic.sections.messages.failed.has_students'));
         }
         $section->status = 0;
         $section->save();
@@ -103,7 +103,7 @@ class SectionService
             ->addColumn('grade_name', fn ($row) => $row->grade ? $row->grade->getTranslation('name', app()->getLocale()) : '-')
             ->addColumn('classroom_name', fn ($row) => $row->classroom ? $row->classroom->getTranslation('name', app()->getLocale()) : '-')
             ->addColumn('deleted_at', fn ($row) => $row->deleted_at ? $row->deleted_at->format('d-m-Y') : '-')
-            ->addColumn('actions', fn ($row) => view('admin.sections.partials.archived_actions', compact('row'))->render())
+            ->addColumn('actions', fn ($row) => view('admin.Academic.sections.partials.archived_actions', compact('row'))->render())
             ->rawColumns(['actions'])
             ->make(true);
     }
@@ -120,7 +120,7 @@ class SectionService
         $section = Section::withTrashed()->find($id);
 
         if (! $section) {
-            throw new \Exception(__('admin.sections.messages.failed.restore'));
+            throw new \Exception(__('admin.Academic.sections.messages.failed.restore'));
         }
         $section->restore();
 
@@ -132,7 +132,7 @@ class SectionService
         $section = Section::withTrashed()->find($id);
 
         if (! $section) {
-            throw new \Exception(__('admin.sections.messages.failed.delete'));
+            throw new \Exception(__('admin.Academic.sections.messages.failed.delete'));
         }
 
         $section->forceDelete();

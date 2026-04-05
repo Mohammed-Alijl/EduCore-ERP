@@ -36,7 +36,7 @@ class DesignationController extends Controller implements HasMiddleware
         $designations = $this->designationService->getAll();
         $departments = Department::query()->orderBy('name')->get(['id', 'name']);
 
-        return view('admin.designations.index', compact('designations', 'departments'));
+        return view('admin.HR.designations.index', compact('designations', 'departments'));
     }
 
     /**
@@ -49,7 +49,7 @@ class DesignationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.designations.messages.success.add'),
+                'message' => trans('admin.HR.designations.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -66,7 +66,7 @@ class DesignationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.designations.messages.success.update'),
+                'message' => trans('admin.HR.designations.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -83,7 +83,7 @@ class DesignationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.designations.messages.success.delete'),
+                'message' => trans('admin.HR.designations.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);

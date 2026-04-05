@@ -52,7 +52,7 @@ class EmployeeService
                 return is_array($row->name) ? $row->getTranslation('name', app()->getLocale()) : $row->name;
             })
             ->addColumn('employee_code_link', function ($row) {
-                return view('admin.employees.partials.employee_code_link', compact('row'))->render();
+                return view('admin.Users.employees.partials.employee_code_link', compact('row'))->render();
             })
             ->addColumn('designation_name', function ($row) {
                 return '<span class="badge badge-pill badge-primary-transparent">' . (optional($row->designation)->name ?? '-') . '</span>';
@@ -64,7 +64,7 @@ class EmployeeService
                 return '<span class="label text-danger d-flex">' . trans('admin.global.disabled') . '</span>';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.employees.partials.index_actions', compact('row'))->render();
+                return view('admin.Users.employees.partials.index_actions', compact('row'))->render();
             })
             ->rawColumns(['image', 'employee_code_link', 'designation_name', 'status_badge', 'actions'])
             ->make(true);
@@ -155,7 +155,7 @@ class EmployeeService
         if ($employee->delete()) {
             return true;
         }
-        throw new \Exception(__('admin.employees.messages.failed.delete'));
+        throw new \Exception(__('admin.Users.employees.messages.failed.delete'));
     }
 
     public function archive()
@@ -187,7 +187,7 @@ class EmployeeService
                 return '<span class="label text-danger d-flex">' . trans('admin.global.disabled') . '</span>';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.employees.partials.archived_actions', compact('row'))->render();
+                return view('admin.Users.employees.partials.archived_actions', compact('row'))->render();
             })
             ->rawColumns(['type', 'status_badge', 'actions'])
             ->make(true);
@@ -198,7 +198,7 @@ class EmployeeService
         $employee = Employee::withTrashed()->find($id);
 
         if (! $employee) {
-            throw new \Exception(__('admin.employees.messages.failed.restore'));
+            throw new \Exception(__('admin.Users.employees.messages.failed.restore'));
         }
 
         $employee->restore();
@@ -211,7 +211,7 @@ class EmployeeService
         $employee = Employee::withTrashed()->find($id);
 
         if (! $employee) {
-            throw new \Exception(__('admin.employees.messages.failed.delete'));
+            throw new \Exception(__('admin.Users.employees.messages.failed.delete'));
         }
 
         if ($employee->attachments()->count() > 0) {
@@ -229,7 +229,7 @@ class EmployeeService
             return true;
         }
 
-        throw new \Exception(__('admin.employees.messages.failed.delete'));
+        throw new \Exception(__('admin.Users.employees.messages.failed.delete'));
     }
 
     public function getNextEmployeeCode(): string

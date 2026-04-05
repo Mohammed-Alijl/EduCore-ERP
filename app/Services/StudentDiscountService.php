@@ -121,6 +121,6 @@ class StudentDiscountService
      */
     private function renderActionsColumn(StudentDiscount $discount): string
     {
-        return view('admin.finance.student_discounts.partials.actions', ['discount' => $discount])->render();
+        return view('admin.Finance.student_discounts.partials.actions', ['discount' => $discount])->render();
     }
 }

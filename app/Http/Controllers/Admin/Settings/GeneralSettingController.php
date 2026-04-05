@@ -36,7 +36,7 @@ class GeneralSettingController extends Controller implements HasMiddleware
         $settings = $this->settingService->get();
         $academicYears = $this->academicYearService->getAll();
 
-        return view('admin.settings.general.index', compact('settings', 'academicYears'));
+        return view('admin.Settings.general.index', compact('settings', 'academicYears'));
     }
 
     /**
@@ -50,14 +50,14 @@ class GeneralSettingController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.general_settings.messages.success.update'),
+                'message' => trans('admin.Settings.general_settings.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             Log::error('General settings update failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.general_settings.messages.failed.update'),
+                'message' => trans('admin.Settings.general_settings.messages.failed.update'),
             ], 500);
         }
     }

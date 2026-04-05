@@ -34,7 +34,7 @@ class FeeService
                 return $target;
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.finance.fees.partials.actions', ['fee' => $row])->render();
+                return view('admin.Finance.fees.partials.actions', ['fee' => $row])->render();
             })
             ->rawColumns(['title', 'amount', 'category', 'academic_target', 'actions'])
             ->make(true);

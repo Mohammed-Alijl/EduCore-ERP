@@ -36,7 +36,7 @@ class StudentPromotionController extends Controller implements HasMiddleware
             $students = $this->promotionService->getStudentsForPromotion($filters);
         }
 
-        return view('admin.students.promotions', array_merge($lookups, [
+        return view('admin.Users.students.promotions', array_merge($lookups, [
             'students' => $students,
         ]));
     }
@@ -47,19 +47,19 @@ class StudentPromotionController extends Controller implements HasMiddleware
             $payload = $request->validated();
 
             if (!empty($payload['graduate_student_ids']) && !auth('admin')->user()->can('graduate_students')) {
-                throw new \Exception(__('admin.promotions.messages.failed.unauthorized_graduate'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.unauthorized_graduate'));
             }
 
             $result = $this->promotionService->promote($payload);
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.promotions.messages.success.promote', $result),
+                'message' => __('admin.Students.promotions.messages.success.promote', $result),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: __('admin.promotions.messages.failed.promote'),
+                'message' => $ex->getMessage() ?: __('admin.Students.promotions.messages.failed.promote'),
             ], 500);
         }
     }

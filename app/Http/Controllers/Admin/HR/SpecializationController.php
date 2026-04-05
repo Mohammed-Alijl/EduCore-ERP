@@ -36,7 +36,7 @@ class SpecializationController extends Controller implements HasMiddleware
     {
         $specializations = $this->specializationService->getAll();
 
-        return view('admin.specializations.index', compact('specializations'));
+        return view('admin.HR.specializations.index', compact('specializations'));
     }
 
     /**
@@ -49,7 +49,7 @@ class SpecializationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.specializations.messages.success.add'),
+                'message' => trans('admin.HR.specializations.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -66,7 +66,7 @@ class SpecializationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.specializations.messages.success.update'),
+                'message' => trans('admin.HR.specializations.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -83,7 +83,7 @@ class SpecializationController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.specializations.messages.success.delete'),
+                'message' => trans('admin.HR.specializations.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);

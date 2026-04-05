@@ -48,7 +48,7 @@ class GraduationService
                     : '-';
             })
             ->addColumn('actions', function ($row) {
-                return view('admin.graduations.partials._actions', compact('row'))->render();
+                return view('admin.Students.graduations.partials._actions', compact('row'))->render();
             })
             ->rawColumns(['last_grade_details', 'actions'])
             ->make(true);
@@ -66,7 +66,7 @@ class GraduationService
                 ->first();
 
             if (! $graduationEnrollment) {
-                throw new \Exception(__('admin.graduations.messages.failed.no_enrollment'));
+                throw new \Exception(__('admin.Students.graduations.messages.failed.no_enrollment'));
             }
 
             $fromYear = AcademicYear::find($graduationEnrollment->from_academic_year);

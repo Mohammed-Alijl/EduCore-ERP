@@ -15,7 +15,7 @@ class AdminService
 
     public function getAll()
     {
-        return Admin::where('id', '!=', auth()->id())->latest()->get();
+        return Admin::where('id', '!=', auth('admin')->id())->latest()->get();
     }
 
     public function store(array $data)
@@ -40,7 +40,7 @@ class AdminService
     public function update($admin, array $data)
     {
         if($admin->hasRole('Super Admin'))
-            throw new Exception( __('admin.admins.messages.failed.update'));
+            throw new Exception( __('admin.Users.admins.messages.failed.update'));
         if (!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {
@@ -64,7 +64,7 @@ class AdminService
     public function delete($admin)
     {
         if($admin->hasRole('Super Admin'))
-            throw new Exception( __('admin.admins.messages.failed.delete'));
+            throw new Exception( __('admin.Users.admins.messages.failed.delete'));
 
         if ($admin->image_path) {
             $this->deleteImage($admin->image_path);

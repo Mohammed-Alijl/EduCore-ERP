@@ -31,7 +31,7 @@ class PaymentVoucherController extends Controller implements HasMiddleware
     {
         $lookups = $this->voucherService->getLookups();
 
-        return view('admin.finance.payment_vouchers.index', $lookups);
+        return view('admin.Finance.payment_vouchers.index', $lookups);
     }
 
     public function datatable(Request $request)
@@ -52,14 +52,14 @@ class PaymentVoucherController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.finance.messages.success.payment_voucher_created'),
+                'message' => __('admin.Finance.messages.success.payment_voucher_created'),
             ]);
         } catch (\Exception $e) {
             Log::error('Payment Voucher creation failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.payment_voucher_created'),
+                'message' => __('admin.Finance.messages.failed.payment_voucher_created'),
             ], 500);
         }
     }
@@ -72,20 +72,20 @@ class PaymentVoucherController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status' => 'success',
-                    'message' => __('admin.finance.messages.success.payment_voucher_deleted'),
+                    'message' => __('admin.Finance.messages.success.payment_voucher_deleted'),
                 ]);
             }
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.payment_voucher_delete'),
+                'message' => __('admin.Finance.messages.failed.payment_voucher_delete'),
             ], 400);
         } catch (\Exception $e) {
             Log::error('Payment Voucher deletion failed: '.$e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.finance.messages.failed.payment_voucher_delete'),
+                'message' => __('admin.Finance.messages.failed.payment_voucher_delete'),
             ], 500);
         }
     }
@@ -94,6 +94,6 @@ class PaymentVoucherController extends Controller implements HasMiddleware
     {
         $paymentVoucher->load(['student.grade', 'student.classroom', 'academicYear', 'paymentGateway']);
 
-        return view('admin.finance.payment_vouchers.print', compact('paymentVoucher'));
+        return view('admin.Finance.payment_vouchers.print', compact('paymentVoucher'));
     }
 }

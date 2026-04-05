@@ -30,7 +30,7 @@ class InvoiceController extends Controller implements HasMiddleware
 
     public function index()
     {
-        return view('admin.finance.invoices.index', [
+        return view('admin.Finance.invoices.index', [
             'fees' => Fee::select('id', 'title', 'amount')->orderBy('title')->get(),
             'grades' => Grade::select('id', 'name')->orderBy('name')->get(),
             'academicYears' => AcademicYear::select('id', 'name')->orderByDesc('starts_at')->get(),
@@ -52,7 +52,7 @@ class InvoiceController extends Controller implements HasMiddleware
             $this->invoiceService->createInvoice($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.invoice_created')
+                'message' => trans('admin.Finance.messages.success.invoice_created')
             ]);
         } catch (\Exception $e) {
             Log::error('Invoice creation failed: ' . $e->getMessage());
@@ -67,13 +67,13 @@ class InvoiceController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.invoice_deleted')
+                'message' => trans('admin.Finance.messages.success.invoice_deleted')
             ], 200);
         } catch (\Exception $e) {
             Log::error('Invoice deletion failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.invoice_delete')
+                'message' => trans('admin.Finance.messages.failed.invoice_delete')
             ], 500);
         }
     }
@@ -82,6 +82,6 @@ class InvoiceController extends Controller implements HasMiddleware
     {
         $invoice->load(['student', 'fee.feeCategory', 'grade', 'classroom', 'academicYear']);
 
-        return view('admin.finance.invoices.print', compact('invoice'));
+        return view('admin.Finance.invoices.print', compact('invoice'));
     }
 }

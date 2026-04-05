@@ -47,13 +47,13 @@ class GradeService
     public function delete($grade)
     {
         if ($grade->classrooms->count())
-            throw new \Exception(__('admin.grades.messages.failed.has_classrooms'));
+            throw new \Exception(__('admin.Academic.grades.messages.failed.has_classrooms'));
 
         $grade->status = 0;
         $grade->save();
         if ($grade->delete())
             return true;
-        throw new \Exception(__('admin.grades.messages.failed.archive'));
+        throw new \Exception(__('admin.Academic.grades.messages.failed.archive'));
     }
     public function archive()
     {
@@ -66,7 +66,7 @@ class GradeService
         $grade = Grade::withTrashed()->find($id);
 
         if (!$grade) {
-            throw new \Exception(__('admin.grades.messages.failed.restore'));
+            throw new \Exception(__('admin.Academic.grades.messages.failed.restore'));
         }
         $grade->restore();
 
@@ -78,7 +78,7 @@ class GradeService
         $grade = Grade::withTrashed()->find($id);
 
         if (!$grade) {
-            throw new \Exception(__('admin.grades.messages.failed.delete'));
+            throw new \Exception(__('admin.Academic.grades.messages.failed.delete'));
         }
 
         $grade->forceDelete();

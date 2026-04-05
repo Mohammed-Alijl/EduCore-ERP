@@ -40,7 +40,7 @@ class EmployeeController extends Controller implements HasMiddleware
 
         $lookups = $this->employeeService->getLookups();
 
-        return view('admin.employees.index', $lookups);
+        return view('admin.Users.employees.index', $lookups);
     }
 
     // ─── Store ────────────────────────────────────────────────────────────────
@@ -52,12 +52,12 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.employees.messages.success.add'),
+                'message' => __('admin.Users.employees.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?: __('admin.employees.messages.failed'),
+                'message' => $e->getMessage() ?: __('admin.Users.employees.messages.failed'),
             ], 500);
         }
     }
@@ -71,12 +71,12 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.employees.messages.success.update'),
+                'message' => __('admin.Users.employees.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?: __('admin.employees.messages.failed.update'),
+                'message' => $e->getMessage() ?: __('admin.Users.employees.messages.failed.update'),
             ], 500);
         }
     }
@@ -90,12 +90,12 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.employees.messages.success.delete'),
+                'message' => trans('admin.Users.employees.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.employees.messages.failed.delete'),
+                'message' => trans('admin.Users.employees.messages.failed.delete'),
             ], 500);
         }
     }
@@ -110,11 +110,11 @@ class EmployeeController extends Controller implements HasMiddleware
 
         try {
             $archivedCount = \App\Models\Employee::onlyTrashed()->count();
-            return view('admin.employees.archived', compact('archivedCount'));
+            return view('admin.Users.employees.archived', compact('archivedCount'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.employees.messages.failed.archive'),
+                'message' => $ex->getMessage() ?: trans('admin.Users.employees.messages.failed.archive'),
             ], 500);
         }
     }
@@ -128,12 +128,12 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.employees.messages.success.restore'),
+                'message' => trans('admin.Users.employees.messages.success.restore'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.employees.messages.failed.restore'),
+                'message' => $ex->getMessage() ?: trans('admin.Users.employees.messages.failed.restore'),
             ], 404);
         }
     }
@@ -147,12 +147,12 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.employees.messages.success.delete'),
+                'message' => trans('admin.Users.employees.messages.success.delete'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?: trans('admin.employees.messages.failed.delete'),
+                'message' => $ex->getMessage() ?: trans('admin.Users.employees.messages.failed.delete'),
             ], 500);
         }
     }
@@ -164,7 +164,7 @@ class EmployeeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.employees.messages.success.delete'),
+                'message' => trans('admin.Users.employees.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             return response()->json([

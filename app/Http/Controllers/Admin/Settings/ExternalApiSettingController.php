@@ -21,7 +21,7 @@ class ExternalApiSettingController extends Controller
     {
         $apis = $this->settingService->getAll();
 
-        return view('admin.settings.external-api.index', compact('apis'));
+        return view('admin.Settings.external-api.index', compact('apis'));
     }
 
     /**
@@ -34,12 +34,12 @@ class ExternalApiSettingController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
-                'message' => __('admin.external_api.messages.success.update'),
+                'message' => __('admin.Settings.external_api.messages.success.update'),
             ]);
         }
 
         return redirect()->route('admin.settings.external-api.index')
-            ->with('success', __('admin.external_api.messages.success.update'));
+            ->with('success', __('admin.Settings.external_api.messages.success.update'));
     }
 
     /**
@@ -52,11 +52,11 @@ class ExternalApiSettingController extends Controller
         if (request()->ajax()) {
             return response()->json([
                 'success' => true,
-                'message' => __('admin.external_api.messages.success.toggle'),
+                'message' => __('admin.Settings.external_api.messages.success.toggle'),
             ]);
         }
 
         return redirect()->back()
-            ->with('success', __('admin.external_api.messages.success.toggle'));
+            ->with('success', __('admin.Settings.external_api.messages.success.toggle'));
     }
 }

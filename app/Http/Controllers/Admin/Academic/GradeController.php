@@ -34,7 +34,7 @@ class GradeController extends Controller implements HasMiddleware
     public function index()
     {
         $grades = $this->gradeService->getAll();
-        return view('admin.grades.index', compact('grades'));
+        return view('admin.Academic.grades.index', compact('grades'));
     }
 
     /**
@@ -46,12 +46,12 @@ class GradeController extends Controller implements HasMiddleware
             $this->gradeService->store($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.grades.messages.success.add')
+                'message' => __('admin.Academic.grades.messages.success.add')
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.grades.messages.failed.add')
+                'message' => $ex->getMessage() ?? __('admin.Academic.grades.messages.failed.add')
             ], 500);
         }
     }
@@ -65,12 +65,12 @@ class GradeController extends Controller implements HasMiddleware
             $this->gradeService->update($grade, $request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.grades.messages.success.update')
+                'message' => __('admin.Academic.grades.messages.success.update')
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.grades.messages.failed.update')
+                'message' => $ex->getMessage() ?? __('admin.Academic.grades.messages.failed.update')
             ], 500);
         }
     }
@@ -84,12 +84,12 @@ class GradeController extends Controller implements HasMiddleware
             $this->gradeService->delete($grade);
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.grades.messages.success.archive')
+                'message' => __('admin.Academic.grades.messages.success.archive')
             ], 200);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.grades.messages.failed.archive')
+                'message' => $ex->getMessage() ?? __('admin.Academic.grades.messages.failed.archive')
             ], 500);
         }
     }
@@ -98,11 +98,11 @@ class GradeController extends Controller implements HasMiddleware
     {
         try {
             $grades = $this->gradeService->archive();
-            return view('admin.grades.archived', compact('grades'));
+            return view('admin.Academic.grades.archived', compact('grades'));
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? __('admin.grades.messages.failed.archive')
+                'message' => $ex->getMessage() ?? __('admin.Academic.grades.messages.failed.archive')
             ], 500);
         }
     }
@@ -113,12 +113,12 @@ class GradeController extends Controller implements HasMiddleware
             $this->gradeService->restore($id);
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.grades.messages.success.restore')
+                'message' => __('admin.Academic.grades.messages.success.restore')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.grades.messages.failed.restore')
+                'message' => $e->getMessage() ?? __('admin.Academic.grades.messages.failed.restore')
             ], 404);
         }
     }
@@ -130,12 +130,12 @@ class GradeController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.grades.messages.success.delete')
+                'message' => __('admin.Academic.grades.messages.success.delete')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? __('admin.grades.messages.failed.delete')
+                'message' => $e->getMessage() ?? __('admin.Academic.grades.messages.failed.delete')
             ], 500);
         }
     }

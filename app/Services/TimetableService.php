@@ -120,7 +120,7 @@ class TimetableService
             $conflict = $query->with(['section.classroom.grade', 'dayOfWeek', 'classPeriod'])->first();
 
             throw ValidationException::withMessages([
-                'teacher_id' => __('admin.timetables.errors.teacher_conflict', [
+                'teacher_id' => __('admin.Schedule.timetables.errors.teacher_conflict', [
                     'section' => $conflict->section->name,
                     'grade' => $conflict->section->grade->name,
                     'day' => $conflict->dayOfWeek->name,

@@ -110,7 +110,7 @@ class ClassPeriodService
             return true;
         }
 
-        throw new \Exception(__('admin.class_periods.messages.failed.delete'));
+        throw new \Exception(__('admin.Schedule.class_periods.messages.failed.delete'));
     }
 
     /**

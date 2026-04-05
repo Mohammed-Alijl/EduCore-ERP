@@ -39,7 +39,7 @@ class ClassroomController extends Controller implements HasMiddleware
         try {
             $classrooms = $this->classroomService->getAll();
             $grades = $this->gradeService->getActive();
-            return view('admin.classrooms.index', compact('classrooms', 'grades'));
+            return view('admin.Academic.classrooms.index', compact('classrooms', 'grades'));
         }catch (\Exception $ex){
             return response()->json([
                 'status' => 'error',
@@ -57,7 +57,7 @@ class ClassroomController extends Controller implements HasMiddleware
             $this->classroomService->store($request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.classrooms.messages.success.add')
+                'message' => __('admin.Academic.classrooms.messages.success.add')
             ],200);
         }catch (\Exception $ex){
             return response()->json([
@@ -76,7 +76,7 @@ class ClassroomController extends Controller implements HasMiddleware
             $this->classroomService->update($classroom, $request->validated());
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.classrooms.messages.success.update')
+                'message' => __('admin.Academic.classrooms.messages.success.update')
             ],200);
         }catch (\Exception $ex){
             return response()->json([
@@ -96,7 +96,7 @@ class ClassroomController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.classrooms.messages.success.archive')
+                'message' => __('admin.Academic.classrooms.messages.success.archive')
             ], 200);
 
         } catch (\Exception $ex) {
@@ -112,7 +112,7 @@ class ClassroomController extends Controller implements HasMiddleware
         try {
             $classrooms = $this->classroomService->archive();
             $grades = $this->gradeService->getActive();
-            return view('admin.classrooms.archived', compact('classrooms', 'grades'));
+            return view('admin.Academic.classrooms.archived', compact('classrooms', 'grades'));
         } catch (\Exception $ex){
             return response()->json([
                 'status' => 'error',
@@ -127,7 +127,7 @@ class ClassroomController extends Controller implements HasMiddleware
           $this->classroomService->restore($id);
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.classrooms.messages.success.restore')
+                'message' => __('admin.Academic.classrooms.messages.success.restore')
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 404);
@@ -141,7 +141,7 @@ class ClassroomController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.classrooms.messages.success.delete')
+                'message' => __('admin.Academic.classrooms.messages.success.delete')
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);

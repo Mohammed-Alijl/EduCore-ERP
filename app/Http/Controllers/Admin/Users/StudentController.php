@@ -42,7 +42,7 @@ class StudentController extends Controller implements HasMiddleware
 
         $lookups = $this->studentService->getLookups();
 
-        return view('admin.students.index', $lookups);
+        return view('admin.Users.students.index', $lookups);
     }
 
     public function store(StoreRequest $request)
@@ -52,7 +52,7 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.add'),
+                'message' => trans('admin.Users.students.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
@@ -66,12 +66,12 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.update'),
+                'message' => trans('admin.Users.students.messages.success.update'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? trans('admin.students.messages.failed.update'),
+                'message' => $ex->getMessage() ?? trans('admin.Users.students.messages.failed.update'),
             ], 500);
         }
     }
@@ -83,12 +83,12 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.delete'),
+                'message' => trans('admin.Users.students.messages.success.delete'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? trans('admin.students.messages.failed.delete'),
+                'message' => $ex->getMessage() ?? trans('admin.Users.students.messages.failed.delete'),
             ], 500);
         }
     }
@@ -101,7 +101,7 @@ class StudentController extends Controller implements HasMiddleware
 
         $grades = $this->studentService->getLookups()['grades'];
 
-        return view('admin.students.archived', compact('grades'));
+        return view('admin.Users.students.archived', compact('grades'));
     }
 
     public function restore($id)
@@ -111,12 +111,12 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.restore'),
+                'message' => trans('admin.Users.students.messages.success.restore'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? trans('admin.students.messages.failed.restore'),
+                'message' => $ex->getMessage() ?? trans('admin.Users.students.messages.failed.restore'),
             ], 404);
         }
     }
@@ -128,12 +128,12 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.delete'),
+                'message' => trans('admin.Users.students.messages.success.delete'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? trans('admin.students.messages.failed.delete'),
+                'message' => $ex->getMessage() ?? trans('admin.Users.students.messages.failed.delete'),
             ], 500);
         }
     }
@@ -146,12 +146,12 @@ class StudentController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.students.messages.success.delete'),
+                'message' => trans('admin.Users.students.messages.success.delete'),
             ]);
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 'error',
-                'message' => $ex->getMessage() ?? trans('admin.students.messages.failed.delete'),
+                'message' => $ex->getMessage() ?? trans('admin.Users.students.messages.failed.delete'),
             ], 500);
         }
     }
@@ -188,7 +188,7 @@ class StudentController extends Controller implements HasMiddleware
     {
         $data = $this->financeService->getFinancialOverview($student);
 
-        return view('admin.students.finance_modal', $data);
+        return view('admin.Users.students.finance_modal', $data);
     }
 
     public function grades(Request $request, Student $student)
@@ -197,6 +197,6 @@ class StudentController extends Controller implements HasMiddleware
 
         $data = $this->gradeService->getGradeData($student, $academicYearId);
 
-        return view('admin.students.grades', $data);
+        return view('admin.Users.students.grades', $data);
     }
 }

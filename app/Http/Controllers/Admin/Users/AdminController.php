@@ -36,7 +36,7 @@ class AdminController extends Controller implements HasMiddleware
         $admins = $this->adminService->getAll();
         $roles = $this->roleService->getAll();
 
-        return view('admin.admins.index', compact('admins', 'roles'));
+        return view('admin.Users.admins.index', compact('admins', 'roles'));
     }
 
     /**
@@ -49,13 +49,13 @@ class AdminController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.admins.messages.success.add')
+                'message' => __('admin.Users.admins.messages.success.add')
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.admins.messages.failed.add')
+                'message' => __('admin.Users.admins.messages.failed.add')
             ], 500);
         }
     }
@@ -70,13 +70,13 @@ class AdminController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.admins.messages.success.update')
+                'message' => __('admin.Users.admins.messages.success.update')
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.admins.messages.failed.update')
+                'message' => __('admin.Users.admins.messages.failed.update')
             ], 500);
         }
     }
@@ -91,13 +91,13 @@ class AdminController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => __('admin.admins.messages.success.delete')
+                'message' => __('admin.Users.admins.messages.success.delete')
             ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => __('admin.admins.messages.failed.delete')
+                'message' => __('admin.Users.admins.messages.failed.delete')
             ], 500);
         }
     }

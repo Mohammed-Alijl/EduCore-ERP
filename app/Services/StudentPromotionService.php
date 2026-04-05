@@ -55,21 +55,21 @@ class StudentPromotionService
             $toAcademicYearId = $data['to_academic_year_id'] ?? $data['from_academic_year_id'];
 
             if ($data['from_academic_year_id'] == $toAcademicYearId && !empty($promoteIds)) {
-                throw new \Exception(__('admin.promotions.messages.failed.same_year'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.same_year'));
             }
 
             if (! empty($promoteIds) && $this->isSameDestination($data)) {
-                throw new \Exception(__('admin.promotions.messages.failed.same_place'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.same_place'));
             }
 
             if (! empty(array_intersect($promoteIds, $graduateIds))) {
-                throw new \Exception(__('admin.promotions.messages.failed.conflict'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.conflict'));
             }
 
             $fromYearName = $this->getAcademicYearName($data['from_academic_year_id']);
             $toYear = AcademicYear::find($toAcademicYearId);
             if (! $toYear) {
-                throw new \Exception(__('admin.promotions.messages.failed.invalid_year'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.invalid_year'));
             }
 
             $students = Student::where('grade_id', $data['from_grade_id'])
@@ -85,7 +85,7 @@ class StudentPromotionService
             $invalidGraduate = array_diff($graduateIds, $allIds);
 
             if (! empty($invalidPromote) || ! empty($invalidGraduate)) {
-                throw new \Exception(__('admin.promotions.messages.failed.mismatch'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.mismatch'));
             }
 
             $repeatIds = array_values(array_diff($allIds, $promoteIds, $graduateIds));
@@ -98,7 +98,7 @@ class StudentPromotionService
                     ->all();
 
                 if (! empty($existing) && $toAcademicYearId != $data['from_academic_year_id']) {
-                    throw new \Exception(__('admin.promotions.messages.failed.already_enrolled'));
+                    throw new \Exception(__('admin.Students.promotions.messages.failed.already_enrolled'));
                 }
             }
 
@@ -208,7 +208,7 @@ class StudentPromotionService
             $enrollment = StudentEnrollment::with('student')->findOrFail($enrollmentId);
 
             if (! $enrollment) {
-                throw new \Exception(__('admin.promotions.messages.failed.not_found'));
+                throw new \Exception(__('admin.Students.promotions.messages.failed.not_found'));
             }
 
             $student = $enrollment->student;
@@ -256,7 +256,7 @@ class StudentPromotionService
     {
         $year = AcademicYear::find($id);
         if (! $year) {
-            throw new \Exception(__('admin.promotions.messages.failed.invalid_year'));
+            throw new \Exception(__('admin.Students.promotions.messages.failed.invalid_year'));
         }
 
         return $year->name;

@@ -14,7 +14,7 @@ class VerifyEmailController extends Controller
     {
         return $request->user('admin')->hasVerifiedEmail()
             ? redirect()->intended(route('admin.dashboard'))
-            : view('admin.auth.verify-email');
+            : view('admin.Auth.verify-email');
     }
 
     public function store(Request $request): RedirectResponse
