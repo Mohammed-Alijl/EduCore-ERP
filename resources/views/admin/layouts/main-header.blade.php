@@ -176,7 +176,8 @@
                         </div>
                         <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i
                                 class="las la-user-circle"></i>{{ __('admin.header.profile') }}</a>
-                        <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i class="las la-cog"></i>
+                        <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i
+                                class="las la-cog"></i>
                             {{ __('admin.header.edit_profile') }}</a>
                         <form action="{{ route('admin.logout') }}}" method="post">
                             @csrf
