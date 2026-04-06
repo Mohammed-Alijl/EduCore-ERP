@@ -1,33 +1,34 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Finance;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Translatable\HasTranslations;
 
-class Fee extends Model
+class Invoice extends Model
 {
-    use HasFactory, HasTranslations, LogsActivity;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
-        'title',
-        'amount',
-        'fee_category_id',
-        'academic_year_id',
+        'student_id',
         'grade_id',
         'classroom_id',
+        'academic_year_id',
+        'fee_id',
+        'amount',
+        'invoice_date',
         'description',
     ];
 
-    protected $translatable = ['title'];
-
     protected $casts = [
         'amount' => 'decimal:2',
+        'invoice_date' => 'date',
     ];
+
 
     /**
      * determine which attributes to log and how.
@@ -35,19 +36,20 @@ class Fee extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['title', 'amount', 'fee_category_id', 'academic_year_id', 'grade_id', 'classroom_id', 'description'])
+            ->logOnly(['amount', 'invoice_date', 'description'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
-            ->useLogName('Finance - Fees');
+            ->useLogName('Finance - Invoices');
     }
 
+
     // --------------------------------------------------------
-    // Relationships
+    // Relationship
     // --------------------------------------------------------
 
-    public function feeCategory(): BelongsTo
+    public function student(): BelongsTo
     {
-        return $this->belongsTo(FeeCategory::class);
+        return $this->belongsTo(Student::class);
     }
 
     public function academicYear(): BelongsTo
@@ -63,5 +65,15 @@ class Fee extends Model
     public function classroom(): BelongsTo
     {
         return $this->belongsTo(ClassRoom::class);
+    }
+
+    public function fee(): BelongsTo
+    {
+        return $this->belongsTo(Fee::class);
+    }
+
+    public function studentAccount(): MorphOne
+    {
+        return $this->morphOne(StudentAccount::class, 'transactionable');
     }
 }

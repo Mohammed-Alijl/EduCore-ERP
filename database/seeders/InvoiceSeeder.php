@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Invoice;
+use App\Models\Finance\Invoice;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

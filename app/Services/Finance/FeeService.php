@@ -3,8 +3,8 @@
 namespace App\Services\Finance;
 
 use App\Models\Academic\AcademicYear;
-use App\Models\Fee;
-use App\Models\FeeCategory;
+use App\Models\Finance\Fee;
+use App\Models\Finance\FeeCategory;
 use App\Models\Academic\Grade;
 use Illuminate\Database\Eloquent\Builder;
 use Yajra\DataTables\Facades\DataTables;

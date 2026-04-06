@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Receipt;
+use App\Models\Finance\Receipt;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

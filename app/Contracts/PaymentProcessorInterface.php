@@ -3,7 +3,7 @@
 namespace App\Contracts;
 
 use App\DTOs\PaymentResult;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 
 interface PaymentProcessorInterface
 {

@@ -4,7 +4,7 @@ namespace App\Services\Payments;
 
 use App\Contracts\PaymentProcessorInterface;
 use App\DTOs\PaymentResult;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use Illuminate\Support\Str;
 
 abstract class AbstractPaymentProcessor implements PaymentProcessorInterface

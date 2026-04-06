@@ -3,7 +3,7 @@
 namespace App\Services\Payments;
 
 use App\DTOs\PaymentResult;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Checkout\Session;

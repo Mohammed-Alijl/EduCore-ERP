@@ -2,8 +2,8 @@
 
 namespace App\Services\Finance;
 
-use App\Models\Fee;
-use App\Models\Invoice;
+use App\Models\Finance\Fee;
+use App\Models\Finance\Invoice;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;

@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Invoice;
+use App\Models\Finance\Invoice;
 use App\Models\Student;
-use App\Models\Fee;
+use App\Models\Finance\Fee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

@@ -2,8 +2,8 @@
 
 namespace App\Services\Finance;
 
-use App\Models\Fee;
-use App\Models\FeeCategory;
+use App\Models\Finance\Fee;
+use App\Models\Finance\FeeCategory;
 use Illuminate\Database\Eloquent\Builder;
 use Yajra\DataTables\Facades\DataTables;
 

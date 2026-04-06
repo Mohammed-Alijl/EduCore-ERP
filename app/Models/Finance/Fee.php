@@ -1,28 +1,32 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Finance;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Translatable\HasTranslations;
 
-class StudentDiscount extends Model
+class Fee extends Model
 {
-    use HasFactory, LogsActivity;
+    use HasFactory, HasTranslations, LogsActivity;
 
     protected $fillable = [
-        'student_id',
-        'academic_year_id',
+        'title',
         'amount',
-        'date',
+        'fee_category_id',
+        'academic_year_id',
+        'grade_id',
+        'classroom_id',
         'description',
     ];
 
+    protected $translatable = ['title'];
+
     protected $casts = [
-        'date' => 'date',
+        'amount' => 'decimal:2',
     ];
 
     /**
@@ -31,19 +35,19 @@ class StudentDiscount extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['amount', 'date', 'description'])
+            ->logOnly(['title', 'amount', 'fee_category_id', 'academic_year_id', 'grade_id', 'classroom_id', 'description'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
-            ->useLogName('Finance - Student Discounts');
+            ->useLogName('Finance - Fees');
     }
 
+    // --------------------------------------------------------
+    // Relationships
+    // --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Relationship
-    // --------------------------------------------------------
-    public function student(): BelongsTo
+    public function feeCategory(): BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(FeeCategory::class);
     }
 
     public function academicYear(): BelongsTo
@@ -51,8 +55,13 @@ class StudentDiscount extends Model
         return $this->belongsTo(AcademicYear::class);
     }
 
-    public function studentAccount(): MorphOne
+    public function grade(): BelongsTo
     {
-        return $this->morphOne(StudentAccount::class, 'transactionable');
+        return $this->belongsTo(Grade::class);
+    }
+
+    public function classroom(): BelongsTo
+    {
+        return $this->belongsTo(ClassRoom::class);
     }
 }

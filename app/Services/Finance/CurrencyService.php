@@ -2,7 +2,7 @@
 
 namespace App\Services\Finance;
 
-use App\Models\Currency;
+use App\Models\Finance\Currency;
 use Illuminate\Database\Eloquent\Builder;
 use Yajra\DataTables\Facades\DataTables;
 

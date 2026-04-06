@@ -2,12 +2,12 @@
 
 namespace App\Services\Finance;
 
-use App\Models\Invoice;
-use App\Models\PaymentVoucher;
-use App\Models\Receipt;
+use App\Models\Finance\Invoice;
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
 use App\Models\Student;
-use App\Models\StudentAccount;
-use App\Models\StudentDiscount;
+use App\Models\Finance\StudentAccount;
+use App\Models\Finance\StudentDiscount;
 use Illuminate\Support\Collection;
 
 /**

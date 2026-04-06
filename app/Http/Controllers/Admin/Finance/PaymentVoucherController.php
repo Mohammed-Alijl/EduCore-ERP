@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\PaymentVoucherRequest;
-use App\Models\PaymentVoucher;
+use App\Models\Finance\PaymentVoucher;
 use App\Services\Finance\PaymentVoucherService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

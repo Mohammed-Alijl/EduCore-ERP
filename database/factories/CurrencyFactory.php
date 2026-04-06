@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Currency;
+use App\Models\Finance\Currency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

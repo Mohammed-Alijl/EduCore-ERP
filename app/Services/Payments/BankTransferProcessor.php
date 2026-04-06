@@ -3,7 +3,7 @@
 namespace App\Services\Payments;
 
 use App\DTOs\PaymentResult;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use Illuminate\Support\Facades\Validator;
 
 class BankTransferProcessor extends AbstractPaymentProcessor

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin\Finance;
 
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Foundation\Http\FormRequest;
 

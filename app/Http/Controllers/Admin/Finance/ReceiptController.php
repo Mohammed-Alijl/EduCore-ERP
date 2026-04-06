@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\ReceiptRequest;
 use App\DTOs\PaymentResult;
-use App\Models\Receipt;
+use App\Models\Finance\Receipt;
 use App\Services\Finance\ReceiptService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

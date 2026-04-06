@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Finance;
 
 use App\Contracts\PaymentProcessorInterface;
 use App\Services\Payments\PaymentGatewayManager;

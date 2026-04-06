@@ -4,7 +4,7 @@ namespace App\Services\Finance;
 
 use App\Models\Academic\AcademicYear;
 use App\Models\Student;
-use App\Models\StudentDiscount;
+use App\Models\Finance\StudentDiscount;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;

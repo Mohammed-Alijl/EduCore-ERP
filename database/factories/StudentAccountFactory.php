@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentAccount;
+use App\Models\Finance\StudentAccount;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

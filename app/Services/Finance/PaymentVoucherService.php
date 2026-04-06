@@ -3,9 +3,9 @@
 namespace App\Services\Finance;
 
 use App\Models\Academic\AcademicYear;
-use App\Models\Currency;
-use App\Models\PaymentGateway;
-use App\Models\PaymentVoucher;
+use App\Models\Finance\Currency;
+use App\Models\Finance\PaymentGateway;
+use App\Models\Finance\PaymentVoucher;
 use App\Models\Student;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Database\Eloquent\Builder;

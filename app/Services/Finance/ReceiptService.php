@@ -3,9 +3,9 @@
 namespace App\Services\Finance;
 
 use App\DTOs\PaymentResult;
-use App\Models\Currency;
-use App\Models\PaymentGateway;
-use App\Models\Receipt;
+use App\Models\Finance\Currency;
+use App\Models\Finance\PaymentGateway;
+use App\Models\Finance\Receipt;
 use App\Models\Student;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Database\Eloquent\Builder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Finance;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,29 +9,20 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Receipt extends Model
+class StudentDiscount extends Model
 {
     use HasFactory, LogsActivity;
+
     protected $fillable = [
         'student_id',
         'academic_year_id',
-        'paid_amount',
-        'currency_code',
-        'exchange_rate',
-        'base_amount',
-        'surcharge_amount',
-        'payment_gateway_id',
-        'transaction_id',
+        'amount',
         'date',
         'description',
     ];
 
     protected $casts = [
-        'paid_amount'   => 'decimal:2',
-        'exchange_rate' => 'decimal:4',
-        'base_amount'      => 'decimal:2',
-        'surcharge_amount' => 'decimal:2',
-        'date'             => 'date',
+        'date' => 'date',
     ];
 
     /**
@@ -40,10 +31,10 @@ class Receipt extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['paid_amount', 'date', 'description'])
+            ->logOnly(['amount', 'date', 'description'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
-            ->useLogName('Finance - Receipts');
+            ->useLogName('Finance - Student Discounts');
     }
 
 
@@ -60,18 +51,8 @@ class Receipt extends Model
         return $this->belongsTo(AcademicYear::class);
     }
 
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class, 'currency_code', 'code');
-    }
-
     public function studentAccount(): MorphOne
     {
         return $this->morphOne(StudentAccount::class, 'transactionable');
-    }
-
-    public function paymentGateway(): BelongsTo
-    {
-        return $this->belongsTo(PaymentGateway::class);
     }
 }

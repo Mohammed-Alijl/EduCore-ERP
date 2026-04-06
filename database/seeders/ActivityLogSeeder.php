@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Currency;
-use App\Models\Fee;
-use App\Models\Invoice;
-use App\Models\PaymentVoucher;
-use App\Models\Receipt;
-use App\Models\StudentDiscount;
+use App\Models\Finance\Currency;
+use App\Models\Finance\Fee;
+use App\Models\Finance\Invoice;
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
+use App\Models\Finance\StudentDiscount;
 use Database\Factories\ActivityFactory;
 use Illuminate\Database\Seeder;
 use Spatie\Activitylog\Models\Activity;
