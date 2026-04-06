@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Finance\Currency;
 use App\Models\Finance\PaymentGateway;
 use App\Models\Finance\Receipt;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Services\Payments\PaymentGatewayManager;
 use App\Services\Finance\ReceiptService;
 use Illuminate\Http\JsonResponse;

@@ -2,7 +2,7 @@
 
 namespace App\Services\Users;
 
-use App\Models\Guardian;
+use App\Models\Users\Guardian;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\TypeBlood;
 use App\Models\SystemData\Religion;

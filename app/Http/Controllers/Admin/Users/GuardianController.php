@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Guardian\StoreRequest;
 use App\Http\Requests\Admin\Guardian\UpdateRequest;
-use App\Models\Guardian;
+use App\Models\Users\Guardian;
 use App\Services\Users\GuardianService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

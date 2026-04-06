@@ -5,7 +5,7 @@ namespace App\Services\Finance;
 use App\Models\Finance\Invoice;
 use App\Models\Finance\PaymentVoucher;
 use App\Models\Finance\Receipt;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Models\Finance\StudentAccount;
 use App\Models\Finance\StudentDiscount;
 use Illuminate\Support\Collection;

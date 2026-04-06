@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Student\StoreRequest;
 use App\Http\Requests\Admin\Student\UpdateRequest;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Services\Finance\StudentFinanceService;
 use App\Services\Students\StudentGradeService;
 use App\Services\Users\StudentService;

@@ -5,7 +5,7 @@ namespace App\Services\Students;
 use App\Enums\EnrollmentStatus;
 use App\Models\Academic\AcademicYear;
 use App\Models\Academic\Grade;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Models\Academic\StudentEnrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

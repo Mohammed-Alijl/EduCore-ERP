@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Exports\FinancialExport;
-use App\Models\Admin;
+use App\Models\Users\Admin;
 use App\Notifications\ExportFailedNotification;
 use App\Notifications\ExportReadyNotification;
 use App\Services\Exports\ExportService;

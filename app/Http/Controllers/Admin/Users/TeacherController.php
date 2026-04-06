@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Teacher\StoreRequest;
 use App\Http\Requests\Admin\Teacher\UpdateRequest;
-use App\Models\Teacher;
+use App\Models\Users\Teacher;
 use App\Services\Users\TeacherService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controllers\HasMiddleware;

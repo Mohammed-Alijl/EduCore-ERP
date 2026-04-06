@@ -3,7 +3,7 @@
 namespace App\Services\HR;
 
 use App\Models\Attendance\Attendance;
-use App\Models\Student;
+use App\Models\Users\Student;
 
 // use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Log;

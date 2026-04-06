@@ -4,7 +4,7 @@ namespace App\Services\Finance;
 
 use App\Models\Finance\Fee;
 use App\Models\Finance\Invoice;
-use App\Models\Student;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;

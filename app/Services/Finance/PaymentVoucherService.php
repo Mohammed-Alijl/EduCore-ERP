@@ -6,7 +6,7 @@ use App\Models\Academic\AcademicYear;
 use App\Models\Finance\Currency;
 use App\Models\Finance\PaymentGateway;
 use App\Models\Finance\PaymentVoucher;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;

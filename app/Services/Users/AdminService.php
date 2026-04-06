@@ -2,7 +2,7 @@
 
 namespace App\Services\Users;
 
-use App\Models\Admin;
+use App\Models\Users\Admin;
 use App\Traits\UploadImageTrait;
 use Exception;
 use Illuminate\Support\Facades\Hash;

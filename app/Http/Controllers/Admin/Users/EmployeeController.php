@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Employee\StoreRequest;
 use App\Http\Requests\Admin\Employee\UpdateRequest;
-use App\Models\Employee;
+use App\Models\Users\Employee;
 use App\Services\Users\EmployeeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

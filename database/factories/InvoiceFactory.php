@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Finance\Invoice;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Models\Finance\Fee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

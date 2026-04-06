@@ -4,7 +4,7 @@ namespace App\Services\Students;
 
 use App\Models\Academic\AcademicYear;
 use App\Models\Assessments\Exam;
-use App\Models\Student;
+use App\Models\Users\Student;
 use App\Models\Assessments\StudentExamResult;
 use App\Models\Academic\Subject;
 use Illuminate\Support\Collection;

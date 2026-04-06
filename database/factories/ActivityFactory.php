@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
+use App\Models\Users\Admin;
 use App\Models\Finance\Currency;
 use App\Models\Finance\Fee;
 use App\Models\Finance\Invoice;

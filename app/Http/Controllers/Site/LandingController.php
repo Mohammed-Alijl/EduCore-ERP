@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Academic\ClassRoom;
-use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\Users\Student;
+use App\Models\Users\Teacher;
 use App\Services\CMS\CmsService;
 use App\Services\Academic\GradeService;
 use Illuminate\Contracts\View\View;

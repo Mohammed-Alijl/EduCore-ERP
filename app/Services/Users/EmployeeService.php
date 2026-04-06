@@ -4,7 +4,7 @@ namespace App\Services\Users;
 
 use App\Models\HumanResources\Department;
 use App\Models\HumanResources\Designation;
-use App\Models\Employee;
+use App\Models\Users\Employee;
 use App\Models\HumanResources\EmployeeAttachment;
 use App\Models\SystemData\Gender;
 use App\Models\SystemData\Nationality;

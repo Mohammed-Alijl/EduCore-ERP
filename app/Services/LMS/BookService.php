@@ -9,7 +9,7 @@ use Str;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Academic\Grade;
 use App\Models\Academic\Subject;
-use App\Models\Teacher;
+use App\Models\Users\Teacher;
 
 class BookService
 {

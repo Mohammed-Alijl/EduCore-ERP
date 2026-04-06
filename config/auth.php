@@ -70,17 +70,17 @@ return [
     'providers' => [
         'students' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Student::class),
+            'model' => env('AUTH_MODEL', App\Models\Users\Student::class),
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\Users\Admin::class,
         ],
 
         'teachers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Teacher::class,
+            'model' => App\Models\Users\Teacher::class,
         ],
 
         // 'users' => [

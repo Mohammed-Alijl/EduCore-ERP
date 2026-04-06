@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Academic\AcademicYear;
 use App\Models\Attendance\Attendance;
-use App\Models\Student;
+use App\Models\Users\Student;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

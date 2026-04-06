@@ -6,7 +6,7 @@ use App\Models\Academic\Book;
 use App\Models\Academic\Grade;
 use App\Models\Academic\ClassRoom;
 use App\Models\Academic\Section;
-use App\Models\Teacher;
+use App\Models\Users\Teacher;
 use App\Models\Academic\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
