@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\UpdateGeneralSettingRequest;
-use App\Models\GeneralSetting;
+use App\Models\Settings\GeneralSetting;
 use App\Services\Academic\AcademicYearService;
 use App\Services\Settings\GeneralSettingService;
 use Illuminate\Http\JsonResponse;

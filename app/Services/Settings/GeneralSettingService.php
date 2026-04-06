@@ -2,7 +2,7 @@
 
 namespace App\Services\Settings;
 
-use App\Models\GeneralSetting;
+use App\Models\Settings\GeneralSetting;
 use App\Traits\UploadImageTrait;
 use Illuminate\Support\Facades\Cache;
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\ExternalApiSettingRequest;
-use App\Models\ExternalApiSetting;
+use App\Models\Settings\ExternalApiSetting;
 use App\Services\Settings\ExternalApiSettingService;
 use Illuminate\View\View;
 
