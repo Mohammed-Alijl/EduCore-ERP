@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Assessments\Exam;
-use App\Models\Users\Student;
 use App\Models\Assessments\ExamAttempt;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

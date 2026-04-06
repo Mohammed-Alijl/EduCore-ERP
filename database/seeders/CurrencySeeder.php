@@ -12,11 +12,11 @@ class CurrencySeeder extends Seeder
         Currency::firstOrCreate(
             ['code' => 'USD'],
             [
-                'name'          => ['ar' => 'دولار أمريكي', 'en' => 'US Dollar'],
+                'name' => ['ar' => 'دولار أمريكي', 'en' => 'US Dollar'],
                 'exchange_rate' => 1.0000,
-                'is_default'    => true,
-                'status'        => true,
-                'sort_order'    => 0,
+                'is_default' => true,
+                'status' => true,
+                'sort_order' => 0,
             ]
         );
     }

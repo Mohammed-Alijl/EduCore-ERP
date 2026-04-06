@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\QuestionOption;
 use Illuminate\Database\Seeder;
 
 class QuestionOptionSeeder extends Seeder
@@ -12,6 +12,6 @@ class QuestionOptionSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\QuestionOption::factory(30)->create();
+        QuestionOption::factory(30)->create();
     }
 }

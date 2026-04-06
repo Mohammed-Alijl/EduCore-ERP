@@ -20,8 +20,8 @@ class CurrencyFactory extends Factory
         return [
             'code' => $this->faker->unique()->currencyCode(),
             'name' => [
-                'en' => ucfirst($this->faker->word()) . ' Currency',
-                'ar' => 'عملة ' . $this->faker->word(),
+                'en' => ucfirst($this->faker->word()).' Currency',
+                'ar' => 'عملة '.$this->faker->word(),
             ],
             'is_default' => 0,
             'exchange_rate' => $this->faker->randomFloat(4, 0.5, 5),

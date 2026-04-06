@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Assessments\AttemptQuestion;
 use App\Models\Assessments\ExamAttempt;
 use App\Models\Assessments\Question;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AttemptQuestionSeeder extends Seeder
@@ -20,6 +19,7 @@ class AttemptQuestionSeeder extends Seeder
 
         if ($attempts->isEmpty() || $questions->isEmpty()) {
             $this->command->info('Please seed ExamAttempts and Questions first.');
+
             return;
         }
 
@@ -31,9 +31,9 @@ class AttemptQuestionSeeder extends Seeder
                 AttemptQuestion::factory()->create([
                     'exam_attempt_id' => $attempt->id,
                     'question_id' => $question->id,
-                    'question_order' => $index + 1, 
+                    'question_order' => $index + 1,
                 ]);
+            }
         }
-    }
     }
 }

@@ -2,7 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
+use App\Models\ClassRoom;
+use App\Models\FeeCategory;
 use App\Models\Finance\Fee;
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,14 +23,14 @@ class FeeFactory extends Factory
     {
         return [
             'title' => [
-                'en' => ucfirst($this->faker->words(2, true)) . ' Fee',
-                'ar' => 'رسوم ' . $this->faker->word(),
+                'en' => ucfirst($this->faker->words(2, true)).' Fee',
+                'ar' => 'رسوم '.$this->faker->word(),
             ],
             'amount' => $this->faker->randomFloat(2, 100, 5000),
-            'fee_category_id' => \App\Models\FeeCategory::inRandomOrder()->value('id') ?? \App\Models\FeeCategory::factory(),
-            'academic_year_id' => \App\Models\AcademicYear::inRandomOrder()->value('id') ?? \App\Models\AcademicYear::factory(),
-            'grade_id' => \App\Models\Grade::inRandomOrder()->value('id') ?? \App\Models\Grade::factory(),
-            'classroom_id' => \App\Models\ClassRoom::inRandomOrder()->value('id') ?? \App\Models\ClassRoom::factory(),
+            'fee_category_id' => FeeCategory::inRandomOrder()->value('id') ?? FeeCategory::factory(),
+            'academic_year_id' => AcademicYear::inRandomOrder()->value('id') ?? AcademicYear::factory(),
+            'grade_id' => Grade::inRandomOrder()->value('id') ?? Grade::factory(),
+            'classroom_id' => ClassRoom::inRandomOrder()->value('id') ?? ClassRoom::factory(),
             'description' => $this->faker->sentence(),
         ];
     }

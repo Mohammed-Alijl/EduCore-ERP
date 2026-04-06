@@ -22,7 +22,9 @@ class Attendance extends Model
     ];
 
     public const STATUS_PRESENT = 1;
+
     public const STATUS_ABSENT = 2;
+
     public const STATUS_LATE = 3;
 
     // --------------------------------------------------------

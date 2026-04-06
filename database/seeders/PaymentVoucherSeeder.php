@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PaymentVoucher;
 use Illuminate\Database\Seeder;
 
 class PaymentVoucherSeeder extends Seeder
@@ -12,6 +12,6 @@ class PaymentVoucherSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\PaymentVoucher::factory(10)->create();
+        PaymentVoucher::factory(10)->create();
     }
 }

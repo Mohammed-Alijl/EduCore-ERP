@@ -12,6 +12,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Receipt extends Model
 {
     use HasFactory, LogsActivity;
+
     protected $fillable = [
         'student_id',
         'academic_year_id',
@@ -27,11 +28,11 @@ class Receipt extends Model
     ];
 
     protected $casts = [
-        'paid_amount'   => 'decimal:2',
+        'paid_amount' => 'decimal:2',
         'exchange_rate' => 'decimal:4',
-        'base_amount'      => 'decimal:2',
+        'base_amount' => 'decimal:2',
         'surcharge_amount' => 'decimal:2',
-        'date'             => 'date',
+        'date' => 'date',
     ];
 
     /**
@@ -45,7 +46,6 @@ class Receipt extends Model
             ->dontSubmitEmptyLogs()
             ->useLogName('Finance - Receipts');
     }
-
 
     // --------------------------------------------------------
     // Relationship

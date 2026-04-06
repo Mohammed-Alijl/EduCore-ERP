@@ -29,7 +29,6 @@ class Invoice extends Model
         'invoice_date' => 'date',
     ];
 
-
     /**
      * determine which attributes to log and how.
      */
@@ -41,7 +40,6 @@ class Invoice extends Model
             ->dontSubmitEmptyLogs()
             ->useLogName('Finance - Invoices');
     }
-
 
     // --------------------------------------------------------
     // Relationship

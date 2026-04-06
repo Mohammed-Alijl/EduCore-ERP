@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\StudentDiscount;
 use Illuminate\Database\Seeder;
 
 class StudentDiscountSeeder extends Seeder
@@ -12,6 +12,6 @@ class StudentDiscountSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\StudentDiscount::factory(5)->create();
+        StudentDiscount::factory(5)->create();
     }
 }

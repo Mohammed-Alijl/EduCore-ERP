@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ClassRoom;
 use Illuminate\Database\Seeder;
 
 class ClassRoomSeeder extends Seeder
@@ -12,6 +12,6 @@ class ClassRoomSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\ClassRoom::factory(10)->create();
+        ClassRoom::factory(10)->create();
     }
 }

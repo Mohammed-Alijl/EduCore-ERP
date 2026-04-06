@@ -10,32 +10,33 @@ use Spatie\Translatable\HasTranslations;
 
 class ClassRoom extends Model
 {
-    use HasTranslations, SoftDeletes, HasFactory;
+    use HasFactory, HasTranslations, SoftDeletes;
 
     protected $fillable = ['name', 'grade_id', 'status', 'sort_order', 'notes'];
 
     public $translatable = ['name'];
 
-
-    //======================== SCOPES ========================
+    // ======================== SCOPES ========================
     public function scopeActive($query)
     {
         return $query->where('status', 1)->orderBy('sort_order', 'asc');
     }
 
-    //===============================================================
-    //======================== RELATIONSHIPS ========================
-    //===============================================================
+    // ===============================================================
+    // ======================== RELATIONSHIPS ========================
+    // ===============================================================
     public function grade()
     {
         return $this->belongsTo(Grade::class, 'grade_id');
     }
 
-    public function sections(): HasMany {
+    public function sections(): HasMany
+    {
         return $this->hasMany(Section::class, 'classroom_id');
     }
 
-    public function students() {
+    public function students()
+    {
         return $this->hasMany(Student::class, 'classroom_id');
     }
 }

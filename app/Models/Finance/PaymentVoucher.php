@@ -12,6 +12,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class PaymentVoucher extends Model
 {
     use HasFactory, LogsActivity;
+
     protected $fillable = [
         'student_id',
         'academic_year_id',
@@ -40,7 +41,6 @@ class PaymentVoucher extends Model
             ->dontSubmitEmptyLogs()
             ->useLogName('Finance - Payment Vouchers');
     }
-
 
     // --------------------------------------------------------
     // Relationship

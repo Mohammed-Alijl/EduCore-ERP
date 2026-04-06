@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Assessments\AttemptQuestion;
+use App\Models\ExamAttempt;
+use App\Models\Question;
+use App\Models\QuestionOption;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +21,11 @@ class AttemptQuestionFactory extends Factory
     public function definition(): array
     {
         $isCorrect = $this->faker->boolean();
+
         return [
-            'exam_attempt_id' => \App\Models\ExamAttempt::factory(), 
-            'question_id' => \App\Models\Question::factory(),
-            'selected_option_id' => \App\Models\QuestionOption::inRandomOrder()->value('id') ?? \App\Models\QuestionOption::factory(),
+            'exam_attempt_id' => ExamAttempt::factory(),
+            'question_id' => Question::factory(),
+            'selected_option_id' => QuestionOption::inRandomOrder()->value('id') ?? QuestionOption::factory(),
             'is_correct' => $isCorrect,
             'points_awarded' => $isCorrect ? $this->faker->randomFloat(2, 1, 5) : 0,
             'question_order' => $this->faker->numberBetween(1, 10),

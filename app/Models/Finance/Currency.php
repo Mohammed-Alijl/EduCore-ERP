@@ -19,27 +19,27 @@ class Currency extends Model
         'is_default',
         'exchange_rate',
         'status',
-        'sort_order'
+        'sort_order',
     ];
 
     public $translatable = ['name'];
 
     protected $casts = [
         'exchange_rate' => 'decimal:4',
-        'is_default'    => 'boolean',
+        'is_default' => 'boolean',
     ];
 
-    //─── Scopes ────────────────────────────────────────────────────────
+    // ─── Scopes ────────────────────────────────────────────────────────
     public function scopeActive($query)
     {
         return $query->where('status', 1)->orderBy('sort_order', 'asc');
     }
 
-    //─── Mutators ────────────────────────────────────────────────────────
+    // ─── Mutators ────────────────────────────────────────────────────────
     protected function code(): Attribute
     {
         return Attribute::make(
-            set: fn(string $value) => strtoupper($value),
+            set: fn (string $value) => strtoupper($value),
         );
     }
 
@@ -54,7 +54,6 @@ class Currency extends Model
             ->dontSubmitEmptyLogs()
             ->useLogName('Finance - Currencies');
     }
-
 
     // --------------------------------------------------------
     // Relationship

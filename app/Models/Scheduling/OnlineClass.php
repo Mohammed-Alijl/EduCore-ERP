@@ -11,6 +11,7 @@ class OnlineClass extends Model
     use HasFactory;
 
     public const INTEGRATION_ZOOM = 1;
+
     public const INTEGRATION_MANUAL = 2;
 
     protected $fillable = [

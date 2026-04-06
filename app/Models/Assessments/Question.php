@@ -10,6 +10,7 @@ class Question extends Model
     use HasFactory;
 
     public const TYPE_MCQ = 1;
+
     public const TYPE_TF = 2;
 
     protected $fillable = [

@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
 use App\Models\Finance\StudentDiscount;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +20,8 @@ class StudentDiscountFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_id' => \App\Models\Student::inRandomOrder()->value('id') ?? \App\Models\Student::factory(),
-            'academic_year_id' => \App\Models\AcademicYear::inRandomOrder()->value('id') ?? \App\Models\AcademicYear::factory(),
+            'student_id' => Student::inRandomOrder()->value('id') ?? Student::factory(),
+            'academic_year_id' => AcademicYear::inRandomOrder()->value('id') ?? AcademicYear::factory(),
             'amount' => $this->faker->randomFloat(2, 50, 500),
             'date' => $this->faker->date(),
             'description' => $this->faker->sentence(),

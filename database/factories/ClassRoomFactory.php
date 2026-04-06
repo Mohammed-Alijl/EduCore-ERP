@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Academic\ClassRoom;
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,10 +20,10 @@ class ClassRoomFactory extends Factory
     {
         return [
             'name' => [
-                'en' => 'Class ' . strtoupper($this->faker->lexify('?')),
-                'ar' => 'فصل ' . $this->faker->randomLetter(),
+                'en' => 'Class '.strtoupper($this->faker->lexify('?')),
+                'ar' => 'فصل '.$this->faker->randomLetter(),
             ],
-            'grade_id' => \App\Models\Grade::inRandomOrder()->value('id') ?? \App\Models\Grade::factory(),
+            'grade_id' => Grade::inRandomOrder()->value('id') ?? Grade::factory(),
             'status' => $this->faker->boolean(80) ? 1 : 0,
             'sort_order' => $this->faker->numberBetween(1, 100),
             'notes' => $this->faker->sentence(),

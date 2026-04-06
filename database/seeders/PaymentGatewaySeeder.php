@@ -11,25 +11,25 @@ class PaymentGatewaySeeder extends Seeder
     {
         $gateways = [
             [
-                'name'                 => ['en' => 'Cash', 'ar' => 'نقدي'],
-                'code'                 => 'cash',
-                'settings'             => null,
+                'name' => ['en' => 'Cash', 'ar' => 'نقدي'],
+                'code' => 'cash',
+                'settings' => null,
                 'surcharge_percentage' => 0.00,
-                'status'               => true,
+                'status' => true,
             ],
             [
-                'name'                 => ['en' => 'Bank Transfer', 'ar' => 'تحويل بنكي'],
-                'code'                 => 'bank_transfer',
-                'settings'             => ['bank_name' => '', 'account_number' => '', 'iban' => ''],
+                'name' => ['en' => 'Bank Transfer', 'ar' => 'تحويل بنكي'],
+                'code' => 'bank_transfer',
+                'settings' => ['bank_name' => '', 'account_number' => '', 'iban' => ''],
                 'surcharge_percentage' => 0.00,
-                'status'               => true,
+                'status' => true,
             ],
             [
-                'name'                 => ['en' => 'Stripe', 'ar' => 'سترايب'],
-                'code'                 => 'stripe',
-                'settings'             => ['publishable_key' => '', 'secret_key' => '', 'webhook_secret' => ''],
+                'name' => ['en' => 'Stripe', 'ar' => 'سترايب'],
+                'code' => 'stripe',
+                'settings' => ['publishable_key' => '', 'secret_key' => '', 'webhook_secret' => ''],
                 'surcharge_percentage' => 2.90,
-                'status'               => false,
+                'status' => false,
             ],
         ];
 

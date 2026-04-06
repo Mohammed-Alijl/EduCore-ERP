@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use App\Models\HumanResources\EmployeeAttachment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,8 +19,8 @@ class EmployeeAttachmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'employee_id' => \App\Models\Employee::inRandomOrder()->value('id') ?? \App\Models\Employee::factory(),
-            'attachment_path' => 'attachments/fake_' . $this->faker->uuid() . '.pdf',
+            'employee_id' => Employee::inRandomOrder()->value('id') ?? Employee::factory(),
+            'attachment_path' => 'attachments/fake_'.$this->faker->uuid().'.pdf',
         ];
     }
 }

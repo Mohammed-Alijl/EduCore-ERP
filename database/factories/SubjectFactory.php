@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Academic\Subject;
+use App\Models\Admin;
+use App\Models\ClassRoom;
+use App\Models\Grade;
+use App\Models\Specialization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,14 +23,14 @@ class SubjectFactory extends Factory
     {
         return [
             'name' => [
-                'en' => ucfirst($this->faker->word()) . ' Subject',
-                'ar' => 'مادة ' . $this->faker->word(),
+                'en' => ucfirst($this->faker->word()).' Subject',
+                'ar' => 'مادة '.$this->faker->word(),
             ],
-            'specialization_id' => \App\Models\Specialization::inRandomOrder()->value('id') ?? \App\Models\Specialization::factory(),
-            'grade_id' => \App\Models\Grade::inRandomOrder()->value('id') ?? \App\Models\Grade::factory(),
-            'classroom_id' => \App\Models\ClassRoom::inRandomOrder()->value('id') ?? \App\Models\ClassRoom::factory(),
+            'specialization_id' => Specialization::inRandomOrder()->value('id') ?? Specialization::factory(),
+            'grade_id' => Grade::inRandomOrder()->value('id') ?? Grade::factory(),
+            'classroom_id' => ClassRoom::inRandomOrder()->value('id') ?? ClassRoom::factory(),
             'status' => 1,
-            'admin_id' => \App\Models\Admin::inRandomOrder()->value('id') ?? \App\Models\Admin::factory(),
+            'admin_id' => Admin::inRandomOrder()->value('id') ?? Admin::factory(),
         ];
     }
 }

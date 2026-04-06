@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -63,7 +64,7 @@ class Employee extends Authenticatable
     public function getImageUrlAttribute(): string
     {
         if (! empty($this->image)) {
-            return asset('storage/' . $this->image);
+            return asset('storage/'.$this->image);
         }
 
         return asset('assets/admin/img/faces/admin.png');
@@ -80,10 +81,10 @@ class Employee extends Authenticatable
                         $isTeacher = true;
                     }
                 }
-                
-                $prefix = ($isTeacher ? 'TCH-' : 'EMP-') . date('Y') . '-';
+
+                $prefix = ($isTeacher ? 'TCH-' : 'EMP-').date('Y').'-';
                 $lastEmployee = self::withTrashed()
-                    ->where('employee_code', 'like', $prefix . '%')
+                    ->where('employee_code', 'like', $prefix.'%')
                     ->orderBy('id', 'desc')
                     ->first();
 
@@ -93,7 +94,7 @@ class Employee extends Authenticatable
                 } else {
                     $nextNumber = '0001';
                 }
-                $employee->employee_code = $prefix . $nextNumber;
+                $employee->employee_code = $prefix.$nextNumber;
             }
         });
     }
@@ -150,9 +151,9 @@ class Employee extends Authenticatable
     /**
      * Only active employees.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  Builder  $query
      */
-    public function scopeActive($query): \Illuminate\Database\Eloquent\Builder
+    public function scopeActive($query): Builder
     {
         return $query->where('status', 1);
     }

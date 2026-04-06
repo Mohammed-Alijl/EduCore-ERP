@@ -27,7 +27,7 @@ class StudentAccount extends Model
         'date' => 'date',
     ];
 
-    //─── Relationships ────────────────────────────────────────────────────────
+    // ─── Relationships ────────────────────────────────────────────────────────
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);

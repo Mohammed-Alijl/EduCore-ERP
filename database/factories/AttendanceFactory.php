@@ -2,7 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
 use App\Models\Attendance\Attendance;
+use App\Models\ClassRoom;
+use App\Models\Employee;
+use App\Models\Grade;
+use App\Models\Section;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,12 +24,12 @@ class AttendanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_id' => \App\Models\Student::inRandomOrder()->value('id') ?? \App\Models\Student::factory(),
-            'academic_year_id' => \App\Models\AcademicYear::inRandomOrder()->value('id') ?? \App\Models\AcademicYear::factory(),
-            'grade_id' => \App\Models\Grade::inRandomOrder()->value('id') ?? \App\Models\Grade::factory(),
-            'classroom_id' => \App\Models\ClassRoom::inRandomOrder()->value('id') ?? \App\Models\ClassRoom::factory(),
-            'section_id' => \App\Models\Section::inRandomOrder()->value('id') ?? \App\Models\Section::factory(),
-            'teacher_id' => \App\Models\Employee::inRandomOrder()->value('id') ?? \App\Models\Employee::factory(),
+            'student_id' => Student::inRandomOrder()->value('id') ?? Student::factory(),
+            'academic_year_id' => AcademicYear::inRandomOrder()->value('id') ?? AcademicYear::factory(),
+            'grade_id' => Grade::inRandomOrder()->value('id') ?? Grade::factory(),
+            'classroom_id' => ClassRoom::inRandomOrder()->value('id') ?? ClassRoom::factory(),
+            'section_id' => Section::inRandomOrder()->value('id') ?? Section::factory(),
+            'teacher_id' => Employee::inRandomOrder()->value('id') ?? Employee::factory(),
             'attendance_date' => $this->faker->date(),
             'attendance_status' => $this->faker->randomElement([1, 2, 3]),
         ];

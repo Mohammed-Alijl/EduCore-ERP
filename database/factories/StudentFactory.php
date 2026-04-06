@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\Academic\AcademicYear;
-use App\Models\Users\Admin;
 use App\Models\Academic\ClassRoom;
-use App\Models\SystemData\Gender;
 use App\Models\Academic\Grade;
-use App\Models\Users\Guardian;
+use App\Models\Academic\Section;
+use App\Models\SystemData\Gender;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\Religion;
-use App\Models\Academic\Section;
-use App\Models\Users\Student;
 use App\Models\SystemData\TypeBlood;
+use App\Models\Users\Admin;
+use App\Models\Users\Guardian;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

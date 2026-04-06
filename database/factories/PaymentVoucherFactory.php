@@ -2,7 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
+use App\Models\Currency;
 use App\Models\Finance\PaymentVoucher;
+use App\Models\PaymentGateway;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +22,11 @@ class PaymentVoucherFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_id' => \App\Models\Student::inRandomOrder()->value('id') ?? \App\Models\Student::factory(),
-            'academic_year_id' => \App\Models\AcademicYear::inRandomOrder()->value('id') ?? \App\Models\AcademicYear::factory(),
-            'payment_gateway_id' => \App\Models\PaymentGateway::inRandomOrder()->value('id') ?? 1,
+            'student_id' => Student::inRandomOrder()->value('id') ?? Student::factory(),
+            'academic_year_id' => AcademicYear::inRandomOrder()->value('id') ?? AcademicYear::factory(),
+            'payment_gateway_id' => PaymentGateway::inRandomOrder()->value('id') ?? 1,
             'amount' => $this->faker->randomFloat(2, 100, 1000),
-            'currency_code' => \App\Models\Currency::inRandomOrder()->value('code') ?? 'USD',
+            'currency_code' => Currency::inRandomOrder()->value('code') ?? 'USD',
             'exchange_rate' => 1.0000,
             'base_amount' => 100,
             'date' => $this->faker->date(),

@@ -12,6 +12,7 @@ class FeeCategory extends Model
     use HasFactory, HasTranslations;
 
     protected $fillable = ['title', 'description'];
+
     public $translatable = ['title'];
 
     public function fees(): HasMany

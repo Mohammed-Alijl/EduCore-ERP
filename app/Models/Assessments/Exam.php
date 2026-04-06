@@ -12,14 +12,18 @@ class Exam extends Model
     // ───  Grading Method ────────────────────────────────────────────────────────
 
     public const GRADING_HIGHEST = 1;
-    public const GRADING_LATEST = 2;
-    public const GRADING_AVERAGE = 3;
 
+    public const GRADING_LATEST = 2;
+
+    public const GRADING_AVERAGE = 3;
 
     // ───  Result Visibility ────────────────────────────────────────────────────────
     public const VISIBILITY_HIDDEN = 1;
+
     public const VISIBILITY_IMMEDIATE = 2;
+
     public const VISIBILITY_AFTER_ATTEMPTS = 3;
+
     public const VISIBILITY_AFTER_DATE = 4;
 
     protected $fillable = [
@@ -35,7 +39,7 @@ class Exam extends Model
         'max_attempts',
         'grading_method',
         'result_visibility',
-        'is_published'
+        'is_published',
     ];
 
     protected $casts = [
@@ -44,7 +48,7 @@ class Exam extends Model
         'is_published' => 'boolean',
     ];
 
-    //─── Relationships ────────────────────────────────────────────────────────
+    // ─── Relationships ────────────────────────────────────────────────────────
     public function subject()
     {
         return $this->belongsTo(Subject::class);

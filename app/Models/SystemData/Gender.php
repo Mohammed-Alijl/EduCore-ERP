@@ -8,6 +8,8 @@ use Spatie\Translatable\HasTranslations;
 class Gender extends Model
 {
     use HasTranslations;
+
     protected $fillable = ['name'];
+
     public $translatable = ['name'];
 }

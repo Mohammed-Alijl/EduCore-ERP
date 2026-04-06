@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Fee;
 use Illuminate\Database\Seeder;
 
 class FeeSeeder extends Seeder
@@ -12,6 +12,6 @@ class FeeSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Fee::factory(10)->create();
+        Fee::factory(10)->create();
     }
 }

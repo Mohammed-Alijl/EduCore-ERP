@@ -8,7 +8,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Specialization extends Model
 {
-    use HasTranslations, HasFactory;
+    use HasFactory, HasTranslations;
 
     public $translatable = ['name'];
 

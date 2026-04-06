@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Academic\Section;
+use App\Models\ClassRoom;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,12 @@ class SectionFactory extends Factory
      */
     public function definition(): array
     {
-        $classRoom = \App\Models\ClassRoom::inRandomOrder()->first() ?? \App\Models\ClassRoom::factory()->create();
-        
+        $classRoom = ClassRoom::inRandomOrder()->first() ?? ClassRoom::factory()->create();
+
         return [
             'name' => [
-                'en' => 'Section ' . $this->faker->numberBetween(1, 10),
-                'ar' => 'شعبة ' . $this->faker->numberBetween(1, 10),
+                'en' => 'Section '.$this->faker->numberBetween(1, 10),
+                'ar' => 'شعبة '.$this->faker->numberBetween(1, 10),
             ],
             'grade_id' => $classRoom->grade_id,
             'classroom_id' => $classRoom->id,

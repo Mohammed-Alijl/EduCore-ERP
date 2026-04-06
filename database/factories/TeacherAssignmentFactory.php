@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use App\Models\Scheduling\TeacherAssignment;
+use App\Models\Section;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +21,9 @@ class TeacherAssignmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'teacher_id' => \App\Models\Employee::inRandomOrder()->value('id') ?? \App\Models\Employee::factory(),
-            'subject_id' => \App\Models\Subject::inRandomOrder()->value('id') ?? \App\Models\Subject::factory(),
-            'section_id' => \App\Models\Section::inRandomOrder()->value('id') ?? \App\Models\Section::factory(),
+            'teacher_id' => Employee::inRandomOrder()->value('id') ?? Employee::factory(),
+            'subject_id' => Subject::inRandomOrder()->value('id') ?? Subject::factory(),
+            'section_id' => Section::inRandomOrder()->value('id') ?? Section::factory(),
             'academic_year' => $this->faker->year(),
         ];
     }

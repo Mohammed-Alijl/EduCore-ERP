@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\EmployeeAttachment;
 use Illuminate\Database\Seeder;
 
 class EmployeeAttachmentSeeder extends Seeder
@@ -12,6 +12,6 @@ class EmployeeAttachmentSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\EmployeeAttachment::factory(5)->create();
+        EmployeeAttachment::factory(5)->create();
     }
 }

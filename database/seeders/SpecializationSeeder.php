@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Specialization;
 use Illuminate\Database\Seeder;
 
 class SpecializationSeeder extends Seeder
@@ -12,6 +12,6 @@ class SpecializationSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Specialization::factory(5)->create();
+        Specialization::factory(5)->create();
     }
 }

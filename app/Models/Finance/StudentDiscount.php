@@ -37,7 +37,6 @@ class StudentDiscount extends Model
             ->useLogName('Finance - Student Discounts');
     }
 
-
     // --------------------------------------------------------
     // Relationship
     // --------------------------------------------------------

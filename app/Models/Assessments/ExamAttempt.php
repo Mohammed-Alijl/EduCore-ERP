@@ -10,7 +10,9 @@ class ExamAttempt extends Model
     use HasFactory;
 
     public const STATUS_IN_PROGRESS = 1;
+
     public const STATUS_COMPLETED = 2;
+
     public const STATUS_TIMEOUT = 3;
 
     protected $fillable = [
@@ -19,7 +21,7 @@ class ExamAttempt extends Model
         'status',
         'score',
         'started_at',
-        'completed_at'
+        'completed_at',
     ];
 
     protected $casts = [

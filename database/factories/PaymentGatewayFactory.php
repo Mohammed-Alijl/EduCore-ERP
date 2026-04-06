@@ -19,8 +19,8 @@ class PaymentGatewayFactory extends Factory
     {
         return [
             'name' => [
-                'en' => $this->faker->company() . ' Gateway',
-                'ar' => 'بوابة دفع ' . $this->faker->company(),
+                'en' => $this->faker->company().' Gateway',
+                'ar' => 'بوابة دفع '.$this->faker->company(),
             ],
             'code' => $this->faker->unique()->word(),
             'settings' => ['public_key' => 'test', 'secret_key' => 'test'],

@@ -2,10 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\AcademicYear;
+use App\Models\Exam;
+use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Exam>
+ * @extends Factory<Exam>
  */
 class ExamFactory extends Factory
 {
@@ -18,10 +23,10 @@ class ExamFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'subject_id' => \App\Models\Subject::inRandomOrder()->first()?->id ?? 1,
-            'teacher_id' => \App\Models\Teacher::inRandomOrder()->first()?->id ?? 1,
-            'academic_year_id' => \App\Models\AcademicYear::inRandomOrder()->first()?->id ?? 1,
-            'start_time' => $start = \Illuminate\Support\Carbon::instance($this->faker->dateTimeBetween('now', '+1 month')),
+            'subject_id' => Subject::inRandomOrder()->first()?->id ?? 1,
+            'teacher_id' => Teacher::inRandomOrder()->first()?->id ?? 1,
+            'academic_year_id' => AcademicYear::inRandomOrder()->first()?->id ?? 1,
+            'start_time' => $start = Carbon::instance($this->faker->dateTimeBetween('now', '+1 month')),
             'end_time' => $start->copy()->addHours(2),
             'duration_minutes' => 60,
             'total_questions' => 20,
