@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClassPeriod\StoreRequest;
 use App\Http\Requests\Admin\ClassPeriod\UpdateRequest;
-use App\Models\ClassPeriod;
+use App\Models\Scheduling\ClassPeriod;
 use App\Models\Grade;
 use App\Services\Schedule\ClassPeriodService;
 use Illuminate\Http\JsonResponse;

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\TeacherAssignment;
+use App\Models\Scheduling\TeacherAssignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

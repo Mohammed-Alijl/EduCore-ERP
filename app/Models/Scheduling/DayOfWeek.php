@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Scheduling;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;

@@ -11,7 +11,7 @@ use App\Models\Exam;
 use App\Models\Grade;
 use App\Models\Guardian;
 use App\Models\Invoice;
-use App\Models\OnlineClass;
+use App\Models\Scheduling\OnlineClass;
 use App\Models\Receipt;
 use App\Models\Student;
 use App\Models\Subject;

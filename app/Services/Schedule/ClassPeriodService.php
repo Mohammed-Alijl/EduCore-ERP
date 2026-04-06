@@ -2,7 +2,7 @@
 
 namespace App\Services\Schedule;
 
-use App\Models\ClassPeriod;
+use App\Models\Scheduling\ClassPeriod;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 

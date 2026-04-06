@@ -5,7 +5,7 @@ namespace App\Services\LMS;
 use App\Models\AcademicYear;
 use App\Models\ClassRoom;
 use App\Models\Grade;
-use App\Models\OnlineClass;
+use App\Models\Scheduling\OnlineClass;
 use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Database\Eloquent\Builder;

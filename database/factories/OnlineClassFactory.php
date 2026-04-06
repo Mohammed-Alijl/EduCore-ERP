@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\OnlineClass;
+use App\Models\Scheduling\OnlineClass;
 use App\Models\AcademicYear;
 use App\Models\Grade;
 use App\Models\ClassRoom;

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Timetable\StoreRequest;
 use App\Http\Requests\Admin\Timetable\UpdateRequest;
 use App\Models\Grade;
-use App\Models\Timetable;
+use App\Models\Scheduling\Timetable;
 use App\Services\Academic\AcademicYearService;
 use App\Services\Academic\GradeService;
 use App\Services\Schedule\TimetableService;

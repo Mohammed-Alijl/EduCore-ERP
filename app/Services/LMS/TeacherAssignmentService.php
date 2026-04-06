@@ -2,7 +2,7 @@
 
 namespace App\Services\LMS;
 
-use App\Models\TeacherAssignment;
+use App\Models\Scheduling\TeacherAssignment;
 use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\Grade;

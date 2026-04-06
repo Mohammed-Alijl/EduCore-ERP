@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\LMS;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OnlineClass\DatatableRequest;
-use App\Models\OnlineClass;
+use App\Models\Scheduling\OnlineClass;
 use App\Services\LMS\OnlineClassService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

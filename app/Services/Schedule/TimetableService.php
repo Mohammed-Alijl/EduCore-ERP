@@ -2,12 +2,12 @@
 
 namespace App\Services\Schedule;
 
-use App\Models\ClassPeriod;
-use App\Models\DayOfWeek;
+use App\Models\Scheduling\ClassPeriod;
+use App\Models\Scheduling\DayOfWeek;
 use App\Models\Section;
 use App\Models\Subject;
-use App\Models\TeacherAssignment;
-use App\Models\Timetable;
+use App\Models\Scheduling\TeacherAssignment;
+use App\Models\Scheduling\Timetable;
 use Illuminate\Validation\ValidationException;
 
 class TimetableService

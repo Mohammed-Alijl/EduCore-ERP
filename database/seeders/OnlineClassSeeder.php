@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\OnlineClass;
+use App\Models\Scheduling\OnlineClass;
 use Illuminate\Database\Seeder;
 
 class OnlineClassSeeder extends Seeder
