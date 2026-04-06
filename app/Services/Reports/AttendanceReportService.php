@@ -2,7 +2,7 @@
 
 namespace App\Services\Reports;
 
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;

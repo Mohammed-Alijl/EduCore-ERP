@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

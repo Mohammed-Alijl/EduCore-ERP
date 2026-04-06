@@ -2,7 +2,7 @@
 
 namespace App\Services\HR;
 
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use App\Models\Student;
 
 // use Illuminate\Support\Facades\DB;

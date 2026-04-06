@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\AcademicYear;
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use App\Models\Book;
 use App\Models\ClassRoom;
 use App\Models\Employee;
