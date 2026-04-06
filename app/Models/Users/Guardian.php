@@ -2,6 +2,10 @@
 
 namespace App\Models\Users;
 
+use App\Models\SystemData\Nationality;
+use App\Models\SystemData\Religion;
+use App\Models\SystemData\TypeBlood;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;

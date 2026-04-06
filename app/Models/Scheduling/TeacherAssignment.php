@@ -2,6 +2,9 @@
 
 namespace App\Models\Scheduling;
 
+use App\Models\Academic\Section;
+use App\Models\Academic\Subject;
+use App\Models\Users\Employee;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

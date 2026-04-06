@@ -3,6 +3,8 @@
 namespace App\Models\Finance;
 
 use App\Contracts\PaymentProcessorInterface;
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
 use App\Services\Payments\PaymentGatewayManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

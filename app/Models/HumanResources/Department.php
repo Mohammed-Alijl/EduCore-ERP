@@ -2,6 +2,8 @@
 
 namespace App\Models\HumanResources;
 
+use App\Models\HumanResources\Designation;
+use App\Models\Users\Employee;
 use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model

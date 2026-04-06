@@ -2,6 +2,9 @@
 
 namespace App\Models\Academic;
 
+use App\Models\Academic\Subject;
+use App\Models\Users\Employee;
+use App\Models\Users\Teacher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;

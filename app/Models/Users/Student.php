@@ -2,6 +2,23 @@
 
 namespace App\Models\Users;
 
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
+use App\Models\Academic\StudentEnrollment;
+use App\Models\Attendance\Attendance;
+use App\Models\Finance\Invoice;
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
+use App\Models\Finance\StudentAccount;
+use App\Models\Finance\StudentDiscount;
+use App\Models\SystemData\Gender;
+use App\Models\SystemData\Nationality;
+use App\Models\SystemData\Religion;
+use App\Models\SystemData\TypeBlood;
+use App\Models\Users\Admin;
+use App\Models\Users\Guardian;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -60,7 +77,7 @@ class Student extends Authenticatable
     public function getImageUrlAttribute()
     {
         if (! empty($this->image)) {
-            return asset('storage/'.$this->image);
+            return asset('storage/' . $this->image);
         }
         $gender = $this->gender->getTranslation('name', 'en');
 
@@ -74,7 +91,7 @@ class Student extends Authenticatable
         parent::boot();
         static::creating(function ($student) {
             $currentYear = date('Y');
-            $lastStudent = self::withTrashed()->where('student_code', 'like', $currentYear.'%')
+            $lastStudent = self::withTrashed()->where('student_code', 'like', $currentYear . '%')
                 ->orderBy('student_code', 'desc')
                 ->first();
 
@@ -84,7 +101,7 @@ class Student extends Authenticatable
             } else {
                 $newSequence = '0001';
             }
-            $student->student_code = $currentYear.$newSequence;
+            $student->student_code = $currentYear . $newSequence;
         });
     }
 

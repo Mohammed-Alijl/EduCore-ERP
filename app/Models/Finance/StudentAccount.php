@@ -2,6 +2,7 @@
 
 namespace App\Models\Finance;
 
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

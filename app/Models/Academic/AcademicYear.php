@@ -2,6 +2,10 @@
 
 namespace App\Models\Academic;
 
+use App\Models\Academic\StudentEnrollment;
+use App\Models\Attendance\Attendance;
+use App\Models\Finance\Invoice;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

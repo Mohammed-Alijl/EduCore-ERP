@@ -3,6 +3,12 @@
 namespace App\Models\Academic;
 
 use App\Enums\EnrollmentStatus;
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
+use App\Models\Users\Admin;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

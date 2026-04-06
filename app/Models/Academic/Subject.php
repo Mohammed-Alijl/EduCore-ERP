@@ -2,6 +2,10 @@
 
 namespace App\Models\Academic;
 
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Specialization;
+use App\Models\Users\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

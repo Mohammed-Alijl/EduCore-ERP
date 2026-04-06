@@ -2,6 +2,7 @@
 
 namespace App\Models\Settings;
 
+use App\Models\Academic\AcademicYear;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;

@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Scheduling\TeacherAssignment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -18,10 +19,10 @@ class Teacher extends Employee
         });
 
         static::creating(function (Teacher $teacher) {
-            $prefix = 'TCH-'.date('Y').'-';
+            $prefix = 'TCH-' . date('Y') . '-';
             $lastTeacher = self::withoutGlobalScope('teacher')
                 ->withTrashed()
-                ->where('employee_code', 'like', $prefix.'%')
+                ->where('employee_code', 'like', $prefix . '%')
                 ->orderBy('id', 'desc')
                 ->first();
 
@@ -31,7 +32,7 @@ class Teacher extends Employee
             } else {
                 $nextNumber = '0001';
             }
-            $teacher->employee_code = $prefix.$nextNumber;
+            $teacher->employee_code = $prefix . $nextNumber;
         });
     }
 

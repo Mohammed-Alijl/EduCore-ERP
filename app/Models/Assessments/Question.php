@@ -2,6 +2,10 @@
 
 namespace App\Models\Assessments;
 
+use App\Models\Academic\Subject;
+use App\Models\Assessments\Exam;
+use App\Models\Assessments\QuestionOption;
+use App\Models\Users\Employee;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

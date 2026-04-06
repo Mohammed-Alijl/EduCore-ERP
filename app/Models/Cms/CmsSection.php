@@ -2,6 +2,7 @@
 
 namespace App\Models\Cms;
 
+use App\Models\Cms\CmsPage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

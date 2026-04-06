@@ -2,6 +2,12 @@
 
 namespace App\Models\Scheduling;
 
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\Section;
+use App\Models\Academic\Subject;
+use App\Models\Scheduling\ClassPeriod;
+use App\Models\Scheduling\DayOfWeek;
+use App\Models\Users\Employee;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -2,6 +2,10 @@
 
 namespace App\Models\Finance;
 
+use App\Models\Academic\AcademicYear;
+use App\Models\Finance\PaymentGateway;
+use App\Models\Finance\StudentAccount;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

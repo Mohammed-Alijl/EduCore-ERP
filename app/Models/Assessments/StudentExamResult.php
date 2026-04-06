@@ -2,6 +2,8 @@
 
 namespace App\Models\Assessments;
 
+use App\Models\Assessments\Exam;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

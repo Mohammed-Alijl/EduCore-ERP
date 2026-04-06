@@ -2,6 +2,7 @@
 
 namespace App\Models\Scheduling;
 
+use App\Models\Academic\Grade;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -85,6 +86,6 @@ class ClassPeriod extends Model
 
     public function getFormattedTimeRangeAttribute(): string
     {
-        return $this->start_time->format('H:i').' - '.$this->end_time->format('H:i');
+        return $this->start_time->format('H:i') . ' - ' . $this->end_time->format('H:i');
     }
 }

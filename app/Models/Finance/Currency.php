@@ -2,6 +2,8 @@
 
 namespace App\Models\Finance;
 
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -39,7 +41,7 @@ class Currency extends Model
     protected function code(): Attribute
     {
         return Attribute::make(
-            set: fn (string $value) => strtoupper($value),
+            set: fn(string $value) => strtoupper($value),
         );
     }
 

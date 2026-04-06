@@ -2,6 +2,12 @@
 
 namespace App\Models\Attendance;
 
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
+use App\Models\Users\Employee;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
