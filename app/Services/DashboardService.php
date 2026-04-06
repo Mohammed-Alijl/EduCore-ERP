@@ -7,7 +7,7 @@ use App\Models\Attendance\Attendance;
 use App\Models\Academic\Book;
 use App\Models\Academic\ClassRoom;
 use App\Models\Employee;
-use App\Models\Exam;
+use App\Models\Assessments\Exam;
 use App\Models\Academic\Grade;
 use App\Models\Guardian;
 use App\Models\Invoice;

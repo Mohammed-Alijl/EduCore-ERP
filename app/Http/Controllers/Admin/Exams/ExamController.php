@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Exams;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Exam\ExamDatatableRequest;
 use App\Http\Requests\Admin\Exam\ResetAttemptRequest;
-use App\Models\Exam;
+use App\Models\Assessments\Exam;
 use App\Services\Exams\ExamService;
 use App\Services\Users\StudentService;
 use Illuminate\Routing\Controllers\HasMiddleware;

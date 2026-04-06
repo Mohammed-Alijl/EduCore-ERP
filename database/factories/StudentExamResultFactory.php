@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentExamResult;
+use App\Models\Assessments\StudentExamResult;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

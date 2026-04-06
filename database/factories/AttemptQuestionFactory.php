@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\AttemptQuestion;
+use App\Models\Assessments\AttemptQuestion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

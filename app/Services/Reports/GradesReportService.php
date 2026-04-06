@@ -3,7 +3,7 @@
 namespace App\Services\Reports;
 
 use App\Models\Academic\AcademicYear;
-use App\Models\Exam;
+use App\Models\Assessments\Exam;
 use App\Models\Academic\Grade;
 use App\Models\Academic\Subject;
 use Illuminate\Database\Query\Builder;

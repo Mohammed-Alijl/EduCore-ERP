@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\AttemptQuestion;
-use App\Models\ExamAttempt;
-use App\Models\Question;
+use App\Models\Assessments\AttemptQuestion;
+use App\Models\Assessments\ExamAttempt;
+use App\Models\Assessments\Question;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

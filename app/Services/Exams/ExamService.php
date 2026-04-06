@@ -2,9 +2,9 @@
 
 namespace App\Services\Exams;
 
-use App\Models\Exam;
-use App\Models\ExamAttempt;
-use App\Models\StudentExamResult;
+use App\Models\Assessments\Exam;
+use App\Models\Assessments\ExamAttempt;
+use App\Models\Assessments\StudentExamResult;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

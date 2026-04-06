@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ExamAttempt;
+use App\Models\Assessments\ExamAttempt;
 use Illuminate\Database\Seeder;
 
 class ExamAttemptSeeder extends Seeder
