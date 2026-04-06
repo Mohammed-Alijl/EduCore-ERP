@@ -2,10 +2,10 @@
 
 namespace App\Services\LMS;
 
-use App\Models\ClassRoom;
-use App\Models\Grade;
-use App\Models\Specialization;
-use App\Models\Subject;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Specialization;
+use App\Models\Academic\Subject;
 use Exception;
 
 class SubjectService

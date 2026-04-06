@@ -2,7 +2,7 @@
 
 namespace App\Services\Students;
 
-use App\Models\StudentEnrollment;
+use App\Models\Academic\StudentEnrollment;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 

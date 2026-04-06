@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Academic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Grade\StoreRequest;
 use App\Http\Requests\Admin\Grade\UpdateRequest;
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use App\Services\Academic\GradeService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

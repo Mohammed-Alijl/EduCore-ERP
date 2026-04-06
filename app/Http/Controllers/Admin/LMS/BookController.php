@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\LMS;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Library\BookDatatableRequest;
-use App\Models\Book;
+use App\Models\Academic\Book;
 use App\Services\LMS\BookService;
 use App\Services\Users\StudentService;
 use Illuminate\Routing\Controllers\HasMiddleware;

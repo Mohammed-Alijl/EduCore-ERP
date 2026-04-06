@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Academic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AcademicYear\StoreRequest;
 use App\Http\Requests\Admin\AcademicYear\UpdateRequest;
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Services\Academic\AcademicYearService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Attendance\Attendance;
 use App\Models\Student;
 use Carbon\Carbon;

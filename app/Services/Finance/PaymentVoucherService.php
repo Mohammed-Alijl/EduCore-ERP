@@ -2,7 +2,7 @@
 
 namespace App\Services\Finance;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Currency;
 use App\Models\PaymentGateway;
 use App\Models\PaymentVoucher;

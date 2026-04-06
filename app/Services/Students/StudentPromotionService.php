@@ -3,10 +3,10 @@
 namespace App\Services\Students;
 
 use App\Enums\EnrollmentStatus;
-use App\Models\AcademicYear;
-use App\Models\Grade;
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\Grade;
 use App\Models\Student;
-use App\Models\StudentEnrollment;
+use App\Models\Academic\StudentEnrollment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

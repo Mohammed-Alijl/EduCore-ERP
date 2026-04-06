@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Enums\EnrollmentStatus;
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Student;
-use App\Models\StudentEnrollment;
+use App\Models\Academic\StudentEnrollment;
 use Illuminate\Database\Seeder;
 
 class StudentEnrollmentSeeder extends Seeder

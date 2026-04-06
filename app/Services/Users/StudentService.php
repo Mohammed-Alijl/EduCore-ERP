@@ -3,13 +3,13 @@
 namespace App\Services\Users;
 
 use App\Models\Student;
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use App\Models\Guardian;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\TypeBlood;
 use App\Models\SystemData\Religion;
 use App\Models\SystemData\Gender;
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;

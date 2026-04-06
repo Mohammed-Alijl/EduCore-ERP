@@ -2,9 +2,9 @@
 
 namespace App\Services\Academic;
 
-use App\Models\ClassRoom;
-use App\Models\Grade;
-use App\Models\Section;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 

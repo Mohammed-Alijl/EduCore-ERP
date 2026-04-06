@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Specialization;
+use App\Models\Academic\Specialization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Academic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Section\StoreRequest;
 use App\Http\Requests\Admin\Section\UpdateRequest;
-use App\Models\Section;
+use App\Models\Academic\Section;
 use App\Services\Academic\ClassroomService;
 use App\Services\Academic\GradeService;
 use App\Services\Academic\SectionService;

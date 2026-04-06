@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\HR;
 
-use App\Models\Specialization;
+use App\Models\Academic\Specialization;
 
 class SpecializationService
 {

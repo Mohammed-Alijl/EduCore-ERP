@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClassRoom;
+use App\Models\Academic\ClassRoom;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Services\CMS\CmsService;

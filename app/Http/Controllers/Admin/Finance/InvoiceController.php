@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\InvoiceRequest;
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Fee;
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use App\Models\Invoice;
 use App\Services\Finance\InvoiceService;
 use Illuminate\Http\Request;

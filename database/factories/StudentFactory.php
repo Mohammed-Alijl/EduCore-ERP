@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Admin;
-use App\Models\ClassRoom;
+use App\Models\Academic\ClassRoom;
 use App\Models\SystemData\Gender;
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use App\Models\Guardian;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\Religion;
-use App\Models\Section;
+use App\Models\Academic\Section;
 use App\Models\Student;
 use App\Models\SystemData\TypeBlood;
 use Illuminate\Database\Eloquent\Factories\Factory;

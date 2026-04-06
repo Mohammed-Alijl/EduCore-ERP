@@ -2,7 +2,7 @@
 
 namespace App\Services\Academic;
 
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 
 class GradeService
 {

@@ -4,8 +4,8 @@ namespace App\Services\Schedule;
 
 use App\Models\Scheduling\ClassPeriod;
 use App\Models\Scheduling\DayOfWeek;
-use App\Models\Section;
-use App\Models\Subject;
+use App\Models\Academic\Section;
+use App\Models\Academic\Subject;
 use App\Models\Scheduling\TeacherAssignment;
 use App\Models\Scheduling\Timetable;
 use Illuminate\Validation\ValidationException;

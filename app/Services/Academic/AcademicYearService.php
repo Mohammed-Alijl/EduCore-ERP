@@ -2,7 +2,7 @@
 
 namespace App\Services\Academic;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use Exception;
 
 class AcademicYearService

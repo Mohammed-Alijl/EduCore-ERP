@@ -2,7 +2,7 @@
 
 namespace App\Services\Finance;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Student;
 use App\Models\StudentDiscount;
 use Illuminate\Database\Eloquent\Builder;

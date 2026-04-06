@@ -2,11 +2,11 @@
 
 namespace App\Services\Students;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Exam;
 use App\Models\Student;
 use App\Models\StudentExamResult;
-use App\Models\Subject;
+use App\Models\Academic\Subject;
 use Illuminate\Support\Collection;
 
 class StudentGradeService

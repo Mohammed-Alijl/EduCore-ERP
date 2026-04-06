@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Academic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Classroom\StoreRequest;
 use App\Http\Requests\Admin\Classroom\UpdateRequest;
-use App\Models\ClassRoom;
+use App\Models\Academic\ClassRoom;
 use App\Services\Academic\ClassroomService;
 use App\Services\Academic\GradeService;
 use Illuminate\Http\Request;

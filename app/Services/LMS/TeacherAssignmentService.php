@@ -4,8 +4,8 @@ namespace App\Services\LMS;
 
 use App\Models\Scheduling\TeacherAssignment;
 use App\Models\Teacher;
-use App\Models\Subject;
-use App\Models\Grade;
+use App\Models\Academic\Subject;
+use App\Models\Academic\Grade;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 

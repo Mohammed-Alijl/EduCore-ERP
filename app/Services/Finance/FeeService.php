@@ -2,10 +2,10 @@
 
 namespace App\Services\Finance;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Fee;
 use App\Models\FeeCategory;
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use Illuminate\Database\Eloquent\Builder;
 use Yajra\DataTables\Facades\DataTables;
 

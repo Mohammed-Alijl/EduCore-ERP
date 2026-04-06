@@ -2,7 +2,7 @@
 
 namespace App\Services\Academic;
 
-use App\Models\ClassRoom;
+use App\Models\Academic\ClassRoom;
 
 class ClassroomService
 {

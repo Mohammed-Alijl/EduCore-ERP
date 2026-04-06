@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Scheduling\OnlineClass;
-use App\Models\AcademicYear;
-use App\Models\Grade;
-use App\Models\ClassRoom;
-use App\Models\Section;
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\Grade;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Section;
 use App\Models\Teacher;
-use App\Models\Subject;
+use App\Models\Academic\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

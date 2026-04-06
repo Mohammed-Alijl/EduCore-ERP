@@ -2,13 +2,13 @@
 
 namespace App\Services\LMS;
 
-use App\Models\Book;
+use App\Models\Academic\Book;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Str;
 use Yajra\DataTables\Facades\DataTables;
-use App\Models\Grade;
-use App\Models\Subject;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Subject;
 use App\Models\Teacher;
 
 class BookService

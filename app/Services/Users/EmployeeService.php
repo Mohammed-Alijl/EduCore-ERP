@@ -9,7 +9,7 @@ use App\Models\HumanResources\EmployeeAttachment;
 use App\Models\SystemData\Gender;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\Religion;
-use App\Models\Specialization;
+use App\Models\Academic\Specialization;
 use App\Models\SystemData\TypeBlood;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

@@ -2,10 +2,10 @@
 
 namespace App\Services\Reports;
 
-use App\Models\AcademicYear;
+use App\Models\Academic\AcademicYear;
 use App\Models\Exam;
-use App\Models\Grade;
-use App\Models\Subject;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Subject;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
