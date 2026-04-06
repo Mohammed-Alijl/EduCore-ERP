@@ -2,8 +2,8 @@
 
 namespace App\Services\CMS;
 
-use App\Models\CmsPage;
-use App\Models\CmsSection;
+use App\Models\Cms\CmsPage;
+use App\Models\Cms\CmsSection;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\CmsPage;
-use App\Models\CmsSection;
+use App\Models\Cms\CmsPage;
+use App\Models\Cms\CmsSection;
 use Illuminate\Database\Seeder;
 
 class CmsSeeder extends Seeder
