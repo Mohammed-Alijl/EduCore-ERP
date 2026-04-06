@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\SystemData;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Religion extends Model
+class Nationality extends Model
 {
     use HasTranslations;
-
     protected $fillable = ['name'];
     public $translatable = ['name'];
 }

@@ -3,9 +3,9 @@
 namespace App\Services\Users;
 
 use App\Models\Guardian;
-use App\Models\Nationality;
-use App\Models\TypeBlood;
-use App\Models\Religion;
+use App\Models\SystemData\Nationality;
+use App\Models\SystemData\TypeBlood;
+use App\Models\SystemData\Religion;
 use Illuminate\Support\Facades\Storage;
 
 class GuardianService

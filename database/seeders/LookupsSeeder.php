@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Gender;
-use App\Models\Nationality;
-use App\Models\Religion;
-use App\Models\TypeBlood;
+use App\Models\SystemData\Gender;
+use App\Models\SystemData\Nationality;
+use App\Models\SystemData\Religion;
+use App\Models\SystemData\TypeBlood;
 use Illuminate\Database\Seeder;
 
 class LookupsSeeder extends Seeder

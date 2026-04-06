@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\SystemData;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Nationality extends Model
+class Gender extends Model
 {
     use HasTranslations;
     protected $fillable = ['name'];
