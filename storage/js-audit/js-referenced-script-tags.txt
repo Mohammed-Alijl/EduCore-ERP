@@ -1,0 +1,10 @@
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/fileinput.min.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/locales/ar.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/buffer.min.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/filetype.min.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/piexif.min.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/js/plugins/sortable.min.js></script>
+https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.2/themes/fa5/theme.min.js></script>
+https://cdn.jsdelivr.net/npm/apexcharts@3.45.1/dist/apexcharts.min.js></script>
+https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js></script>
+https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js></script>

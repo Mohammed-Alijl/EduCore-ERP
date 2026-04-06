@@ -1,0 +1,17 @@
+js/custom.js
+js/eva-icons.min.js
+js/notifications.js
+js/sticky.js
+plugins/bootstrap/js/bootstrap.bundle.min.js
+plugins/ionicons/ionicons.js
+plugins/jquery/jquery.min.js
+plugins/jquery-sparkline/jquery.sparkline.min.js
+plugins/moment/moment.js
+plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js
+plugins/perfect-scrollbar/perfect-scrollbar.min.js
+plugins/perfect-scrollbar/p-scroll.js
+plugins/rating/jquery.barrating.js
+plugins/rating/jquery.rating-stars.js
+plugins/sidebar/sidebar-custom.js
+plugins/sidebar/sidebar-rtl.js
+plugins/side-menu/sidemenu.js

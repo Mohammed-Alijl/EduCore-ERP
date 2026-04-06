@@ -1,0 +1,5 @@
+=== DataTables Analysis ===
+
+DataTable references in blade files: 367
+
+DataTables Language Files Found:
