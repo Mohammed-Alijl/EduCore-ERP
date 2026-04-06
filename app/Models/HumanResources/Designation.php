@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\HumanResources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Designation extends Model
 {
     protected $fillable = [
         'name',
         'description',
+        'department_id',
+        'default_salary',
+        'can_teach',
     ];
 
     public function employees()
@@ -16,8 +19,8 @@ class Department extends Model
         return $this->hasMany(Employee::class);
     }
 
-    public function designations()
+    public function department()
     {
-        return $this->hasMany(Designation::class);
+        return $this->belongsTo(Department::class);
     }
 }

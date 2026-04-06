@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
-use App\Models\Designation;
+use App\Models\HumanResources\Department;
+use App\Models\HumanResources\Designation;
 use Illuminate\Database\Seeder;
 
 class DesignationSeeder extends Seeder

@@ -2,7 +2,7 @@
 
 namespace App\Services\HR;
 
-use App\Models\Designation;
+use App\Models\HumanResources\Designation;
 
 class DesignationService
 {

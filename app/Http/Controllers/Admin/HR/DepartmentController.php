@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\HR;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Department\StoreRequest;
 use App\Http\Requests\Admin\Department\UpdateRequest;
-use App\Models\Department;
+use App\Models\HumanResources\Department;
 use App\Services\HR\DepartmentService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

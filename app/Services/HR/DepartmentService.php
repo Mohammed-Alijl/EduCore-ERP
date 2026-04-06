@@ -2,7 +2,7 @@
 
 namespace App\Services\HR;
 
-use App\Models\Department;
+use App\Models\HumanResources\Department;
 
 class DepartmentService
 {

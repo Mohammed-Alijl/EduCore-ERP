@@ -2,9 +2,9 @@
 
 namespace App\Services\Users;
 
-use App\Models\Department;
-use App\Models\Designation;
-use App\Models\EmployeeAttachment;
+use App\Models\HumanResources\Department;
+use App\Models\HumanResources\Designation;
+use App\Models\HumanResources\EmployeeAttachment;
 use App\Models\SystemData\Gender;
 use App\Models\SystemData\Nationality;
 use App\Models\SystemData\Religion;
