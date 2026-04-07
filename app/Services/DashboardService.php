@@ -2,20 +2,20 @@
 
 namespace App\Services;
 
-use App\Models\AcademicYear;
-use App\Models\Attendance;
-use App\Models\Book;
-use App\Models\ClassRoom;
-use App\Models\Employee;
-use App\Models\Exam;
-use App\Models\Grade;
-use App\Models\Guardian;
-use App\Models\Invoice;
-use App\Models\OnlineClass;
-use App\Models\Receipt;
-use App\Models\Student;
-use App\Models\Subject;
-use App\Models\Teacher;
+use App\Models\Academic\AcademicYear;
+use App\Models\Attendance\Attendance;
+use App\Models\Academic\Book;
+use App\Models\Academic\ClassRoom;
+use App\Models\Users\Employee;
+use App\Models\Assessments\Exam;
+use App\Models\Academic\Grade;
+use App\Models\Users\Guardian;
+use App\Models\Finance\Invoice;
+use App\Models\Scheduling\OnlineClass;
+use App\Models\Finance\Receipt;
+use App\Models\Users\Student;
+use App\Models\Academic\Subject;
+use App\Models\Users\Teacher;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;

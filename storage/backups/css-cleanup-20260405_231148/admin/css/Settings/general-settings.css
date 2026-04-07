@@ -1,0 +1,190 @@
+/* ============================================
+   GENERAL SETTINGS MODULE - Custom Styles
+   Premium Valex-Compatible Styling
+   Supports: RTL (Arabic) + Dark Mode
+   ============================================ */
+
+.settings-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.settings-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    color: white;
+}
+
+.settings-header-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.settings-header-title i {
+    font-size: 2rem;
+}
+
+.settings-header-subtitle {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.settings-body {
+    padding: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: #667eea;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+
+.logo-preview-container {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f7fafc;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logo-preview-container:hover {
+    border-color: #667eea;
+    background: #edf2f7;
+}
+
+.logo-preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo-placeholder {
+    text-align: center;
+    color: #a0aec0;
+}
+
+.logo-placeholder i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.btn-save-settings {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 2.5rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-save-settings:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+.btn-save-settings:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.social-media-section {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.remove-logo-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.logo-preview-container:hover .remove-logo-btn {
+    opacity: 1;
+}
+
+/* ======================
+   DARK MODE SUPPORT
+   ====================== */
+.dark-theme .settings-glass-card {
+    background: rgba(26, 28, 46, 0.95);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .settings-header {
+    background: linear-gradient(135deg, #4454b6 0%, #56337a 100%);
+}
+
+.dark-theme .section-title {
+    color: #c5cde0;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .logo-preview-container {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .logo-preview-container:hover {
+    background: #2b2e4a;
+    border-color: #667eea;
+}
+
+.dark-theme .social-media-section {
+    background: #252742;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .logo-placeholder {
+    color: #6c757d;
+}

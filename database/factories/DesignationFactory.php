@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Designation;
+use App\Models\Department;
+use App\Models\HumanResources\Designation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class DesignationFactory extends Factory
         return [
             'name' => $this->faker->jobTitle(),
             'description' => $this->faker->sentence(),
-            'department_id' => \App\Models\Department::inRandomOrder()->value('id') ?? \App\Models\Department::factory(),
+            'department_id' => Department::inRandomOrder()->value('id') ?? Department::factory(),
             'default_salary' => $this->faker->randomFloat(2, 3000, 15000),
             'can_teach' => $this->faker->boolean(50),
         ];

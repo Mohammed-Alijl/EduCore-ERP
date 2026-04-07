@@ -47,7 +47,7 @@ class GradesReportController extends Controller implements HasMiddleware
         $chartData = $this->reportService->getChartData($filters);
         $filterData = $this->reportService->getFilterData();
 
-        return view('admin.reports.grades.index', compact('kpis', 'chartData', 'filterData', 'filters'));
+        return view('admin.Reports.grades.index', compact('kpis', 'chartData', 'filterData', 'filters'));
     }
 
     /**

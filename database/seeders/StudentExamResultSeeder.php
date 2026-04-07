@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Exam;
-use App\Models\Student;
+use App\Models\Assessments\Exam;
+use App\Models\Users\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

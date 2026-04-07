@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\FeeCategory;
+use App\Models\Finance\FeeCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +19,8 @@ class FeeCategoryFactory extends Factory
     {
         return [
             'title' => [
-                'en' => ucfirst($this->faker->words(2, true)) . ' Fee',
-                'ar' => 'رسوم ' . $this->faker->word(),
+                'en' => ucfirst($this->faker->words(2, true)).' Fee',
+                'ar' => 'رسوم '.$this->faker->word(),
             ],
             'description' => $this->faker->sentence(),
         ];

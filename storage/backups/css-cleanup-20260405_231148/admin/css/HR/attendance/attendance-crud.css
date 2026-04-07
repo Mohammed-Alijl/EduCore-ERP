@@ -1,0 +1,452 @@
+        :root {
+            --att-glass-bg: rgba(255, 255, 255, 0.78);
+            --att-glass-border: rgba(255, 255, 255, 0.35);
+            --att-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            --att-radius: 16px;
+            --att-muted: #64748b;
+            --att-heading: #0f172a;
+            --att-accent-1: #4f46e5;
+            --att-accent-2: #7c3aed;
+            --att-accent-shadow: rgba(79, 70, 229, 0.32);
+
+            --present: #10b981;
+            --absent: #ef4444;
+            --late: #f59e0b;
+        }
+
+        .attendance-page .glass-card {
+            position: relative;
+            background: var(--att-glass-bg);
+            border: 1px solid var(--att-glass-border);
+            border-radius: var(--att-radius);
+            box-shadow: var(--att-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .attendance-page .glass-card-body {
+            padding: 1.3rem 1.4rem;
+        }
+
+        .attendance-page .filter-label {
+            display: block;
+            margin-bottom: .45rem;
+            font-size: .76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .45px;
+            color: var(--att-muted);
+        }
+
+        .attendance-page .filter-label i {
+            font-size: 1rem;
+            vertical-align: -1px;
+            margin-inline-end: .25rem;
+        }
+
+        .attendance-page .form-control-modern {
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            min-height: 44px;
+            box-shadow: none;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+            background: rgba(255, 255, 255, .95);
+        }
+
+        .attendance-page .form-control-modern:focus {
+            border-color: var(--att-accent-1);
+            box-shadow: 0 0 0 .2rem rgba(79, 70, 229, .14);
+            transform: translateY(-1px);
+        }
+
+        .attendance-page .form-control-modern:disabled {
+            background: #f1f5f9;
+            cursor: not-allowed;
+            opacity: .75;
+        }
+
+        .attendance-page .select2-container--default .select2-selection--single {
+            min-height: 44px;
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .attendance-page .select2-container .select2-selection--single .select2-selection__rendered {
+            line-height: 42px;
+            padding-inline: .85rem 2rem;
+        }
+
+        .attendance-page .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 42px;
+            right: .45rem;
+        }
+
+        .attendance-page .load-students-btn {
+            border: 0;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: .95rem;
+            min-height: 48px;
+            padding: .7rem 1.2rem;
+            background: linear-gradient(135deg, var(--att-accent-1), var(--att-accent-2));
+            box-shadow: 0 10px 24px var(--att-accent-shadow);
+            transition: all .2s ease;
+        }
+
+        .attendance-page .load-students-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 28px var(--att-accent-shadow);
+            color: #fff;
+        }
+
+        .attendance-page .load-students-btn:focus {
+            box-shadow: 0 0 0 .2rem rgba(124, 58, 237, .25), 0 10px 24px var(--att-accent-shadow);
+        }
+
+        .attendance-page .load-students-btn .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            border-width: .14em;
+        }
+
+        /* Shared Grid Styles */
+        .attendance-page .students-card {
+            margin-top: 1.25rem;
+        }
+
+        .attendance-page .students-table-wrap {
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, .22);
+            overflow: hidden;
+            background: rgba(255, 255, 255, .65);
+        }
+
+        .attendance-page .students-table {
+            margin: 0;
+            width: 100%;
+        }
+
+        .attendance-page .students-table thead th {
+            border: 0 !important;
+            background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+            color: #475569;
+            font-size: .77rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .45px;
+            padding: .95rem .85rem;
+            white-space: nowrap;
+        }
+
+        .attendance-page .students-table tbody td {
+            vertical-align: middle;
+            border-top: 1px solid rgba(148, 163, 184, .16);
+            padding: .85rem;
+            background: transparent;
+        }
+
+        .attendance-page .students-table tbody tr {
+            transition: background-color .16s ease, transform .16s ease;
+        }
+
+        .attendance-page .students-table tbody tr:hover {
+            background: rgba(99, 102, 241, .05);
+        }
+
+        .attendance-page .student-meta {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .attendance-page .student-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            flex: 0 0 42px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, .95);
+            box-shadow: 0 6px 14px rgba(15, 23, 42, .16);
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .attendance-page .student-name {
+            color: var(--att-heading);
+            font-weight: 700;
+            font-size: .92rem;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .attendance-page .student-code {
+            color: var(--att-muted);
+            font-size: .78rem;
+            margin: .1rem 0 0;
+            font-weight: 600;
+        }
+
+        .attendance-page .status-pills {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .attendance-page .status-radio {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+        }
+
+        .attendance-page .status-pill {
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: .5rem .8rem;
+            min-width: 82px;
+            text-align: center;
+            font-size: .79rem;
+            font-weight: 800;
+            cursor: pointer;
+            user-select: none;
+            transition: all .18s ease;
+        }
+
+        .attendance-page .status-pill.present {
+            background: rgba(16, 185, 129, .12);
+            color: #059669;
+            border-color: rgba(16, 185, 129, .24);
+        }
+
+        .attendance-page .status-pill.absent {
+            background: rgba(239, 68, 68, .12);
+            color: #dc2626;
+            border-color: rgba(239, 68, 68, .22);
+        }
+
+        .attendance-page .status-pill.late {
+            background: rgba(245, 158, 11, .14);
+            color: #d97706;
+            border-color: rgba(245, 158, 11, .26);
+        }
+
+        .attendance-page .status-radio:focus+.status-pill {
+            box-shadow: 0 0 0 .2rem rgba(99, 102, 241, .16);
+        }
+
+        .attendance-page .status-radio:checked+.status-pill.present {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 8px 18px rgba(16, 185, 129, .35);
+            transform: translateY(-1px);
+        }
+
+        .attendance-page .status-radio:checked+.status-pill.absent {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 8px 18px rgba(239, 68, 68, .34);
+            transform: translateY(-1px);
+        }
+
+        .attendance-page .status-radio:checked+.status-pill.late {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 8px 18px rgba(245, 158, 11, .35);
+            transform: translateY(-1px);
+        }
+
+        .attendance-page .submit-bar {
+            position: sticky;
+            bottom: 0;
+            z-index: 5;
+            margin-top: 1rem;
+            border-top: 1px solid rgba(148, 163, 184, .22);
+            background: rgba(255, 255, 255, .86);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: .95rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .attendance-page .save-attendance-btn {
+            border: 0;
+            border-radius: 12px;
+            min-height: 52px;
+            min-width: 240px;
+            font-size: .96rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            box-shadow: 0 12px 26px rgba(59, 130, 246, .34);
+            transition: all .2s ease;
+        }
+
+        .attendance-page .save-attendance-btn:hover {
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, .38);
+        }
+
+        .attendance-page .save-attendance-btn .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            border-width: .14em;
+            margin-inline-end: .45rem;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .attendance-page .filter-label,
+        [dir="rtl"] .attendance-page .student-name,
+        [dir="rtl"] .attendance-page .student-code,
+        [dir="rtl"] .attendance-page .students-table {
+            text-align: right;
+        }
+
+        [dir="rtl"] .attendance-page .select2-container--default .select2-selection--single .select2-selection__arrow {
+            left: .45rem;
+            right: auto;
+        }
+
+        [dir="rtl"] .attendance-page .select2-container .select2-selection--single .select2-selection__rendered {
+            padding-right: .85rem;
+            padding-left: 2rem;
+        }
+
+        [dir="rtl"] .attendance-page .submit-bar {
+            justify-content: flex-start;
+        }
+
+        /* Dark Theme */
+        .dark-theme .attendance-page .glass-card {
+            background: rgba(22, 28, 39, .82);
+            border-color: rgba(148, 163, 184, .18);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, .33);
+        }
+
+        .dark-theme .attendance-page .filter-label {
+            color: #94a3b8;
+        }
+
+        .dark-theme .attendance-page .form-control-modern,
+        .dark-theme .attendance-page .select2-container--default .select2-selection--single {
+            background: #0f172a;
+            border-color: rgba(148, 163, 184, .28);
+            color: #e2e8f0;
+        }
+
+        .dark-theme .attendance-page .form-control-modern:focus {
+            border-color: #818cf8;
+            box-shadow: 0 0 0 .2rem rgba(129, 140, 248, .2);
+        }
+
+        .dark-theme .attendance-page .form-control-modern:disabled {
+            background: #0b1220;
+            opacity: .6;
+        }
+
+        .dark-theme .attendance-page .select2-container--default .select2-selection--single .select2-selection__rendered,
+        .dark-theme .attendance-page .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: #e2e8f0;
+        }
+
+        .dark-theme .attendance-page .students-table-wrap {
+            border-color: rgba(148, 163, 184, .2);
+            background: rgba(15, 23, 42, .45);
+        }
+
+        .dark-theme .attendance-page .students-table thead th {
+            background: linear-gradient(180deg, #0f172a, #111827);
+            color: #93a5c2;
+        }
+
+        .dark-theme .attendance-page .students-table tbody td {
+            border-top-color: rgba(148, 163, 184, .16);
+        }
+
+        .dark-theme .attendance-page .students-table tbody tr:hover {
+            background: rgba(99, 102, 241, .12);
+        }
+
+        .dark-theme .attendance-page .student-name {
+            color: #f1f5f9;
+        }
+
+        .dark-theme .attendance-page .student-code {
+            color: #94a3b8;
+        }
+
+        .dark-theme .attendance-page .submit-bar {
+            border-top-color: rgba(148, 163, 184, .2);
+            background: rgba(15, 23, 42, .75);
+        }
+
+        .dark-theme .attendance-page .status-pill.present {
+            background: rgba(16, 185, 129, .2);
+            color: #6ee7b7;
+            border-color: rgba(16, 185, 129, .33);
+        }
+
+        .dark-theme .attendance-page .status-pill.absent {
+            background: rgba(239, 68, 68, .2);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, .34);
+        }
+
+        .dark-theme .attendance-page .status-pill.late {
+            background: rgba(245, 158, 11, .22);
+            color: #fcd34d;
+            border-color: rgba(245, 158, 11, .35);
+        }
+
+        .dark-theme .attendance-page .status-radio:checked+.status-pill.present {
+            color: #fff;
+            box-shadow: 0 10px 22px rgba(16, 185, 129, .35);
+        }
+
+        .dark-theme .attendance-page .status-radio:checked+.status-pill.absent {
+            color: #fff;
+            box-shadow: 0 10px 22px rgba(239, 68, 68, .35);
+        }
+
+        .dark-theme .attendance-page .status-radio:checked+.status-pill.late {
+            color: #fff;
+            box-shadow: 0 10px 22px rgba(245, 158, 11, .35);
+        }
+
+        @media (max-width: 991.98px) {
+            .attendance-page .status-pills {
+                gap: .35rem;
+            }
+
+            .attendance-page .status-pill {
+                min-width: 74px;
+                padding: .44rem .68rem;
+                font-size: .75rem;
+            }
+
+            .attendance-page .save-attendance-btn {
+                min-width: 100%;
+            }
+
+            .attendance-page .submit-bar {
+                justify-content: stretch;
+            }
+        }

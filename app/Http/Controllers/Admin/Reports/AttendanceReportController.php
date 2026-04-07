@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Export\AttendanceReportRequest;
 use App\Jobs\GenerateAttendanceExportJob;
 use App\Jobs\GenerateAttendancePdfJob;
-use App\Models\AcademicYear;
-use App\Services\GradeService;
+use App\Models\Academic\AcademicYear;
+use App\Services\Academic\GradeService;
 use App\Services\Reports\AttendanceReportService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -52,7 +52,7 @@ class AttendanceReportController extends Controller implements HasMiddleware
         $chartData = $this->reportService->getChartData((int) $academicYearId);
         $grades = $this->gradeService->getActive();
 
-        return view('admin.reports.attendance.index', compact(
+        return view('admin.Reports.attendance.index', compact(
             'kpis',
             'chartData',
             'academicYears',

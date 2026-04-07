@@ -1,0 +1,122 @@
+/* ══════════════════════════════════════════
+   CURRENCY — Modal Styles
+══════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   1. MODAL — Accent Color Tokens
+───────────────────────────────────────── */
+#addCurrencyModal {
+    --modal-accent:       #4e73df;
+    --modal-accent-dark:  #224abe;
+    --modal-accent-glow:  rgba(78, 115, 223, 0.3);
+    --modal-accent-focus: rgba(78, 115, 223, 0.18);
+    --modal-header-dark:  linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+}
+
+#editCurrencyModal {
+    --modal-accent:       #0ea573;
+    --modal-accent-dark:  #057a52;
+    --modal-accent-glow:  rgba(14, 165, 115, 0.3);
+    --modal-accent-focus: rgba(14, 165, 115, 0.18);
+    --modal-header-dark:  linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+}
+
+/* ─────────────────────────────────────────
+   2. MODAL — Shell Structure
+───────────────────────────────────────── */
+#addCurrencyModal .modal-content,
+#editCurrencyModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#addCurrencyModal .modal-header,
+#editCurrencyModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.75rem;
+    border-bottom: none;
+}
+
+#addCurrencyModal .modal-header .modal-title,
+#editCurrencyModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+#addCurrencyModal .modal-header .close,
+#editCurrencyModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+#addCurrencyModal .modal-header .close:hover,
+#editCurrencyModal .modal-header .close:hover {
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────
+   3. MODAL — Form Controls
+───────────────────────────────────────── */
+#addCurrencyModal .error-text,
+#editCurrencyModal .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+}
+
+#addCurrencyModal .form-control-modern:focus,
+#editCurrencyModal .form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+/* ══════════════════════════════════════════
+   DARK THEME OVERRIDES
+══════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   4. DARK — Modal Shell
+───────────────────────────────────────── */
+.dark-theme #addCurrencyModal .modal-content,
+.dark-theme #editCurrencyModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #addCurrencyModal .modal-header,
+.dark-theme #editCurrencyModal .modal-header {
+    background: var(--modal-header-dark);
+}
+
+/* ─────────────────────────────────────────
+   5. DARK — Form Controls
+───────────────────────────────────────── */
+.dark-theme #addCurrencyModal .form-control-modern,
+.dark-theme #editCurrencyModal .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addCurrencyModal .form-control-modern:focus,
+.dark-theme #editCurrencyModal .form-control-modern:focus {
+    background: #14161f;
+    border-color: var(--modal-accent);
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────
+   6. DARK — Checkboxes & Labels
+───────────────────────────────────────── */
+.dark-theme #addCurrencyModal .custom-control-label,
+.dark-theme #editCurrencyModal .custom-control-label {
+    color: #cbd5e1;
+}

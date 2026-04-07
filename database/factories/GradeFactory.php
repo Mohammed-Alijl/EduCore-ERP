@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Grade;
+use App\Models\Academic\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +19,8 @@ class GradeFactory extends Factory
     {
         return [
             'name' => [
-                'en' => ucfirst($this->faker->words(2, true)) . ' Grade',
-                'ar' => 'المرحلة ' . $this->faker->randomDigitNotNull(),
+                'en' => ucfirst($this->faker->words(2, true)).' Grade',
+                'ar' => 'المرحلة '.$this->faker->randomDigitNotNull(),
             ],
             'notes' => $this->faker->sentence(),
             'status' => $this->faker->boolean(80) ? 1 : 0,

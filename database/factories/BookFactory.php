@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
-use App\Models\Grade;
-use App\Models\ClassRoom;
-use App\Models\Section;
-use App\Models\Teacher;
-use App\Models\Subject;
+use App\Models\Academic\Book;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
+use App\Models\Academic\Subject;
+use App\Models\Users\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -19,9 +19,9 @@ class BookFactory extends Factory
     public function definition(): array
     {
         $title = $this->faker->sentence(3);
-        $fileName = Str::slug($title) . '_' . time() . '.pdf';
+        $fileName = Str::slug($title).'_'.time().'.pdf';
 
-        Storage::disk('local')->put('library/' . $fileName, 'Dummy PDF content for: ' . $title);
+        Storage::disk('local')->put('library/'.$fileName, 'Dummy PDF content for: '.$title);
 
         $gradeId = Grade::inRandomOrder()->first()->id ?? 1;
         $classroomId = $this->faker->randomElement([null, ClassRoom::where('grade_id', $gradeId)->inRandomOrder()->first()->id ?? null]);

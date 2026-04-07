@@ -1,0 +1,25 @@
+/**
+ * Header Icons Fix
+ * Prevents icon display issues with ApexCharts/Vite conflicts
+ * This file resolves conflicts when ApexCharts icons overlap with icon fonts
+ */
+
+/* Ensure icons in header don't conflict with chart icons */
+.main-header .las,
+.main-header .la,
+.main-header .fa {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Fix for notification icons */
+.notification-icon {
+    font-family: 'Line Awesome Free', 'Font Awesome 5 Free' !important;
+}
+
+/* Prevent ApexCharts from affecting icon fonts */
+.apexcharts-canvas .las,
+.apexcharts-canvas .la,
+.apexcharts-canvas .fa {
+    font-family: 'Line Awesome Free', 'Font Awesome 5 Free' !important;
+}

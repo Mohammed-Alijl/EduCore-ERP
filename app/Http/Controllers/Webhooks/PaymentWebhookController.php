@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Webhooks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Currency;
-use App\Models\PaymentGateway;
-use App\Models\Receipt;
-use App\Models\Student;
+use App\Models\Finance\Currency;
+use App\Models\Finance\PaymentGateway;
+use App\Models\Finance\Receipt;
+use App\Models\Users\Student;
 use App\Services\Payments\PaymentGatewayManager;
-use App\Services\ReceiptService;
+use App\Services\Finance\ReceiptService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

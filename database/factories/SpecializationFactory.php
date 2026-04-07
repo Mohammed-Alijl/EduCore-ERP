@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Specialization;
+use App\Models\Academic\Specialization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,9 +19,9 @@ class SpecializationFactory extends Factory
     {
         return [
             'name' => [
-                'en' => ucfirst($this->faker->word()) . ' Specialization',
-                'ar' => 'تخصص ' . $this->faker->word(),
-            ]
+                'en' => ucfirst($this->faker->word()).' Specialization',
+                'ar' => 'تخصص '.$this->faker->word(),
+            ],
         ];
     }
 }

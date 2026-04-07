@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentAccount;
+use App\Models\Finance\StudentAccount;
+use App\Models\Receipt;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +20,9 @@ class StudentAccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_id' => \App\Models\Student::inRandomOrder()->value('id') ?? \App\Models\Student::factory(),
-            'transactionable_type' => \App\Models\Receipt::class,
-            'transactionable_id' => \App\Models\Receipt::inRandomOrder()->value('id') ?? \App\Models\Receipt::factory(),
+            'student_id' => Student::inRandomOrder()->value('id') ?? Student::factory(),
+            'transactionable_type' => Receipt::class,
+            'transactionable_id' => Receipt::inRandomOrder()->value('id') ?? Receipt::factory(),
             'debit' => $this->faker->randomFloat(2, 0, 1000),
             'credit' => $this->faker->randomFloat(2, 0, 1000),
             'description' => $this->faker->sentence(),

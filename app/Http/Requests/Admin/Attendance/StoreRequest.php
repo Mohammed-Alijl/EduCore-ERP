@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin\Attendance;
 
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest

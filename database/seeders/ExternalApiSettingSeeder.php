@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ExternalApiSetting;
+use App\Models\Settings\ExternalApiSetting;
 use Illuminate\Database\Seeder;
 
 class ExternalApiSettingSeeder extends Seeder

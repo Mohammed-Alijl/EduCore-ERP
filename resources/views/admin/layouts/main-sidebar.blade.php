@@ -21,8 +21,9 @@
                         class="avatar-status profile-status bg-green"></span>
                 </div>
                 <div class="user-info">
-                    <h4 class="font-weight-semibold mt-3 mb-0">{{ auth()->user()->name }}</h4>
-                    <span class="mb-0 text-muted">{{ auth()->user()->roles()->first()->name }}</span>
+                    <h4 class="font-weight-semibold mt-3 mb-0">{{ auth('admin')->user()->name }}</h4>
+                    <span
+                        class="mb-0 text-muted">{{ auth('admin')->user()->roles()->first()?->name ?? __('admin.sidebar.no_role') }}</span>
                 </div>
             </div>
         </div>
@@ -44,7 +45,7 @@
             <li class="side-item side-item-category">{{ __('admin.sidebar.academic_structure') }}</li>
             @can('view_grades')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.grades.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Academic.grades.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px"
                             fill="#e3e3e3">
                             <g>
@@ -61,7 +62,7 @@
             @endcan
             @can('view_years')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.academic_years.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Academic.academic_years.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px"
                             fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -73,7 +74,7 @@
             @endcan
             @can('view_classrooms')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.classrooms.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Academic.classrooms.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px"
                             fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -84,7 +85,7 @@
             @endcan
             @can('view_sections')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.sections.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Academic.sections.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" width="24px"
                             fill="#e3e3e3">
                             <g>
@@ -109,7 +110,7 @@
             <li class="side-item side-item-category">{{ __('admin.sidebar.hr') }}</li>
             @can('view_department')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.departments.index') }}">
+                    <a class="side-menu__item" href="{{ route('admin.HR.departments.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0z" fill="none" />
@@ -122,7 +123,7 @@
             @endcan
             @can('view_designations')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.designations.index') }}">
+                    <a class="side-menu__item" href="{{ route('admin.HR.designations.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -136,7 +137,7 @@
             @endcan
             @can('view_employees')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.employees.index') }}">
+                    <a class="side-menu__item" href="{{ route('admin.Users.employees.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -174,20 +175,21 @@
                                 </g>
                             </g>
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.teachers') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_teachers')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.teachers.index') }}">{{ __('admin.sidebar.teachers') }}</a></li>
+                                    href="{{ route('admin.Users.teachers.index') }}">{{ __('admin.sidebar.teachers') }}</a>
+                            </li>
                         @endcan
                         @can('view_teacher_assignments')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.teacher_assignments.index') }}">{{ __('admin.sidebar.teacher_assignments') }}</a>
+                                    href="{{ route('admin.LMS.teacher_assignments.index') }}">{{ __('admin.sidebar.teacher_assignments') }}</a>
                             </li>
                         @endcan
                         @can('view_specializations')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.specializations.index') }}">{{ __('admin.specializations.title') }}</a>
+                                    href="{{ route('admin.HR.specializations.index') }}">{{ __('admin.HR.specializations.title') }}</a>
                             </li>
                         @endcan
                     </ul>
@@ -204,23 +206,24 @@
                             <path
                                 d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm5 12.99-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72zm-5-3.27L5.18 9 12 5.28 18.82 9 12 12.72z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.students') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         <li><a class="slide-item"
-                                href="{{ route('admin.students.index') }}">{{ __('admin.sidebar.students') }}</a></li>
+                                href="{{ route('admin.Users.students.index') }}">{{ __('admin.sidebar.students') }}</a>
+                        </li>
                         @can('promote_students')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.students.promotions.index') }}">{{ __('admin.sidebar.promotions') }}</a>
+                                    href="{{ route('admin.Users.students.promotions.index') }}">{{ __('admin.sidebar.promotions') }}</a>
                             </li>
                         @endcan
                         @can('view_promotion_history')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.students.promotions.history') }}">{{ __('admin.sidebar.promotion_history') }}</a>
+                                    href="{{ route('admin.Users.students.promotions.history') }}">{{ __('admin.sidebar.promotion_history') }}</a>
                             </li>
                         @endcan
                         @can('view_graduations')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.graduations.index') }}">{{ __('admin.sidebar.graduations') }}</a>
+                                    href="{{ route('admin.Students.graduations.index') }}">{{ __('admin.sidebar.graduations') }}</a>
                             </li>
                         @endcan
                     </ul>
@@ -228,7 +231,7 @@
             @endcan
             @can('view_guardians')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.guardians.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Users.guardians.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <g>
@@ -241,7 +244,7 @@
             @endcan
             @can('view_admins')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.admins.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Users.admins.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <g>
@@ -267,7 +270,7 @@
             @endcan
             @can('view_roles')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.roles.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.System.roles.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -290,7 +293,7 @@
                         <path
                             d="M5 22h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM5 8h14v12H5V8z" />
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.schedule') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_classPeriods')
                         <li><a class="slide-item"
@@ -306,7 +309,7 @@
             </li>
 
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.attendances.index') }}"><svg
+                <a class="side-menu__item" href="{{ route('admin.HR.attendances.index') }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                         width="24px" fill="#e3e3e3">
                         <g>
@@ -321,7 +324,7 @@
             </li>
             @can('view_subjects')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.subjects.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Academic.subjects.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -332,7 +335,7 @@
                 </li>
             @endcan
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.exams.index') }}"><svg
+                <a class="side-menu__item" href="{{ route('admin.Exams.exams.index') }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                         width="24px" fill="#e3e3e3">
                         <g>
@@ -349,7 +352,7 @@
             </li>
             @can('view_online_classes')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.online_classes.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.LMS.online_classes.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <g>
@@ -385,20 +388,20 @@
                         <path
                             d="M11.5 17.1c-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79z" />
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.fees_parent') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_fee_categories')
                         <li><a class="slide-item"
-                                href="{{ route('admin.fee_categories.index') }}">{{ __('admin.sidebar.fee_categories') }}</a>
+                                href="{{ route('admin.Finance.fee_categories.index') }}">{{ __('admin.sidebar.fee_categories') }}</a>
                         </li>
                     @endcan
                     @can('view_fees')
                         <li><a class="slide-item"
-                                href="{{ route('admin.fees.index') }}">{{ __('admin.sidebar.fees') }}</a></li>
+                                href="{{ route('admin.Finance.fees.index') }}">{{ __('admin.sidebar.fees') }}</a></li>
                     @endcan
                     @can('view_currencies')
                         <li><a class="slide-item"
-                                href="{{ route('admin.currencies.index') }}">{{ __('admin.sidebar.currencies') }}</a>
+                                href="{{ route('admin.Finance.currencies.index') }}">{{ __('admin.sidebar.currencies') }}</a>
                         </li>
                     @endcan
 
@@ -406,7 +409,7 @@
             </li>
             @can('view_invoices')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.invoices.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Finance.invoices.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -419,7 +422,7 @@
             @endcan
             @can('view_receipts')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.receipts.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Finance.receipts.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M19,19c0,0.55-0.45,1-1,1s-1-0.45-1-1v-3H8V5h11V19z" opacity=".3" />
@@ -437,7 +440,7 @@
             @endcan
             @can('view_paymentVoucher')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.payment_vouchers.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Finance.payment_vouchers.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -449,7 +452,7 @@
             @endcan
             @can('view_studentDiscounts')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.student_discounts.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.Finance.student_discounts.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"
                             width="24px" fill="#e3e3e3">
                             <path d="M0 0h24v24H0V0z" fill="none" />
@@ -473,14 +476,14 @@
                             <path
                                 d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.website') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_cms')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.cms.index') }}">{{ __('admin.sidebar.cms_sections') }}</a>
+                                    href="{{ route('admin.CMS.cms.index') }}">{{ __('admin.sidebar.cms_sections') }}</a>
                             </li>
                             <li><a class="slide-item"
-                                    href="{{ route('admin.cms.legal.index') }}">{{ __('admin.sidebar.cms_legal') }}</a>
+                                    href="{{ route('admin.CMS.cms.legal.index') }}">{{ __('admin.sidebar.cms_legal') }}</a>
                             </li>
                         @endcan
                     </ul>
@@ -507,30 +510,31 @@
                             </g>
                         </g>
                     </svg><span class="side-menu__label">{{ __('admin.sidebar.reports') }}</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle las la-angle-down"></i></a>
                 <ul class="slide-menu">
                     @can('view_attendanceReports')
                         <li><a class="slide-item"
-                                href="{{ route('admin.reports.attendance.index') }}">{{ __('admin.sidebar.attendance_report') }}</a>
+                                href="{{ route('admin.Reports.reports.attendance.index') }}">{{ __('admin.sidebar.attendance_report') }}</a>
                         </li>
                     @endcan
                     @can('view_financial-reports')
                         <li>
-                            <a class="slide-item" href="{{ route('admin.reports.financial.outstanding-balances') }}">
+                            <a class="slide-item"
+                                href="{{ route('admin.Reports.reports.financial.outstanding-balances') }}">
                                 {{ __('admin.sidebar.financial_report') }}
                             </a>
                         </li>
                     @endcan
                     @can('view_grades-reports')
                         <li><a class="slide-item"
-                                href="{{ route('admin.reports.grades.index') }}">{{ __('admin.sidebar.grades_report') }}</a>
+                                href="{{ route('admin.Reports.reports.grades.index') }}">{{ __('admin.sidebar.grades_report') }}</a>
                         </li>
                     @endcan
                 </ul>
             </li>
             @can('view_activityLogs')
                 <li class="slide">
-                    <a class="side-menu__item" href="{{ route('admin.activity_logs.index') }}"><svg
+                    <a class="side-menu__item" href="{{ route('admin.System.activity_logs.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3" />
@@ -551,7 +555,7 @@
                             <path
                                 d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
                         </svg><span class="side-menu__label">{{ __('admin.sidebar.settings') }}</span><i
-                            class="angle fe fe-chevron-down"></i></a>
+                            class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         @can('view_generalSettings')
                             <li><a class="slide-item"
@@ -560,7 +564,7 @@
                         @endcan
                         @can('view_payment_gateways')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.payment_gateways.index') }}">{{ __('admin.sidebar.settings_payment_gateways') }}</a>
+                                    href="{{ route('admin.Finance.payment_gateways.index') }}">{{ __('admin.sidebar.settings_payment_gateways') }}</a>
                             </li>
                         @endcan
                         @can('view_daysOfWeek')

@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentExamResult;
+use App\Models\Assessments\StudentExamResult;
+use App\Models\Exam;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +20,8 @@ class StudentExamResultFactory extends Factory
     public function definition(): array
     {
         return [
-            'exam_id' => \App\Models\Exam::inRandomOrder()->value('id') ?? \App\Models\Exam::factory(),
-            'student_id' => \App\Models\Student::inRandomOrder()->value('id') ?? \App\Models\Student::factory(),
+            'exam_id' => Exam::inRandomOrder()->value('id') ?? Exam::factory(),
+            'student_id' => Student::inRandomOrder()->value('id') ?? Student::factory(),
             'final_score' => $this->faker->randomFloat(2, 0, 100),
         ];
     }

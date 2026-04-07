@@ -7,6 +7,15 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
+use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
+use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
+use Spatie\Permission\Middleware\PermissionMiddleware;
+use Spatie\Permission\Middleware\RoleMiddleware;
+use Spatie\Permission\Middleware\RoleOrPermissionMiddleware;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -40,16 +49,30 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'admin.verified' => EmailIsVerified::class,
-            'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-            'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-            'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-            'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-            'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
-            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
-            'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'localize' => LaravelLocalizationRoutes::class,
+            'localizationRedirect' => LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect' => LocaleSessionRedirect::class,
+            'localeCookieRedirect' => LocaleCookieRedirect::class,
+            'localeViewPath' => LaravelLocalizationViewPath::class,
+            'role' => RoleMiddleware::class,
+            'permission' => PermissionMiddleware::class,
+            'role_or_permission' => RoleOrPermissionMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (Throwable $e, Request $request) {
+            if ($request->is('admin') || $request->is('admin/*')) {
+                if ($e instanceof HttpExceptionInterface) {
+                    $status = $e->getStatusCode();
+
+                    if (view()->exists("admin.error_pages.{$status}")) {
+                        return response()->view("admin.error_pages.{$status}", ['exception' => $e], $status);
+                    }
+                } elseif (! config('app.debug')) {
+                    if (view()->exists('admin.error_pages.500')) {
+                        return response()->view('admin.error_pages.500', ['exception' => $e], 500);
+                    }
+                }
+            }
+        });
     })->create();

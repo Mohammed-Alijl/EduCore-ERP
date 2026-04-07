@@ -1,0 +1,331 @@
+=== Font Awesome ===
+     12 fas fa-times
+      9 fas fa-plus-circle
+      7 fas fa-paperclip
+      6 fas fa-tint
+      6 fas fa-phone
+      4 fas fa-user-tie
+      4 fas fa-sync-alt
+      4 fas fa-save
+      4 fas fa-map-marker-alt
+      4 fas fa-id-card
+      4 fas fa-graduation-cap
+      4 fas fa-book
+      4 fas fa-arrow-right
+      3 fas fa-undo
+      3 fas fa-male
+      3 fas fa-id-badge
+      3 fas fa-female
+      3 fas fa-envelope
+      3 fas fa-check
+      3 fas fa-calendar-alt
+      3 fas fa-barcode
+      3 fas fa-arrow-up
+      3 fas fa-arrow-
+      2 fas fa-video-slash
+      2 fas fa-venus-mars
+      2 fas fa-user-shield
+      2 fas fa-user-plus
+      2 fas fa-user-graduate
+      2 fas fa-user-circle
+      2 fas fa-user
+      2 fas fa-trash-alt
+      2 fas fa-redo
+      2 fas fa-pen
+      2 fas fa-passport
+      2 fas fa-microphone-slash
+      2 fas fa-info-circle
+      2 fas fa-globe
+      2 fas fa-edit
+      2 fas fa-download
+      2 fas fa-check-circle
+      2 fas fa-briefcase
+      2 fas fa-address-book
+      2 far fa-clock
+      1 fa-users
+      1 fa-user-circle
+      1 fas fa-volume-up
+      1 fas fa-video
+      1 fas fa-users
+      1 fas fa-user-edit
+      1 fas fa-search
+      1 fas fa-school
+      1 fas fa-list-alt
+      1 fas fa-history
+      1 fas fa-filter
+      1 fas fa-file-invoice
+      1 fas fa-file-alt
+      1 fas fa-eye
+      1 fas fa-door-open
+      1 fas fa-dollar-sign
+      1 fas fa-database
+      1 fas fa-clipboard-check
+      1 fas fa-chevron-down
+      1 fas fa-chalkboard-teacher
+      1 fas fa-book-open
+      1 far fa-paper-plane
+      1 fa-plus
+      1 fa-ban
+
+=== Line Awesome ===
+     30 las la-layer-group
+     28 las la-trash
+     24 las la-pen
+     23 las la-info-circle
+     22 las la-calendar
+     21 las la-plus-circle
+     20 las la-users
+     20 las la-times
+     20 las la-save
+     19 las la-eye
+     17 las la-chalkboard
+     16 las la-graduation-cap
+     14 las la-user-graduate
+     14 las la-check-circle
+     13 las la-spinner
+     12 la-spin
+     12 las la-exclamation-triangle
+     12 las la-clock
+     12 las la-arrow-left
+     11 las la-sync-alt
+     11 las la-file-alt
+     10 las la-cog
+     10 las la-chart-bar
+      9 las la-trash-alt
+      9 las la-filter
+      9 las la-calendar-alt
+      8 las la-search
+      8 las la-school
+      8 las la-lock
+      8 las la-book
+      7 las la-user-shield
+      7 las la-user
+      7 las la-times-circle
+      7 las la-file-invoice-dollar
+      7 las la-edit
+      7 las la-arrow-right
+      6 las la-user-tie
+      6 las la-toggle-on
+      6 las la-receipt
+      6 las la-language
+      6 las la-image
+      5 las la-undo-alt
+      5 las la-store
+      5 las la-print
+      5 las la-inbox
+      5 las la-file-pdf
+      5 las la-file-excel
+      5 las la-envelope
+      5 las la-archive
+      4 las la-redo-alt
+      4 las la-percentage
+      4 las la-money-bill-wave
+      4 las la-key
+      4 las la-file-export
+      4 las la-external-link-alt
+      4 las la-calendar-check
+      4 las la-book-open
+      4 las la-ban
+      3 las la-video
+      3 las la-trash-restore
+      3 las la-th-large
+      3 las la-tags
+      3 las la-table
+      3 las la-skull-crossbones
+      3 las la-sitemap
+      3 las la-percent
+      3 las la-paperclip
+      3 las la-id-card
+      3 las la-file-invoice
+      3 las la-eraser
+      3 las la-database
+      3 las la-cube
+      3 las la-credit-card
+      3 las la-coins
+      3 las la-clipboard-list
+      3 las la-check
+      3 las la-chart-pie
+      3 las la-chart-line
+      3 las la-chalkboard-teacher
+      3 las la-building
+      3 las la-briefcase
+      3 las la-barcode
+      2 la-times-circle
+      2 las la-wallet
+      2 las la-user-times
+      2 las la-user-tag
+      2 las la-user-friends
+      2 las la-undo
+      2 las la-trophy
+      2 las la-tag
+      2 las la-sync
+      2 las la-sticky-note
+      2 las la-star
+      2 las la-question-circle
+      2 las la-plus
+      2 las la-pen-alt
+      2 las la-moon
+      2 las la-id-card-alt
+      2 las la-id-badge
+      2 las la-history
+      2 las la-heading
+      2 las la-hashtag
+      2 las la-hand-holding-usd
+      2 las la-font
+      2 las la-folder-open
+      2 las la-fingerprint
+      2 las la-file-contract
+      2 las la-exclamation-circle
+      2 las la-exchange-alt
+      2 las la-download
+      2 las la-coffee
+      2 las la-check-double
+      2 las la-calendar-week
+      2 las la-calculator
+      2 la-facebook
+      2 la-check-circle
+      1 la-twitter
+      1 las la-venus-mars
+      1 las la-user-slash
+      1 las la-user-edit
+      1 las la-user-circle
+      1 las la-user-check
+      1 las la-tint
+      1 las la-sliders-h
+      1 las la-shield-alt
+      1 las la-rocket
+      1 las la-quote-right
+      1 las la-puzzle-piece
+      1 las la-project-diagram
+      1 las la-praying-hands
+      1 las la-plug
+      1 las la-phone
+      1 las la-pen-square
+      1 las la-microscope
+      1 las la-map-marker
+      1 las la-list
+      1 las la-link
+      1 las la-hourglass-half
+      1 las la-hourglass-end
+      1 las la-grip-vertical
+      1 las la-globe-americas
+      1 las la-fire
+      1 las la-envelope-open
+      1 las la-cookie-bite
+      1 las la-columns
+      1 las la-cloud-upload-alt
+      1 las la-chart-area
+      1 las la-calendar-times
+      1 las la-bullseye
+      1 las la-broadcast-tower
+      1 las la-book-reader
+      1 las la-book-medical
+      1 las la-book-dead
+      1 las la-bolt
+      1 las la-birthday-cake
+      1 las la-bell-slash
+      1 las la-balance-scale
+      1 las la-angle-double-up
+      1 las la-align-left
+      1 las la-address-card
+      1 las la-address-book
+      1 la-linkedin
+      1 la-instagram
+
+=== Ionicons ===
+     29 ion-title
+     16 las la-graduation-cap
+     16 ion-card
+     14 ion-label
+     12 las la-exclamation-triangle
+     10 ion-btn
+      6 ion-title-dot
+      6 ion-heading
+      5 ion-relative
+      5 ion-absolute
+      4 ion-header
+      4 fas fa-graduation-cap
+      3 ion-subtitle
+      3 ion-required
+      3 ion-item
+      3 ion-icon-btn
+      3 ion-group-title
+      3 ion-group-header
+      3 ion-group-card
+      2 las la-question-circle
+      2 las la-exclamation-circle
+      2 ion-pill
+      2 ion-cell
+      2 ion-box
+      2 ion-archive
+      1 ion-view
+      1 ion-text
+      1 ion-show-section-card
+      1 ion-show-modal-header
+      1 ion-show-modal-footer
+      1 ion-show-modal-content
+      1 ion-show-empty-state
+      1 ion-scroll
+      1 ion-order-badge
+      1 ion-notes-box
+      1 ion-name
+      1 ion-md-notifications
+      1 ion-md-chatboxes
+      1 ion-list
+      1 ion-letter
+      1 ion-item-show
+      1 ion-info
+      1 ion-icon
+      1 ion-hidden
+      1 ion-fields
+      1 ion-edit
+      1 ion-drag-handle
+      1 ion-desc
+      1 ion-count
+      1 ion-container
+      1 ion-bars
+      1 ion-bar
+      1 ion-badge
+      1 ion-actions
+
+=== Typicons ===
+None found
+
+=== Material Design Icons ===
+      1 mdi-clock
+
+=== Feather ===
+      7 fe-chevron-down
+      2 fe-x
+      1 fe-align-left
+
+=== Boxicons ===
+      1 bx-user-circle
+      1 bx-log-out
+      1 bx-cog
+
+=== Themify Icons ===
+None found
+
+=== Simple Line Icons ===
+None found
+
+=== Flag Icons ===
+      1 flag-icon-sa
+      1 flag-icon-gb
+
+
+=== SUMMARY ===
+fa-: 67 unique classes
+la-: 163 unique classes
+ion-: 54 unique classes
+ti-: 0
+0 unique classes
+mdi-: 1 unique classes
+fe-: 3 unique classes
+bx-: 3 unique classes
+typcn-: 0
+0 unique classes
+sl-: 0
+0 unique classes
+flag-icon-: 2 unique classes

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\DayOfWeek;
+use App\Models\Scheduling\DayOfWeek;
 use Illuminate\Database\Seeder;
 
 class DayOfWeekSeeder extends Seeder

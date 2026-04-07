@@ -37,7 +37,7 @@ class FinancialReportController extends Controller implements HasMiddleware
         $kpis = $this->reportService->getFinancialKPIs();
         $chartData = $this->reportService->getChartData();
 
-        return view('admin.reports.finance.outstanding_balances', compact('kpis', 'chartData'));
+        return view('admin.Reports.finance.outstanding_balances', compact('kpis', 'chartData'));
     }
 
     /**
@@ -66,7 +66,7 @@ class FinancialReportController extends Controller implements HasMiddleware
 
         return response()->json([
             'status' => 'success',
-            'message' => trans('admin.exports.financial_report_pdf.generate_report_message'),
+            'message' => trans('admin.exports.financial_report.generate_report_message'),
         ]);
     }
 }

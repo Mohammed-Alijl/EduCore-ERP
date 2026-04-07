@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin\Schedule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClassPeriod\StoreRequest;
 use App\Http\Requests\Admin\ClassPeriod\UpdateRequest;
-use App\Models\ClassPeriod;
-use App\Models\Grade;
-use App\Services\ClassPeriodService;
+use App\Models\Scheduling\ClassPeriod;
+use App\Models\Academic\Grade;
+use App\Services\Schedule\ClassPeriodService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -37,7 +37,7 @@ class ClassPeriodController extends Controller implements HasMiddleware
     {
         $grades = Grade::query()->active()->get(['id', 'name']);
 
-        return view('admin.schedule.class_periods.index', compact('grades'));
+        return view('admin.Schedule.class_periods.index', compact('grades'));
     }
 
     /**
@@ -66,7 +66,7 @@ class ClassPeriodController extends Controller implements HasMiddleware
                         return '<span class="badge badge-primary-light">' . e($row->grade->name) . '</span>';
                     }
 
-                    return '<span class="badge badge-secondary-light">' . trans('admin.class_periods.all_grades') . '</span>';
+                    return '<span class="badge badge-secondary-light">' . trans('admin.Schedule.class_periods.all_grades') . '</span>';
                 })
                 ->addColumn('time_range', function ($row) {
                     return '<span class="time-badge">'
@@ -77,14 +77,14 @@ class ClassPeriodController extends Controller implements HasMiddleware
                         . '</span>';
                 })
                 ->addColumn('duration', function ($row) {
-                    return '<span class="duration-badge">' . $row->duration . ' ' . trans('admin.class_periods.minutes') . '</span>';
+                    return '<span class="duration-badge">' . $row->duration . ' ' . trans('admin.Schedule.class_periods.minutes') . '</span>';
                 })
                 ->addColumn('type', function ($row) {
                     if ($row->is_break) {
-                        return '<span class="badge badge-warning-light"><i class="las la-coffee mr-1 ml-1"></i>' . trans('admin.class_periods.break') . '</span>';
+                        return '<span class="badge badge-warning-light"><i class="las la-coffee mr-1 ml-1"></i>' . trans('admin.Schedule.class_periods.break') . '</span>';
                     }
 
-                    return '<span class="badge badge-success-light"><i class="las la-book mr-1 ml-1"></i>' . trans('admin.class_periods.class') . '</span>';
+                    return '<span class="badge badge-success-light"><i class="las la-book mr-1 ml-1"></i>' . trans('admin.Schedule.class_periods.class') . '</span>';
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status) {
@@ -109,7 +109,7 @@ class ClassPeriodController extends Controller implements HasMiddleware
                             data-is_break="' . $row->is_break . '"
                             data-status="' . $row->status . '"
                             data-sort_order="' . $row->sort_order . '"
-                            title="' . trans('admin.class_periods.edit') . '">
+                            title="' . trans('admin.Schedule.class_periods.edit') . '">
                             <i class="las la-pen"></i>
                         </a>';
                     }
@@ -119,7 +119,7 @@ class ClassPeriodController extends Controller implements HasMiddleware
                             data-id="' . $row->id . '"
                             data-url="' . route('admin.schedule.class_periods.destroy', $row->id) . '"
                             data-name="' . e($row->name) . '"
-                            title="' . trans('admin.class_periods.delete') . '">
+                            title="' . trans('admin.Schedule.class_periods.delete') . '">
                             <i class="las la-trash"></i>
                         </a>';
                     }
@@ -143,14 +143,14 @@ class ClassPeriodController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.class_periods.messages.success.add'),
+                'message' => trans('admin.Schedule.class_periods.messages.success.add'),
             ]);
         } catch (\Exception $e) {
             Log::error('ClassPeriod store failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.class_periods.messages.failed.add'),
+                'message' => trans('admin.Schedule.class_periods.messages.failed.add'),
             ], 500);
         }
     }
@@ -165,14 +165,14 @@ class ClassPeriodController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.class_periods.messages.success.update'),
+                'message' => trans('admin.Schedule.class_periods.messages.success.update'),
             ]);
         } catch (\Exception $e) {
             Log::error('ClassPeriod update failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.class_periods.messages.failed.update'),
+                'message' => trans('admin.Schedule.class_periods.messages.failed.update'),
             ], 500);
         }
     }
@@ -187,14 +187,14 @@ class ClassPeriodController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.class_periods.messages.success.delete'),
+                'message' => trans('admin.Schedule.class_periods.messages.success.delete'),
             ]);
         } catch (\Exception $e) {
             Log::error('ClassPeriod delete failed: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.class_periods.messages.failed.delete'),
+                'message' => trans('admin.Schedule.class_periods.messages.failed.delete'),
             ], 500);
         }
     }

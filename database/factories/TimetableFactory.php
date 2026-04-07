@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Timetable;
+use App\Models\Scheduling\Timetable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

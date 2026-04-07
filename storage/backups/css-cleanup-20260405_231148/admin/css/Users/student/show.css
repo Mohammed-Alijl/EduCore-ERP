@@ -1,0 +1,193 @@
+
+/* ─────────────────────────────────────────────
+    Show Profile
+───────────────────────────────────────────── */
+.student-show-modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.student-show-modal-header {
+    background: #fff;
+    padding: 1.5rem 1.5rem 0.75rem;
+}
+
+.modal-header-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: rgba(78, 115, 223, 0.12);
+    color: #4e73df;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.student-avatar-banner {
+    background: linear-gradient(135deg, #f8f9fc, #eef1fa);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.student-avatar-img {
+    width: 80px; height: 80px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.student-show-name { color: #1e293b; }
+.student-show-code { font-size: 0.85rem; color: #64748b; }
+
+.code-pill {
+    background: rgba(78,115,223,0.1);
+    color: #3b5cd9; 
+    border-radius: 6px;
+    padding: 1px 8px; 
+    font-weight: 700;
+    font-size: 0.8rem; 
+    letter-spacing: 0.5px;
+}
+
+.student-show-section-card {
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.04);
+    height: 100%;
+}
+
+.student-show-section-title {
+    font-size: 0.82rem; 
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 0.8px;
+    color: #475569; 
+    margin-bottom: 0;
+    display: flex; 
+    align-items: center;
+}
+
+.section-title-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%; 
+    display: inline-block;
+    margin-right: 8px; 
+    margin-left: 4px;
+}
+
+.show-label { 
+    font-size: 0.72rem; 
+    color: #94a3b8; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+}
+
+.show-value { 
+    font-size: 0.9rem; 
+    color: #1e293b; 
+    font-weight: 500;
+}
+
+.show-icon-circle {
+    width: 34px; height: 34px; 
+    border-radius: 9px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size: 15px; 
+    flex-shrink: 0;
+}
+
+/* Icon Colors */
+.ic-primary   { background: rgba(78,115,223,0.12); color: #4e73df; }
+.ic-info      { background: rgba(54,185,204,0.12); color: #36b9cc; }
+.ic-success   { background: rgba(28,200,138,0.12); color: #1cc88a; }
+.ic-danger    { background: rgba(231,74,59,0.12);  color: #e74a3b; }
+.ic-warning   { background: rgba(246,194,62,0.12); color: #f6c23e; }
+.ic-secondary { background: rgba(133,135,150,0.12);color: #858796; }
+
+/* Stats Row */
+.student-stats-row {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 576px) { 
+    .student-stats-row { grid-template-columns: repeat(2, 1fr); } 
+}
+
+.stat-item {
+    background: #f8f9fc;
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 12px;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 6px;
+}
+
+.stat-icon {
+    width: 36px; height: 36px; 
+    border-radius: 9px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.stat-value { 
+    font-size: 0.88rem; 
+    font-weight: 700; 
+    color: #1e293b; 
+}
+
+.student-show-modal-footer { 
+    background: #f8f9fc; 
+    padding: 1rem 1.5rem; 
+}
+
+/* ─────────────────────────────────────────────
+   MODAL — Show Profile (DARK THEME OVERRIDES)
+───────────────────────────────────────────── */
+.dark-theme .student-show-modal-content     { background: #1e212b; }
+.dark-theme .student-show-modal-header      { background: #1e212b; }
+.dark-theme .student-show-modal-header .modal-title { color: #f1f5f9; }
+.dark-theme .student-show-modal-header .close       { color: #94a3b8; }
+.dark-theme .modal-header-icon              { background: rgba(78,115,223,0.2); color: #7c9df5; }
+
+.dark-theme .student-avatar-banner {
+    background: linear-gradient(135deg, #14161f, #1a1d28);
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-theme .student-avatar-img  { border-color: #2a2d3e; }
+.dark-theme .student-show-name   { color: #f1f5f9; }
+.dark-theme .student-show-code   { color: #64748b; }
+.dark-theme .code-pill           { background: rgba(78,115,223,0.2); color: #93b4ff; }
+
+.dark-theme .student-show-section-card { 
+    background: #14161f; 
+    border-color: rgba(255,255,255,0.05); 
+}
+
+.dark-theme .student-show-section-title { 
+    color: #94a3b8; 
+    border-bottom-color: rgba(255,255,255,0.05) !important;
+}
+
+.dark-theme .show-label  { color: #4e5970; }
+.dark-theme .show-value  { color: #e2e8f0; }
+
+.dark-theme .stat-item { 
+    background: #14161f; 
+    border-color: rgba(255,255,255,0.05); 
+}
+
+.dark-theme .stat-value { color: #e2e8f0; }
+.dark-theme .student-show-modal-footer { background: #14161f; }

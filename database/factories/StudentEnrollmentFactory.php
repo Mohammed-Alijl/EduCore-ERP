@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use App\Enums\EnrollmentStatus;
-use App\Models\AcademicYear;
-use App\Models\Admin;
-use App\Models\ClassRoom;
-use App\Models\Grade;
-use App\Models\Section;
-use App\Models\Student;
-use App\Models\StudentEnrollment;
+use App\Models\Academic\AcademicYear;
+use App\Models\Academic\ClassRoom;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Section;
+use App\Models\Academic\StudentEnrollment;
+use App\Models\Users\Admin;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

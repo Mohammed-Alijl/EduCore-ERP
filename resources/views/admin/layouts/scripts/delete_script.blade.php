@@ -42,7 +42,7 @@
                             });
                         },
                         error: function(xhr) {
-                            var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "{{ __('admin.roles.messages.failed.delete') }}";
+                            var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "{{ __('admin.System.roles.messages.failed.delete') }}";
                             swal({
                                 title: "{{ __('admin.global.error_title') }}",
                                 text: errorMessage,

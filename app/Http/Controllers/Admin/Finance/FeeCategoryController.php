@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\FeeCategoryRequest;
-use App\Models\FeeCategory;
-use App\Services\FeeCategoryService;
+use App\Models\Finance\FeeCategory;
+use App\Services\Finance\FeeCategoryService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -29,7 +29,7 @@ class FeeCategoryController extends Controller implements HasMiddleware
 
     public function index()
     {
-        return view('admin.finance.fee_categories.index');
+        return view('admin.Finance.fee_categories.index');
     }
 
     public function datatable(Request $request)
@@ -49,13 +49,13 @@ class FeeCategoryController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.store'),
+                'message' => trans('admin.Finance.messages.success.store'),
             ], 201);
         } catch (\Exception $e) {
             Log::error('Fee category creation failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.store')
+                'message' => trans('admin.Finance.messages.failed.store')
             ], 500);
         }
     }
@@ -67,13 +67,13 @@ class FeeCategoryController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status' => 'success',
-                'message' => trans('admin.finance.messages.success.update')
+                'message' => trans('admin.Finance.messages.success.update')
             ], 200);
         } catch (\Exception $e) {
             Log::error('Fee category update failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.update')
+                'message' => trans('admin.Finance.messages.failed.update')
             ], 500);
         }
     }
@@ -86,19 +86,19 @@ class FeeCategoryController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status' => 'success',
-                    'message' => trans('admin.finance.messages.success.delete')
+                    'message' => trans('admin.Finance.messages.success.delete')
                 ], 200);
             }
 
             return response()->json([
                 'status' => 'error',
-                'message' => trans('admin.finance.messages.failed.delete')
+                'message' => trans('admin.Finance.messages.failed.delete')
             ], 400);
         } catch (\Exception $e) {
             Log::error('Fee category deletion failed: ' . $e->getMessage());
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage() ?? trans('admin.finance.messages.failed.delete')
+                'message' => $e->getMessage() ?? trans('admin.Finance.messages.failed.delete')
             ], 500);
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\GeneralSetting;
-use App\Services\GeneralSettingService;
+use App\Models\Settings\GeneralSetting;
+use App\Services\Settings\GeneralSettingService;
 
 if (! function_exists('setting')) {
     /**

@@ -1,0 +1,6 @@
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/animate.css
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/sidemenu.css
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/icons.css
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/style.css
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/skin-modes.css
+/home/mohammed_alajel/laravel-projects/School/public/assets/admin/css-rtl/style-dark.css

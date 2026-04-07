@@ -1,0 +1,441 @@
+/* ══════════════════════════════════════════════════════════
+   CLASSROOM CRUD — Shared CSS
+   Loaded by: index.blade.php (and modals via @include)
+   ══════════════════════════════════════════════════════════
+
+   TABLE OF CONTENTS
+   1.  GOOGLE FONT IMPORT
+   2.  CSS CUSTOM PROPERTIES (Defaults)
+   3.  MODERN FORM CONTROLS
+   4.  GLASS CARD
+   5.  INDEX TABLE
+   6.  BUTTONS — Modern
+   7.  GRADE FILTER SECTION
+   8.  MODAL — Accent Color Tokens
+   9.  MODAL — Unified Shell Structure
+   10. MODAL — Section Labels
+   11. MODAL — Tab Steps Indicator
+   12. MODAL — Form Controls inside Modal
+   13. MODAL — Save / Cancel Buttons
+   14. DARK THEME OVERRIDES — Global
+   15. DARK THEME OVERRIDES — Modal
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. GOOGLE FONT IMPORT
+─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────────
+   2. CSS CUSTOM PROPERTIES (Defaults — overridden per modal)
+─────────────────────────────────────────────── */
+:root {
+    --modal-accent:        #4e73df;
+    --modal-accent-dark:   #224abe;
+    --modal-accent-glow:   rgba(78, 115, 223, 0.3);
+    --modal-accent-focus:  rgba(78, 115, 223, 0.18);
+    --modal-accent-soft:   rgba(78, 115, 223, 0.08);
+    --modal-accent-dim:    rgba(78, 115, 223, 0.15);
+    --modal-header-dark:   linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+    --modal-input-icon:    #f0f3fb;
+    --modal-dark-accent:   #7b96f0;
+}
+
+/* ─────────────────────────────────────────────
+   3. MODERN FORM CONTROLS (shared across modals + index)
+─────────────────────────────────────────────── */
+.form-control-modern {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    font-size: 0.875rem;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    height: auto;
+    padding: 0.5rem 0.85rem;
+}
+.form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+    outline: none;
+}
+
+.classroom-form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+.classroom-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.classroom-form-group .error-text {
+    font-size: 0.78rem;
+}
+
+/* ─────────────────────────────────────────────
+   4. GLASS CARD
+─────────────────────────────────────────────── */
+.glass-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+.glass-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────
+   5. INDEX TABLE
+─────────────────────────────────────────────── */
+#classrooms_table thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid #f0f2f8 !important;
+    border-top: none !important;
+    background: #fafbff;
+    white-space: nowrap;
+}
+
+#classrooms_table tbody tr {
+    transition: background 0.15s;
+}
+
+#classrooms_table tbody tr:hover {
+    background: #f6f8fd;
+}
+
+#classrooms_table tbody td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    padding: 0.8rem 1rem;
+    color: #374151;
+    border-bottom: 1px solid #f8f9fb !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. BUTTONS — Modern style
+─────────────────────────────────────────────── */
+.btn-modern {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.55rem 1.25rem;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.btn-save-classroom {
+    background: linear-gradient(135deg, var(--modal-accent), var(--modal-accent-dark));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.55rem 1.5rem;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 12px var(--modal-accent-glow);
+    transition: all 0.2s ease;
+}
+.btn-save-classroom:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--modal-accent-glow);
+}
+
+.btn-cancel-classroom {
+    background: transparent;
+    color: #6c7a9c;
+    border: 1.5px solid #e3e6f0;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+.btn-cancel-classroom:hover {
+    background: #f8f9fc;
+    border-color: #d0d5e8;
+}
+
+/* ─────────────────────────────────────────────
+   7. GRADE FILTER SECTION
+─────────────────────────────────────────────── */
+.grade-filter-section {
+    background: linear-gradient(135deg, rgba(78,115,223,0.03), rgba(34,74,190,0.02));
+    border: 1.5px dashed rgba(78,115,223,0.2);
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   8. MODAL — Accent Color Tokens (per-modal defaults)
+─────────────────────────────────────────────── */
+#addModal {
+    --modal-accent:        #4e73df;
+    --modal-accent-dark:   #224abe;
+    --modal-accent-glow:   rgba(78, 115, 223, 0.3);
+    --modal-accent-focus:  rgba(78, 115, 223, 0.18);
+    --modal-accent-soft:   rgba(78, 115, 223, 0.08);
+    --modal-accent-dim:    rgba(78, 115, 223, 0.15);
+    --modal-header-dark:   linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+    --modal-input-icon:    #f0f3fb;
+    --modal-dark-accent:   #7b96f0;
+}
+
+#editModal {
+    --modal-accent:        #0ea573;
+    --modal-accent-dark:   #057a52;
+    --modal-accent-glow:   rgba(14, 165, 115, 0.3);
+    --modal-accent-focus:  rgba(14, 165, 115, 0.18);
+    --modal-accent-soft:   rgba(14, 165, 115, 0.08);
+    --modal-accent-dim:    rgba(14, 165, 115, 0.15);
+    --modal-header-dark:   linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+    --modal-input-icon:    #f0fbf7;
+    --modal-dark-accent:   #3ecf8e;
+}
+
+/* ─────────────────────────────────────────────
+   9. MODAL — Unified Shell Structure
+─────────────────────────────────────────────── */
+#addModal .modal-content,
+#editModal .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+#addModal .modal-header,
+#editModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: none;
+}
+
+#addModal .modal-header .modal-title,
+#editModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+
+#addModal .modal-header .close,
+#editModal .modal-header .close {
+    color: rgba(255,255,255,0.75);
+    text-shadow: none;
+    opacity: 1;
+    font-size: 1.4rem;
+    transition: color 0.15s;
+}
+
+#addModal .modal-header .close:hover,
+#editModal .modal-header .close:hover {
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   10. MODAL — Section Labels
+─────────────────────────────────────────────── */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--modal-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--modal-accent-soft);
+}
+
+/* ─────────────────────────────────────────────
+   11. MODAL — Form Controls inside Modal
+─────────────────────────────────────────────── */
+#addModal .form-control,
+#editModal .form-control {
+    border-radius: 8px;
+    border: 1.5px solid #e3e6f0;
+    font-size: 0.875rem;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.5rem 0.85rem;
+}
+
+#addModal .form-control:focus,
+#editModal .form-control:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+#addModal label,
+#editModal label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #475569;
+    margin-bottom: 0.3rem;
+}
+
+/* ─────────────────────────────────────────────
+   12. Save / Cancel inside modals
+─────────────────────────────────────────────── */
+#addModal .btn-primary,
+#editModal .btn-primary {
+    background: linear-gradient(135deg, var(--modal-accent), var(--modal-accent-dark));
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.55rem 1.5rem;
+    box-shadow: 0 4px 12px var(--modal-accent-glow);
+    transition: all 0.2s ease;
+}
+
+#addModal .btn-primary:hover,
+#editModal .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--modal-accent-glow);
+}
+
+#addModal .btn-secondary,
+#editModal .btn-secondary {
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1.5px solid #e3e6f0;
+    color: #6c7a9c;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+#addModal .btn-secondary:hover,
+#editModal .btn-secondary:hover {
+    background: #f8f9fc;
+    border-color: var(--modal-accent);
+    color: var(--modal-accent);
+}
+
+/* ─────────────────────────────────────────────
+   13. CLASSROOM CODE BANNER
+─────────────────────────────────────────────── */
+.classroom-code-banner {
+    background: linear-gradient(135deg, var(--modal-accent-soft), rgba(255,255,255,0.0));
+    border-radius: 12px;
+    border: 1px solid var(--modal-accent-dim);
+    padding: 1rem 1.25rem;
+}
+
+/* ─────────────────────────────────────────────
+   14. DARK THEME OVERRIDES — Global
+─────────────────────────────────────────────── */
+.dark-theme .glass-card {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme #classrooms_table thead th {
+    background: #14161f;
+    color: #64748b;
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-theme #classrooms_table tbody tr:hover {
+    background: #242836;
+}
+
+.dark-theme #classrooms_table tbody td {
+    color: #cbd5e1;
+    border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.dark-theme .classroom-form-label {
+    color: #94a3b8;
+}
+
+.dark-theme .grade-filter-section {
+    background: rgba(78,115,223,0.04);
+    border-color: rgba(78,115,223,0.15);
+}
+
+/* ─────────────────────────────────────────────
+   15. DARK THEME OVERRIDES — Modal
+─────────────────────────────────────────────── */
+.dark-theme #addModal .modal-content,
+.dark-theme #editModal .modal-content {
+    background: #1e212b;
+}
+
+.dark-theme #addModal .modal-header,
+.dark-theme #editModal .modal-header {
+    background: var(--modal-header-dark);
+}
+
+.dark-theme #addModal .modal-body,
+.dark-theme #editModal .modal-body {
+    background: #1e212b;
+}
+
+.dark-theme #addModal .form-control,
+.dark-theme #editModal .form-control {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addModal .form-control:focus,
+.dark-theme #editModal .form-control:focus {
+    background: #14161f;
+    border-color: var(--modal-dark-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+.dark-theme #addModal label,
+.dark-theme #editModal label {
+    color: #94a3b8;
+}
+
+.dark-theme #addModal .modal-footer,
+.dark-theme #editModal .modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255,255,255,0.05);
+}
+
+.dark-theme .section-label {
+    color: var(--modal-dark-accent);
+    border-bottom-color: var(--modal-accent-soft);
+}
+
+.dark-theme .classroom-code-banner {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(255,255,255,0.07);
+}
+
+/* DataTables dark overrides */
+.dark-theme .dataTables_wrapper .dataTables_info,
+.dark-theme .dataTables_wrapper .dataTables_length label,
+.dark-theme .dataTables_wrapper .dataTables_filter label { color: #8896b3; }
+.dark-theme .dataTables_wrapper input,
+.dark-theme .dataTables_wrapper select { background: #14161f; border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button { color: #8896b3 !important; }
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: rgba(78,115,223,0.15) !important;
+    color: #4e73df !important;
+    border-color: transparent !important;
+}

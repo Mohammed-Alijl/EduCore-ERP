@@ -1,0 +1,409 @@
+=== CRITICAL LIBRARIES ANALYSIS ===
+These libraries are essential. DO NOT REMOVE.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: datatable
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 307
+  JS files: 26
+  Size: 2.8M
+  Files:
+    - buttons.bootstrap4.min.js
+    - buttons.colVis.min.js
+    - buttons.html5.min.js
+    - buttons.print.min.js
+    - dataTables.bootstrap4.js
+    - dataTables.bootstrap4.min.js
+    - dataTables.bootstrap.js
+    - dataTables.bootstrap.min.js
+    - dataTables.buttons.min.js
+    - dataTables.dataTables.min.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: select2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 253
+  JS files: 57
+  Size: 400K
+  Files:
+    - af.js
+    - ar.js
+    - az.js
+    - bg.js
+    - bs.js
+    - ca.js
+    - cs.js
+    - da.js
+    - de.js
+    - dsb.js
+  ⚠️  Language files: 55 (REQUIRED - DO NOT DELETE)
+    🌍 ru.js
+    🌍 lv.js
+    🌍 it.js
+    🌍 mk.js
+    🌍 fa.js
+    🌍 cs.js
+    🌍 vi.js
+    🌍 id.js
+    🌍 pt-BR.js
+    🌍 hy.js
+    🌍 ps.js
+    🌍 zh-TW.js
+    🌍 nb.js
+    🌍 zh-CN.js
+    🌍 is.js
+    🌍 hu.js
+    🌍 nl.js
+    🌍 ca.js
+    🌍 da.js
+    🌍 sv.js
+    🌍 hr.js
+    🌍 fi.js
+    🌍 lt.js
+    🌍 tr.js
+    🌍 hi.js
+    🌍 th.js
+    🌍 az.js
+    🌍 en.js
+    🌍 tk.js
+    🌍 pt.js
+    🌍 km.js
+    🌍 bs.js
+    🌍 bg.js
+    🌍 gl.js
+    🌍 ar.js
+    🌍 sr-Cyrl.js
+    🌍 fr.js
+    🌍 ko.js
+    🌍 sl.js
+    🌍 sr.js
+    🌍 ja.js
+    🌍 el.js
+    🌍 hsb.js
+    🌍 sk.js
+    🌍 es.js
+    🌍 ro.js
+    🌍 et.js
+    🌍 pl.js
+    🌍 uk.js
+    🌍 dsb.js
+    🌍 ms.js
+    🌍 he.js
+    🌍 eu.js
+    🌍 af.js
+    🌍 de.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: sweet-alert
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 63
+  JS files: 3
+  Size: 56K
+  Files:
+    - dark-jquery.sweet-alert.js
+    - jquery.sweet-alert.js
+    - sweetalert.min.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: parsleyjs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 61
+  JS files: 70
+  Size: 328K
+  Files:
+    - al.js
+    - ar.js
+    - bg.js
+    - ca.js
+    - cs.extra.js
+    - cs.js
+    - da.js
+    - de.extra.js
+    - de.js
+    - el.extra.js
+  ⚠️  Language files: 69 (REQUIRED - DO NOT DELETE)
+    🌍 zh_cn.extra.js
+    🌍 sr.extra.js
+    🌍 uk.extra.js
+    🌍 lv.extra.js
+    🌍 ru.js
+    🌍 fi.extra.js
+    🌍 lv.js
+    🌍 it.js
+    🌍 sv.extra.js
+    🌍 fa.js
+    🌍 sq.js
+    🌍 cs.js
+    🌍 id.js
+    🌍 ua.js
+    🌍 de.extra.js
+    🌍 id.extra.js
+    🌍 hu.js
+    🌍 nl.js
+    🌍 ca.js
+    🌍 ua.extra.js
+    🌍 da.js
+    🌍 ro.extra.js
+    🌍 sv.js
+    🌍 hr.js
+    🌍 ru.extra.js
+    🌍 fi.js
+    🌍 lt.js
+    🌍 lt.extra.js
+    🌍 tr.js
+    🌍 th.js
+    🌍 it.extra.js
+    🌍 ja.extra.js
+    🌍 en.js
+    🌍 zh_tw.js
+    🌍 sk.extra.js
+    🌍 tk.js
+    🌍 cs.extra.js
+    🌍 ms.extra.js
+    🌍 hr.extra.js
+    🌍 bg.js
+    🌍 nl.extra.js
+    🌍 sl.extra.js
+    🌍 el.extra.js
+    🌍 he.extra.js
+    🌍 pt-br.js
+    🌍 ar.js
+    🌍 zh_cn.js
+    🌍 fr.js
+    🌍 ko.js
+    🌍 sl.js
+    🌍 sr.js
+    🌍 ja.js
+    🌍 el.js
+    🌍 al.js
+    🌍 sk.js
+    🌍 es.js
+    🌍 ro.js
+    🌍 no.js
+    🌍 en.extra.js
+    🌍 et.js
+    🌍 pl.js
+    🌍 uk.js
+    🌍 ms.js
+    🌍 hu.extra.js
+    🌍 he.js
+    🌍 fr.extra.js
+    🌍 eu.js
+    🌍 pt-pt.js
+    🌍 de.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: jquery
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 66
+  JS files: 3
+  Size: 176K
+  Files:
+    - core.js
+    - jquery.min.js
+    - jquery.slim.min.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: bootstrap
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 167
+  JS files: 3
+  Size: 452K
+  Files:
+    - bootstrap.bundle.min.js
+    - bootstrap.min.js
+    - bootstrap-rtl.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Library: moment
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blade references: 1
+  JS files: 129
+  Size: 1.4M
+  Files:
+    - af.js
+    - ar-dz.js
+    - ar.js
+    - ar-kw.js
+    - ar-ly.js
+    - ar-ma.js
+    - ar-sa.js
+    - ar-tn.js
+    - az.js
+    - be.js
+  ⚠️  Language files: 125 (REQUIRED - DO NOT DELETE)
+    🌍 moment-with-locales.min.js
+    🌍 locales.min.js
+    🌍 tlh.js
+    🌍 sd.js
+    🌍 mn.js
+    🌍 yo.js
+    🌍 en-nz.js
+    🌍 my.js
+    🌍 bm.js
+    🌍 fr-ch.js
+    🌍 tl-ph.js
+    🌍 ru.js
+    🌍 ne.js
+    🌍 lv.js
+    🌍 it.js
+    🌍 br.js
+    🌍 mk.js
+    🌍 fa.js
+    🌍 sq.js
+    🌍 ms-my.js
+    🌍 mi.js
+    🌍 ur.js
+    🌍 zh-cn.js
+    🌍 cs.js
+    🌍 mt.js
+    🌍 de-ch.js
+    🌍 dv.js
+    🌍 vi.js
+    🌍 id.js
+    🌍 kn.js
+    🌍 en-au.js
+    🌍 ml.js
+    🌍 sr-cyrl.js
+    🌍 nl-be.js
+    🌍 nb.js
+    🌍 ar-ly.js
+    🌍 fr-ca.js
+    🌍 uz-latn.js
+    🌍 ss.js
+    🌍 hy-am.js
+    🌍 is.js
+    🌍 tzm-latn.js
+    🌍 hu.js
+    🌍 nl.js
+    🌍 sw.js
+    🌍 ca.js
+    🌍 tet.js
+    🌍 en-ca.js
+    🌍 eo.js
+    🌍 da.js
+    🌍 sv.js
+    🌍 zh-hk.js
+    🌍 ky.js
+    🌍 gd.js
+    🌍 hr.js
+    🌍 ar-dz.js
+    🌍 ta.js
+    🌍 fi.js
+    🌍 lt.js
+    🌍 gom-latn.js
+    🌍 tr.js
+    🌍 hi.js
+    🌍 ar-sa.js
+    🌍 th.js
+    🌍 be.js
+    🌍 fy.js
+    🌍 es-us.js
+    🌍 zh-tw.js
+    🌍 az.js
+    🌍 x-pseudo.js
+    🌍 pt.js
+    🌍 km.js
+    🌍 bs.js
+    🌍 en-ie.js
+    🌍 en-il.js
+    🌍 bg.js
+    🌍 de-at.js
+    🌍 mr.js
+    🌍 en-gb.js
+    🌍 gl.js
+    🌍 ar-ma.js
+    🌍 bn.js
+    🌍 pt-br.js
+    🌍 ar.js
+    🌍 fo.js
+    🌍 se.js
+    🌍 lo.js
+    🌍 tzm.js
+    🌍 me.js
+    🌍 fr.js
+    🌍 ko.js
+    🌍 sl.js
+    🌍 sr.js
+    🌍 lb.js
+    🌍 ja.js
+    🌍 el.js
+    🌍 cy.js
+    🌍 cv.js
+    🌍 te.js
+    🌍 pa-in.js
+    🌍 jv.js
+    🌍 sk.js
+    🌍 es.js
+    🌍 tzl.js
+    🌍 bo.js
+    🌍 ro.js
+    🌍 ug-cn.js
+    🌍 ar-kw.js
+    🌍 et.js
+    🌍 kk.js
+    🌍 pl.js
+    🌍 nn.js
+    🌍 uk.js
+    🌍 ka.js
+    🌍 ms.js
+    🌍 he.js
+    🌍 tg.js
+    🌍 eu.js
+    🌍 gu.js
+    🌍 uz.js
+    🌍 es-do.js
+    🌍 si.js
+    🌍 ar-tn.js
+    🌍 af.js
+    🌍 de.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DATATABLES - DEEP ANALYSIS (USER PRIORITY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 Core DataTables Files:
+  ✓ buttons.bootstrap4.min.js
+  ✓ buttons.colVis.min.js
+  ✓ buttons.html5.min.js
+  ✓ buttons.print.min.js
+  ✓ dataTables.bootstrap4.js
+  ✓ dataTables.bootstrap4.min.js
+  ✓ dataTables.bootstrap.js
+  ✓ dataTables.bootstrap.min.js
+  ✓ dataTables.buttons.min.js
+  ✓ dataTables.dataTables.min.js
+  ✓ dataTables.foundation.js
+  ✓ dataTables.foundation.min.js
+  ✓ dataTables.jqueryui.js
+  ✓ dataTables.jqueryui.min.js
+  ✓ dataTables.responsive.min.js
+  ✓ dataTables.responsive.min.js
+  ✓ dataTables.semanticui.js
+  ✓ dataTables.semanticui.min.js
+  ✓ jquery.dataTables.js
+  ✓ jquery.dataTables.min.js
+  ✓ jszip.min.js
+  ✓ pdfmake.min.js
+  ✓ responsive.bootstrap4.min.js
+  ✓ responsive.bootstrap4.min.js
+  ✓ responsive.dataTables.min.js
+  ✓ vfs_fonts.js
+
+🌍 Language/i18n Files (CRITICAL - User Scripts Depend On These):
+
+🔌 Extensions:
+  ⚙️  buttons.bootstrap4.min.js
+  ⚙️  buttons.colVis.min.js
+  ⚙️  buttons.html5.min.js
+  ⚙️  buttons.print.min.js
+  ⚙️  dataTables.buttons.min.js
+  ⚙️  dataTables.responsive.min.js
+  ⚙️  dataTables.responsive.min.js
+  ⚙️  responsive.bootstrap4.min.js
+  ⚙️  responsive.bootstrap4.min.js
+  ⚙️  responsive.dataTables.min.js
+
+╔══════════════════════════════════════════════════════════╗
+║  ⚠️  PRESERVATION RULE: KEEP ALL CRITICAL LIBRARY FILES  ║
+╚══════════════════════════════════════════════════════════╝

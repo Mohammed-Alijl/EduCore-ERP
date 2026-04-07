@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Department;
+use App\Models\HumanResources\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->word()) . ' Department',
+            'name' => ucfirst($this->faker->word()).' Department',
             'description' => $this->faker->sentence(),
         ];
     }

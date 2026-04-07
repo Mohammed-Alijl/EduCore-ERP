@@ -3,7 +3,7 @@
 namespace App\Services\Payments;
 
 use App\DTOs\PaymentResult;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Checkout\Session;
@@ -70,8 +70,8 @@ class StripeProcessor extends AbstractPaymentProcessor
                         'original_amount' => $paymentData['paid_amount'],
                     ],
                 ],
-                'success_url' => route('admin.receipts.index').'?status=success',
-                'cancel_url' => route('admin.receipts.index').'?status=cancelled',
+                'success_url' => route('admin.Finance.receipts.index').'?status=success',
+                'cancel_url' => route('admin.Finance.receipts.index').'?status=cancelled',
             ]);
 
             return PaymentResult::pending(

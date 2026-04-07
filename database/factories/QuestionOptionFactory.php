@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\QuestionOption;
+use App\Models\Assessments\QuestionOption;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class QuestionOptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'question_id' => \App\Models\Question::inRandomOrder()->value('id') ?? \App\Models\Question::factory(),
+            'question_id' => Question::inRandomOrder()->value('id') ?? Question::factory(),
             'content' => $this->faker->word(),
             'is_correct' => $this->faker->boolean(25),
         ];

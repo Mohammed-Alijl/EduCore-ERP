@@ -1,0 +1,212 @@
+/* Notification Items Animation */
+@keyframes fadeInNotification {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Light Mode (Default)
+======================================== */
+
+/* Notification List Container */
+.main-header-notification .main-notification-list {
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Notification Item Base */
+.main-header-notification .notification-item {
+    display: flex;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e8e8f7;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-header-notification .notification-item:hover {
+    background-color: #f0f0f8;
+    text-decoration: none;
+}
+
+/* Unread State */
+.main-header-notification .notification-item.unread {
+    background-color: #f5f6fb;
+    border-left: 3px solid #6259ca;
+}
+
+.main-header-notification .notification-item.unread:hover {
+    background-color: #eaebf5;
+}
+
+/* Read State */
+.main-header-notification .notification-item.read {
+    background-color: #fff;
+    border-left: 3px solid transparent;
+}
+
+.main-header-notification .notification-item.read:hover {
+    background-color: #f8f9fa;
+}
+
+/* Notification Icon */
+.main-header-notification .notifyimg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.main-header-notification .notifyimg i {
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Notification Content */
+.main-header-notification .notification-content {
+    flex-grow: 1;
+    min-width: 0;
+    margin-right: 10px;
+}
+
+.main-header-notification .notification-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d212f;
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+
+.main-header-notification .notification-subtext {
+    font-size: 12px;
+    color: #7987a1;
+    line-height: 1.5;
+    margin-bottom: 4px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.main-header-notification .notification-time {
+    font-size: 11px;
+    color: #a8afc7;
+}
+
+.main-header-notification .notification-time i {
+    margin-left: 3px;
+}
+
+/* Delete Button */
+.main-header-notification .delete-notification {
+    padding: 5px 8px;
+    opacity: 0;
+    transition: all 0.2s;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.main-header-notification .notification-item:hover .delete-notification {
+    opacity: 0.6;
+}
+
+.main-header-notification .delete-notification:hover {
+    opacity: 1;
+    background-color: #fee2e2;
+}
+
+.main-header-notification .delete-notification i {
+    font-size: 16px;
+    color: #dc3545;
+}
+
+/* Empty State */
+.main-header-notification #notification-empty {
+    color: #7987a1;
+}
+
+.main-header-notification #notification-empty i {
+    color: #a8afc7;
+}
+
+/* ========================================
+   Dark Mode
+======================================== */
+
+.dark-theme .main-header-notification .notification-item {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .main-header-notification .notification-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark Mode - Unread State */
+.dark-theme .main-header-notification .notification-item.unread {
+    background-color: rgba(98, 89, 202, 0.15);
+    border-left-color: #6259ca;
+}
+
+.dark-theme .main-header-notification .notification-item.unread:hover {
+    background-color: rgba(98, 89, 202, 0.2);
+}
+
+/* Dark Mode - Read State */
+.dark-theme .main-header-notification .notification-item.read {
+    background-color: transparent;
+}
+
+.dark-theme .main-header-notification .notification-item.read:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark Mode - Text Colors */
+.dark-theme .main-header-notification .notification-label {
+    color: #e4e6ef;
+}
+
+.dark-theme .main-header-notification .notification-subtext {
+    color: #a8b4ce;
+}
+
+.dark-theme .main-header-notification .notification-time {
+    color: #7987a1;
+}
+
+/* Dark Mode - Empty State */
+.dark-theme .main-header-notification #notification-empty {
+    color: #a8afc7;
+}
+
+.dark-theme .main-header-notification #notification-empty i {
+    color: #7987a1;
+}
+
+/* Dark Mode - Delete Button */
+.dark-theme .main-header-notification .delete-notification:hover {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+/* Dark Mode - Dropdown Footer */
+.dark-theme .main-header-notification .dropdown-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .main-header-notification .dropdown-footer a {
+    color: #6259ca;
+}
+
+.dark-theme .main-header-notification .dropdown-footer a:hover {
+    color: #7c72d5;
+}

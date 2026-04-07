@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Grade;
 use Illuminate\Database\Seeder;
 
 class GradeSeeder extends Seeder
@@ -12,6 +12,6 @@ class GradeSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Grade::factory(5)->create();
+        Grade::factory(5)->create();
     }
 }

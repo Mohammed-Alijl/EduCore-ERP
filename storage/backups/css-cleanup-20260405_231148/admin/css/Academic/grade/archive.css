@@ -1,0 +1,242 @@
+
+/* ─────────────────────────────────────────────
+   22. MODAL — Show Profile (DARK THEME OVERRIDES)
+───────────────────────────────────────────── */
+.dark-theme .grade-show-modal-content     { background: #1e212b; }
+.dark-theme .grade-show-modal-header      { background: #1e212b; }
+.dark-theme .grade-show-modal-header .modal-title { color: #f1f5f9; }
+.dark-theme .grade-show-modal-header .close       { color: #94a3b8; }
+.dark-theme .modal-header-icon              { background: rgba(78,115,223,0.2); color: #7c9df5; }
+
+.dark-theme .grade-avatar-banner {
+    background: linear-gradient(135deg, #14161f, #1a1d28);
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-theme .grade-avatar-img  { border-color: #2a2d3e; }
+.dark-theme .grade-show-name   { color: #f1f5f9; }
+.dark-theme .grade-show-code   { color: #64748b; }
+.dark-theme .code-pill           { background: rgba(78,115,223,0.2); color: #93b4ff; }
+
+.dark-theme .grade-show-section-card { 
+    background: #14161f; 
+    border-color: rgba(255,255,255,0.05); 
+}
+
+.dark-theme .grade-show-section-title { 
+    color: #94a3b8; 
+    border-bottom-color: rgba(255,255,255,0.05) !important;
+}
+
+.dark-theme .show-label  { color: #4e5970; }
+.dark-theme .show-value  { color: #e2e8f0; }
+
+.dark-theme .stat-item { 
+    background: #14161f; 
+    border-color: rgba(255,255,255,0.05); 
+}
+
+.dark-theme .stat-value { color: #e2e8f0; }
+.dark-theme .grade-show-modal-footer { background: #14161f; }
+
+/* ══════════════════════════════════════════════════════════
+   ARCHIVED GRADES PAGE
+══════════════════════════════════════════════════════════ */
+
+/* ─── Page Header Banner ─── */
+.page-header-archive {
+    background: linear-gradient(to right, #2c3e50, #e74c3c);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ─── Alert Banner ─── */
+.archive-alert {
+    background: #fff5f5;
+    border-left: 4px solid #fc8181;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* ─── Glass Card ─── */
+.glass-card-archive {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #f0f2f8;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+.glass-card-archive:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); }
+
+/* ─── Filter Section ─── */
+.filter-section-archive {
+    background: linear-gradient(135deg, rgba(225,29,72,0.03), rgba(159,18,57,0.02));
+    border: 1.5px dashed rgba(225, 29, 72, 0.2);
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.filter-section-archive .filter-label {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    color: #b91c1c; margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.4rem;
+}
+.filter-section-archive .form-control-modern {
+    border-radius: 9px; border: 1.5px solid #e3e6f0;
+    font-size: 0.875rem; box-shadow: none; height: auto;
+    padding: 0.5rem 0.85rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.filter-section-archive .form-control-modern:focus {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 0.2rem rgba(225, 29, 72, 0.12);
+}
+
+/* ─── Table Card Header ─── */
+.archive-table-card-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #f0f2f8;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem;
+}
+.archive-table-title {
+    font-size: 0.95rem; font-weight: 700; color: #1e293b;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.archive-table-title .title-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #e11d48; display: inline-block;
+}
+.archive-count-badge {
+    background: rgba(225, 29, 72, 0.1);
+    color: #be123c;
+    border-radius: 20px; font-weight: 700; font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+}
+
+/* ─── Table Rows ─── */
+#archivedGradesTable thead th {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: #94a3b8; padding: 0.9rem 1rem;
+    border-bottom: 2px solid #f0f2f8 !important;
+    border-top: none !important;
+    background: #fafbff;
+    white-space: nowrap;
+}
+#archivedGradesTable tbody tr { transition: background 0.15s; }
+#archivedGradesTable tbody tr:hover { background: #fdf2f4; }
+#archivedGradesTable tbody td {
+    vertical-align: middle; font-size: 0.875rem;
+    padding: 0.8rem 1rem; color: #374151;
+    border-bottom: 1px solid #f8f9fb !important;
+}
+
+/* ─── Grade Code Pill ─── */
+.grade-code-pill {
+    background: rgba(225, 29, 72, 0.08);
+    color: #be123c; border-radius: 8px; font-weight: 700;
+    font-size: 0.78rem; padding: 0.25rem 0.65rem;
+    letter-spacing: 0.5px; display: inline-block;
+}
+
+/* ─── Deleted At Pill ─── */
+.deleted-at-pill {
+    background: #fef2f2; color: #991b1b;
+    border-radius: 8px; font-size: 0.75rem;
+    padding: 0.2rem 0.6rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+}
+
+/* ─── Action Buttons ─── */
+.btn-archive-restore {
+    background: linear-gradient(135deg, #0ea573, #057a52);
+    color: #fff; border: none; border-radius: 8px;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(14,165,115,0.25);
+    transition: all 0.2s ease;
+}
+.btn-archive-restore:hover {
+    color: #fff; transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(14,165,115,0.35);
+}
+.btn-archive-delete {
+    background: linear-gradient(135deg, #e11d48, #9f1239);
+    color: #fff; border: none; border-radius: 8px;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    box-shadow: 0 3px 8px rgba(225,29,72,0.25);
+    transition: all 0.2s ease;
+}
+.btn-archive-delete:hover {
+    color: #fff; transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(225,29,72,0.4);
+}
+
+/* ─── Back & Reset Buttons ─── */
+.btn-back-active {
+    background: linear-gradient(135deg, #4e73df, #224abe);
+    color: #fff; border: none; border-radius: 10px;
+    font-weight: 700; padding: 0.6rem 1.4rem;
+    box-shadow: 0 4px 12px rgba(78,115,223,0.3);
+    transition: all 0.22s ease;
+    font-size: 0.875rem;
+}
+.btn-back-active:hover {
+    color: #fff; transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(78,115,223,0.4);
+}
+.btn-reset-archive {
+    border-radius: 10px; font-weight: 600;
+    border: 1.5px solid #e3e6f0; color: #6c7a9c; background: #fff;
+    font-size: 0.875rem; padding: 0.6rem 1.1rem;
+    transition: all 0.2s;
+}
+.btn-reset-archive:hover { background: #f8f9fc; border-color: #e11d48; color: #e11d48; }
+
+/* ─── Dark Theme Overrides — Archived ─── */
+.dark-theme .archive-alert { background: rgba(231,76,60,0.1); border-left-color: #e74c3c; }
+.dark-theme .page-header-archive { background: linear-gradient(to right, #1a252f, #922b21); }
+
+.dark-theme .btn-reset-archive { background: #1e212b; border-color: rgba(255,255,255,0.1); color: #8896b3; }
+.dark-theme .btn-reset-archive:hover { background: #242836; border-color: #e11d48; color: #e11d48; }
+
+.dark-theme .glass-card-archive {
+    background: #1e212b;
+    border-color: rgba(255,255,255,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.dark-theme .glass-card-archive:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.45); }
+
+.dark-theme .filter-section-archive { background: rgba(225,29,72,0.04); border-color: rgba(225,29,72,0.15); }
+.dark-theme .filter-section-archive .form-control-modern { background: #14161f; border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
+.dark-theme .filter-section-archive .form-control-modern:focus { background: #14161f; border-color: #e11d48; }
+
+.dark-theme .archive-table-card-header { border-bottom-color: rgba(255,255,255,0.05); }
+.dark-theme .archive-table-title { color: #f1f5f9; }
+
+.dark-theme #archivedGradesTable thead th { background: #14161f; color: #64748b; border-bottom-color: rgba(255,255,255,0.05) !important; }
+.dark-theme #archivedGradesTable tbody tr:hover { background: rgba(225,29,72,0.05); }
+.dark-theme #archivedGradesTable tbody td { color: #cbd5e1; border-bottom-color: rgba(255,255,255,0.04) !important; }
+
+.dark-theme .grade-code-pill { background: rgba(225,29,72,0.12); }
+.dark-theme .deleted-at-pill { background: rgba(153,27,27,0.15); color: #fca5a5; }
+
+.dark-theme .dataTables_wrapper .dataTables_info,
+.dark-theme .dataTables_wrapper .dataTables_length label,
+.dark-theme .dataTables_wrapper .dataTables_filter label { color: #8896b3; }
+.dark-theme .dataTables_wrapper input,
+.dark-theme .dataTables_wrapper select { background: #14161f; border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button { color: #8896b3 !important; }
+.dark-theme .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: rgba(225,29,72,0.15) !important; color: #e11d48 !important; border-color: transparent !important;
+}

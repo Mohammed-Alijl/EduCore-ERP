@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Finance;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\ReceiptRequest;
 use App\DTOs\PaymentResult;
-use App\Models\Receipt;
-use App\Services\ReceiptService;
+use App\Models\Finance\Receipt;
+use App\Services\Finance\ReceiptService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -32,7 +32,7 @@ class ReceiptController extends Controller implements HasMiddleware
     {
         $lookups = $this->receiptService->getLookups();
 
-        return view('admin.finance.receipts.index', $lookups);
+        return view('admin.Finance.receipts.index', $lookups);
     }
 
     public function datatable(Request $request)
@@ -61,13 +61,13 @@ class ReceiptController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.receipt_created'),
+                'message' => trans('admin.Finance.messages.success.receipt_created'),
             ]);
         } catch (\Exception $e) {
             Log::error('Receipt creation failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => $e->getMessage() ?? trans('admin.finance.messages.failed.receipt_created'),
+                'message' => $e->getMessage() ?? trans('admin.Finance.messages.failed.receipt_created'),
             ],500);
         }
     }
@@ -80,19 +80,19 @@ class ReceiptController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status'  => 'success',
-                    'message' => trans('admin.finance.messages.success.receipt_deleted')
+                    'message' => trans('admin.Finance.messages.success.receipt_deleted')
                 ], 200);
             }
 
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.receipt_delete')
+                'message' => trans('admin.Finance.messages.failed.receipt_delete')
             ], 400);
         } catch (\Exception $e) {
             Log::error('Receipt deletion failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.receipt_delete')
+                'message' => trans('admin.Finance.messages.failed.receipt_delete')
             ], 500);
         }
     }
@@ -101,6 +101,6 @@ class ReceiptController extends Controller implements HasMiddleware
     {
         $receipt->load(['student.grade', 'student.classroom', 'academicYear', 'currency', 'paymentGateway']);
 
-        return view('admin.finance.receipts.print', compact('receipt'));
+        return view('admin.Finance.receipts.print', compact('receipt'));
     }
 }

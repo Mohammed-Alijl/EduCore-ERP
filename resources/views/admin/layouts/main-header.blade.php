@@ -13,8 +13,8 @@
                         alt="logo"></a>
             </div>
             <div class="app-sidebar__toggle" data-toggle="sidebar">
-                <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
-                <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
+                <a class="open-toggle" href="#"><i class="header-icon las la-bars"></i></a>
+                <a class="close-toggle" href="#"><i class="header-icons las la-times"></i></a>
             </div>
             <div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
                 <input class="form-control" placeholder="{{ __('admin.header.search') }}" type="search"> <button
@@ -175,13 +175,14 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i
-                                class="bx bx-user-circle"></i>{{ __('admin.header.profile') }}</a>
-                        <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i class="bx bx-cog"></i>
+                                class="las la-user-circle"></i>{{ __('admin.header.profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i
+                                class="las la-cog"></i>
                             {{ __('admin.header.edit_profile') }}</a>
-                        <form action="{{ route('admin.logout') }}" method="post">
+                        <form action="{{ route('admin.logout') }}}" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item"><i
-                                    class="bx bx-log-out"></i>{{ __('admin.header.sign_out') }}</button>
+                                    class="las la-sign-out-alt"></i>{{ __('admin.header.sign_out') }}</button>
                         </form>
                     </div>
                 </div>

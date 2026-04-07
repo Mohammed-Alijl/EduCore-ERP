@@ -1,8 +1,8 @@
 <div class="dropdown nav-item main-header-notification" id="notification-dropdown"
     data-csrf="{{ csrf_token() }}"
-    data-index-url="{{ route('admin.notifications.index') }}"
-    data-base-url="{{ url('admin/notifications') }}"
-    data-mark-all-read-url="{{ route('admin.notifications.mark-all-read') }}"
+    data-index-url="{{ route('admin.System.notifications.index') }}"
+    data-base-url="{{ url('admin.System.notifications') }}"
+    data-mark-all-read-url="{{ route('admin.System.notifications.mark-all-read') }}"
     data-delete-text="{{ __('admin.global.delete') }}">
     <a class="new nav-link" href="#" data-toggle="dropdown">
         <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"
@@ -30,7 +30,7 @@
         <div class="main-notification-list Notification-scroll" id="notification-list">
             <div class="p-4 text-center text-muted" id="notification-empty">
                 <i class="las la-bell-slash" style="font-size: 2.5rem; opacity: 0.4;"></i>
-                <p class="mb-0 mt-2">{{ __('admin.notifications.empty') }}</p>
+                <p class="mb-0 mt-2">{{ __('admin.System.notifications.empty') }}</p>
             </div>
         </div>
         <div class="text-center dropdown-footer">

@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
-use App\Models\Currency;
-use App\Models\Fee;
-use App\Models\Invoice;
-use App\Models\PaymentVoucher;
-use App\Models\Receipt;
-use App\Models\StudentDiscount;
+use App\Models\Finance\Currency;
+use App\Models\Finance\Fee;
+use App\Models\Finance\Invoice;
+use App\Models\Finance\PaymentVoucher;
+use App\Models\Finance\Receipt;
+use App\Models\Finance\StudentDiscount;
+use App\Models\Users\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Spatie\Activitylog\Models\Activity;
 
@@ -132,7 +132,7 @@ class ActivityFactory extends Factory
      */
     public function created(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'event' => 'created',
             'description' => 'created',
             'properties' => $this->generateProperties('created', $attributes['subject_type']),
@@ -144,7 +144,7 @@ class ActivityFactory extends Factory
      */
     public function updated(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'event' => 'updated',
             'description' => 'updated',
             'properties' => $this->generateProperties('updated', $attributes['subject_type']),
@@ -156,7 +156,7 @@ class ActivityFactory extends Factory
      */
     public function deleted(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'event' => 'deleted',
             'description' => 'deleted',
             'properties' => $this->generateProperties('deleted', $attributes['subject_type']),
@@ -168,7 +168,7 @@ class ActivityFactory extends Factory
      */
     public function forLogName(string $logName): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'log_name' => $logName,
         ]);
     }
@@ -178,7 +178,7 @@ class ActivityFactory extends Factory
      */
     public function forSubject(string $subjectType, int $subjectId): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'subject_type' => $subjectType,
             'subject_id' => $subjectId,
             'properties' => $this->generateProperties($attributes['event'], $subjectType),
@@ -190,7 +190,7 @@ class ActivityFactory extends Factory
      */
     public function byCauser(string $causerType, int $causerId): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'causer_type' => $causerType,
             'causer_id' => $causerId,
         ]);

@@ -197,7 +197,7 @@ return [
 
     'attributes' => [
         'current_password' => 'current password',
-        'new_password'     => 'new password',
+        'new_password' => 'new password',
     ],
 
 ];

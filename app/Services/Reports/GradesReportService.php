@@ -2,10 +2,10 @@
 
 namespace App\Services\Reports;
 
-use App\Models\AcademicYear;
-use App\Models\Exam;
-use App\Models\Grade;
-use App\Models\Subject;
+use App\Models\Academic\AcademicYear;
+use App\Models\Assessments\Exam;
+use App\Models\Academic\Grade;
+use App\Models\Academic\Subject;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -166,13 +166,13 @@ class GradesReportService
             })
             ->addColumn('status', function ($row) {
                 if ($row->percentage >= 80) {
-                    return '<span class="badge bg-success" style="padding: 0.375rem 0.75rem;"><i class="las la-trophy mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.excellent') . '</span>';
+                    return '<span class="badge bg-success" style="padding: 0.375rem 0.75rem;"><i class="las la-trophy mr-1 ml-1"></i>' . trans('admin.Reports.reports.grades.statuses.excellent') . '</span>';
                 }
                 if ($row->percentage >= 50) {
-                    return '<span class="badge bg-warning text-dark" style="padding: 0.375rem 0.75rem;"><i class="las la-check-circle mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.pass') . '</span>';
+                    return '<span class="badge bg-warning text-dark" style="padding: 0.375rem 0.75rem;"><i class="las la-check-circle mr-1 ml-1"></i>' . trans('admin.Reports.reports.grades.statuses.pass') . '</span>';
                 }
 
-                return '<span class="badge bg-danger" style="padding: 0.375rem 0.75rem;"><i class="las la-times-circle mr-1 ml-1"></i>' . trans('admin.reports.grades.statuses.fail') . '</span>';
+                return '<span class="badge bg-danger" style="padding: 0.375rem 0.75rem;"><i class="las la-times-circle mr-1 ml-1"></i>' . trans('admin.Reports.reports.grades.statuses.fail') . '</span>';
             })
             ->rawColumns(['percentage', 'final_score', 'status'])
             ->make(true);

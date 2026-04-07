@@ -1,0 +1,165 @@
+/* ══════════════════════════════════════════════════════════
+   DESIGNATION SHOW MODAL
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Modal Shell ─── */
+.desig-show-modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.desig-show-modal-header {
+    background: #fff;
+    padding: 1.5rem 1.5rem 0.75rem;
+    border-bottom: 1px solid #f0f2f8;
+}
+
+.desig-show-modal-footer {
+    background: #f8f9fc;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #f0f2f8;
+}
+
+/* ─── Info Banner ─── */
+.desig-info-banner {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.25rem;
+}
+
+.desig-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ─── Description Box ─── */
+.desig-description-box {
+    background: #f8f9fc;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    min-height: 50px;
+    padding: 0.85rem 1rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* ─── Stats Row ─── */
+.desig-stat-card {
+    background: #f8f9fc;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.desig-stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.desig-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.desig-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-top: 0.35rem;
+}
+
+/* ─── Detail Item ─── */
+.desig-detail-item {
+    background: #f8f9fc;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 0.75rem 1rem;
+}
+
+.desig-detail-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 0.2rem;
+}
+
+.desig-detail-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* ─────────────────────────────────────────────
+   DARK THEME OVERRIDES
+─────────────────────────────────────────────── */
+.dark-theme .desig-show-modal-content {
+    background: #1e212b;
+}
+
+.dark-theme .desig-show-modal-header {
+    background: #1e212b;
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .desig-show-modal-header .modal-title {
+    color: #f1f5f9;
+}
+
+.dark-theme .desig-show-modal-header .close {
+    color: #94a3b8;
+}
+
+.dark-theme .desig-show-modal-footer {
+    background: #14161f;
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .desig-info-banner {
+    background: linear-gradient(135deg, #14161f, #1a1d28);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-theme .desig-description-box {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.dark-theme .desig-stat-card {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .desig-stat-value {
+    opacity: 0.9;
+}
+
+.dark-theme .desig-stat-label {
+    color: #64748b;
+}
+
+.dark-theme .desig-detail-item {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .desig-detail-label {
+    color: #64748b;
+}
+
+.dark-theme .desig-detail-value {
+    color: #e2e8f0;
+}

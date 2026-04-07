@@ -2,7 +2,7 @@
 
 namespace App\Services\Reports;
 
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -150,13 +150,13 @@ class AttendanceReportService
         $absent = Attendance::STATUS_ABSENT;
 
         $dayNames = [
-            1 => trans('admin.reports.attendance.days.sunday', [], $locale),
-            2 => trans('admin.reports.attendance.days.monday', [], $locale),
-            3 => trans('admin.reports.attendance.days.tuesday', [], $locale),
-            4 => trans('admin.reports.attendance.days.wednesday', [], $locale),
-            5 => trans('admin.reports.attendance.days.thursday', [], $locale),
-            6 => trans('admin.reports.attendance.days.friday', [], $locale),
-            7 => trans('admin.reports.attendance.days.saturday', [], $locale),
+            1 => trans('admin.Reports.reports.attendance.days.sunday', [], $locale),
+            2 => trans('admin.Reports.reports.attendance.days.monday', [], $locale),
+            3 => trans('admin.Reports.reports.attendance.days.tuesday', [], $locale),
+            4 => trans('admin.Reports.reports.attendance.days.wednesday', [], $locale),
+            5 => trans('admin.Reports.reports.attendance.days.thursday', [], $locale),
+            6 => trans('admin.Reports.reports.attendance.days.friday', [], $locale),
+            7 => trans('admin.Reports.reports.attendance.days.saturday', [], $locale),
         ];
 
         // ─── 1. Absences by Day of Week ─────────────────────────────
@@ -197,7 +197,7 @@ class AttendanceReportService
         $valuesGrade = $gradeData->pluck('absences_count')->map(fn($val) => (int) $val)->toArray();
 
         if (empty($categoriesGrade)) {
-            $categoriesGrade = [trans('admin.reports.attendance.charts.no_data', [], $locale)];
+            $categoriesGrade = [trans('admin.Reports.reports.attendance.charts.no_data', [], $locale)];
             $valuesGrade = [0];
         }
 

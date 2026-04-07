@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Guardian;
 use Illuminate\Database\Seeder;
 
 class GuardianSeeder extends Seeder
@@ -12,6 +12,6 @@ class GuardianSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Guardian::factory(20)->create();
+        Guardian::factory(20)->create();
     }
 }

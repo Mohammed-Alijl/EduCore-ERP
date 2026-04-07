@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Auth\LoginRequest;
-use App\Models\Admin;
+use App\Models\Users\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +11,7 @@ class AdminAuthController extends Controller
 {
     public function create()
     {
-        return view('admin.auth.login');
+        return view('admin.Auth.login');
     }
 
     public function store(LoginRequest $request)
@@ -28,7 +28,7 @@ class AdminAuthController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => __('admin.login_success'),
+                'message' => __('admin.login.login_success'),
                 'redirect' => route('admin.dashboard')
             ]);
         }

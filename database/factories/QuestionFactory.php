@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Question;
+use App\Models\Assessments\Question;
+use App\Models\Employee;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +20,9 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
-            'subject_id' => \App\Models\Subject::inRandomOrder()->value('id') ?? \App\Models\Subject::factory(),
-            'teacher_id' => \App\Models\Employee::inRandomOrder()->value('id') ?? \App\Models\Employee::factory(),
-            'content' => $this->faker->sentence() . '?',
+            'subject_id' => Subject::inRandomOrder()->value('id') ?? Subject::factory(),
+            'teacher_id' => Employee::inRandomOrder()->value('id') ?? Employee::factory(),
+            'content' => $this->faker->sentence().'?',
             'type' => $this->faker->randomElement([1, 2]),
             'points' => $this->faker->randomFloat(2, 1, 10),
         ];

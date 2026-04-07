@@ -1,0 +1,11 @@
+fa-: 169 uses
+las : 770 uses
+la-: 803 uses
+ion-: 2 uses
+ti-: 0 uses
+mdi-: 1 uses
+fe-: 10 uses
+bx-: 3 uses
+typcn-: 0 uses
+sl-: 0 uses
+flag-icon: 8 uses

@@ -3,7 +3,7 @@
 namespace App\Services\Payments;
 
 use App\Contracts\PaymentProcessorInterface;
-use App\Models\PaymentGateway;
+use App\Models\Finance\PaymentGateway;
 use InvalidArgumentException;
 
 class PaymentGatewayManager

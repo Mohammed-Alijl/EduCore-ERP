@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Exam;
-use App\Models\Student;
-use App\Models\ExamAttempt;
+use App\Models\Assessments\Exam;
+use App\Models\Assessments\ExamAttempt;
+use App\Models\Users\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Finance\CurrencyRequest;
-use App\Models\Currency;
-use App\Services\CurrencyService;
+use App\Models\Finance\Currency;
+use App\Services\Finance\CurrencyService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -29,7 +29,7 @@ class CurrencyController extends Controller implements HasMiddleware
 
     public function index()
     {
-        return view('admin.finance.currencies.index');
+        return view('admin.Finance.currencies.index');
     }
 
     public function datatable(Request $request)
@@ -49,13 +49,13 @@ class CurrencyController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.currency_created'),
+                'message' => trans('admin.Finance.messages.success.currency_created'),
             ], 201);
         } catch (\Exception $e) {
             Log::error('Currency creation failed: ' . $e->getMessage());
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.currency_created'),
+                'message' => trans('admin.Finance.messages.failed.currency_created'),
             ], 500);
         }
     }
@@ -67,7 +67,7 @@ class CurrencyController extends Controller implements HasMiddleware
 
             return response()->json([
                 'status'  => 'success',
-                'message' => trans('admin.finance.messages.success.currency_updated'),
+                'message' => trans('admin.Finance.messages.success.currency_updated'),
             ], 200);
         } catch (\Exception $e) {
             Log::error('Currency update failed: ' . $e->getMessage());
@@ -86,13 +86,13 @@ class CurrencyController extends Controller implements HasMiddleware
             if ($deleted) {
                 return response()->json([
                     'status'  => 'success',
-                    'message' => trans('admin.finance.messages.success.currency_deleted'),
+                    'message' => trans('admin.Finance.messages.success.currency_deleted'),
                 ], 200);
             }
 
             return response()->json([
                 'status'  => 'error',
-                'message' => trans('admin.finance.messages.failed.currency_deleted'),
+                'message' => trans('admin.Finance.messages.failed.currency_deleted'),
             ], 400);
         } catch (\Exception $e) {
             Log::error('Currency deletion failed: ' . $e->getMessage());

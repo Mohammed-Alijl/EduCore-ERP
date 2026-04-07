@@ -1,0 +1,195 @@
+/*
+ * ══════════════════════════════════════════════════════════
+ *   FINANCE CRUD — Shared Stylesheet (Fee Categories & Fees)
+ * ══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   1. MODAL — Accent Color Tokens
+───────────────────────────────────────────── */
+#addFeeCategoryModal, #addFeeModal {
+    --modal-accent: #4e73df;
+    --modal-accent-dark: #224abe;
+    --modal-accent-glow: rgba(78, 115, 223, 0.3);
+    --modal-accent-focus: rgba(78, 115, 223, 0.18);
+    --modal-accent-soft: rgba(78, 115, 223, 0.08);
+    --modal-accent-dim: rgba(78, 115, 223, 0.15);
+    --modal-header-dark: linear-gradient(135deg, #3a5bc7 0%, #1a3894 100%);
+    --modal-input-icon: #f0f3fb;
+    --modal-dark-accent: #7b96f0;
+}
+
+#editFeeCategoryModal, #editFeeModal {
+    --modal-accent: #0ea573;
+    --modal-accent-dark: #057a52;
+    --modal-accent-glow: rgba(14, 165, 115, 0.3);
+    --modal-accent-focus: rgba(14, 165, 115, 0.18);
+    --modal-accent-soft: rgba(14, 165, 115, 0.08);
+    --modal-accent-dim: rgba(14, 165, 115, 0.15);
+    --modal-header-dark: linear-gradient(135deg, #0a7a56 0%, #044d35 100%);
+    --modal-input-icon: #f0fbf7;
+    --modal-dark-accent: #3ecf8e;
+}
+
+/* ─────────────────────────────────────────────
+   2. MODAL — Shell Structure
+───────────────────────────────────────────── */
+#addFeeCategoryModal .modal-content, #editFeeCategoryModal .modal-content,
+#addFeeModal .modal-content, #editFeeModal .modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+#addFeeCategoryModal .modal-header, #editFeeCategoryModal .modal-header,
+#addFeeModal .modal-header, #editFeeModal .modal-header {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    padding: 1.25rem 1.75rem;
+    border-bottom: none;
+}
+
+#addFeeCategoryModal .modal-header .modal-title, #editFeeCategoryModal .modal-header .modal-title,
+#addFeeModal .modal-header .modal-title, #editFeeModal .modal-header .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+#addFeeCategoryModal .modal-header .close, #editFeeCategoryModal .modal-header .close,
+#addFeeModal .modal-header .close, #editFeeModal .modal-header .close {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    text-shadow: none;
+    font-size: 1.4rem;
+}
+
+#addFeeCategoryModal .modal-header .close:hover, #editFeeCategoryModal .modal-header .close:hover,
+#addFeeModal .modal-header .close:hover, #editFeeModal .modal-header .close:hover {
+    color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   3. MODAL — Form Controls
+───────────────────────────────────────────── */
+#addFeeCategoryModal .form-group, #editFeeCategoryModal .form-group,
+#addFeeModal .form-group, #editFeeModal .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#addFeeCategoryModal .error-text, #editFeeCategoryModal .error-text,
+#addFeeModal .error-text, #editFeeModal .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+}
+
+#addFeeCategoryModal .form-control-modern:focus, #editFeeCategoryModal .form-control-modern:focus,
+#addFeeModal .form-control-modern:focus, #editFeeModal .form-control-modern:focus {
+    border-color: var(--modal-accent);
+    box-shadow: 0 0 0 0.2rem var(--modal-accent-focus);
+}
+
+/* ─────────────────────────────────────────────
+   4. MODAL — Save/Cancel Buttons
+───────────────────────────────────────────── */
+.btn-save-finance {
+    background: linear-gradient(135deg, var(--modal-accent) 0%, var(--modal-accent-dark) 100%);
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    padding: 0.6rem 1.8rem;
+    letter-spacing: 0.3px;
+    color: #fff;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px var(--modal-accent-glow);
+}
+
+.btn-save-finance:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--modal-accent-glow);
+    color: #fff;
+}
+
+.btn-cancel-finance {
+    border-radius: 9px;
+    font-weight: 600;
+    border: 1.5px solid #e3e6f0;
+    color: #6c7a9c;
+    background: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   5. FINANCE FORM — Labels
+───────────────────────────────────────────── */
+.finance-form-label {
+    font-size: 0.815rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.35rem;
+}
+
+.finance-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.finance-form-group .error-text {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    min-height: 0.9rem;
+    order: 99;
+}
+
+/* ════════════════════════════════════════════════
+   DARK THEME OVERRIDES
+════════════════════════════════════════════════ */
+
+/* Modal shell */
+.dark-theme #addFeeCategoryModal .modal-content, .dark-theme #editFeeCategoryModal .modal-content,
+.dark-theme #addFeeModal .modal-content, .dark-theme #editFeeModal .modal-content {
+    background: #1e212b;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme #addFeeCategoryModal .modal-header, .dark-theme #editFeeCategoryModal .modal-header,
+.dark-theme #addFeeModal .modal-header, .dark-theme #editFeeModal .modal-header {
+    background: var(--modal-header-dark);
+}
+
+/* Form controls */
+.dark-theme #addFeeCategoryModal .form-control-modern, .dark-theme #editFeeCategoryModal .form-control-modern,
+.dark-theme #addFeeModal .form-control-modern, .dark-theme #editFeeModal .form-control-modern {
+    background: #14161f;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.dark-theme #addFeeCategoryModal .form-control-modern:focus, .dark-theme #editFeeCategoryModal .form-control-modern:focus,
+.dark-theme #addFeeModal .form-control-modern:focus, .dark-theme #editFeeModal .form-control-modern:focus {
+    background: #14161f;
+    border-color: var(--modal-accent);
+    color: #fff;
+}
+
+/* Labels */
+.dark-theme .finance-form-label {
+    color: #cbd5e1;
+}
+
+/* Buttons */
+.dark-theme .btn-cancel-finance {
+    background: #1e212b;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #8896b3;
+}
+
+.dark-theme .btn-cancel-finance:hover {
+    background: #242836;
+}
