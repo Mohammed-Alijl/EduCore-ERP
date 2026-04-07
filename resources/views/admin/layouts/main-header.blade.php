@@ -179,7 +179,7 @@
                         <a class="dropdown-item" href="{{ route('admin.profile.index') }}"><i
                                 class="las la-cog"></i>
                             {{ __('admin.header.edit_profile') }}</a>
-                        <form action="{{ route('admin.logout') }}}" method="post">
+                        <form action="{{ route('admin.logout') }}" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item"><i
                                     class="las la-sign-out-alt"></i>{{ __('admin.header.sign_out') }}</button>

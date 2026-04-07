@@ -1,4 +1,4 @@
-/* Minimal CSS for ApexCharts integration - No Tailwind CSS to avoid conflicts */
+@import "tailwindcss";
 
 /* Reset any potential conflicts with existing admin styles */
 .apexcharts-canvas * {
