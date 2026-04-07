@@ -21,8 +21,9 @@
                         class="avatar-status profile-status bg-green"></span>
                 </div>
                 <div class="user-info">
-                    <h4 class="font-weight-semibold mt-3 mb-0">{{ auth()->user()->name }}</h4>
-                    <span class="mb-0 text-muted">{{ auth()->user()->roles()->first()->name }}</span>
+                    <h4 class="font-weight-semibold mt-3 mb-0">{{ auth('admin')->user()->name }}</h4>
+                    <span
+                        class="mb-0 text-muted">{{ auth('admin')->user()->roles()->first()?->name ?? __('admin.sidebar.no_role') }}</span>
                 </div>
             </div>
         </div>
@@ -178,7 +179,8 @@
                     <ul class="slide-menu">
                         @can('view_teachers')
                             <li><a class="slide-item"
-                                    href="{{ route('admin.Users.teachers.index') }}">{{ __('admin.sidebar.teachers') }}</a></li>
+                                    href="{{ route('admin.Users.teachers.index') }}">{{ __('admin.sidebar.teachers') }}</a>
+                            </li>
                         @endcan
                         @can('view_teacher_assignments')
                             <li><a class="slide-item"
@@ -207,7 +209,8 @@
                             class="angle las la-angle-down"></i></a>
                     <ul class="slide-menu">
                         <li><a class="slide-item"
-                                href="{{ route('admin.Users.students.index') }}">{{ __('admin.sidebar.students') }}</a></li>
+                                href="{{ route('admin.Users.students.index') }}">{{ __('admin.sidebar.students') }}</a>
+                        </li>
                         @can('promote_students')
                             <li><a class="slide-item"
                                     href="{{ route('admin.Users.students.promotions.index') }}">{{ __('admin.sidebar.promotions') }}</a>
@@ -516,7 +519,8 @@
                     @endcan
                     @can('view_financial-reports')
                         <li>
-                            <a class="slide-item" href="{{ route('admin.Reports.reports.financial.outstanding-balances') }}">
+                            <a class="slide-item"
+                                href="{{ route('admin.Reports.reports.financial.outstanding-balances') }}">
                                 {{ __('admin.sidebar.financial_report') }}
                             </a>
                         </li>
