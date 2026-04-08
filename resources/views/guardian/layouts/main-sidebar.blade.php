@@ -7,12 +7,17 @@
      x-transition:leave-start="opacity-100"
      x-transition:leave-end="opacity-0"
      @click="sidebarOpen = false" 
-     class="fixed inset-0 z-30 bg-slate-900/50 backdrop-blur-sm md:hidden"
+     class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm md:hidden"
      style="display: none;" x-cloak></div>
 
 <aside
-    class="h-screen w-64 fixed left-0 top-0 z-40 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide transform transition-transform duration-300 ease-in-out md:translate-x-0"
-    :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}">
+    class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide transform transition-transform duration-300 ease-in-out md:translate-x-0 -translate-x-full"
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+    <!-- Mobile Close Button -->
+    <button @click="sidebarOpen = false" class="md:hidden absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-slate-300 transition-colors">
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
     <div class="px-6 mb-8 relative" x-data="{ open: false }" @click.away="open = false">
         <div @click="open = !open"
             class="flex items-center gap-3 glass-switcher p-2 rounded-xl shadow-sm cursor-pointer border border-transparent transition-all"

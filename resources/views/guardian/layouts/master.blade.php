@@ -3,7 +3,9 @@
 <head>
     @include('guardian.layouts.head')
 </head>
-<body class="bg-surface text-on-surface flex min-h-screen" x-data="{ sidebarOpen: false }">
+<body class="bg-surface text-on-surface flex min-h-screen" 
+      x-data="{ sidebarOpen: false }" 
+      @keydown.escape="sidebarOpen = false">
     <!-- SideNavBar -->
     @include('guardian.layouts.main-sidebar')
 

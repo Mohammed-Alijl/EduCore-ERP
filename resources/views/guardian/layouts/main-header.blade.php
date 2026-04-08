@@ -1,4 +1,4 @@
-<header class="w-full sticky top-0 z-20 bg-slate-50/80 backdrop-blur-xl shadow-sm flex justify-between items-center px-4 md:px-6 h-16">
+<header class="w-full sticky top-0 z-30 bg-slate-50/80 backdrop-blur-xl shadow-sm flex justify-between items-center px-4 md:px-6 h-16">
     <div class="flex items-center gap-3 md:gap-4">
         <!-- Mobile Menu Toggle -->
         <button @click="sidebarOpen = !sidebarOpen" class="md:hidden p-2 -ml-2 rounded-full hover:bg-slate-100/50 transition-colors text-slate-600 focus:outline-none">
