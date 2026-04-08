@@ -1,5 +1,18 @@
+<!-- Mobile overlay -->
+<div x-show="sidebarOpen" 
+     x-transition:enter="transition-opacity ease-linear duration-300"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition-opacity ease-linear duration-300"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     @click="sidebarOpen = false" 
+     class="fixed inset-0 z-30 bg-slate-900/50 backdrop-blur-sm md:hidden"
+     style="display: none;" x-cloak></div>
+
 <aside
-    class="h-screen w-64 fixed left-0 top-0 z-40 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide">
+    class="h-screen w-64 fixed left-0 top-0 z-40 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide transform transition-transform duration-300 ease-in-out md:translate-x-0"
+    :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}">
     <div class="px-6 mb-8 relative" x-data="{ open: false }" @click.away="open = false">
         <div @click="open = !open"
             class="flex items-center gap-3 glass-switcher p-2 rounded-xl shadow-sm cursor-pointer border border-transparent transition-all"
