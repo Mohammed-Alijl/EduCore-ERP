@@ -5,7 +5,7 @@
             class="flex items-center gap-3 glass-switcher p-2 rounded-xl shadow-sm cursor-pointer border border-transparent transition-all"
             :class="{ 'ring-2 ring-primary/50 border-primary/20': open, 'hover:bg-white/90': !open }">
             <div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container-highest ring-2 ring-primary">
-                <img class="h-full w-full object-cover" data-alt="Student portrait"
+                <img class="h-full w-full object-cover" width="40" height="40" loading="lazy" decoding="async" data-alt="Student portrait"
                     src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
             </div>
             <div>
@@ -34,7 +34,7 @@
                 <button
                     class="w-full flex items-center gap-3 p-2 rounded-lg bg-primary/5 text-left transition-colors relative">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-primary">
-                        <img class="h-full w-full object-cover"
+                        <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                     </div>
                     <div class="flex-1">
@@ -48,7 +48,7 @@
                 <button
                     class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-left transition-colors">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-slate-200">
-                        <img class="h-full w-full object-cover"
+                        <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                     </div>
                     <div class="flex-1">
@@ -61,7 +61,7 @@
                 <button
                     class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-left transition-colors">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-slate-200">
-                        <img class="h-full w-full object-cover"
+                        <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                     </div>
                     <div class="flex-1">

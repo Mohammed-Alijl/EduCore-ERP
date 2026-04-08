@@ -69,7 +69,7 @@
         <div class="relative" x-data="{ open: false }" @click.away="open = false">
             <button @click="open = !open" class="flex items-center gap-2 focus:outline-none rounded-full ml-2">
                 <div class="h-8 w-8 rounded-full overflow-hidden ring-2 ring-transparent transition-all hover:ring-primary/30" :class="{'ring-primary': open}">
-                    <img class="h-full w-full object-cover" src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
+                    <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async" src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                 </div>
             </button>
 
@@ -83,7 +83,7 @@
                  class="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-700 overflow-hidden z-50 will-change-transform"
                  style="display: none;" x-cloak>
                 <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col items-center text-center">
-                    <img class="h-12 w-12 rounded-full object-cover mb-2 ring-2 ring-slate-100 dark:ring-slate-700" src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
+                    <img class="h-12 w-12 rounded-full object-cover mb-2 ring-2 ring-slate-100 dark:ring-slate-700" width="48" height="48" loading="lazy" decoding="async" src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                     <p class="font-bold text-sm text-slate-800 dark:text-slate-200">Eleanor Anderson</p>
                     <p class="text-[10px] text-slate-500 uppercase font-semibold mt-0.5">Guardian</p>
                 </div>
