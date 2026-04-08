@@ -27,6 +27,9 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('web')
                 ->group(base_path('routes/admin.php'));
 
+            Route::middleware('web')
+                ->group(base_path('routes/student.php'));
+
             Route::group([], base_path('routes/webhook.php'));
         }
     )
@@ -40,8 +43,16 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $middleware->redirectUsersTo(function (Request $request) {
-            if (Auth::guard('admin')->check()) {
-                return route('admin.dashboard');
+            // If accessing admin area, check admin guard and redirect to admin dashboard
+            if ($request->is('admin') || $request->is('admin/*')) {
+                if (Auth::guard('admin')->check()) {
+                    return route('admin.dashboard');
+                }
+            }
+
+            // For student/regular area, check web guard and redirect to student dashboard
+            if (Auth::guard('web')->check()) {
+                return route('dashboard');
             }
 
             return route('landing-page');
