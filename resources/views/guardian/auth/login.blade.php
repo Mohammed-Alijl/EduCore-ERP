@@ -44,7 +44,7 @@
 
         <div class="w-full max-w-md relative z-10 glass-switcher p-8 sm:p-10 rounded-[2rem] shadow-2xl shadow-slate-200/50 dark:shadow-black/50 border border-outline-variant/30">
             
-            <div class="mb-10 text-center lg:text-left">
+            <div class="mb-10 text-center lg:text-start">
                 <div class="lg:hidden mb-6 inline-flex items-center justify-center p-3 bg-primary rounded-2xl shadow-lg shadow-primary/30">
                     <span class="material-symbols-outlined text-3xl text-on-primary">family_home</span>
                 </div>

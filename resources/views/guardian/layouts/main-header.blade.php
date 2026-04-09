@@ -12,11 +12,11 @@
     </div>
     <div class="flex items-center gap-2 md:gap-4">
         <div class="relative group hidden md:block">
-            <span class="absolute inset-y-0 left-3 flex items-center text-slate-400 dark:text-slate-500">
+            <span class="absolute inset-y-0 start-3 flex items-center text-slate-400 dark:text-slate-500">
                 <span class="material-symbols-outlined text-lg">search</span>
             </span>
             <input
-                class="bg-surface-container-high dark:bg-slate-800/90 border-none rounded-full pl-10 pr-4 py-1.5 text-sm text-slate-700 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 w-48 lg:w-64 focus:ring-2 focus:ring-primary/40 transition-all"
+                class="bg-surface-container-high dark:bg-slate-800/90 border-none rounded-full ps-10 pe-4 py-1.5 text-sm text-slate-700 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 w-48 lg:w-64 focus:ring-2 focus:ring-primary/40 transition-all"
                 placeholder="{{ __('guardian.header.search_placeholder') }}" type="text" />
         </div>
         <!-- Mobile Search -->
@@ -24,6 +24,39 @@
             class="md:hidden p-2 rounded-full hover:bg-slate-100/50 dark:hover:bg-slate-800 transition-colors relative">
             <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">search</span>
         </button>
+
+        <!-- Language Switcher -->
+        <div class="relative" x-data="{ open: false }" @click.away="open = false">
+            <button @click="open = !open"
+                class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/95 px-3 py-1.5 shadow-sm shadow-slate-200/60 dark:shadow-slate-950/40 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                type="button">
+                <img class="h-4 w-6 rounded-sm object-cover" src="{{ asset('assets/admin/img/flags/' . LaravelLocalization::getCurrentLocale() . '.jpg') }}" alt="{{ LaravelLocalization::getCurrentLocale() }}">
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-200 uppercase">{{ LaravelLocalization::getCurrentLocale() }}</span>
+                <span class="material-symbols-outlined text-sm text-slate-400 transition-transform duration-200" :class="{ 'rotate-180': open }">expand_more</span>
+            </button>
+
+            <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="absolute end-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-700 overflow-hidden z-50 will-change-transform"
+                style="display: none;" x-cloak>
+                <div class="p-1">
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors {{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'bg-primary/10 text-primary' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50' }}">
+                            <img class="h-4 w-6 rounded-sm object-cover" src="{{ asset('assets/admin/img/flags/' . $localeCode . '.jpg') }}" alt="{{ $localeCode }}">
+                            <span>{{ $properties['native'] }}</span>
+                            @if (LaravelLocalization::getCurrentLocale() == $localeCode)
+                                <span class="material-symbols-outlined text-sm ms-auto">check_circle</span>
+                            @endif
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
         <!-- Theme Switcher -->
         <button @click="toggleTheme()"
@@ -111,7 +144,7 @@
                 <div class="h-8 w-8 rounded-full overflow-hidden ring-2 ring-transparent transition-all hover:ring-primary/30"
                     :class="{ 'ring-primary': open }">
                     <img class="h-full w-full object-cover" width="32" height="32" loading="lazy"
-                        decoding="async" src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
+                        decoding="async" src="{{ auth('guardian')->user()->image_url }}" />
                 </div>
             </button>
 

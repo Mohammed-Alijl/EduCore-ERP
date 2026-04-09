@@ -11,10 +11,10 @@
      style="display: none;" x-cloak></div>
 
 <aside
-    class="h-screen w-64 fixed left-0 top-0 z-50 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide transform transition-transform duration-300 ease-in-out md:translate-x-0 -translate-x-full"
-    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+    class="h-screen w-64 fixed start-0 top-0 z-50 bg-[#001a42] dark:bg-slate-950 flex flex-col py-6 gap-2 font-inter body-md tracking-wide transform transition-transform duration-300 ease-in-out md:translate-x-0 max-md:ltr:-translate-x-full max-md:rtl:translate-x-full"
+    :class="sidebarOpen ? 'translate-x-0!' : ''">
     <!-- Mobile Close Button -->
-    <button @click="sidebarOpen = false" class="md:hidden absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-slate-300 transition-colors">
+    <button @click="sidebarOpen = false" class="md:hidden absolute top-4 end-4 p-2 rounded-full hover:bg-white/10 text-slate-300 transition-colors">
         <span class="material-symbols-outlined">close</span>
     </button>
 
@@ -24,13 +24,13 @@
             :class="{ 'ring-2 ring-primary/50 border-primary/20': open, 'hover:bg-white/90': !open }">
             <div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container-highest ring-2 ring-primary">
                 <img class="h-full w-full object-cover" width="40" height="40" loading="lazy" decoding="async" data-alt="Student portrait"
-                    src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
+                    src="{{ auth('guardian')->user()->image_url }}" />
             </div>
             <div>
                 <p class="text-xs font-bold text-on-primary-fixed uppercase tracking-tighter">Julian Anderson</p>
                 <p class="text-[10px] text-slate-500 font-medium">{{ __('guardian.sidebar.grade') }} 10-B</p>
             </div>
-            <span class="material-symbols-outlined text-slate-400 ml-auto text-sm transition-transform duration-200"
+            <span class="material-symbols-outlined text-slate-400 ms-auto text-sm transition-transform duration-200"
                 :class="{ 'rotate-180': open }">unfold_more</span>
         </div>
 
@@ -40,7 +40,7 @@
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100 translate-y-0"
             x-transition:leave-end="transform opacity-0 scale-95 translate-y-[-10px]"
-            class="absolute left-6 right-6 top-[4.5rem] mt-2 bg-white dark:bg-slate-800 rounded-xl shadow-xl shadow-blue-900/10 border border-slate-100 dark:border-slate-700 overflow-hidden z-50 will-change-transform"
+            class="absolute inset-x-6 top-[4.5rem] mt-2 bg-white dark:bg-slate-800 rounded-xl shadow-xl shadow-blue-900/10 border border-slate-100 dark:border-slate-700 overflow-hidden z-50 will-change-transform"
             style="display: none;" x-cloak>
 
             <div class="px-3 py-2 bg-slate-50/50 dark:bg-slate-800/80 border-b border-slate-100 dark:border-slate-700">
@@ -50,7 +50,7 @@
             <div class="p-1 max-h-60 overflow-y-auto">
                 <!-- Active Student -->
                 <button
-                    class="w-full flex items-center gap-3 p-2 rounded-lg bg-primary/5 text-left transition-colors relative">
+                    class="w-full flex items-center gap-3 p-2 rounded-lg bg-primary/5 text-start transition-colors relative">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-primary">
                         <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
@@ -64,7 +64,7 @@
 
                 <!-- Inactive Student 1 -->
                 <button
-                    class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-left transition-colors">
+                    class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-start transition-colors">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-slate-200">
                         <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
@@ -77,7 +77,7 @@
 
                 <!-- Inactive Student 2 -->
                 <button
-                    class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-left transition-colors">
+                    class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 text-start transition-colors">
                     <div class="h-8 w-8 rounded-full overflow-hidden shrink-0 ring-1 ring-slate-200">
                         <img class="h-full w-full object-cover" width="32" height="32" loading="lazy" decoding="async"
                             src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
@@ -93,7 +93,7 @@
 
     <nav class="flex-1 space-y-1 px-4">
         <a href="{{ route('guardian.dashboard') }}"
-            class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all {{ request()->routeIs('guardian.dashboard') ? 'bg-primary-container text-white shadow-lg shadow-blue-900/40 translate-x-1' : 'text-slate-300 hover:text-white hover:bg-white/10' }}">
+            class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all {{ request()->routeIs('guardian.dashboard') ? 'bg-primary-container text-white shadow-lg shadow-blue-900/40 ltr:translate-x-1 rtl:-translate-x-1' : 'text-slate-300 hover:text-white hover:bg-white/10' }}">
             <span class="material-symbols-outlined {{ request()->routeIs('guardian.dashboard') ? 'material-filled' : '' }}">dashboard</span>
             <span>{{ __('guardian.sidebar.dashboard') }}</span>
         </a>

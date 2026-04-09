@@ -26,7 +26,7 @@
     <!-- SideNavBar -->
     @include('guardian.layouts.main-sidebar')
 
-    <main class="ml-0 md:ml-64 flex-1 flex flex-col min-w-0 transition-margin duration-300">
+    <main class="ms-0 md:ms-64 flex-1 flex flex-col min-w-0 transition-margin duration-300">
         <!-- TopNavBar -->
         @include('guardian.layouts.main-header')
 
