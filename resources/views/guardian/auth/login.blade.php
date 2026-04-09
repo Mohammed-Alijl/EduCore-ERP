@@ -1,6 +1,6 @@
 @extends('guardian.layouts.guest')
 
-@section('title', 'Guardian Login - EduCore')
+@section('title', __('guardian.login.title') . ' - ' . setting('school_name'))
 
 @section('content')
 <div class="min-h-screen w-full flex bg-surface">
@@ -21,16 +21,16 @@
                 <span class="material-symbols-outlined text-4xl text-white">family_home</span>
             </div>
             <h1 class="font-headline text-5xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-md">
-                Your Child's Education,<br>
-                <span class="text-tertiary-fixed">Connected.</span>
+                {{ __('guardian.login.hero_title') }}<br>
+                <span class="text-tertiary-fixed">{{ __('guardian.login.hero_title_accent') }}</span>
             </h1>
             <p class="text-lg text-primary-fixed-dim leading-relaxed mb-12 max-w-md font-medium">
-                Welcome to the Guardian Portal. Track academic progress, manage finances, and stay closely connected with the school community.
+                {{ __('guardian.login.hero_description') }}
             </p>
 
             <div class="flex items-center gap-4 text-sm font-semibold text-primary-fixed-dim bg-black/10 w-max px-5 py-3 rounded-full backdrop-blur-sm border border-white/5">
                 <span class="flex h-2.5 w-2.5 rounded-full bg-green-400 animate-pulse"></span>
-                Secure Encrypted Portal
+                {{ __('guardian.login.secure_portal') }}
             </div>
         </div>
     </div>
@@ -48,8 +48,8 @@
                 <div class="lg:hidden mb-6 inline-flex items-center justify-center p-3 bg-primary rounded-2xl shadow-lg shadow-primary/30">
                     <span class="material-symbols-outlined text-3xl text-on-primary">family_home</span>
                 </div>
-                <h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight mb-2">Welcome Back</h2>
-                <p class="text-on-surface-variant font-medium">Please enter your credentials to login.</p>
+                <h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight mb-2">{{ __('guardian.login.welcome_back') }}</h2>
+                <p class="text-on-surface-variant font-medium">{{ __('guardian.login.login_subtitle') }}</p>
             </div>
 
             <!-- Session Status Hook (If flashed) -->
@@ -64,7 +64,7 @@
 
                 <!-- Email Address -->
                 <div class="space-y-2">
-                    <label for="email" class="block text-sm font-semibold text-on-surface">Email Address</label>
+                    <label for="email" class="block text-sm font-semibold text-on-surface">{{ __('guardian.login.email') }}</label>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <span class="material-symbols-outlined text-[20px] text-outline group-focus-within:text-primary transition-colors">mail</span>
@@ -81,10 +81,10 @@
                 <!-- Password -->
                 <div class="space-y-2">
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-semibold text-on-surface">Password</label>
+                        <label for="password" class="block text-sm font-semibold text-on-surface">{{ __('guardian.login.password') }}</label>
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" tabindex="-1" class="text-xs font-bold text-primary hover:text-primary-container transition-colors">
-                                Forgot password?
+                                {{ __('guardian.login.forgot_password') }}
                             </a>
                         @endif
                     </div>
@@ -111,7 +111,7 @@
                             <input id="remember_me" name="remember" type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary bg-surface-container-lowest transition-all cursor-pointer">
                         </div>
                         <div class="ml-2.5 text-sm">
-                            <label for="remember_me" class="font-medium text-on-surface-variant cursor-pointer select-none">Remember this device</label>
+                            <label for="remember_me" class="font-medium text-on-surface-variant cursor-pointer select-none">{{ __('guardian.login.remember_me') }}</label>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <!-- Submit Button -->
                 <div class="pt-2">
                     <button type="submit" class="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-primary text-on-primary rounded-xl font-bold tracking-wide shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 active:translate-y-0 active:shadow-primary/30 transition-all">
-                        Sign In to Portal
+                        {{ __('guardian.login.sign_in') }}
                         <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
                     </button>
                 </div>

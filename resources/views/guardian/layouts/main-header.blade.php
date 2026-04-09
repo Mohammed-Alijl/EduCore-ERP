@@ -17,7 +17,7 @@
             </span>
             <input
                 class="bg-surface-container-high dark:bg-slate-800/90 border-none rounded-full pl-10 pr-4 py-1.5 text-sm text-slate-700 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 w-48 lg:w-64 focus:ring-2 focus:ring-primary/40 transition-all"
-                placeholder="Search school records..." type="text" />
+                placeholder="{{ __('guardian.header.search_placeholder') }}" type="text" />
         </div>
         <!-- Mobile Search -->
         <button
@@ -60,9 +60,9 @@
                 style="display: none;" x-cloak>
                 <div
                     class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex justify-between items-center">
-                    <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 font-manrope">Notifications</h3>
+                    <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 font-manrope">{{ __('guardian.header.notifications') }}</h3>
                     <span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">2
-                        New</span>
+                        {{ __('guardian.header.new') }}</span>
                 </div>
                 <div class="max-h-80 overflow-y-auto">
                     <!-- Notification Item -->
@@ -100,7 +100,7 @@
                 </div>
                 <a href="#"
                     class="block w-full p-3 text-center text-xs font-semibold text-primary hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors border-t border-slate-100 dark:border-slate-700">
-                    View All Notifications
+                    {{ __('guardian.header.view_all') }}
                 </a>
             </div>
         </div>
@@ -129,18 +129,18 @@
                         width="48" height="48" loading="lazy" decoding="async"
                         src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
                     <p class="font-bold text-sm text-slate-800 dark:text-slate-200">{{auth('guardian')->user()->name_father}}</p>
-                    <p class="text-[10px] text-slate-500 uppercase font-semibold mt-0.5">Guardian</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-semibold mt-0.5">{{ __('guardian.sidebar.guardian') ?? 'Guardian' }}</p>
                 </div>
                 <div class="p-2 space-y-1">
                     <a href="#"
                         class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-xl transition-colors font-medium">
                         <span class="material-symbols-outlined text-[20px]">manage_accounts</span>
-                        Profile Settings
+                        {{ __('guardian.header.profile_settings') }}
                     </a>
                     <a href="#"
                         class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-xl transition-colors font-medium">
                         <span class="material-symbols-outlined text-[20px]">tune</span>
-                        Preferences
+                        {{ __('guardian.header.preferences') }}
                     </a>
                 </div>
                 <div class="p-2 border-t border-slate-100 dark:border-slate-700">
@@ -148,7 +148,7 @@
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class="flex items-center gap-3 px-3 py-2 text-sm text-error hover:bg-error/10 hover:text-error rounded-xl transition-colors font-medium">
                         <span class="material-symbols-outlined text-[20px]">logout</span>
-                        Logout
+                        {{ __('guardian.sidebar.logout') }}
                     </a>
                 </div>
             </div>

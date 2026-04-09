@@ -28,7 +28,7 @@
             </div>
             <div>
                 <p class="text-xs font-bold text-on-primary-fixed uppercase tracking-tighter">Julian Anderson</p>
-                <p class="text-[10px] text-slate-500 font-medium">Grade 10-B</p>
+                <p class="text-[10px] text-slate-500 font-medium">{{ __('guardian.sidebar.grade') }} 10-B</p>
             </div>
             <span class="material-symbols-outlined text-slate-400 ml-auto text-sm transition-transform duration-200"
                 :class="{ 'rotate-180': open }">unfold_more</span>
@@ -44,7 +44,7 @@
             style="display: none;" x-cloak>
 
             <div class="px-3 py-2 bg-slate-50/50 dark:bg-slate-800/80 border-b border-slate-100 dark:border-slate-700">
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Student</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ __('guardian.sidebar.select_student') }}</p>
             </div>
 
             <div class="p-1 max-h-60 overflow-y-auto">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-xs font-bold text-primary">Julian Anderson</p>
-                        <p class="text-[9px] text-slate-500 font-medium">Grade 10-B</p>
+                        <p class="text-[9px] text-slate-500 font-medium">{{ __('guardian.sidebar.grade') }} 10-B</p>
                     </div>
                     <span class="material-symbols-outlined text-sm text-primary">check_circle</span>
                 </button>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Maya Anderson</p>
-                        <p class="text-[9px] text-slate-500 font-medium">Grade 7-A</p>
+                        <p class="text-[9px] text-slate-500 font-medium">{{ __('guardian.sidebar.grade') }} 7-A</p>
                     </div>
                 </button>
 
@@ -84,7 +84,7 @@
                     </div>
                     <div class="flex-1">
                         <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Leo Anderson</p>
-                        <p class="text-[9px] text-slate-500 font-medium">Grade 3-C</p>
+                        <p class="text-[9px] text-slate-500 font-medium">{{ __('guardian.sidebar.grade') }} 3-C</p>
                     </div>
                 </button>
             </div>
@@ -95,29 +95,29 @@
         <a href="{{ route('guardian.dashboard') }}"
             class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all {{ request()->routeIs('guardian.dashboard') ? 'bg-primary-container text-white shadow-lg shadow-blue-900/40 translate-x-1' : 'text-slate-300 hover:text-white hover:bg-white/10' }}">
             <span class="material-symbols-outlined {{ request()->routeIs('guardian.dashboard') ? 'material-filled' : '' }}">dashboard</span>
-            <span>Dashboard</span>
+            <span>{{ __('guardian.sidebar.dashboard') }}</span>
         </a>
         <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">school</span>
-            <span>Academics</span>
+            <span>{{ __('guardian.sidebar.academics') }}</span>
         </a>
         <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">payments</span>
-            <span>Finance</span>
+            <span>{{ __('guardian.sidebar.finance') }}</span>
         </a>
         <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">chat_bubble</span>
-            <span>Communication</span>
+            <span>{{ __('guardian.sidebar.communication') }}</span>
         </a>
     </nav>
 
     <div class="mt-auto px-4 pb-4">
         <button
             class="w-full bg-primary-container text-white py-3 rounded-xl font-semibold text-sm shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-            Academic Portfolio
+            {{ __('guardian.sidebar.academic_portfolio') }}
         </button>
     </div>
 
@@ -125,13 +125,13 @@
         <a class="flex items-center gap-3 text-slate-300 px-4 py-2 mx-2 hover:text-white hover:bg-white/10 rounded-full transition-all text-sm"
             href="#">
             <span class="material-symbols-outlined text-base">help</span>
-            <span>Help Center</span>
+            <span>{{ __('guardian.sidebar.help_center') }}</span>
         </a>
         <!-- Ensure proper logout form mapping in the future -->
         <a class="flex items-center gap-3 text-slate-300 px-4 py-2 mx-2 hover:text-white hover:bg-white/10 rounded-full transition-all text-sm"
             href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <span class="material-symbols-outlined text-base">logout</span>
-            <span>Logout</span>
+            <span>{{ __('guardian.sidebar.logout') }}</span>
         </a>
         <form id="logout-form" action="{{ route('guardian.logout') }}" method="POST" class="d-none" style="display: none;">
             @csrf
