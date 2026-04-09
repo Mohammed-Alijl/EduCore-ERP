@@ -7,7 +7,7 @@
             <span class="material-symbols-outlined">menu</span>
         </button>
         <h1 class="text-lg md:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50 font-manrope truncate">
-            Academic Curator
+            {{ setting('school_name') }}
         </h1>
     </div>
     <div class="flex items-center gap-2 md:gap-4">
@@ -128,7 +128,7 @@
                     <img class="h-12 w-12 rounded-full object-cover mb-2 ring-2 ring-slate-100 dark:ring-slate-700"
                         width="48" height="48" loading="lazy" decoding="async"
                         src="{{ asset('assets/guardian/img/faces/default-avatar.png') }}" />
-                    <p class="font-bold text-sm text-slate-800 dark:text-slate-200">Eleanor Anderson</p>
+                    <p class="font-bold text-sm text-slate-800 dark:text-slate-200">{{auth('guardian')->user()->name_father}}</p>
                     <p class="text-[10px] text-slate-500 uppercase font-semibold mt-0.5">Guardian</p>
                 </div>
                 <div class="p-2 space-y-1">
