@@ -6,7 +6,8 @@
     <!-- Bento Dashboard Header -->
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Summary Card: Attendance -->
-        <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
+        <div
+            class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
             <div class="flex justify-between items-start">
                 <span class="label-sm font-label uppercase tracking-widest text-secondary">Attendance</span>
                 <span class="material-symbols-outlined text-primary">event_available</span>
@@ -17,7 +18,8 @@
             </div>
         </div>
         <!-- Summary Card: GPA -->
-        <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
+        <div
+            class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
             <div class="flex justify-between items-start">
                 <span class="label-sm font-label uppercase tracking-widest text-secondary">Current GPA</span>
                 <span class="material-symbols-outlined text-tertiary">grade</span>
@@ -28,7 +30,8 @@
             </div>
         </div>
         <!-- Summary Card: Finance -->
-        <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
+        <div
+            class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between h-40">
             <div class="flex justify-between items-start">
                 <span class="label-sm font-label uppercase tracking-widest text-secondary">Fees Outstanding</span>
                 <span class="material-symbols-outlined text-on-secondary-fixed-variant">account_balance_wallet</span>
@@ -41,7 +44,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Main Content Grid -->
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Center Column: Assignments & Recent Activity -->
@@ -56,7 +59,8 @@
                 <div class="space-y-4">
                     <div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between">
                         <div class="flex items-center gap-4">
-                            <div class="h-12 w-12 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
                                 <span class="material-symbols-outlined">functions</span>
                             </div>
                             <div>
@@ -71,7 +75,8 @@
                     </div>
                     <div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between">
                         <div class="flex items-center gap-4">
-                            <div class="h-12 w-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary">
                                 <span class="material-symbols-outlined">menu_book</span>
                             </div>
                             <div>
@@ -105,7 +110,8 @@
                                 <td class="px-6 py-4 text-sm">Morning</td>
                                 <td class="px-6 py-4 text-sm">Physics</td>
                                 <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-surface-container-highest text-primary">Present</span>
+                                    <span
+                                        class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-surface-container-highest text-primary">Present</span>
                                 </td>
                             </tr>
                             <tr class="hover:bg-surface transition-colors">
@@ -113,7 +119,8 @@
                                 <td class="px-6 py-4 text-sm">Morning</td>
                                 <td class="px-6 py-4 text-sm">Economics</td>
                                 <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-tertiary-container text-on-tertiary-container">Tardy</span>
+                                    <span
+                                        class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-tertiary-container text-on-tertiary-container">Tardy</span>
                                 </td>
                             </tr>
                             <tr class="hover:bg-surface transition-colors">
@@ -121,7 +128,8 @@
                                 <td class="px-6 py-4 text-sm">All Day</td>
                                 <td class="px-6 py-4 text-sm">General</td>
                                 <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-error-container text-on-error-container">Excused</span>
+                                    <span
+                                        class="px-3 py-1 rounded-sm text-[10px] font-bold uppercase bg-error-container text-on-error-container">Excused</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -134,23 +142,28 @@
             <div class="bg-[#001a42] text-white p-8 rounded-xl relative overflow-hidden">
                 <!-- Abstract texture background -->
                 <div class="absolute inset-0 opacity-10">
-                    <div class="h-full w-full" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;">
+                    <div class="h-full w-full"
+                        style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;">
                     </div>
                 </div>
                 <div class="relative z-10">
                     <div class="flex items-center gap-2 mb-4">
-                        <span class="material-symbols-outlined text-primary-fixed">campaign</span>
-                        <h3 class="label-md font-label uppercase tracking-widest text-primary-fixed">Urgent Alerts</h3>
+                        <span class="material-symbols-outlined text-primary-fixed dark:text-sky-300">campaign</span>
+                        <h3 class="label-md font-label uppercase tracking-widest text-primary-fixed dark:text-sky-200">
+                            Urgent Alerts</h3>
                     </div>
                     <div class="space-y-6">
                         <div class="border-l-2 border-primary-container pl-4">
                             <h4 class="font-bold text-sm">Parent-Teacher Symposium</h4>
-                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Mandatory online meeting regarding final semester exams scheduled for this Friday at 6:00 PM.</p>
-                            <a class="inline-block mt-2 text-primary-fixed text-xs font-bold border-b border-primary-fixed/50" href="#">Register Link</a>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Mandatory online meeting regarding final
+                                semester exams scheduled for this Friday at 6:00 PM.</p>
+                            <a class="inline-block mt-2 text-primary-fixed text-xs font-bold border-b border-primary-fixed/50"
+                                href="#">Register Link</a>
                         </div>
                         <div class="border-l-2 border-tertiary pl-4">
                             <h4 class="font-bold text-sm">Winter Sports Sign-up</h4>
-                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Deadline for basketball and swimming roster registrations is October 30th.</p>
+                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Deadline for basketball and swimming
+                                roster registrations is October 30th.</p>
                         </div>
                     </div>
                 </div>
@@ -159,7 +172,8 @@
                 <h3 class="headline-sm font-headline text-on-surface mb-6">School Calendar</h3>
                 <div class="space-y-4">
                     <div class="flex gap-4">
-                        <div class="bg-surface-container-lowest rounded-lg w-12 h-14 flex flex-col items-center justify-center border border-outline-variant/20">
+                        <div
+                            class="bg-surface-container-lowest rounded-lg w-12 h-14 flex flex-col items-center justify-center border border-outline-variant/20">
                             <span class="text-[10px] font-bold text-secondary uppercase">Nov</span>
                             <span class="text-lg font-black text-on-surface">12</span>
                         </div>
@@ -169,7 +183,8 @@
                         </div>
                     </div>
                     <div class="flex gap-4 opacity-70">
-                        <div class="bg-surface-container-lowest rounded-lg w-12 h-14 flex flex-col items-center justify-center border border-outline-variant/20">
+                        <div
+                            class="bg-surface-container-lowest rounded-lg w-12 h-14 flex flex-col items-center justify-center border border-outline-variant/20">
                             <span class="text-[10px] font-bold text-secondary uppercase">Nov</span>
                             <span class="text-lg font-black text-on-surface">25</span>
                         </div>

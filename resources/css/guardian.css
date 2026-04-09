@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-on-error: #ffffff;
   --color-surface-dim: #d8dadc;
@@ -94,4 +96,72 @@ h1,h2,h3,.font-headline {
 .glass-switcher {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
+}
+
+.dark {
+    --color-surface-dim: #0b1220;
+    --color-on-background: #e7edf7;
+    --color-surface-variant: #1c2536;
+    --color-on-secondary-container: #c8d3ea;
+    --color-on-primary-fixed: #e3eeff;
+    --color-on-primary-container: #e8f0ff;
+    --color-primary: #78abff;
+    --color-tertiary: #ffb584;
+    --color-surface-container-low: #101a2b;
+    --color-secondary: #a0aec7;
+    --color-inverse-primary: #17418c;
+    --color-primary-fixed: #12305f;
+    --color-primary-container: #2d6fd1;
+    --color-secondary-container: #263148;
+    --color-on-primary-fixed-variant: #cddfff;
+    --color-inverse-on-surface: #1c2432;
+    --color-inverse-surface: #dbe3ef;
+    --color-on-surface: #e7edf7;
+    --color-surface-container-lowest: #0a121f;
+    --color-surface: #0c1524;
+    --color-surface-container: #121d2f;
+    --color-background: #0b1422;
+    --color-surface-container-high: #182236;
+    --color-surface-bright: #1b273a;
+    --color-surface-tint: #8cb7ff;
+    --color-on-surface-variant: #a6b2c7;
+    --color-secondary-fixed: #2a344c;
+    --color-on-secondary-fixed-variant: #c0ccdf;
+    --color-surface-container-highest: #212d42;
+    --color-secondary-fixed-dim: #8b98b1;
+    --color-outline: #647089;
+    --color-outline-variant: #364058;
+    --color-error: #ff8a8a;
+    --color-error-container: #5a2020;
+    --color-on-error-container: #ffd2d2;
+}
+
+html,
+body,
+aside,
+header,
+main,
+section,
+div,
+table,
+thead,
+tbody,
+tr,
+td,
+th,
+button,
+input,
+a {
+    transition-property: background-color, color, border-color, fill, stroke, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+}
+
+.dark .glass-switcher {
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.material-filled {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }

@@ -3,8 +3,25 @@
 <head>
     @include('guardian.layouts.head')
 </head>
-<body class="bg-surface text-on-surface flex min-h-screen" 
-      x-data="{ sidebarOpen: false }" 
+<body class="bg-surface text-on-surface flex min-h-screen"
+      x-data="{
+          sidebarOpen: false,
+          theme: 'light',
+          initTheme() {
+              this.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+          },
+          applyTheme(value) {
+              this.theme = value;
+
+              document.documentElement.classList.toggle('dark', value === 'dark');
+              document.documentElement.classList.toggle('light', value !== 'dark');
+              localStorage.setItem('guardian-theme', value);
+          },
+          toggleTheme() {
+              this.applyTheme(this.theme === 'dark' ? 'light' : 'dark');
+          }
+      }"
+      x-init="initTheme()"
       @keydown.escape="sidebarOpen = false">
     <!-- SideNavBar -->
     @include('guardian.layouts.main-sidebar')

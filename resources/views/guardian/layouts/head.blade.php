@@ -7,5 +7,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 
+<script>
+	(() => {
+		try {
+			const storedTheme = localStorage.getItem('guardian-theme');
+			const theme = storedTheme === 'dark' ? 'dark' : 'light';
+
+			document.documentElement.classList.remove('light', 'dark');
+			document.documentElement.classList.add(theme);
+		} catch (error) {
+			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.add('light');
+		}
+	})();
+</script>
+
 @vite(['resources/css/guardian.css', 'resources/js/app.js'])
 @yield('css')

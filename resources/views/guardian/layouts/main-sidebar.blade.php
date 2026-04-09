@@ -1,12 +1,12 @@
 <!-- Mobile overlay -->
-<div x-show="sidebarOpen" 
+<div x-show="sidebarOpen"
      x-transition:enter="transition-opacity ease-linear duration-300"
      x-transition:enter-start="opacity-0"
      x-transition:enter-end="opacity-100"
      x-transition:leave="transition-opacity ease-linear duration-300"
      x-transition:leave-start="opacity-100"
      x-transition:leave-end="opacity-0"
-     @click="sidebarOpen = false" 
+     @click="sidebarOpen = false"
      class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm md:hidden"
      style="display: none;" x-cloak></div>
 
@@ -91,23 +91,23 @@
         </div>
     </div>
 
-    <nav class="flex-1 space-y-1">
-        <a class="flex items-center gap-3 bg-[#2170e4] text-white rounded-full px-4 py-3 mx-2 transition-transform duration-200 ease-out"
-            href="{{ route('guardian.dashboard') }}">
-            <span class="material-symbols-outlined">dashboard</span>
+    <nav class="flex-1 space-y-1 px-4">
+        <a href="{{ route('guardian.dashboard') }}"
+            class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all {{ request()->routeIs('guardian.dashboard') ? 'bg-primary-container text-white shadow-lg shadow-blue-900/40 translate-x-1' : 'text-slate-300 hover:text-white hover:bg-white/10' }}">
+            <span class="material-symbols-outlined {{ request()->routeIs('guardian.dashboard') ? 'material-filled' : '' }}">dashboard</span>
             <span>Dashboard</span>
         </a>
-        <a class="flex items-center gap-3 text-slate-300 px-4 py-3 mx-2 hover:text-white hover:bg-white/10 rounded-full transition-all"
+        <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">school</span>
             <span>Academics</span>
         </a>
-        <a class="flex items-center gap-3 text-slate-300 px-4 py-3 mx-2 hover:text-white hover:bg-white/10 rounded-full transition-all"
+        <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">payments</span>
             <span>Finance</span>
         </a>
-        <a class="flex items-center gap-3 text-slate-300 px-4 py-3 mx-2 hover:text-white hover:bg-white/10 rounded-full transition-all"
+        <a class="w-full flex items-center gap-3 text-slate-300 px-4 py-3 hover:text-white hover:bg-white/10 rounded-xl transition-all"
             href="#">
             <span class="material-symbols-outlined">chat_bubble</span>
             <span>Communication</span>
