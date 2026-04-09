@@ -34,6 +34,7 @@ return [
         'view_all' => 'عرض كل التنبيهات',
         'profile_settings' => 'إعدادات الملف الشخصي',
         'preferences' => 'التفضيلات',
+        'guardian' => 'ولي الأمر',
     ],
     'footer' => [
         'rights_reserved' => 'جميع الحقوق محفوظة.',

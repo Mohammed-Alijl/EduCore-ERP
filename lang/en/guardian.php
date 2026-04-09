@@ -34,6 +34,7 @@ return [
         'view_all' => 'View All Notifications',
         'profile_settings' => 'Profile Settings',
         'preferences' => 'Preferences',
+        'guardian' => 'Guardian',
     ],
     'footer' => [
         'rights_reserved' => 'All Rights Reserved.',
