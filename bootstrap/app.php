@@ -42,6 +42,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 return route('admin.login');
             }
 
+            if ($request->is('guardian') || $request->is('guardian/*')) {
+                return route('guardian.login');
+            }
+
             return route('login');
         });
 
@@ -50,6 +54,13 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('admin') || $request->is('admin/*')) {
                 if (Auth::guard('admin')->check()) {
                     return route('admin.dashboard');
+                }
+            }
+
+            // If accessing guardian area, check guardian guard and redirect to guardian dashboard
+            if ($request->is('guardian') || $request->is('guardian/*')) {
+                if (Auth::guard('guardian')->check()) {
+                    return route('guardian.dashboard');
                 }
             }
 

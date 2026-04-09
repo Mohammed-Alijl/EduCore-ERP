@@ -133,7 +133,7 @@
             <span class="material-symbols-outlined text-base">logout</span>
             <span>Logout</span>
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" style="display: none;">
+        <form id="logout-form" action="{{ route('guardian.logout') }}" method="POST" class="d-none" style="display: none;">
             @csrf
         </form>
     </div>

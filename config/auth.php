@@ -48,6 +48,10 @@ return [
             'driver' => 'sanctum',
             'provider' => 'students',
         ],
+        'guardian' => [
+            'driver' => 'session',
+            'provider' => 'guardians',
+        ],
     ],
 
     /*
@@ -81,6 +85,11 @@ return [
         'teachers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Users\Teacher::class,
+        ],
+
+        'guardians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Users\Guardian::class,
         ],
 
         // 'users' => [
@@ -123,6 +132,12 @@ return [
         ],
         'teachers' => [
             'provider' => 'teachers',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'guardians' => [
+            'provider' => 'guardians',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
